@@ -47,11 +47,28 @@ export default function Portrait({
           sizes={`${dim.px}px`}
         />
       ) : (
+        /* An engraved monogram plate, not a failed image. Some figures — a new
+           party's spokesperson, say — have no freely licensed photograph, and
+           we will not use an unlicensed one. This should look like a decision. */
         <div
-          className={`flex h-full w-full items-center justify-center font-display font-bold text-ink-faint ${dim.text}`}
-          aria-hidden="true"
+          className="relative flex h-full w-full items-center justify-center"
+          style={{
+            background:
+              "repeating-linear-gradient(135deg, var(--paper-sunk) 0 6px, var(--paper-raised) 6px 12px)",
+          }}
+          title={`No freely licensed photograph of ${name} is available`}
         >
-          {initials(name)}
+          <span
+            className="absolute inset-[3px] border"
+            style={{ borderColor: accent ?? "var(--rule-strong)", opacity: 0.55 }}
+            aria-hidden="true"
+          />
+          <span
+            className={`relative font-display font-bold tracking-tight ${dim.text}`}
+            style={{ color: accent ?? "var(--ink-soft)" }}
+          >
+            {initials(name)}
+          </span>
         </div>
       )}
       <span className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-[color:var(--rule)]" />
