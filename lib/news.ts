@@ -1,0 +1,152 @@
+import { XMLParser } from "fast-xml-parser";
+import { fallbackNews, outlets } from "@/data/news";
+import type { NewsItem, NewsOutlet } from "@/lib/types";
+
+/**
+ * Live news adapter.
+ *
+ * Pulls each masthead's politics RSS feed on the server, revalidating every
+ * 15 minutes, and merges the results into one chronological table. Any feed
+ * that fails is skipped rather than breaking the page; if every feed fails we
+ * fall back to a verified static set so the section is never empty and never
+ * wrong.
+ */
+
+const REVALIDATE_SECONDS = 900;
+const PER_OUTLET_LIMIT = 12;
+/** Anything older than this is stale for a daily politics table. */
+const MAX_AGE_DAYS = 21;
+
+const parser = new XMLParser({
+  ignoreAttributes: false,
+  attributeNamePrefix: "@_",
+  textNodeName: "#text",
+});
+
+function text(value: unknown): string {
+  if (value == null) return "";
+  if (typeof value === "string") return value;
+  if (typeof value === "number") return String(value);
+  if (typeof value === "object" && "#text" in (value as Record<string, unknown>)) {
+    return String((value as Record<string, unknown>)["#text"] ?? "");
+  }
+  return "";
+}
+
+function stripHtml(value: string): string {
+  return value
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&#39;|&rsquo;/g, "'")
+    .replace(/&quot;|&ldquo;|&rdquo;/g, '"')
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function toIso(value: string): string {
+  const parsed = new Date(value);
+  return Number.isNaN(parsed.getTime()) ? new Date().toISOString() : parsed.toISOString();
+}
+
+async function fetchOutlet(outlet: NewsOutlet): Promise<NewsItem[]> {
+  const feedUrl = outlet.feed as string;
+  const response = await fetch(feedUrl, {
+    headers: {
+      "User-Agent": "ukpoliticshub.com/1.0 (+https://ukpoliticshub.com)",
+      Accept: "application/rss+xml, application/xml, text/xml",
+    },
+    next: { revalidate: REVALIDATE_SECONDS },
+  });
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+  const parsed = parser.parse(await response.text());
+
+  // RSS 2.0 puts items at rss.channel.item; Atom uses feed.entry.
+  const rawItems = parsed?.rss?.channel?.item ?? parsed?.feed?.entry ?? [];
+  const items = Array.isArray(rawItems) ? rawItems : [rawItems];
+
+  const mapped: NewsItem[] = items
+    .map((item: Record<string, unknown>) => {
+      const link =
+        text(item.link) ||
+        (item.link as Record<string, string> | undefined)?.["@_href"] ||
+        text(item.guid);
+      return {
+        title: stripHtml(text(item.title)),
+        url: link,
+        outlet: outlet.id,
+        publishedAt: toIso(text(item.pubDate) || text(item.published) || text(item.updated)),
+        summary: stripHtml(text(item.description) || text(item.summary)).slice(0, 220) || undefined,
+      };
+    })
+    .filter((item: NewsItem) => item.title && item.url);
+
+  // Only applied where the outlet publishes a general news feed rather than a
+  // politics one — see the note on politicsFilter in data/news.ts.
+  const relevant = outlet.politicsFilter
+    ? mapped.filter((item) =>
+        outlet.politicsFilter!.test(`${item.title} ${item.summary ?? ""} ${item.url}`)
+      )
+    : mapped;
+
+  return relevant.slice(0, PER_OUTLET_LIMIT);
+}
+
+export type NewsResult = {
+  items: NewsItem[];
+  /** Outlet ids that returned usable stories on this pass. */
+  live: string[];
+  /** True when every feed failed and we are showing the verified static set. */
+  usingFallback: boolean;
+  fetchedAt: string;
+};
+
+export async function getNews(): Promise<NewsResult> {
+  const withFeeds = outlets.filter((o) => o.feed);
+
+  const settled = await Promise.allSettled(
+    withFeeds.map((outlet) => fetchOutlet(outlet))
+  );
+
+  const items: NewsItem[] = [];
+  const live: string[] = [];
+
+  settled.forEach((result, index) => {
+    if (result.status === "fulfilled" && result.value.length > 0) {
+      live.push(withFeeds[index].id);
+      items.push(...result.value);
+    }
+  });
+
+  // Newest first, so the de-duplication below keeps the freshest copy of any
+  // story that several mastheads are carrying at once.
+  items.sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
+
+  // Drop stale items: a politics front page showing three-week-old stories
+  // reads as abandoned, and some feeds carry a long tail of old content. If
+  // that would leave the table too thin, keep everything rather than show a
+  // near-empty page.
+  const cutoff = Date.now() - MAX_AGE_DAYS * 86_400_000;
+  const fresh = items.filter((item) => Date.parse(item.publishedAt) >= cutoff);
+  const usable = fresh.length >= 12 ? fresh : items;
+
+  const seen = new Set<string>();
+  const deduped = usable.filter((item) => {
+    const key = item.title.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().slice(0, 70);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+
+  if (deduped.length === 0) {
+    return {
+      items: fallbackNews,
+      live: [],
+      usingFallback: true,
+      fetchedAt: new Date().toISOString(),
+    };
+  }
+
+  return { items: deduped, live, usingFallback: false, fetchedAt: new Date().toISOString() };
+}

@@ -1,26 +1,128 @@
 @import "tailwindcss";
 
+/* ── ukpoliticshub design system ──────────────────────────────────────────
+   Broadsheet, not blog. Parchment paper, Westminster navy ink, oxblood for
+   emphasis, hairline gold rules. Times New Roman sets every heading; Source
+   Sans carries every run of body text.
+   ------------------------------------------------------------------------ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #f5f1e8;
+  --paper-raised: #fbf9f4;
+  --paper-sunk: #ece6d8;
+  --ink: #0f1f38;
+  --ink-soft: #3b4a63;
+  --ink-faint: #6b7689;
+  --oxblood: #7a1c2b;
+  --gold: #b08a3e;
+  --rule: rgba(15, 31, 56, 0.16);
+  --rule-strong: rgba(15, 31, 56, 0.38);
+
+  /* Party brand colours — sourced from Wikipedia's {{party color}} template */
+  --party-labour: #e4003b;
+  --party-conservative: #0087dc;
+  --party-reform: #1eb8d0;
+  --party-libdem: #faa61a;
+  --party-green: #02a95b;
+  --party-restore: #051d3f;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-paper-sunk: var(--paper-sunk);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-oxblood: var(--oxblood);
+  --color-gold: var(--gold);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+
+  --font-display: "Times New Roman", Times, "Liberation Serif", "Nimbus Roman", serif;
+  --font-body: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  /* Faint laid-paper tooth so the parchment reads as stock, not flat beige. */
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(176, 138, 62, 0.05), transparent 45%),
+    radial-gradient(circle at 88% 0%, rgba(15, 31, 56, 0.04), transparent 40%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.012em;
+}
+
+/* ── Typographic furniture ─────────────────────────────────────────────── */
+
+/* Small-caps section label sitting on a hairline rule, broadsheet style. */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.688rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.rule-gold {
+  border-top: 1px solid var(--gold);
+}
+
+/* Double rule — the masthead separator on a printed front page. */
+.rule-double {
+  border-top: 3px double var(--rule-strong);
+}
+
+.drop-shadow-print {
+  box-shadow:
+    0 1px 2px rgba(15, 31, 56, 0.06),
+    0 8px 24px -12px rgba(15, 31, 56, 0.18);
+}
+
+/* Panel: the recurring bordered card used for every section block. */
+.panel {
+  background-color: var(--paper-raised);
+  border: 1px solid var(--rule);
+  box-shadow:
+    0 1px 2px rgba(15, 31, 56, 0.05),
+    0 12px 28px -20px rgba(15, 31, 56, 0.25);
+}
+
+.link-underline {
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 150ms ease, color 150ms ease;
+}
+
+.link-underline:hover {
+  color: var(--oxblood);
+  text-decoration-color: var(--oxblood);
+}
+
+/* Numerals: tabular so poll percentages and vote counts align in columns. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }

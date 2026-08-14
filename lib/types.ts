@@ -1,0 +1,116 @@
+/** A citation. Nothing factual appears on this site without one attached. */
+export type Source = {
+  label: string;
+  url: string;
+  /** ISO date of publication or fieldwork end. */
+  date?: string;
+};
+
+export type PartySlug =
+  | "labour"
+  | "conservative"
+  | "reform"
+  | "liberal-democrats"
+  | "green"
+  | "restore-britain";
+
+export type Person = {
+  slug: string;
+  name: string;
+  role: string;
+  /** Commons seat or other office held. */
+  seat?: string;
+  /** Two or three sentences: who they are and where they came from. */
+  background?: string;
+  /** Track record a reader can weigh — offices held, results delivered. */
+  credibility?: string;
+  /** Documented controversies. Always attributed, never asserted as verdict. */
+  concerns?: string;
+  sources?: Source[];
+};
+
+export type Party = {
+  slug: PartySlug;
+  name: string;
+  shortName: string;
+  colour: string;
+  /** Position on a −10 (left) to +10 (right) economic/social composite. */
+  spectrum: number;
+  spectrumNote: string;
+  founded: string;
+  leader: Person;
+  deputy?: Person;
+  mps: number | string;
+  membership?: string;
+  membershipSource?: Source;
+  councillors?: number | string;
+  /** One-paragraph statement of what the party is, neutrally worded. */
+  summary: string;
+  ideology: string[];
+  policies: { area: string; position: string }[];
+  credibility: string[];
+  concerns: string[];
+  frontbench: Person[];
+  recentNews: { headline: string; date: string; source: Source }[];
+  sources: Source[];
+};
+
+export type PollEntry = {
+  party: PartySlug;
+  pct: number;
+  /** Change in points since the previous published average. */
+  change: number;
+};
+
+export type Poll = {
+  pollster: string;
+  fieldwork: string;
+  sampleSize?: number;
+  url: string;
+  results: Partial<Record<PartySlug, number>>;
+};
+
+export type ThreatFactor = {
+  name: string;
+  /** 0–100 contribution score for this factor alone. */
+  score: number;
+  /** Weight in the composite, expressed in percentage points. Sums to 100. */
+  weight: number;
+  evidence: string;
+  sources: Source[];
+};
+
+export type NewsOutlet = {
+  id: string;
+  name: string;
+  /** −10 (left) to +10 (right). Fixed per outlet, see /how-we-work. */
+  bias: number;
+  /**
+   * RSS endpoint used by the live news adapter. Omitted where an outlet
+   * publishes no open feed — it still appears in the ratings table.
+   */
+  feed?: string;
+  /**
+   * Applied to title + summary + URL where the only available feed is a
+   * general news one rather than a politics section feed.
+   */
+  politicsFilter?: RegExp;
+  homepage: string;
+};
+
+export type NewsItem = {
+  title: string;
+  url: string;
+  outlet: string;
+  publishedAt: string;
+  summary?: string;
+};
+
+export type ElectionEvent = {
+  name: string;
+  date: string;
+  /** Whether the date is fixed in law or a latest-possible deadline. */
+  certainty: "scheduled" | "deadline" | "expected";
+  detail: string;
+  source: Source;
+};
