@@ -22,7 +22,7 @@ If the GitHub repo was created with a README or licence, the push will be reject
 git -C ~/ukpolitics-hub pull --rebase origin main && git -C ~/ukpolitics-hub push -u origin main
 ```
 
-**Public or private?** Either works with Vercel. Public invites scrutiny of the editorial rules, which for a site claiming neutrality is a feature — but it also exposes the curated figures in `data/` to anyone wanting to argue with them. Your call.
+**Public or private?** Either works with Vercel — unlike GitHub Pages, which requires public on a free account. Public invites scrutiny of the editorial rules, which for a site claiming neutrality is a feature; it also exposes the curated figures in `data/` to anyone wanting to argue with them. Your call.
 
 ## 2. Import into Vercel
 
@@ -33,18 +33,35 @@ git -C ~/ukpolitics-hub pull --rebase origin main && git -C ~/ukpolitics-hub pus
 
 You will get a `*.vercel.app` URL. Check it before pointing DNS.
 
-## 3. Point the domain
+## 3. Point the domain (GoDaddy)
 
-In the Vercel project: **Settings → Domains → Add**, enter `ukpoliticshub.com`. Vercel will ask for one of these at your registrar:
+In the Vercel project: **Settings → Domains → Add**, enter `ukpoliticshub.com`. Add `www.ukpoliticshub.com` as well and let Vercel redirect it to the apex.
 
-| Record | Name | Value |
+Vercel then shows you the exact records to create. **Use the values on that screen, not the ones below** — Vercel now issues project-specific CNAME hostnames (something like `d1d4fc829fe7bc7c.vercel-dns-017.com`), so a generic value copied from a blog post will not verify.
+
+Typical shape:
+
+| Type | Name | Value |
 | --- | --- | --- |
-| `A` | `@` | `76.76.21.21` |
-| `CNAME` | `www` | `cname.vercel-dns.com` |
+| `A` | `@` | `76.76.21.21` (Vercel's general apex IP) |
+| `CNAME` | `www` | the project-specific hostname Vercel shows you |
 
-Vercel shows the exact values for your project — use those over the table above if they differ. Add `www.ukpoliticshub.com` as a domain too and let Vercel redirect it to the apex.
+In GoDaddy: **My Products → your domain → DNS → Manage Zones**.
 
-DNS usually propagates in minutes; TLS is issued automatically once it resolves.
+1. **Delete GoDaddy's parking records first.** A fresh domain ships with an `A` record on `@` pointing at a GoDaddy parking page, and often a `CNAME` on `www`. Both must go, or they will fight the new ones.
+2. Add the `A` record on `@` with the value Vercel gave you.
+3. Edit or add the `CNAME` on `www` pointing to Vercel's project-specific hostname. No `https://`, no trailing dot needed in GoDaddy.
+4. Leave TTL at default (1 hour).
+
+> If you were given four `A` records pointing at `185.199.108–111.153`, those are **GitHub Pages** addresses. They will not work here — this site needs a server, which GitHub Pages does not provide.
+
+Vercel verifies within a few minutes and issues TLS automatically. You do not need to tick anything to enforce HTTPS; Vercel redirects to it by default.
+
+Check propagation with:
+
+```bash
+dig +short ukpoliticshub.com A && dig +short www.ukpoliticshub.com CNAME
+```
 
 ## 4. Turn on the refresh schedule
 
