@@ -18,8 +18,9 @@ import { MoreLink } from "@/components/ui";
 import { parties } from "@/data/parties";
 import { pollAverage } from "@/data/polls";
 
-/** The front page is rebuilt at most every 15 minutes, in step with the feeds. */
-export const revalidate = 900;
+/** Rebuilt at most every 10 minutes; the scheduled refresh keeps it warmer
+ *  than that. See DEPLOY.md and app/api/revalidate. */
+export const revalidate = 600;
 
 const TODAY = "2026-08-14";
 

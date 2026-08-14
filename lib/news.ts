@@ -6,13 +6,13 @@ import type { NewsItem, NewsOutlet } from "@/lib/types";
  * Live news adapter.
  *
  * Pulls each masthead's politics RSS feed on the server, revalidating every
- * 15 minutes, and merges the results into one chronological table. Any feed
+ * 10 minutes, and merges the results into one chronological table. Any feed
  * that fails is skipped rather than breaking the page; if every feed fails we
  * fall back to a verified static set so the section is never empty and never
  * wrong.
  */
 
-const REVALIDATE_SECONDS = 900;
+const REVALIDATE_SECONDS = 600;
 const PER_OUTLET_LIMIT = 12;
 /** Anything older than this is stale for a daily politics table. */
 const MAX_AGE_DAYS = 21;

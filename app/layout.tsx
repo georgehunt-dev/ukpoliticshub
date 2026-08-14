@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
 import SiteFooter from "@/components/SiteFooter";
+import { SiteStructuredData } from "@/components/StructuredData";
 import SiteHeader from "@/components/SiteHeader";
 import "./globals.css";
 
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en-GB" className={`${sourceSans.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
+        <SiteStructuredData />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:border focus:border-ink focus:bg-[color:var(--paper-raised)] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"

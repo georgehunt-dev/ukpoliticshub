@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import BiasScale from "@/components/BiasScale";
 import OutletMark from "@/components/OutletMark";
 import SectionImage from "@/components/SectionImage";
+import { NewsStructuredData } from "@/components/StructuredData";
 import { SectionHeading, formatShortDate } from "@/components/ui";
 import { outletById, outlets } from "@/data/news";
 import { getNews } from "@/lib/news";
 import { groupByTopic } from "@/lib/topics";
 
-export const revalidate = 900;
+export const revalidate = 600;
 
 export const metadata: Metadata = {
   title: "The news, by topic",
@@ -29,6 +30,7 @@ export default async function NewsPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-11">
+      <NewsStructuredData items={items} dateModified={fetchedAt} />
       <SectionHeading
         eyebrow="The papers"
         title="The news, by topic"
@@ -57,7 +59,7 @@ export default async function NewsPage() {
           <>
             Pulled from {live.length} politics feeds, last updated{" "}
             {new Date(fetchedAt).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}.
-            Refreshes every 15 minutes.
+            Refreshes every 10 minutes.
           </>
         )}
       </p>
