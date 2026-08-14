@@ -77,7 +77,7 @@ These are the guarantees the site makes, and the code enforces them:
 
 `/how-we-work` states all of this publicly, including what each method *cannot* tell you.
 
-6. **Policies are comparable, and gaps are shown.** Every party answers the same ten questions in `data/policy-areas.ts`, in the same order, so two party pages can be read side by side. Where no current position could be sourced the row still renders and says so — worded to admit it may be our gap rather than theirs, because claiming otherwise would be an overclaim. Coverage at time of writing: Labour 7/10, Reform 7/10, Green 6/10, Conservative 5/10, Lib Dem 5/10, Restore Britain 4/10.
+6. **Policies are comparable, and gaps are shown.** Every party answers the same ten questions in `data/policy-areas.ts`, in the same order, so two party pages can be read side by side. Where no current position could be sourced the row still renders and says so — worded to admit it may be our gap rather than theirs, because claiming otherwise would be an overclaim. Coverage at time of writing: Labour 10/10, Reform 9/10, Conservative 9/10, Green 8/10, Lib Dem 7/10, Restore Britain 4/10 — 47 sourced positions in total. Restore Britain's four reflect a party six months old with a near single-issue platform, not an unfinished research pass.
 
 7. **Contested terminology is handled explicitly.** The immigration tracker uses the government's own statistical term ("irregular migration"), explains in plain English why claiming asylum is not itself illegal, and notes that much of the press and several parties say "illegal immigration". The wording note ships with the section rather than being buried.
 

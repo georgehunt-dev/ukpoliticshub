@@ -65,6 +65,23 @@ export const parties: Party[] = [
           "Maintaining the NATO commitment and the nuclear deterrent, and upgrading equipment through a defence investment plan.",
       },
       {
+        area: "crime",
+        position:
+          "3,000 additional neighbourhood officers and PCSOs within twelve months, with dedicated teams patrolling town centres at peak times to end what the government calls the policing \"postcode lottery\". Burnham points to his Greater Manchester record: 8,271 officers by March 2026, around 2,000 more than when he took office in 2017, alongside a 15% fall in neighbourhood crime.",
+      },
+      {
+        area: "education",
+        position:
+          "VAT has been charged at the standard 20% rate on private school fees since 1 January 2025, removing a long-standing exemption. The Treasury forecast the measure would raise £1.51bn in 2025/26.",
+        caveat:
+          "The government's own forecast expected 37,000 pupils — about 6% of the private sector — to move into state schools as a result. Several large private schools responded by sharply expanding bursaries.",
+      },
+      {
+        area: "culture",
+        position:
+          "The government is committed to the licence fee until the end of the current BBC charter, while its royal charter review considers reform of the fee and greater commercial revenue for the corporation. A public consultation closed in March 2026 and a white paper is expected later in the year.",
+      },
+      {
         area: "europe",
         position:
           "Having previously supported rejoining the EU, Burnham now says he will avoid a \"permanent rut\" of that argument, seeking closer co-operation on defence, illegal migration and economic security instead. Domestically his defining project is devolution: a \"No 10 in the North\" based in Manchester, and water, transport and housing brought under stronger public control short of full nationalisation.",
@@ -80,6 +97,18 @@ export const parties: Party[] = [
         label: "Travers Smith — What to expect from Andy Burnham: legal and policy changes",
         url: "https://www.traverssmith.com/knowledge/knowledge-container/what-to-expect-from-andy-burnham-potential-legal-and-policy-changes-under-the-new-uk-prime-minister/",
         date: "2026-07-01",
+      },
+      {
+        label: "Greater Manchester Combined Authority — Burnham unveils plan to drive further improvements in policing",
+        url: "https://www.greatermanchester-ca.gov.uk/news/mayor-andy-burnham-unveils-plan-to-drive-further-improvements-in-policing/",
+      },
+      {
+        label: "House of Commons Library — The future of the BBC licence fee",
+        url: "https://commonslibrary.parliament.uk/research-briefings/cbp-10050/",
+      },
+      {
+        label: "House of Commons Library — VAT on private school fees",
+        url: "https://commonslibrary.parliament.uk/research-briefings/cbp-10125/",
       },
     ],
     credibility: [
@@ -222,6 +251,18 @@ export const parties: Party[] = [
           "Legal scholars dispute the premise: the Convention does not dictate a state's immigration policy, and states set their own. The UK would also become the only European country outside it besides Russia and Belarus.",
       },
       {
+        area: "defence",
+        position:
+          "Reform has published comparatively little defence policy. What exists is framed around withdrawal from international institutions and conventions rather than force structure or spending commitments.",
+        caveat:
+          "Analysts characterise this as a foreign policy of withdrawal; the party has not published a defence spending target.",
+      },
+      {
+        area: "culture",
+        position:
+          "Abolition of the BBC licence fee outright, and scrapping Diversity, Equality and Inclusion requirements across the public sector.",
+      },
+      {
         area: "housing",
         position:
           "Housing policy appears mainly through immigration: restricting welfare and social housing access for migrants.",
@@ -236,6 +277,14 @@ export const parties: Party[] = [
       {
         label: "London Daily — Reform UK election manifesto: policy breakdown",
         url: "https://londondaily.com/reform-uk-s-election-manifesto-policy-breakdown",
+      },
+      {
+        label: "Next Century Foundation — Reform UK: a foreign policy of withdrawal",
+        url: "https://www.nextcenturyfoundation.org/reform-uk-a-foreign-policy-of-withdrawal/",
+      },
+      {
+        label: "House of Commons Library — The future of the BBC licence fee",
+        url: "https://commonslibrary.parliament.uk/research-briefings/cbp-10050/",
       },
     ],
     credibility: [
@@ -346,6 +395,31 @@ export const parties: Party[] = [
           "A stated \"fully funded\" plan to scrap stamp duty, and £23bn of savings from welfare — framed as ending Britain's \"welfare addiction\" and building a high-growth, low-immigration economy in which reform expands the domestic workforce rather than immigration filling the gap.",
       },
       {
+        area: "health",
+        position:
+          "92,000 more nurses and 28,000 more doctors in the NHS than in 2023 by the end of the Parliament.",
+        caveat:
+          "From the 2024 general election manifesto, which remains the party's most recent full platform; Badenoch has not published a replacement, and has since abandoned the net zero target that manifesto contained.",
+      },
+      {
+        area: "crime",
+        position:
+          "8,000 more neighbourhood police officers with a named officer for every community, mandatory whole-life orders for the worst murders including those involving sadistic or sexual conduct, full custodial terms served for rape and serious sexual offences, and 20,000 additional prison places.",
+        caveat: "Also from the 2024 manifesto rather than a new platform under the current leadership.",
+      },
+      {
+        area: "defence",
+        position:
+          "Defence spending raised to 2.5% of GDP by 2030 on what the party called a fully funded path — presented as the largest sustained increase since the Cold War, keeping the UK the largest defence power in Europe.",
+        caveat: "2024 manifesto commitment; not restated as a costed pledge under the current leadership.",
+      },
+      {
+        area: "education",
+        position:
+          "The party has criticised the imposition of VAT on private school fees but has not committed to reversing it in government.",
+        caveat: "No broader schools programme published under the current leadership.",
+      },
+      {
         area: "housing",
         position:
           "Scrapping stamp duty is the party's principal published housing-market measure.",
@@ -365,6 +439,14 @@ export const parties: Party[] = [
       {
         label: "BBC News — Net zero by 2050 'impossible' for UK, says Badenoch",
         url: "https://feeds.bbci.co.uk/news/articles/cly3pnjyzp4o",
+      },
+      {
+        label: "Local Government Association — Conservative Party manifesto summary",
+        url: "https://www.local.gov.uk/about/campaigns/general-election-hub/conservative-party-manifesto",
+      },
+      {
+        label: "House of Commons Library — VAT on private school fees",
+        url: "https://commonslibrary.parliament.uk/research-briefings/cbp-10125/",
       },
     ],
     credibility: [
@@ -478,6 +560,18 @@ export const parties: Party[] = [
           "Opposes deterrence-based policy outright, favouring expanded safe and legal routes and an end to hotel-based asylum accommodation.",
       },
       {
+        area: "crime",
+        position:
+          "A presumption against custodial sentences under two years, with investment redirected to courts, diversion schemes and violence-reduction units rather than prison places. The party would restore youth services and community policing, repeal the Police, Crime, Sentencing and Courts Act and the Public Order Act, abolish the Prevent programme, and decriminalise sex work.",
+      },
+      {
+        area: "defence",
+        position:
+          "Immediately begin dismantling Britain's nuclear weapons, cancelling Trident and banning nuclear-armed ships from UK waters, while continuing to recognise NATO's role in European security.",
+        caveat:
+          "The combination of remaining in NATO while unilaterally disarming is the most contested element of the platform, since the alliance's strategic concept is explicitly nuclear.",
+      },
+      {
         area: "europe",
         position: "Rejoining the European Union is party policy.",
       },
@@ -501,6 +595,10 @@ export const parties: Party[] = [
         label: "Left Foot Forward — Polanski reveals three economic principles the Green Party will follow",
         url: "https://leftfootforward.org/2026/03/zack-polanski-reveals-three-economic-principles-the-green-party-will-follow/",
         date: "2026-03-01",
+      },
+      {
+        label: "British Brief — the Green Party's defence plan",
+        url: "https://www.britbrief.co.uk/politics/defence/greens-defence-plan-scrap-trident-cut-forces-terror-sympathy.html",
       },
     ],
     credibility: [
@@ -599,6 +697,16 @@ export const parties: Party[] = [
           "A £9.4bn package for social care and the NHS, funded by higher taxes on banks and tighter capital gains rules for the very wealthy.",
       },
       {
+        area: "housing",
+        position:
+          "Expanding council-led housebuilding, bringing empty homes back into use, and requiring developers to deliver the affordable homes they have been permitted to build.",
+      },
+      {
+        area: "crime",
+        position:
+          "Restoring community policing, and scrapping Police and Crime Commissioners in favour of local Police Boards made up of councillors and local representatives, with the savings put into frontline policing. Recent party papers also defend trial by jury against proposals to restrict it.",
+      },
+      {
         area: "europe",
         position:
           "The most consistently pro-European of the six: repairing what Davey calls Britain's \"broken relationship\" with Europe, tearing down trade barriers and fixing the \"botched\" Brexit deal. Domestically he has called for \"a new Magna Carta\" to constrain executive power.",
@@ -622,6 +730,10 @@ export const parties: Party[] = [
       {
         label: "The Conversation — Lib Dem proposals take social care reform seriously, but doubts remain over how they'd pay for it",
         url: "https://theconversation.com/lib-dem-proposals-take-social-care-reform-seriously-but-doubts-remain-over-how-theyd-pay-for-it-232049",
+      },
+      {
+        label: "Liberal Democrats — Stronger Communities, Safer Citizens: proposals for crime and policing policy",
+        url: "https://www.libdems.org.uk/fileadmin/groups/2_Federal_Party/Documents/PolicyPapers/17_-_Stronger_Communities__Safer_Citizens__Proposals_for_Crime_and_Policing_Policy_in_England_and_Wales_.pdf",
       },
     ],
     credibility: [
