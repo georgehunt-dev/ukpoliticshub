@@ -43,12 +43,14 @@ Typical shape:
 
 | Type | Name | Value |
 | --- | --- | --- |
-| `A` | `@` | `76.76.21.21` (Vercel's general apex IP) |
+| `A` | `@` | `216.198.79.1` — Vercel's current apex IP (the older `76.76.21.21` still works but is legacy) |
 | `CNAME` | `www` | the project-specific hostname Vercel shows you |
+
+`@` is not a placeholder — it is DNS shorthand for the root domain itself, and you type that literal character into GoDaddy's Name field.
 
 In GoDaddy: **My Products → your domain → DNS → Manage Zones**.
 
-1. **Delete GoDaddy's parking records first.** A fresh domain ships with an `A` record on `@` pointing at a GoDaddy parking page, and often a `CNAME` on `www`. Both must go, or they will fight the new ones.
+1. **Delete GoDaddy's parking records first.** A fresh domain ships with **two** `A` records on `@` (seen here: `76.223.105.230` and `13.248.243.5`) plus a `CNAME` on `www`. Every one of the `@` records must go, or they will round-robin against the new one and the domain will intermittently serve GoDaddy's parking page.
 2. Add the `A` record on `@` with the value Vercel gave you.
 3. Edit or add the `CNAME` on `www` pointing to Vercel's project-specific hostname. No `https://`, no trailing dot needed in GoDaddy.
 4. Leave TTL at default (1 hour).
@@ -99,6 +101,18 @@ If your domain is not `ukpoliticshub.com`, set a repository **variable** (not se
 **Why GitHub Actions and not Vercel Cron?** Vercel's Hobby plan caps cron at **once per day**, and a more frequent expression *fails the deployment* rather than warning you. GitHub Actions is free at any interval and works on every plan. `vercel.json` therefore holds only a daily 06:00 job as a backstop — safe on Hobby. If you move to Pro, you can change that schedule to `*/15 * * * *` and drop the Actions workflow.
 
 > GitHub's scheduled runs are best-effort and can be delayed by a few minutes under load. That's fine here: the 10-minute ISR window is the floor, and the cron is what keeps the cache warm on top of it.
+
+### Deployment Protection
+
+New Vercel projects ship with Deployment Protection on, which sends visitors to a Vercel SSO login. It normally covers preview builds and the `*.vercel.app` URL while leaving custom production domains public — but confirm it, because if it covers production the site is invisible to both the public and Googlebot.
+
+**Settings → Deployment Protection.** Vercel Authentication should be off for production, or set so the custom domain is exempt. Verify from a logged-out browser or:
+
+```bash
+curl -sI https://ukpoliticshub.com/ | head -1
+```
+
+`200` is right. A `302` to `vercel.com/sso-api` means production is still protected.
 
 ## 5. After it's live
 
