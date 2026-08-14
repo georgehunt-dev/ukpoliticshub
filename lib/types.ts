@@ -6,6 +6,32 @@ export type Source = {
   date?: string;
 };
 
+/**
+ * The fixed set of policy areas every party is measured against, so positions
+ * are comparable rather than each party being described on its own terms.
+ * Where a party has no position we could source, the page says so — a thin
+ * platform is itself a finding, not something to paper over.
+ */
+export type PolicyArea =
+  | "immigration"
+  | "economy"
+  | "health"
+  | "housing"
+  | "crime"
+  | "energy"
+  | "education"
+  | "defence"
+  | "europe"
+  | "culture";
+
+export type Policy = {
+  area: PolicyArea;
+  /** The party's stated position, in two or three sentences. */
+  position: string;
+  /** Where it is contested, qualified, or short on detail. */
+  caveat?: string;
+};
+
 export type PartySlug =
   | "labour"
   | "conservative"
@@ -47,7 +73,9 @@ export type Party = {
   /** One-paragraph statement of what the party is, neutrally worded. */
   summary: string;
   ideology: string[];
-  policies: { area: string; position: string }[];
+  policies: Policy[];
+  /** Where the policy positions above were drawn from. */
+  policySources?: Source[];
   credibility: string[];
   concerns: string[];
   frontbench: Person[];

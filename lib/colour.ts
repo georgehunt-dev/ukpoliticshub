@@ -47,3 +47,29 @@ export function onDark(hex: string): string {
   // The darker the original, the more we lift it.
   return lighten(hex, l < 0.03 ? 0.62 : 0.45);
 }
+
+/** Mixes a colour toward near-black ink by `amount` (0–1). */
+export function darken(hex: string, amount: number): string {
+  const [r, g, b] = parse(hex);
+  // Toward the site's ink, not pure black, so the band stays in the palette.
+  const target = [15, 31, 56];
+  const mix = (v: number, t: number) => Math.round(v + (t - v) * amount);
+  return `#${[mix(r, target[0]), mix(g, target[1]), mix(b, target[2])]
+    .map((v) => v.toString(16).padStart(2, "0"))
+    .join("")}`;
+}
+
+/**
+ * A party-tinted dark field for the page header.
+ *
+ * The six brand colours run from near-black navy (Restore, #051D3F) to bright
+ * amber (Lib Dem, #FAA61A). Using them as flat backgrounds would give one
+ * party an unreadable band and another a garish one, so each is mixed heavily
+ * toward ink: the hue stays recognisably theirs, the contrast stays constant.
+ */
+export function bandColour(hex: string): string {
+  const l = luminance(hex);
+  // Lighter brand colours need mixing further down to reach the same depth.
+  const amount = l > 0.35 ? 0.86 : l > 0.15 ? 0.82 : 0.7;
+  return darken(hex, amount);
+}

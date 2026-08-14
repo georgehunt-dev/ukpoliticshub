@@ -31,19 +31,55 @@ export const parties: Party[] = [
     ideology: ["Social democracy", "Democratic socialism (Labour left)", "Trade unionism"],
     policies: [
       {
-        area: "Constitution and devolution",
+        area: "immigration",
         position:
-          "Burnham's defining political project as Greater Manchester mayor was devolution of transport, housing and skills budgets out of Whitehall — the basis on which he campaigned for the leadership.",
+          "Burnham voted for and continues to back Home Secretary Shabana Mahmood's immigration reforms, which reshape the asylum appeals process and remove barriers to deportation. The government points to the 43% year-on-year fall in Channel crossings as evidence that enforcement co-operation with France is working.",
+        caveat:
+          "He has not set out an approach distinct from the one he inherited, and Ipsos finds the public unconvinced the government will deliver on immigration.",
       },
       {
-        area: "Public health",
+        area: "economy",
         position:
-          "The Tobacco and Vapes Bill passed on 21 April 2026, making it illegal to sell cigarettes to anyone born after 2008 — a generational smoking ban.",
+          "Action on the income tax personal allowance, frozen at £12,570 — which Burnham called \"the thing I heard most on the doorsteps\". Business rates would rise on large warehouses while high-street shops and pubs are exempted. He has not ruled out a wealth tax.",
+        caveat:
+          "A £4.7bn gap in the existing spending plan is to be \"confirmed at Budget 2026\", so the funding is not yet set out.",
       },
       {
-        area: "Stability",
+        area: "health",
         position:
-          "Burnham's stated first priority on entering Downing Street was ending the instability of seven Prime Ministers in ten years.",
+          "A publicly funded national care service, which Burnham has framed as finally \"grasping the nettle\" on social care reform and links to his father's Alzheimer's. The Tobacco and Vapes Act, passed in April 2026, makes it illegal to sell cigarettes to anyone born after 2008.",
+      },
+      {
+        area: "housing",
+        position:
+          "Burnham's stated \"first instruction\" on entering Downing Street was to end rough sleeping. He has promised the biggest council house building programme since the post-war period, using vacant public land to hold costs down, with higher-density development in existing towns.",
+      },
+      {
+        area: "energy",
+        position:
+          "Removing policy levies from energy bills, worth roughly £130 a year to a household, at a cost to the taxpayer of about £3.2bn a year.",
+      },
+      {
+        area: "defence",
+        position:
+          "Maintaining the NATO commitment and the nuclear deterrent, and upgrading equipment through a defence investment plan.",
+      },
+      {
+        area: "europe",
+        position:
+          "Having previously supported rejoining the EU, Burnham now says he will avoid a \"permanent rut\" of that argument, seeking closer co-operation on defence, illegal migration and economic security instead. Domestically his defining project is devolution: a \"No 10 in the North\" based in Manchester, and water, transport and housing brought under stronger public control short of full nationalisation.",
+      },
+    ],
+    policySources: [
+      {
+        label: "Yahoo News — Andy Burnham's main policy pledges, and what they mean for you",
+        url: "https://www.yahoo.com/news/politics/articles/andy-burnham-key-policies-083422419.html",
+        date: "2026-07-20",
+      },
+      {
+        label: "Travers Smith — What to expect from Andy Burnham: legal and policy changes",
+        url: "https://www.traverssmith.com/knowledge/knowledge-container/what-to-expect-from-andy-burnham-potential-legal-and-policy-changes-under-the-new-uk-prime-minister/",
+        date: "2026-07-01",
       },
     ],
     credibility: [
@@ -150,18 +186,56 @@ export const parties: Party[] = [
     ideology: ["Right-wing populism", "Immigration restrictionism", "Economic liberalism", "Anti-net zero"],
     policies: [
       {
-        area: "Immigration",
+        area: "immigration",
         position:
-          "The party's central issue: sharp reductions in legal migration and a hard line on illegal crossings. Rupert Lowe's departure was triggered in part by his claim that Reform was \"watering down\" deportation policy — placing Reform to the left of Restore Britain on this.",
+          "An immediate freeze on non-essential immigration and a new Deportation Command. Indefinite Leave to Remain would be abolished and existing grants rescinded, replaced by a five-year renewable visa carrying higher salary thresholds, mandatory English fluency and stricter good-character requirements.",
+        caveat:
+          "Rupert Lowe left the party in part over his claim that Reform was \"watering down\" deportation policy — placing Reform to the left of Restore Britain on its own signature issue.",
       },
       {
-        area: "Energy",
-        position: "Opposition to net zero targets and the costs attached to them.",
+        area: "economy",
+        position:
+          "Around £70bn a year of tax cuts, with family-focused measures including a 25% marriage allowance and child benefit front-loaded into the early years.",
+        caveat:
+          "Independent economists have repeatedly questioned whether cuts on this scale can be funded without deep spending reductions the party has not specified.",
       },
       {
-        area: "The state",
+        area: "health",
         position:
-          "Richard Tice heads a \"government efficiency\" brief; the party frames itself against the Westminster establishment and both main parties.",
+          "Re-examining the NHS funding model rather than the free-at-the-point-of-use principle. Specific pledges include temporarily zero-rating basic-rate income tax for NHS staff, tax relief on private health insurance, and independent reviews to train more staff and expand community services.",
+      },
+      {
+        area: "crime",
+        position:
+          "40,000 more police officers, expanded stop and search, mandatory minimum sentences for serious and repeat offenders, and more prison capacity so overcrowding no longer forces early release.",
+      },
+      {
+        area: "energy",
+        position:
+          "Scrapping net zero targets outright and \"rehabilitating\" North Sea gas as a primary energy source, framed as the fastest way to cut household bills.",
+      },
+      {
+        area: "europe",
+        position:
+          "A Reform government would leave the European Convention on Human Rights immediately, which the party presents as the mechanism that would let it deport people without legal challenge. Farage has framed withdrawal as the natural sequel to Brexit.",
+        caveat:
+          "Legal scholars dispute the premise: the Convention does not dictate a state's immigration policy, and states set their own. The UK would also become the only European country outside it besides Russia and Belarus.",
+      },
+      {
+        area: "housing",
+        position:
+          "Housing policy appears mainly through immigration: restricting welfare and social housing access for migrants.",
+        caveat: "Little detail published on overall housing supply or building targets.",
+      },
+    ],
+    policySources: [
+      {
+        label: "Reform UK — Policies",
+        url: "https://www.reformparty.uk/policies",
+      },
+      {
+        label: "London Daily — Reform UK election manifesto: policy breakdown",
+        url: "https://londondaily.com/reform-uk-s-election-manifesto-policy-breakdown",
       },
     ],
     credibility: [
@@ -252,14 +326,45 @@ export const parties: Party[] = [
     ideology: ["Conservatism", "Economic liberalism", "Unionism"],
     policies: [
       {
-        area: "Positioning",
+        area: "immigration",
         position:
-          "Badenoch has resisted merger or pact with Reform UK, arguing the Conservatives must rebuild a distinct offer rather than chase it rightwards.",
+          "The Borders Plan would impose a total ban on asylum claims from anyone entering illegally and create a Removals Force tasked with removing 150,000 people a year. Indefinite Leave to Remain would require ten years rather than five, and would be refused to anyone who had claimed benefits, used social housing, or was not a net fiscal contributor.",
       },
       {
-        area: "Policy renewal",
+        area: "europe",
         position:
-          "Neil O'Brien was given a dedicated Shadow Minister for Policy Renewal and Development brief in July 2025 to rebuild the platform.",
+          "Leaving the European Convention on Human Rights and the anti-trafficking convention ECAT, and repealing the Human Rights Act. Badenoch has made this a condition of candidate selection: only those backing withdrawal from the ECHR and the scrapping of net zero are approved to stand.",
+      },
+      {
+        area: "energy",
+        position:
+          "Repealing the Climate Change Act. Badenoch argues net zero by 2050 cannot be reached \"without a serious drop in our living standards or by bankrupting us\".",
+      },
+      {
+        area: "economy",
+        position:
+          "A stated \"fully funded\" plan to scrap stamp duty, and £23bn of savings from welfare — framed as ending Britain's \"welfare addiction\" and building a high-growth, low-immigration economy in which reform expands the domestic workforce rather than immigration filling the gap.",
+      },
+      {
+        area: "housing",
+        position:
+          "Scrapping stamp duty is the party's principal published housing-market measure.",
+        caveat: "No detailed building or supply programme published under the current leadership.",
+      },
+    ],
+    policySources: [
+      {
+        label: "Conservatives — Our Borders Plan",
+        url: "https://www.conservatives.com/our-borders-plan",
+      },
+      {
+        label: "Conservative Home — Kemi Badenoch: why only the Conservatives can fix Britain's problems",
+        url: "https://conservativehome.com/2026/01/28/kemi-badenoch-why-only-the-conservatives-can-fix-britains-problems/",
+        date: "2026-01-28",
+      },
+      {
+        label: "BBC News — Net zero by 2050 'impossible' for UK, says Badenoch",
+        url: "https://feeds.bbci.co.uk/news/articles/cly3pnjyzp4o",
       },
     ],
     credibility: [
@@ -351,18 +456,51 @@ export const parties: Party[] = [
     ideology: ["Green politics", "Eco-socialism", "Left-wing populism"],
     policies: [
       {
-        area: "Climate",
-        position: "Rapid decarbonisation as the organising priority of government.",
+        area: "economy",
+        position:
+          "A wealth tax of 1% a year on individual assets above £10m and 2% above £1bn, which the party says would raise £15bn a year. Alongside it, a £15 minimum wage and a four-day working week.",
+        caveat:
+          "Economists dispute wealth-tax yields of this size, pointing to valuation difficulty and behavioural response; the party treats the figure as its own costing.",
       },
       {
-        area: "Economy",
+        area: "energy",
         position:
-          "Redistribution funded by taxes on wealth — the core of Polanski's pitch to voters to Labour's left.",
+          "Capital spending raised by £90bn a year by 2030, of which more than £70bn goes to the green transition. Water, rail and energy companies would be taken into public ownership.",
       },
       {
-        area: "Strategy",
+        area: "housing",
         position:
-          "Polanski argues two-party politics is \"dead and buried\" and has made the devolved elections a priority.",
+          "Social housing is funded from the same £90bn capital programme, alongside health and education — the party's answer to supply being public building rather than planning liberalisation.",
+      },
+      {
+        area: "immigration",
+        position:
+          "Opposes deterrence-based policy outright, favouring expanded safe and legal routes and an end to hotel-based asylum accommodation.",
+      },
+      {
+        area: "europe",
+        position: "Rejoining the European Union is party policy.",
+      },
+      {
+        area: "health",
+        position:
+          "Increased health spending forms part of the capital programme, with the party opposing private provision within the NHS.",
+        caveat: "Less detailed than its economic and environmental platform.",
+      },
+    ],
+    policySources: [
+      {
+        label: "Economics Observatory — What are the Green Party's economic plans?",
+        url: "https://www.economicsobservatory.com/what-are-the-green-partys-economic-plans",
+      },
+      {
+        label: "AOL / PA — From a wealth tax to rejoining the EU: Polanski outlines Green economic policy",
+        url: "https://www.aol.com/news/wealth-tax-rejoining-eu-zack-135154434.html",
+      },
+      {
+        label: "Left Foot Forward — Polanski reveals three economic principles the Green Party will follow",
+        url: "https://leftfootforward.org/2026/03/zack-polanski-reveals-three-economic-principles-the-green-party-will-follow/",
+        date: "2026-03-01",
       },
     ],
     credibility: [
@@ -449,18 +587,41 @@ export const parties: Party[] = [
     ideology: ["Liberalism", "Social liberalism", "Pro-Europeanism", "Federalism"],
     policies: [
       {
-        area: "Health and social care",
+        area: "health",
         position:
-          "Davey's signature issue, rooted in his own experience as a carer; the party's central domestic commitment.",
+          "Free personal care for everyone who needs it, costed at £2.7bn a year by 2028–29 and funded by reversing tax cuts given to the large banks since 2016 — so that nobody has to sell their home to pay for personal care. Alongside it a Carer's Minimum Wage set £2 above the minimum wage, a Royal College of Care Workers, and Carer's Allowance raised by £20 a week with eligibility extended to anyone earning under £183 a week.",
+        caveat:
+          "Analysts have welcomed the seriousness of the reform while questioning whether the funding stream covers the long-run cost.",
       },
       {
-        area: "Constitution",
+        area: "economy",
         position:
-          "Davey used his spring 2026 conference speech to call for \"a new Magna Carta\" to constrain executive power.",
+          "A £9.4bn package for social care and the NHS, funded by higher taxes on banks and tighter capital gains rules for the very wealthy.",
       },
       {
-        area: "Europe",
-        position: "The most consistently pro-European of the six parties.",
+        area: "europe",
+        position:
+          "The most consistently pro-European of the six: repairing what Davey calls Britain's \"broken relationship\" with Europe, tearing down trade barriers and fixing the \"botched\" Brexit deal. Domestically he has called for \"a new Magna Carta\" to constrain executive power.",
+      },
+      {
+        area: "energy",
+        position:
+          "Ending sewage discharges by water companies has been the party's most prominent environmental campaign.",
+      },
+      {
+        area: "immigration",
+        position:
+          "Emphasises safe and legal routes and faster decision-making, arguing deterrence-first policy has repeatedly failed to reduce crossings.",
+      },
+    ],
+    policySources: [
+      {
+        label: "Liberal Democrats — Ed Davey launches plan for free personal care",
+        url: "https://www.libdems.org.uk/press/release/ed-davey-launches-plan-for-free-personal-care-to-end-hospital-crisis-and-help-people-stay-in-their-own-homes",
+      },
+      {
+        label: "The Conversation — Lib Dem proposals take social care reform seriously, but doubts remain over how they'd pay for it",
+        url: "https://theconversation.com/lib-dem-proposals-take-social-care-reform-seriously-but-doubts-remain-over-how-theyd-pay-for-it-232049",
       },
     ],
     credibility: [
@@ -544,10 +705,49 @@ export const parties: Party[] = [
       "Founded by Rupert Lowe after his departure from Reform UK, Restore Britain registered as a party in February 2026 and polls at around 4%. It is the newest of the six parties tracked here and the only one whose classification is itself contested: academics describe it as far-right and ethno-nationalist, and the party calls that a smear.",
     ideology: ["Nativism", "Right-wing populism", "British nationalism"],
     policies: [
-      { area: "Immigration", position: "Large-scale deportations of undocumented migrants and a net-negative immigration target." },
-      { area: "Justice", position: "A referendum on restoring the death penalty; legalising possession of pepper spray and expanding \"reasonable force\" in home defence." },
-      { area: "Media", position: "Withdrawal of BBC funding." },
-      { area: "Religion and culture", position: "Banning the burqa and niqab; abolishing kosher and halal slaughter." },
+      {
+        area: "immigration",
+        position:
+          "The furthest-reaching platform of the six: abolition of the asylum system and what the party calls the largest deportation programme in Britain's history, set out in a 113-page paper, Mass Deportations: Legitimacy, Legality and Logistics, which proposes removing everyone in the UK illegally within three years. The overall target is net-negative immigration.",
+        caveat:
+          "Legal scholars and migration researchers question whether removals on this scale are achievable within any Western legal framework, and the paper's own title concedes legitimacy and legality are open questions.",
+      },
+      {
+        area: "crime",
+        position:
+          "A referendum on restoring the death penalty. Possession of pepper spray would be legalised and \"reasonable force\" in home defence expanded.",
+        caveat:
+          "Capital punishment is prohibited by Protocol 13 of the European Convention on Human Rights, which the UK has ratified; restoring it would require withdrawal.",
+      },
+      {
+        area: "culture",
+        position:
+          "Withdrawal of BBC funding. Halal and kosher slaughter would be abolished, and the burqa and niqab banned in public.",
+        caveat:
+          "The religious-slaughter and clothing measures would affect Jewish and Muslim practice; the party frames them as animal-welfare and integration measures.",
+      },
+      {
+        area: "economy",
+        position:
+          "The party describes its economic outlook as libertarian, favouring a smaller state and lower taxes.",
+        caveat: "No costed fiscal programme published.",
+      },
+    ],
+    policySources: [
+      {
+        label: "Wikipedia — Restore Britain",
+        url: "https://en.wikipedia.org/wiki/Restore_Britain",
+      },
+      {
+        label: "National Media — A summary of Restore Britain and its proposed policies",
+        url: "https://www.nationalmedia.uk/2026/03/a-summary-of-restore-britain-and.html",
+        date: "2026-03-01",
+      },
+      {
+        label: "Workers' Liberty — Farage's outrider on the further right",
+        url: "https://www.workersliberty.org/story/2026-07-29/farages-outrider-further-right",
+        date: "2026-07-29",
+      },
     ],
     credibility: [
       "Went from registration in February 2026 to roughly 4% in national polling and 130,000 members by June.",

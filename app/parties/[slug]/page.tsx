@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import PartyEmblem from "@/components/PartyEmblem";
+import PartyHeader from "@/components/PartyHeader";
+import PolicyGrid from "@/components/PolicyGrid";
 import Portrait from "@/components/Portrait";
 import SpectrumBar from "@/components/SpectrumBar";
 import { Cite, SectionHeading, SourceList, formatDate } from "@/components/ui";
@@ -33,59 +34,7 @@ export default async function PartyPage(props: PageProps<"/parties/[slug]">) {
 
   return (
     <article>
-      {/* ── Party masthead ─────────────────────────────────────────────── */}
-      <header
-        className="border-b border-rule bg-[color:var(--paper-raised)]"
-        style={{ borderTop: `6px solid ${party.colour}` }}
-      >
-        <div className="mx-auto max-w-6xl px-5 py-9">
-          <Link
-            href="/parties"
-            className="text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-ink-faint hover:text-oxblood"
-          >
-            ← All parties
-          </Link>
-
-          <div className="mt-5 flex flex-wrap items-start gap-6">
-            <PartyEmblem slug={party.slug} colour={party.colour} size={76} className="shrink-0" />
-
-            <div className="min-w-0 flex-1">
-              <h1 className="font-display text-4xl leading-tight sm:text-6xl">{party.name}</h1>
-              <p className="mt-3 max-w-3xl text-[1rem] leading-relaxed text-ink-soft">
-                {party.summary}
-              </p>
-            </div>
-
-            {polling ? (
-              <div className="shrink-0 border border-rule bg-[color:var(--paper-sunk)]/60 px-5 py-4 text-center">
-                <p className="eyebrow">Polling average</p>
-                <p
-                  className="mt-1 font-display text-5xl font-bold leading-none tabular"
-                  style={{ color: party.colour }}
-                >
-                  {polling.pct.toFixed(1)}%
-                </p>
-              </div>
-            ) : null}
-          </div>
-
-          {/* Key facts */}
-          <dl className="mt-7 grid gap-px border border-rule bg-[color:var(--rule)] sm:grid-cols-2 lg:grid-cols-4">
-            <Fact label="Founded" value={party.founded} />
-            <Fact label="MPs" value={String(party.mps)} />
-            {party.membership ? (
-              <Fact label="Members" value={party.membership} />
-            ) : (
-              <Fact label="Members" value="Not published" muted />
-            )}
-            <Fact
-              label="Councillors"
-              value={party.councillors != null ? String(party.councillors) : "—"}
-              muted={party.councillors == null}
-            />
-          </dl>
-        </div>
-      </header>
+      <PartyHeader party={party} polling={polling?.pct} />
 
       <div className="mx-auto max-w-6xl space-y-12 px-5 py-11">
         {/* ── Spectrum ─────────────────────────────────────────────────── */}
@@ -190,26 +139,7 @@ export default async function PartyPage(props: PageProps<"/parties/[slug]">) {
           </div>
         </section>
 
-        {/* ── Policies ─────────────────────────────────────────────────── */}
-        <section>
-          <SectionHeading eyebrow="What they say" title="Where they stand" />
-          <ul className="mt-5 grid gap-4 md:grid-cols-2">
-            {party.policies.map((policy) => (
-              <li key={policy.area} className="panel p-5">
-                <p
-                  className="text-[0.68rem] font-bold uppercase tracking-[0.14em]"
-                  style={{ color: party.colour }}
-                >
-                  {policy.area}
-                </p>
-                <p className="mt-2 text-[0.9rem] leading-relaxed text-ink-soft">{policy.position}</p>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-3 text-[0.78rem] text-ink-faint">
-            A summary of stated positions, not a full manifesto.
-          </p>
-        </section>
+        <PolicyGrid party={party} />
 
         {/* ── Credibility and concerns, side by side ───────────────────── */}
         <section>
@@ -316,16 +246,5 @@ export default async function PartyPage(props: PageProps<"/parties/[slug]">) {
         <SourceList sources={party.sources} label="Sources for this profile" />
       </div>
     </article>
-  );
-}
-
-function Fact({ label, value, muted }: { label: string; value: string; muted?: boolean }) {
-  return (
-    <div className="bg-[color:var(--paper-raised)] px-4 py-3">
-      <dt className="eyebrow">{label}</dt>
-      <dd className={`mt-1 text-[0.9rem] font-semibold ${muted ? "text-ink-faint" : ""}`}>
-        {value}
-      </dd>
-    </div>
   );
 }
