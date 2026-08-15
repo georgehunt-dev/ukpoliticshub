@@ -54,7 +54,7 @@ export default function PrivacyPage() {
               "No advertising, and no advertising trackers.",
               "No selling or sharing of data with third parties.",
               "No accounts, so no passwords and no personal details to lose.",
-              "No newsletter list yet — the sign-up form on the front page is disabled and collects nothing at all.",
+              "No advertising profile built from what you read.",
             ].map((item) => (
               <li key={item} className="flex gap-2.5">
                 <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 bg-oxblood" />
@@ -62,6 +62,23 @@ export default function PrivacyPage() {
               </li>
             ))}
           </ul>
+        </section>
+
+        <section>
+          <h2 className="font-display text-2xl">If you sign up for the email</h2>
+          <p className="mt-2.5 text-[0.95rem] leading-relaxed text-ink-soft">
+            We ask for one thing: your email address. It is passed straight to the mailing provider
+            that sends the newsletter and is{" "}
+            <strong className="font-semibold text-ink">not stored on this site</strong>, so there is
+            no subscriber list here to lose. It is used for the daily email and nothing else — never
+            sold, never shared, never used to build an advertising profile.
+          </p>
+          <p className="mt-2.5 text-[0.95rem] leading-relaxed text-ink-soft">
+            Every issue carries a one-click unsubscribe, which takes effect immediately and removes
+            your address from the provider. You can also email us to be removed. Under UK GDPR the
+            lawful basis is your consent, given by submitting the form, and you may withdraw it at
+            any time.
+          </p>
         </section>
 
         <section>
@@ -87,8 +104,8 @@ export default function PrivacyPage() {
         <section>
           <h2 className="font-display text-2xl">Changes</h2>
           <p className="mt-2.5 text-[0.95rem] leading-relaxed text-ink-soft">
-            If this site ever starts collecting something it does not collect today — an email list
-            being the obvious candidate — this page changes first, and it will say what and why.
+            If this site ever starts collecting something it does not collect today, this page
+            changes first, and it will say what and why.
             See also{" "}
             <Link href="/how-we-work" className="link-underline">
               how we work

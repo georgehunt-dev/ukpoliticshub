@@ -125,9 +125,21 @@ curl -sI https://ukpoliticshub.com/ | head -1
 
 ## Known gaps to close before promoting the site widely
 
-**Email capture is decorative.** The field is `disabled` and collects nothing — deliberately, so nobody believes they subscribed. Before turning it on you need a provider (Buttondown, Resend, Mailchimp) *and* a privacy notice: you would be collecting personal data under UK GDPR, which requires saying who you are, what you will do with it, and how to unsubscribe.
+**Email capture is built and needs one key to go live.** The form validates, rate-limits, carries a honeypot and shows proper states; `/privacy` covers the newsletter under UK GDPR. Until a provider is configured the endpoint returns 503 and the form says sign-ups aren't open — it never accepts an address and drops it.
+
+To switch it on, add to **Vercel → Environment Variables** and redeploy:
+
+| Key | Value |
+| --- | --- |
+| `NEWSLETTER_PROVIDER` | `buttondown` or `resend` |
+| `NEWSLETTER_API_KEY` | the provider's API key |
+| `NEWSLETTER_LIST_ID` | Resend audience id (Resend only) |
+
+Buttondown is the lighter option and has a free tier. Addresses go straight to the provider and are **never stored on this site**, so there is no subscriber list here to lose.
 
 **The briefing is now half live.** The top of `/briefing` is composed from the site's own sourced figures and regenerates with the feeds, so it cannot go stale. The editorial underneath is still hand-written, is labelled with its edition date, and shows a notice from the day after publication. Rewrite it when you have something to say; it will not mislead in the meantime.
+
+**Poll history records itself.** `.github/workflows/record-polls.yml` runs daily at 07:15 UTC, appends the day's average to `data/generated/poll-history.json` and commits it. A snapshot cannot be backfilled, so this matters more the longer it runs — it is the spine of any trend chart.
 
 **The curated tier is a snapshot.** Polls, threat scores, crossings and party dossiers are hand-updated in `data/*.ts`. Only the news table refreshes itself. See the table in `README.md` for which file holds what.
 

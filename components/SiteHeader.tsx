@@ -2,7 +2,6 @@ import Link from "next/link";
 import { LogoLockup } from "@/components/Logo";
 
 const NAV = [
-  { href: "/", label: "Front page" },
   { href: "/news", label: "News" },
   { href: "/briefing", label: "Briefing" },
   { href: "/parties", label: "Parties" },

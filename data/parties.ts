@@ -28,7 +28,7 @@ export const parties: Party[] = [
     mps: "411 seats won at the 2024 general election",
     summary:
       "The party of government since July 2024, and since 20 July 2026 led by Andy Burnham following Keir Starmer's resignation. Burnham inherited a party that had fallen to 16% in some polls in May 2026 and has recovered to the low-to-mid twenties, leading most published averages again.",
-    ideology: ["Social democracy", "Democratic socialism (Labour left)", "Trade unionism"],
+    ideology: ["Centre-left", "Social democracy", "Trade union links"],
     policies: [
       {
         area: "immigration",
@@ -207,12 +207,12 @@ export const parties: Party[] = [
     colour: "#1eb8d0",
     spectrum: 8,
     spectrumNote:
-      "Right to populist right. Restrictionist on immigration, opposed to net zero targets, and campaigning against both established parties.",
+      "Right. Restrictionist on immigration, opposed to net zero targets, and campaigning against both established parties.",
     founded: "2018 (as the Brexit Party; renamed 2021)",
     mps: "5 at the 2024 general election, since increased by defections from the Conservatives",
     summary:
       "Led by Nigel Farage, Reform UK topped national polls from early 2025 through much of 2026 and absorbed a run of senior Conservative defectors — Nadhim Zahawi, Robert Jenrick and Suella Braverman all crossed in January 2026. It has slipped behind Labour in the most recent averages.",
-    ideology: ["Right-wing populism", "Immigration restrictionism", "Economic liberalism", "Anti-net zero"],
+    ideology: ["Right", "Immigration restriction", "Economic liberalism", "Opposed to net zero"],
     policies: [
       {
         area: "immigration",
@@ -524,7 +524,7 @@ export const parties: Party[] = [
     colour: "#02a95b",
     spectrum: -7,
     spectrumNote:
-      "Left to eco-socialist. Moved sharply left under Zack Polanski, who campaigns explicitly as an \"eco-populist\" against both Labour and Reform.",
+      "Left. Moved further left under Zack Polanski, on public ownership, wealth taxes and climate spending.",
     founded: "1990 (in its present form; predecessors from 1973)",
     mps: "5 — four elected in 2024 plus the Gorton and Denton by-election gain",
     membership: "Over 200,000",
@@ -535,7 +535,7 @@ export const parties: Party[] = [
     },
     summary:
       "The fastest-growing party in British politics by membership. Zack Polanski won the leadership in September 2025 on an eco-populist platform, and in February 2026 the Greens took Gorton and Denton — their first Westminster by-election win ever, in a seat where the party had never previously passed 10%.",
-    ideology: ["Green politics", "Eco-socialism", "Left-wing populism"],
+    ideology: ["Green politics", "Left", "Public ownership"],
     policies: [
       {
         area: "economy",
@@ -803,7 +803,7 @@ export const parties: Party[] = [
     colour: "#051d3f",
     spectrum: 9,
     spectrumNote:
-      "Far right. Political scientists place it well to the right of Reform UK; the party rejects the characterisation. Both positions are set out under Credibility and concerns below.",
+      "The furthest right of the six on our placement. Political scientists classify it as far-right; the party rejects that description. Both are set out under Credibility and concerns below.",
     founded: "Pressure group 30 June 2025; registered as a party 13 February 2026",
     mps: "1 — Rupert Lowe",
     membership: "130,000 (June 2026)",
@@ -815,7 +815,7 @@ export const parties: Party[] = [
     councillors: 35,
     summary:
       "Founded by Rupert Lowe after his departure from Reform UK, Restore Britain registered as a party in February 2026 and polls at around 4%. It is the newest of the six parties tracked here and the only one whose classification is itself contested: academics describe it as far-right and ethno-nationalist, and the party calls that a smear.",
-    ideology: ["Nativism", "Right-wing populism", "British nationalism"],
+    ideology: ["Further right", "Immigration restriction", "British nationalism"],
     policies: [
       {
         area: "immigration",

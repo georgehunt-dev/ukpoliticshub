@@ -1,0 +1,51 @@
+name: Record poll history
+
+# Appends the day's polling average to data/generated/poll-history.json and
+# commits it. A polling snapshot cannot be backfilled, so this runs whether or
+# not anyone remembers — the value of the series is entirely in it being
+# unbroken.
+#
+# It commits to the repo, which triggers a Vercel deploy. That is intended:
+# the charts read the committed file.
+
+on:
+  schedule:
+    # 07:15 UTC daily, after the overnight pollster releases have landed.
+    - cron: "15 7 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: record-polls
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Append today's average
+        run: node scripts/record-polls.mjs
+
+      - name: Commit if the file changed
+        run: |
+          set -euo pipefail
+
+          if git diff --quiet -- data/generated/poll-history.json; then
+            echo "No change — today is already recorded."
+            exit 0
+          fi
+
+          git config user.name "ukpoliticshub bot"
+          git config user.email "actions@github.com"
+          git add data/generated/poll-history.json
+          git commit -m "Record poll average for $(date -u +%Y-%m-%d)"
+          git push
