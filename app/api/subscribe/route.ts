@@ -43,14 +43,28 @@ async function subscribe(email: string): Promise<{ ok: boolean; error?: string }
   if (!provider || !key) return { ok: false, error: "not-configured" };
 
   if (provider === "buttondown") {
-    const res = await fetch("https://api.buttondown.email/v1/subscribers", {
+    // Host is api.buttondown.com — api.buttondown.email is the old domain and
+    // fails. No tags: the tagging feature 403s on free plans, and a tag is not
+    // worth losing a subscriber over.
+    const res = await fetch("https://api.buttondown.com/v1/subscribers", {
       method: "POST",
-      headers: { Authorization: `Token ${key}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ email_address: email, tags: ["ukpoliticshub"] }),
+      headers: {
+        Authorization: `Token ${key}`,
+        "Content-Type": "application/json",
+        // Treat an existing subscriber as success rather than a collision.
+        "X-Buttondown-Collision-Behavior": "add",
+      },
+      body: JSON.stringify({ email_address: email }),
     });
-    // 201 created; 400 usually means already subscribed, which is not an error
-    // the reader needs to see.
+
+    // 201 created; 400 is a collision, i.e. already subscribed, which is not
+    // something the reader needs to see as a failure.
     if (res.ok || res.status === 400) return { ok: true };
+
+    // Surface the provider's own message in the server log so a
+    // misconfiguration is diagnosable without guesswork.
+    const detail = await res.text().catch(() => "");
+    console.error(`[subscribe] buttondown ${res.status}: ${detail.slice(0, 300)}`);
     return { ok: false, error: `provider-${res.status}` };
   }
 
@@ -63,6 +77,8 @@ async function subscribe(email: string): Promise<{ ok: boolean; error?: string }
       body: JSON.stringify({ email, unsubscribed: false }),
     });
     if (res.ok) return { ok: true };
+    const detail = await res.text().catch(() => "");
+    console.error(`[subscribe] resend ${res.status}: ${detail.slice(0, 300)}`);
     return { ok: false, error: `provider-${res.status}` };
   }
 
@@ -117,8 +133,16 @@ export async function POST(request: NextRequest) {
   }
 
   if (!result.ok) {
+    // 401/403 from the provider is a configuration problem, not a blip, and
+    // saying "try again later" would send the reader round in circles.
+    const authFailure = result.error === "provider-401" || result.error === "provider-403";
     return Response.json(
-      { ok: false, error: "Something went wrong at our end. Please try again later." },
+      {
+        ok: false,
+        error: authFailure
+          ? "Sign-ups are misconfigured at our end — we've been alerted. Nothing was stored."
+          : "Something went wrong at our end. Please try again later.",
+      },
       { status: 502 }
     );
   }
