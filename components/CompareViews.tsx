@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Explain from "@/components/Explain";
 import PartyEmblem from "@/components/PartyEmblem";
 import { NO_POSITION } from "@/data/policy-areas";
 import type { IssueView, PairView } from "@/lib/compare";
@@ -21,11 +22,26 @@ function Detail({ policy }: { policy: Policy }) {
         <span className="hidden group-open:inline">Less ▴</span>
       </summary>
       <div className="mt-2.5 border-l-2 border-rule pl-3.5">
-        <p className="text-[0.92rem] leading-relaxed text-ink-soft">{policy.position}</p>
+        <p className="text-[0.92rem] leading-relaxed text-ink-soft">
+          <Explain text={policy.position} />
+        </p>
         {policy.caveat ? (
           <p className="mt-2 border-l-2 border-oxblood/40 pl-3 text-[0.85rem] leading-relaxed text-ink-soft">
-            {policy.caveat}
+            <Explain text={policy.caveat} />
           </p>
+        ) : null}
+        {policy.source ? (
+          <a
+            href={policy.source.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-underline mt-2.5 inline-flex items-baseline gap-1.5 text-[0.78rem] font-medium text-ink-soft"
+          >
+            <span className="text-[0.66rem] font-bold uppercase tracking-[0.12em] text-ink-faint">
+              Check it
+            </span>
+            {policy.source.label}
+          </a>
         ) : null}
       </div>
     </details>
@@ -71,7 +87,7 @@ export function IssueComparison({ view }: { view: IssueView }) {
             {policy ? (
               <>
                 <p className="font-display text-[1.15rem] leading-snug text-ink">
-                  {policy.summary}
+                  <Explain text={policy.summary} />
                 </p>
                 <Detail policy={policy} />
               </>
@@ -133,7 +149,7 @@ export function PairComparison({ view }: { view: PairView }) {
                   {policy ? (
                     <>
                       <p className="font-display text-[1.05rem] leading-snug text-ink">
-                        {policy.summary}
+                        <Explain text={policy.summary} />
                       </p>
                       <Detail policy={policy} />
                     </>

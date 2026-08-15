@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Explain from "@/components/Explain";
 import { NO_POSITION, POLICY_AREAS } from "@/data/policy-areas";
 import { SourceList } from "@/components/ui";
 import type { Party } from "@/lib/types";
@@ -65,11 +66,29 @@ export default function PolicyGrid({ party }: { party: Party }) {
               <div className="min-w-0">
                 {policy ? (
                   <>
-                    <p className="text-[0.95rem] leading-relaxed text-ink">{policy.position}</p>
+                    <p className="font-display text-[1.05rem] leading-snug text-ink">
+                      <Explain text={policy.summary} />
+                    </p>
+                    <p className="mt-2 text-[0.95rem] leading-relaxed text-ink-soft">
+                      <Explain text={policy.position} />
+                    </p>
                     {policy.caveat ? (
                       <p className="mt-2.5 border-l-2 border-oxblood/40 pl-3 text-[0.86rem] leading-relaxed text-ink-soft">
-                        {policy.caveat}
+                        <Explain text={policy.caveat} />
                       </p>
+                    ) : null}
+                    {policy.source ? (
+                      <a
+                        href={policy.source.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link-underline mt-2.5 inline-flex items-baseline gap-1.5 text-[0.78rem] font-medium text-ink-soft"
+                      >
+                        <span className="text-[0.66rem] font-bold uppercase tracking-[0.12em] text-ink-faint">
+                          Check it
+                        </span>
+                        {policy.source.label}
+                      </a>
                     ) : null}
                   </>
                 ) : (

@@ -36,6 +36,14 @@ export type Policy = {
   position: string;
   /** Where it is contested, qualified, or short on detail. */
   caveat?: string;
+  /**
+   * The specific source behind *this* position, so a reader can go straight to
+   * it rather than to a list of everything the party page draws on. Omitted
+   * where we cannot attribute a policy precisely — the party-level sources
+   * still apply, and pointing at an approximate link would be worse than
+   * pointing at none.
+   */
+  source?: Source;
 };
 
 export type PartySlug =

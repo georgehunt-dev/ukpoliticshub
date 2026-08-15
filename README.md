@@ -37,6 +37,8 @@ The live tier needs no human. The curated tier is where you (or a scheduled agen
 - `data/parties.ts` — the six party dossiers, frontbenches, credibility and concerns
 - `data/policy-areas.ts` — the ten fixed policy areas every party is measured against
 - each policy carries a `summary` of 8–12 words as well as the full position; the summary is what the comparison grid shows, with the detail behind a `<details>` so it stays crawlable
+- `data/glossary.ts` — plain-English definitions, matched automatically in any text rendered through `<Explain>`. Add a term once and every page that uses the phrase gains an explainer, with no copy edits
+- policies carry an optional per-policy `source`, so a reader can jump from a single claim to the document behind it. 41 of 47 have one; the six without are left blank rather than pointed at an approximate link
 - `data/elections.ts` — upcoming contests and recent results
 - `data/briefing.ts` — the **dated editorial** half of the briefing and the prepared questions. The live half is composed, not written: see `lib/briefing/compose.ts`
 - `data/news.ts` — outlet list and their fixed left–right ratings
