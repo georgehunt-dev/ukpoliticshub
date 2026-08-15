@@ -36,6 +36,7 @@ The live tier needs no human. The curated tier is where you (or a scheduled agen
 - `data/threat.ts` — official terrorism level, and the six-factor Russia model
 - `data/parties.ts` — the six party dossiers, frontbenches, credibility and concerns
 - `data/policy-areas.ts` — the ten fixed policy areas every party is measured against
+- each policy carries a `summary` of 8–12 words as well as the full position; the summary is what the comparison grid shows, with the detail behind a `<details>` so it stays crawlable
 - `data/elections.ts` — upcoming contests and recent results
 - `data/briefing.ts` — the **dated editorial** half of the briefing and the prepared questions. The live half is composed, not written: see `lib/briefing/compose.ts`
 - `data/news.ts` — outlet list and their fixed left–right ratings
@@ -97,6 +98,7 @@ These are the guarantees the site makes, and the code enforces them:
 | `/news` | Every story today, grouped by topic, each topic with a photograph; masthead ratings table |
 | `/briefing` | Live summary composed from sourced figures, then a dated editorial; accepts `?q=` and answers from a prepared set |
 | `/parties`, `/parties/[slug]` | The six dossiers |
+| `/compare`, `/compare/[slug]` | 25 comparison pages: ten issues (all six parties on one question) and fifteen pairings (two parties across all ten). Real URLs, not client state — each is indexable and shareable |
 | `/elections`, `/how-we-work`, `/colophon` | Calendar, methodology, credits |
 
 ## Trademark and licensing

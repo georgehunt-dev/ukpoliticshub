@@ -32,6 +32,7 @@ export const parties: Party[] = [
     policies: [
       {
         area: "immigration",
+        summary: "Continues Mahmood reforms; cites 43% fall in crossings",
         position:
           "Burnham voted for and continues to back Home Secretary Shabana Mahmood's immigration reforms, which reshape the asylum appeals process and remove barriers to deportation. The government points to the 43% year-on-year fall in Channel crossings as evidence that enforcement co-operation with France is working.",
         caveat:
@@ -39,6 +40,7 @@ export const parties: Party[] = [
       },
       {
         area: "economy",
+        summary: "Act on the frozen personal allowance; wealth tax not ruled out",
         position:
           "Action on the income tax personal allowance, frozen at £12,570 — which Burnham called \"the thing I heard most on the doorsteps\". Business rates would rise on large warehouses while high-street shops and pubs are exempted. He has not ruled out a wealth tax.",
         caveat:
@@ -46,31 +48,37 @@ export const parties: Party[] = [
       },
       {
         area: "health",
+        summary: "A publicly funded national care service",
         position:
           "A publicly funded national care service, which Burnham has framed as finally \"grasping the nettle\" on social care reform and links to his father's Alzheimer's. The Tobacco and Vapes Act, passed in April 2026, makes it illegal to sell cigarettes to anyone born after 2008.",
       },
       {
         area: "housing",
+        summary: "End rough sleeping; biggest council housebuilding since the war",
         position:
           "Burnham's stated \"first instruction\" on entering Downing Street was to end rough sleeping. He has promised the biggest council house building programme since the post-war period, using vacant public land to hold costs down, with higher-density development in existing towns.",
       },
       {
         area: "energy",
+        summary: "Strip policy levies from bills, worth about £130 a year",
         position:
           "Removing policy levies from energy bills, worth roughly £130 a year to a household, at a cost to the taxpayer of about £3.2bn a year.",
       },
       {
         area: "defence",
+        summary: "Keep NATO and the nuclear deterrent; upgrade equipment",
         position:
           "Maintaining the NATO commitment and the nuclear deterrent, and upgrading equipment through a defence investment plan.",
       },
       {
         area: "crime",
+        summary: "3,000 more neighbourhood officers within twelve months",
         position:
           "3,000 additional neighbourhood officers and PCSOs within twelve months, with dedicated teams patrolling town centres at peak times to end what the government calls the policing \"postcode lottery\". Burnham points to his Greater Manchester record: 8,271 officers by March 2026, around 2,000 more than when he took office in 2017, alongside a 15% fall in neighbourhood crime.",
       },
       {
         area: "education",
+        summary: "VAT on private school fees, in force since January 2025",
         position:
           "VAT has been charged at the standard 20% rate on private school fees since 1 January 2025, removing a long-standing exemption. The Treasury forecast the measure would raise £1.51bn in 2025/26.",
         caveat:
@@ -78,11 +86,13 @@ export const parties: Party[] = [
       },
       {
         area: "culture",
+        summary: "Keep the licence fee to charter end, while reviewing it",
         position:
           "The government is committed to the licence fee until the end of the current BBC charter, while its royal charter review considers reform of the fee and greater commercial revenue for the corporation. A public consultation closed in March 2026 and a white paper is expected later in the year.",
       },
       {
         area: "europe",
+        summary: "Closer co-operation, not rejoining; devolution at home",
         position:
           "Having previously supported rejoining the EU, Burnham now says he will avoid a \"permanent rut\" of that argument, seeking closer co-operation on defence, illegal migration and economic security instead. Domestically his defining project is devolution: a \"No 10 in the North\" based in Manchester, and water, transport and housing brought under stronger public control short of full nationalisation.",
       },
@@ -216,6 +226,7 @@ export const parties: Party[] = [
     policies: [
       {
         area: "immigration",
+        summary: "Freeze non-essential immigration; abolish ILR; Deportation Command",
         position:
           "An immediate freeze on non-essential immigration and a new Deportation Command. Indefinite Leave to Remain would be abolished and existing grants rescinded, replaced by a five-year renewable visa carrying higher salary thresholds, mandatory English fluency and stricter good-character requirements.",
         caveat:
@@ -223,6 +234,7 @@ export const parties: Party[] = [
       },
       {
         area: "economy",
+        summary: "Around £70bn a year of tax cuts",
         position:
           "Around £70bn a year of tax cuts, with family-focused measures including a 25% marriage allowance and child benefit front-loaded into the early years.",
         caveat:
@@ -230,21 +242,25 @@ export const parties: Party[] = [
       },
       {
         area: "health",
+        summary: "Re-examine the funding model; tax breaks for NHS staff",
         position:
           "Re-examining the NHS funding model rather than the free-at-the-point-of-use principle. Specific pledges include temporarily zero-rating basic-rate income tax for NHS staff, tax relief on private health insurance, and independent reviews to train more staff and expand community services.",
       },
       {
         area: "crime",
+        summary: "40,000 more police; mandatory minimums; more prison places",
         position:
           "40,000 more police officers, expanded stop and search, mandatory minimum sentences for serious and repeat offenders, and more prison capacity so overcrowding no longer forces early release.",
       },
       {
         area: "energy",
+        summary: "Scrap net zero targets; return to North Sea gas",
         position:
           "Scrapping net zero targets outright and \"rehabilitating\" North Sea gas as a primary energy source, framed as the fastest way to cut household bills.",
       },
       {
         area: "europe",
+        summary: "Leave the ECHR immediately",
         position:
           "A Reform government would leave the European Convention on Human Rights immediately, which the party presents as the mechanism that would let it deport people without legal challenge. Farage has framed withdrawal as the natural sequel to Brexit.",
         caveat:
@@ -252,6 +268,7 @@ export const parties: Party[] = [
       },
       {
         area: "defence",
+        summary: "Little published beyond withdrawing from institutions",
         position:
           "Reform has published comparatively little defence policy. What exists is framed around withdrawal from international institutions and conventions rather than force structure or spending commitments.",
         caveat:
@@ -259,11 +276,13 @@ export const parties: Party[] = [
       },
       {
         area: "culture",
+        summary: "Abolish the BBC licence fee; scrap DEI rules",
         position:
           "Abolition of the BBC licence fee outright, and scrapping Diversity, Equality and Inclusion requirements across the public sector.",
       },
       {
         area: "housing",
+        summary: "Restrict social housing and welfare access for migrants",
         position:
           "Housing policy appears mainly through immigration: restricting welfare and social housing access for migrants.",
         caveat: "Little detail published on overall housing supply or building targets.",
@@ -376,26 +395,31 @@ export const parties: Party[] = [
     policies: [
       {
         area: "immigration",
+        summary: "Ban asylum claims from illegal entrants; remove 150,000 a year",
         position:
           "The Borders Plan would impose a total ban on asylum claims from anyone entering illegally and create a Removals Force tasked with removing 150,000 people a year. Indefinite Leave to Remain would require ten years rather than five, and would be refused to anyone who had claimed benefits, used social housing, or was not a net fiscal contributor.",
       },
       {
         area: "europe",
+        summary: "Leave the ECHR; repeal the Human Rights Act",
         position:
           "Leaving the European Convention on Human Rights and the anti-trafficking convention ECAT, and repealing the Human Rights Act. Badenoch has made this a condition of candidate selection: only those backing withdrawal from the ECHR and the scrapping of net zero are approved to stand.",
       },
       {
         area: "energy",
+        summary: "Repeal the Climate Change Act; net zero by 2050 unreachable",
         position:
           "Repealing the Climate Change Act. Badenoch argues net zero by 2050 cannot be reached \"without a serious drop in our living standards or by bankrupting us\".",
       },
       {
         area: "economy",
+        summary: "Scrap stamp duty; £23bn of welfare savings",
         position:
           "A stated \"fully funded\" plan to scrap stamp duty, and £23bn of savings from welfare — framed as ending Britain's \"welfare addiction\" and building a high-growth, low-immigration economy in which reform expands the domestic workforce rather than immigration filling the gap.",
       },
       {
         area: "health",
+        summary: "92,000 more nurses and 28,000 more doctors",
         position:
           "92,000 more nurses and 28,000 more doctors in the NHS than in 2023 by the end of the Parliament.",
         caveat:
@@ -403,24 +427,28 @@ export const parties: Party[] = [
       },
       {
         area: "crime",
+        summary: "8,000 more neighbourhood police; 20,000 prison places",
         position:
           "8,000 more neighbourhood police officers with a named officer for every community, mandatory whole-life orders for the worst murders including those involving sadistic or sexual conduct, full custodial terms served for rape and serious sexual offences, and 20,000 additional prison places.",
         caveat: "Also from the 2024 manifesto rather than a new platform under the current leadership.",
       },
       {
         area: "defence",
+        summary: "Defence spending to 2.5% of GDP by 2030",
         position:
           "Defence spending raised to 2.5% of GDP by 2030 on what the party called a fully funded path — presented as the largest sustained increase since the Cold War, keeping the UK the largest defence power in Europe.",
         caveat: "2024 manifesto commitment; not restated as a costed pledge under the current leadership.",
       },
       {
         area: "education",
+        summary: "Criticises VAT on school fees but will not reverse it",
         position:
           "The party has criticised the imposition of VAT on private school fees but has not committed to reversing it in government.",
         caveat: "No broader schools programme published under the current leadership.",
       },
       {
         area: "housing",
+        summary: "Scrapping stamp duty is the main housing measure",
         position:
           "Scrapping stamp duty is the party's principal published housing-market measure.",
         caveat: "No detailed building or supply programme published under the current leadership.",
@@ -539,6 +567,7 @@ export const parties: Party[] = [
     policies: [
       {
         area: "economy",
+        summary: "Wealth tax on assets over £10m; £15 minimum wage",
         position:
           "A wealth tax of 1% a year on individual assets above £10m and 2% above £1bn, which the party says would raise £15bn a year. Alongside it, a £15 minimum wage and a four-day working week.",
         caveat:
@@ -546,26 +575,31 @@ export const parties: Party[] = [
       },
       {
         area: "energy",
+        summary: "£90bn a year capital spending; water, rail and energy in public hands",
         position:
           "Capital spending raised by £90bn a year by 2030, of which more than £70bn goes to the green transition. Water, rail and energy companies would be taken into public ownership.",
       },
       {
         area: "housing",
+        summary: "Social housing funded from the capital programme",
         position:
           "Social housing is funded from the same £90bn capital programme, alongside health and education — the party's answer to supply being public building rather than planning liberalisation.",
       },
       {
         area: "immigration",
+        summary: "Expand safe routes; end hotel accommodation; oppose deterrence",
         position:
           "Opposes deterrence-based policy outright, favouring expanded safe and legal routes and an end to hotel-based asylum accommodation.",
       },
       {
         area: "crime",
+        summary: "Presumption against short sentences; divert rather than jail",
         position:
           "A presumption against custodial sentences under two years, with investment redirected to courts, diversion schemes and violence-reduction units rather than prison places. The party would restore youth services and community policing, repeal the Police, Crime, Sentencing and Courts Act and the Public Order Act, abolish the Prevent programme, and decriminalise sex work.",
       },
       {
         area: "defence",
+        summary: "Cancel Trident and begin disarming, while staying in NATO",
         position:
           "Immediately begin dismantling Britain's nuclear weapons, cancelling Trident and banning nuclear-armed ships from UK waters, while continuing to recognise NATO's role in European security.",
         caveat:
@@ -573,10 +607,12 @@ export const parties: Party[] = [
       },
       {
         area: "europe",
+        summary: "Rejoin the European Union",
         position: "Rejoining the European Union is party policy.",
       },
       {
         area: "health",
+        summary: "More health spending; opposes private provision in the NHS",
         position:
           "Increased health spending forms part of the capital programme, with the party opposing private provision within the NHS.",
         caveat: "Less detailed than its economic and environmental platform.",
@@ -686,6 +722,7 @@ export const parties: Party[] = [
     policies: [
       {
         area: "health",
+        summary: "Free personal care for everyone who needs it",
         position:
           "Free personal care for everyone who needs it, costed at £2.7bn a year by 2028–29 and funded by reversing tax cuts given to the large banks since 2016 — so that nobody has to sell their home to pay for personal care. Alongside it a Carer's Minimum Wage set £2 above the minimum wage, a Royal College of Care Workers, and Carer's Allowance raised by £20 a week with eligibility extended to anyone earning under £183 a week.",
         caveat:
@@ -693,31 +730,37 @@ export const parties: Party[] = [
       },
       {
         area: "economy",
+        summary: "£9.4bn for care and the NHS from bank and capital gains taxes",
         position:
           "A £9.4bn package for social care and the NHS, funded by higher taxes on banks and tighter capital gains rules for the very wealthy.",
       },
       {
         area: "housing",
+        summary: "Council-led building; empty homes back into use",
         position:
           "Expanding council-led housebuilding, bringing empty homes back into use, and requiring developers to deliver the affordable homes they have been permitted to build.",
       },
       {
         area: "crime",
+        summary: "Restore community policing; scrap Police and Crime Commissioners",
         position:
           "Restoring community policing, and scrapping Police and Crime Commissioners in favour of local Police Boards made up of councillors and local representatives, with the savings put into frontline policing. Recent party papers also defend trial by jury against proposals to restrict it.",
       },
       {
         area: "europe",
+        summary: "Repair the relationship with Europe; a new Magna Carta",
         position:
           "The most consistently pro-European of the six: repairing what Davey calls Britain's \"broken relationship\" with Europe, tearing down trade barriers and fixing the \"botched\" Brexit deal. Domestically he has called for \"a new Magna Carta\" to constrain executive power.",
       },
       {
         area: "energy",
+        summary: "End sewage discharges by water companies",
         position:
           "Ending sewage discharges by water companies has been the party's most prominent environmental campaign.",
       },
       {
         area: "immigration",
+        summary: "Safe and legal routes, and faster decisions",
         position:
           "Emphasises safe and legal routes and faster decision-making, arguing deterrence-first policy has repeatedly failed to reduce crossings.",
       },
@@ -819,6 +862,7 @@ export const parties: Party[] = [
     policies: [
       {
         area: "immigration",
+        summary: "Abolish asylum; deport everyone here illegally within three years",
         position:
           "The furthest-reaching platform of the six: abolition of the asylum system and what the party calls the largest deportation programme in Britain's history, set out in a 113-page paper, Mass Deportations: Legitimacy, Legality and Logistics, which proposes removing everyone in the UK illegally within three years. The overall target is net-negative immigration.",
         caveat:
@@ -826,6 +870,7 @@ export const parties: Party[] = [
       },
       {
         area: "crime",
+        summary: "A referendum on restoring the death penalty",
         position:
           "A referendum on restoring the death penalty. Possession of pepper spray would be legalised and \"reasonable force\" in home defence expanded.",
         caveat:
@@ -833,6 +878,7 @@ export const parties: Party[] = [
       },
       {
         area: "culture",
+        summary: "Defund the BBC; ban the burqa; end halal and kosher slaughter",
         position:
           "Withdrawal of BBC funding. Halal and kosher slaughter would be abolished, and the burqa and niqab banned in public.",
         caveat:
@@ -840,6 +886,7 @@ export const parties: Party[] = [
       },
       {
         area: "economy",
+        summary: "Libertarian outlook: smaller state, lower taxes",
         position:
           "The party describes its economic outlook as libertarian, favouring a smaller state and lower taxes.",
         caveat: "No costed fiscal programme published.",

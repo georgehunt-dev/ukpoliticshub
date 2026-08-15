@@ -26,6 +26,12 @@ export type PolicyArea =
 
 export type Policy = {
   area: PolicyArea;
+  /**
+   * Eight to twelve words capturing the position, for the comparison grid.
+   * Six full positions stacked is a wall of text; six of these is scannable
+   * in fifteen seconds, with the full text one click away.
+   */
+  summary: string;
   /** The party's stated position, in two or three sentences. */
   position: string;
   /** Where it is contested, qualified, or short on detail. */

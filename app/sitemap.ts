@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { parties } from "@/data/parties";
+import { allCompareSlugs } from "@/lib/compare";
 import { getNews } from "@/lib/news";
 
 const BASE = "https://ukpoliticshub.com";
@@ -32,6 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/news`, lastModified: newestStory, changeFrequency: "hourly", priority: 0.9 },
     { url: `${BASE}/briefing`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
     { url: `${BASE}/parties`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE}/compare`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/elections`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/how-we-work`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/colophon`, lastModified: now, changeFrequency: "monthly", priority: 0.3 },
@@ -45,5 +47,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...partyRoutes];
+  // The 25 comparison pages: ten issues and fifteen pairings, each a real URL
+  // with its own content rather than a client-side state of one page.
+  const compareRoutes: MetadataRoute.Sitemap = allCompareSlugs().map((slug) => ({
+    url: `${BASE}/compare/${slug}`,
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...partyRoutes, ...compareRoutes];
 }
