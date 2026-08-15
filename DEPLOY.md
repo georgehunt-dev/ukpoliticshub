@@ -127,7 +127,7 @@ curl -sI https://ukpoliticshub.com/ | head -1
 
 **Email capture is decorative.** The field is `disabled` and collects nothing — deliberately, so nobody believes they subscribed. Before turning it on you need a provider (Buttondown, Resend, Mailchimp) *and* a privacy notice: you would be collecting personal data under UK GDPR, which requires saying who you are, what you will do with it, and how to unsubscribe.
 
-**The daily briefing is dated.** `data/briefing.ts` is stamped 14 August 2026 and does not move on its own — the refresh schedule rebuilds the *page*, but the prose on it stays put. It will drift out of step with the live news within a day or two. Either rewrite it on a cadence or label it visibly as a dated edition.
+**The briefing is now half live.** The top of `/briefing` is composed from the site's own sourced figures and regenerates with the feeds, so it cannot go stale. The editorial underneath is still hand-written, is labelled with its edition date, and shows a notice from the day after publication. Rewrite it when you have something to say; it will not mislead in the meantime.
 
 **The curated tier is a snapshot.** Polls, threat scores, crossings and party dossiers are hand-updated in `data/*.ts`. Only the news table refreshes itself. See the table in `README.md` for which file holds what.
 

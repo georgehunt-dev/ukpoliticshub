@@ -9,7 +9,8 @@ export const metadata: Metadata = {
     "The UK election calendar: the next general election deadline, scheduled local and devolved contests, and the by-elections that have already reshaped this Parliament.",
 };
 
-const TODAY = "2026-08-14";
+/** Real date, so the countdowns stay correct without a redeploy. */
+const TODAY = new Date().toISOString().slice(0, 10);
 
 function daysUntil(iso: string): number {
   const target = new Date(`${iso}T00:00:00Z`).getTime();

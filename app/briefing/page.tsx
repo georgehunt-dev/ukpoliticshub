@@ -1,14 +1,19 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import AiMark from "@/components/AiMark";
 import BriefingBody from "@/components/BriefingBody";
+import ComposedBriefing, { ComposedSources } from "@/components/ComposedBriefing";
 import EditionNotice from "@/components/EditionNotice";
-import { SourceList, formatDate } from "@/components/ui";
+import { SectionHeading, SourceList, formatDate } from "@/components/ui";
 import { BRIEFING_DATE, briefing } from "@/data/briefing";
+
+/** Regenerates with the feeds, in step with the rest of the site. */
+export const revalidate = 600;
 
 export const metadata: Metadata = {
   title: "The briefing",
   description:
-    "A dated briefing on British politics, written from ukpoliticshub's own sourced data — the polls, the threat picture and the arguments, read from both directions. The edition date is stated on the page.",
+    "Where British politics stands right now: a live summary assembled from sourced figures, followed by a dated editorial reading of what it means.",
 };
 
 export default async function BriefingPage(props: PageProps<"/briefing">) {
@@ -21,22 +26,36 @@ export default async function BriefingPage(props: PageProps<"/briefing">) {
       <header className="rule-gold flex flex-wrap items-center gap-4 pt-4">
         <AiMark size={54} className="shrink-0" />
         <div className="min-w-0 flex-1">
-          <p className="eyebrow">Briefing · edition of {formatDate(BRIEFING_DATE)}</p>
+          <p className="eyebrow">Briefing</p>
           <h1 className="mt-1 font-display text-4xl leading-tight sm:text-5xl">
             The state of British politics
           </h1>
         </div>
       </header>
 
-      <EditionNotice className="mt-6" />
+      {/* ── Live half: composed from sourced figures, regenerates ───────── */}
+      <div className="mt-9">
+        <Suspense fallback={<ComposingFallback />}>
+          <ComposedBriefing />
+        </Suspense>
+      </div>
 
-      <div className="mt-8">
+      {/* ── Questions ───────────────────────────────────────────────────── */}
+      <div className="mt-12">
         <BriefingBody question={question} />
       </div>
 
-      {/* The briefing itself */}
-      <article className="mt-12">
-        <h2 className="font-display text-2xl leading-snug sm:text-3xl">{briefing.headline}</h2>
+      {/* ── Dated half: hand-written, argues rather than states ─────────── */}
+      <article className="mt-14">
+        <SectionHeading
+          eyebrow={`Editorial · edition of ${formatDate(BRIEFING_DATE)}`}
+          title="What it means"
+          standfirst="The section above states where things stand. This one argues about it — which is why it is written by hand, dated, and kept separate from the figures."
+        />
+
+        <EditionNotice className="mt-5" />
+
+        <h3 className="mt-8 font-display text-2xl leading-snug sm:text-3xl">{briefing.headline}</h3>
 
         <div className="mt-4 space-y-4">
           {briefing.paragraphs.map((paragraph, index) => (
@@ -53,7 +72,6 @@ export default async function BriefingPage(props: PageProps<"/briefing">) {
           ))}
         </div>
 
-        {/* Both sides */}
         <div className="mt-10">
           <p className="eyebrow mb-3">Read it both ways</p>
           <div className="space-y-4">
@@ -81,15 +99,18 @@ export default async function BriefingPage(props: PageProps<"/briefing">) {
           </div>
         </div>
 
-        <SourceList sources={briefing.sources} label="Everything above traces to these" />
-
-        <p className="mt-6 border-l-4 border-oxblood bg-oxblood/[0.05] px-4 py-3 text-[0.88rem] leading-relaxed text-ink-soft">
-          <strong className="font-semibold text-oxblood">How this is written:</strong> from the
-          figures and citations published on this site, and nothing else. Where a claim favours one
-          side, the reading that cuts the other way is printed beside it. No language model is
-          running behind this page yet — when one is, it will be held to the same rule.
-        </p>
+        <SourceList sources={briefing.sources} label="The editorial draws on" />
+        <ComposedSources />
       </article>
+    </div>
+  );
+}
+
+function ComposingFallback() {
+  return (
+    <div className="panel p-8">
+      <p className="eyebrow">Assembling from live data</p>
+      <p className="mt-2 font-display text-2xl text-ink-faint">Reading the feeds…</p>
     </div>
   );
 }

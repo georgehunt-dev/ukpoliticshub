@@ -22,13 +22,15 @@ import { pollAverage } from "@/data/polls";
  *  than that. See DEPLOY.md and app/api/revalidate. */
 export const revalidate = 600;
 
-const TODAY = "2026-08-14";
+/** Real date, not a pinned literal: the election countdowns would otherwise
+ *  freeze on the day this was written and drift further every day after. */
+const today = () => new Date().toISOString().slice(0, 10);
 
 export default function Home() {
   return (
     <>
       <HeroRace />
-      <KeyIndicators today={TODAY} />
+      <KeyIndicators today={today()} />
       <StartHere />
 
       <div className="mx-auto max-w-6xl space-y-14 px-5 py-12">
@@ -45,7 +47,7 @@ export default function Home() {
         <PartyStrip />
       </div>
 
-      <ElectionsStrip today={TODAY} />
+      <ElectionsStrip today={today()} />
 
       <div className="mx-auto max-w-6xl px-5 py-12">
         <EmailSignup />

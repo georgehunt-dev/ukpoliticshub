@@ -37,7 +37,7 @@ The live tier needs no human. The curated tier is where you (or a scheduled agen
 - `data/parties.ts` — the six party dossiers, frontbenches, credibility and concerns
 - `data/policy-areas.ts` — the ten fixed policy areas every party is measured against
 - `data/elections.ts` — upcoming contests and recent results
-- `data/briefing.ts` — the dated daily briefing and its suggested questions
+- `data/briefing.ts` — the **dated editorial** half of the briefing and the prepared questions. The live half is composed, not written: see `lib/briefing/compose.ts`
 - `data/news.ts` — outlet list and their fixed left–right ratings
 - `data/immigration.ts` — the Channel crossings tracker: year-to-date, by year, asylum system
 
@@ -87,7 +87,7 @@ These are the guarantees the site makes, and the code enforces them:
 | --- | --- |
 | `/` | Front page: No.10 hero, five key indicators, spectrum primer, ask box, polls, crossings tracker, threat, PM, news digest, parties, elections |
 | `/news` | Every story today, grouped by topic, each topic with a photograph; masthead ratings table |
-| `/briefing` | The daily briefing; accepts `?q=` and answers from a prepared set, honestly flagged |
+| `/briefing` | Live summary composed from sourced figures, then a dated editorial; accepts `?q=` and answers from a prepared set |
 | `/parties`, `/parties/[slug]` | The six dossiers |
 | `/elections`, `/how-we-work`, `/colophon` | Calendar, methodology, credits |
 
