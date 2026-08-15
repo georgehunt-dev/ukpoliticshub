@@ -33,9 +33,15 @@ jobs:
         run: |
           set -euo pipefail
 
+          # A missing secret means "not configured yet", not "broken". Failing
+          # here would email a run failure every 15 minutes forever, which is
+          # noise rather than signal — warn, skip, and exit clean.
           if [ -z "${REVALIDATE_SECRET}" ]; then
-            echo "::error::REVALIDATE_SECRET is not set in repository secrets."
-            exit 1
+            echo "::warning::REVALIDATE_SECRET is not set, so there is nothing to refresh."
+            echo "Add it under Settings -> Secrets and variables -> Actions, using the same"
+            echo "value as the REVALIDATE_SECRET environment variable in Vercel."
+            echo "The site still self-refreshes on its own 10-minute cycle in the meantime."
+            exit 0
           fi
 
           response=$(mktemp)
