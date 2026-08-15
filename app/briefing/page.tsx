@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import AiMark from "@/components/AiMark";
 import BriefingBody from "@/components/BriefingBody";
+import EditionNotice from "@/components/EditionNotice";
 import { SourceList, formatDate } from "@/components/ui";
 import { BRIEFING_DATE, briefing } from "@/data/briefing";
 
 export const metadata: Metadata = {
-  title: "The daily briefing",
+  title: "The briefing",
   description:
-    "Today in British politics, written from ukpoliticshub's own sourced data — the polls, the threat picture and the day's stories, read from both directions.",
+    "A dated briefing on British politics, written from ukpoliticshub's own sourced data — the polls, the threat picture and the arguments, read from both directions. The edition date is stated on the page.",
 };
 
 export default async function BriefingPage(props: PageProps<"/briefing">) {
@@ -20,12 +21,14 @@ export default async function BriefingPage(props: PageProps<"/briefing">) {
       <header className="rule-gold flex flex-wrap items-center gap-4 pt-4">
         <AiMark size={54} className="shrink-0" />
         <div className="min-w-0 flex-1">
-          <p className="eyebrow">Daily briefing · {formatDate(BRIEFING_DATE)}</p>
+          <p className="eyebrow">Briefing · edition of {formatDate(BRIEFING_DATE)}</p>
           <h1 className="mt-1 font-display text-4xl leading-tight sm:text-5xl">
-            Today in British politics
+            The state of British politics
           </h1>
         </div>
       </header>
+
+      <EditionNotice className="mt-6" />
 
       <div className="mt-8">
         <BriefingBody question={question} />

@@ -3,7 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import AiMark from "@/components/AiMark";
-import { briefing } from "@/data/briefing";
+import { BRIEFING_DATE, briefing, briefingAgeInDays } from "@/data/briefing";
+import { formatDate } from "@/components/ui";
 
 /**
  * The landing page's AI slot, kept deliberately small: one line of input that
@@ -25,7 +26,11 @@ export default function AskBox() {
         <div className="flex flex-wrap items-center gap-4">
           <AiMark size={44} className="shrink-0" />
           <div className="min-w-0 flex-1">
-            <p className="eyebrow">Daily briefing</p>
+            <p className="eyebrow">
+              {briefingAgeInDays() === 0
+                ? "Today's briefing"
+                : `Briefing · edition of ${formatDate(BRIEFING_DATE)}`}
+            </p>
             <h2 className="mt-1 font-display text-2xl leading-tight sm:text-3xl">
               Ask anything about British politics
             </h2>
