@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import ConsentGate from "@/components/ConsentGate";
 import SiteFooter from "@/components/SiteFooter";
 import { SiteStructuredData } from "@/components/StructuredData";
 import SiteHeader from "@/components/SiteHeader";
@@ -10,6 +12,13 @@ import "./globals.css";
  * a system face on every platform this site targets — so it is set in CSS
  * rather than loaded, and costs nothing.
  */
+/**
+ * GA4 measurement IDs are public by design — they appear in the page source of
+ * every site using them — so this is not a secret. It can still be overridden
+ * per-environment without a code change.
+ */
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-BY5YWVF0PR";
+
 const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
   subsets: ["latin"],
@@ -49,6 +58,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <SiteFooter />
+
+        {/* Cookieless, so it needs no consent and runs for everyone. */}
+        <Analytics />
+        {/* GA4 is loaded only if the visitor accepts. */}
+        <ConsentGate gaId={GA_ID} />
       </body>
     </html>
   );

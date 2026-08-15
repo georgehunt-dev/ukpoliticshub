@@ -57,6 +57,7 @@ export default function SiteFooter() {
               <li><Link href="/how-we-work#bias" className="link-underline text-ink-soft">How we rate outlets</Link></li>
               <li><Link href="/how-we-work#russia" className="link-underline text-ink-soft">The Russia assessment</Link></li>
               <li><Link href="/colophon" className="link-underline text-ink-soft">Image credits</Link></li>
+              <li><Link href="/privacy" className="link-underline text-ink-soft">Privacy &amp; cookies</Link></li>
             </ul>
           </div>
         </div>

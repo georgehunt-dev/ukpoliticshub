@@ -131,7 +131,12 @@ curl -sI https://ukpoliticshub.com/ | head -1
 
 **The curated tier is a snapshot.** Polls, threat scores, crossings and party dossiers are hand-updated in `data/*.ts`. Only the news table refreshes itself. See the table in `README.md` for which file holds what.
 
-**No analytics.** If you want them, Vercel Analytics is one toggle in the dashboard and needs no code change.
+**Analytics are installed, but Vercel Analytics needs enabling.** Two layers:
+
+- **Vercel Analytics** — cookieless, runs for every visitor, no consent needed. The code is in place; switch it on at **Vercel → your project → Analytics → Enable**. Until you do, it collects nothing.
+- **Google Analytics 4** (`G-BY5YWVF0PR`) — loads *only* after a visitor accepts the banner. Verified: before a choice and after declining, zero Google scripts are fetched and zero GA cookies are set. Override the ID per-environment with `NEXT_PUBLIC_GA_ID` if you ever swap properties.
+
+`/privacy` explains both and is linked from the footer and the banner. Revisit it the moment the site starts collecting anything new — an email list being the obvious candidate.
 
 ## Rolling back
 

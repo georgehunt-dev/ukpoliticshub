@@ -100,6 +100,7 @@ These are the guarantees the site makes, and the code enforces them:
 
 ## Not yet wired
 
+- **Vercel Analytics needs switching on in the dashboard.** The code ships; the toggle does not.
 - **Email signup** is presentational: the field is `disabled`, there is no handler and no endpoint, and the form says so. Wire it to a provider before launch, and add a privacy notice — you will be collecting personal data under UK GDPR.
 - **The AI ask box works, but has no model behind it.** Typing a question opens `/briefing?q=…`, which matches it against a prepared answer set written from this site's data and says plainly when nothing fits. Live free-text answers need a server route and an API key (env var — never commit it).
 - **The Times and The Spectator** publish no open RSS feed, so they are rated at `/how-we-work` but absent from the news table. This is stated on the page rather than hidden.
