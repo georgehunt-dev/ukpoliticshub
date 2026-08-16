@@ -73,7 +73,10 @@ export default function ConsentGate({ gaId }: { gaId: string }) {
 
   return (
     <>
-      {consent === "granted" ? <GoogleAnalytics gaId={gaId} /> : null}
+      {/* An empty id means analytics is switched off for this deployment
+          (staging). Mounting the tag with a blank id would still load the
+          script, so skip it entirely. */}
+      {consent === "granted" && gaId ? <GoogleAnalytics gaId={gaId} /> : null}
 
       {hydrated && consent === null ? (
         <div

@@ -18,7 +18,14 @@ import "./globals.css";
  * every site using them — so this is not a secret. It can still be overridden
  * per-environment without a code change.
  */
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-BY5YWVF0PR";
+/**
+ * Staging must not report into the live Analytics property — a second copy of
+ * the site sending pageviews would quietly corrupt the traffic figures the
+ * real site is measured on. The staging deployment sets STAGING_USER, so it
+ * gets no measurement ID and ConsentGate loads nothing.
+ */
+const IS_STAGING = Boolean(process.env.STAGING_USER);
+const GA_ID = IS_STAGING ? "" : process.env.NEXT_PUBLIC_GA_ID ?? "G-BY5YWVF0PR";
 
 const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
@@ -61,7 +68,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteFooter />
 
         {/* Cookieless, so it needs no consent and runs for everyone. */}
-        <Analytics />
+        {IS_STAGING ? null : <Analytics />}
         {/* GA4 is loaded only if the visitor accepts. */}
         <ConsentGate gaId={GA_ID} />
         {/* Shown once, well after arrival, and never again once answered. */}
