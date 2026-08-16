@@ -79,7 +79,7 @@ export default function AskBar() {
 
   return (
     <div className="border-t border-rule bg-[color:var(--paper-sunk)]/70">
-      <div className="shell py-3.5">
+      <div className="shell py-2.5">
         <form
           onSubmit={(event) => {
             event.preventDefault();
@@ -101,7 +101,7 @@ export default function AskBar() {
             onChange={(event) => setQuestion(event.target.value)}
             placeholder="Ask anything — ‘where do the parties stand on the ECHR?’"
             autoComplete="off"
-            className="min-w-0 flex-1 bg-transparent py-2.5 font-body text-[0.88rem] placeholder:text-ink-faint focus:outline-none"
+            className="min-w-0 flex-1 bg-transparent py-2 font-body text-[0.88rem] placeholder:text-ink-faint focus:outline-none"
           />
           <button
             type="submit"
@@ -112,24 +112,38 @@ export default function AskBar() {
           </button>
         </form>
 
-        {state.status === "idle" ? (
-          <ul className="mt-2 flex flex-wrap gap-x-2 gap-y-1.5">
-            {EXAMPLES.map((example) => (
-              <li key={example}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setQuestion(example);
-                    void ask(example);
-                  }}
-                  className="border border-rule px-2 py-0.5 text-[0.72rem] text-ink-soft transition-colors hover:border-ink hover:text-ink"
-                >
-                  {example}
-                </button>
-              </li>
-            ))}
-          </ul>
-        ) : null}
+        {/* Suggestions and the standing note share one line, so the bar costs
+            two rows of height rather than four. It is the first thing on the
+            page and should not out-shout the race below it. */}
+        <div className="mt-1.5 flex flex-wrap items-baseline gap-x-6 gap-y-1.5">
+          {state.status === "idle" ? (
+            /* On a phone these three questions would stack three deep and cost
+               a quarter of the first screen, so they scroll sideways in one
+               row instead and wrap normally once there is width for it. */
+            <ul className="-mx-1 flex max-w-full gap-x-2 overflow-x-auto px-1 sm:mx-0 sm:flex-wrap sm:gap-y-1.5 sm:overflow-visible sm:px-0">
+              {EXAMPLES.map((example) => (
+                <li key={example} className="shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setQuestion(example);
+                      void ask(example);
+                    }}
+                    className="whitespace-nowrap border border-rule px-2 py-0.5 text-[0.72rem] text-ink-soft transition-colors hover:border-ink hover:text-ink"
+                  >
+                    {example}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
+          <p className="ml-auto max-w-[70ch] text-[0.68rem] leading-snug text-ink-faint">
+            <span className="font-semibold text-ink-soft">AI answers</span>, built only from this
+            site&rsquo;s own sourced pages and returned with the citations attached. If we
+            don&rsquo;t hold something, it says so rather than guessing.
+          </p>
+        </div>
 
         {state.status === "answered" ? (
           <div className="mt-3 border border-rule bg-[color:var(--paper-raised)] p-4">
@@ -177,11 +191,6 @@ export default function AskBar() {
           </p>
         ) : null}
 
-        <p className="measure mt-2 text-[0.68rem] leading-snug text-ink-faint">
-          <span className="font-semibold text-ink-soft">AI answers</span>, built only from this
-          site&rsquo;s own sourced pages and returned with the citations attached. If we don&rsquo;t
-          hold something, it says so rather than guessing.
-        </p>
       </div>
     </div>
   );
