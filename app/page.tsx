@@ -1,22 +1,12 @@
 import { Suspense } from "react";
 import Link from "next/link";
-import AskBox from "@/components/AskBox";
 import ElectionsStrip from "@/components/ElectionsStrip";
 import EmailSignup from "@/components/EmailSignup";
 import HeroRace from "@/components/HeroRace";
-import ImmigrationTracker from "@/components/ImmigrationTracker";
 import KeyIndicators from "@/components/KeyIndicators";
 import NewsDigest from "@/components/NewsDigest";
-import PartyEmblem from "@/components/PartyEmblem";
-import PollDetail from "@/components/PollDetail";
-import Portrait from "@/components/Portrait";
-import PrimeMinisterPanel from "@/components/PrimeMinisterPanel";
-import SectionImage from "@/components/SectionImage";
 import StartHere from "@/components/StartHere";
-import ThreatPanel from "@/components/ThreatPanel";
-import { MoreLink } from "@/components/ui";
-import { parties } from "@/data/parties";
-import { pollAverage } from "@/data/polls";
+import { SectionHeading } from "@/components/ui";
 
 /** Rebuilt at most every 10 minutes; the scheduled refresh keeps it warmer
  *  than that. See DEPLOY.md and app/api/revalidate. */
@@ -34,17 +24,11 @@ export default function Home() {
       <StartHere />
 
       <div className="mx-auto max-w-6xl space-y-14 px-5 py-12">
-        <AskBox />
-        <PollDetail />
-        <ImmigrationTracker />
-        <ThreatPanel />
-        <PrimeMinisterPanel />
-
         <Suspense fallback={<NewsSkeleton />}>
           <NewsDigest />
         </Suspense>
 
-        <PartyStrip />
+        <GoDeeper />
       </div>
 
       <ElectionsStrip today={today()} />
@@ -56,62 +40,84 @@ export default function Home() {
   );
 }
 
-/** Six doorways into the party dossiers, under a photograph. */
-function PartyStrip() {
-  const pollBySlug = Object.fromEntries(pollAverage.map((entry) => [entry.party, entry.pct]));
-  const ordered = [...parties].sort(
-    (a, b) => (pollBySlug[b.slug] ?? 0) - (pollBySlug[a.slug] ?? 0)
-  );
+/**
+ * The front page used to stack every section end to end, which came to twenty
+ * screens on a phone — no way to judge how deep the page ran, and no way to
+ * skip. Each of those sections now has its own page, and this is the index to
+ * them: one tap to any of it, and the front page stays short enough to read.
+ */
+const SECTIONS: { href: string; title: string; blurb: string }[] = [
+  {
+    href: "/polls",
+    title: "The polls themselves",
+    blurb:
+      "Every poll inside the rolling average, with fieldwork dates and a link to each pollster's own write-up.",
+  },
+  {
+    href: "/immigration",
+    title: "Immigration",
+    blurb:
+      "Channel crossings year-to-date and by year, the asylum backlog, and where each party stands.",
+  },
+  {
+    href: "/threat",
+    title: "Threat level",
+    blurb:
+      "The official terrorism level, unadjusted, and our own six-factor read on Russian pressure.",
+  },
+  {
+    href: "/prime-minister",
+    title: "The Prime Minister",
+    blurb: "Approval, the best-prime-minister head-to-head, and how the government is standing.",
+  },
+  {
+    href: "/parties",
+    title: "The six parties",
+    blurb:
+      "Policies, leadership, spectrum position, what each can credibly claim and what is fairly held against it.",
+  },
+  {
+    href: "/compare",
+    title: "Compare the parties",
+    blurb: "Every party answering the same ten questions, in the same order, side by side.",
+  },
+  {
+    href: "/briefing",
+    title: "Today's briefing",
+    blurb: "About five minutes, both sides of every argument, dated so you know how fresh it is.",
+  },
+];
 
+function GoDeeper() {
   return (
-    <section id="parties" className="scroll-mt-24">
-      <SectionImage
-        photo="buckingham-palace"
-        eyebrow="Who they are"
-        title="The six parties"
-        standfirst="Policies, leadership, where each sits on the spectrum, what they can credibly claim, and what is fairly held against them."
-        alt="Buckingham Palace seen from the gardens"
-        action={<MoreLink href="/parties">All parties</MoreLink>}
+    <section id="go-deeper" className="scroll-mt-24">
+      <SectionHeading
+        eyebrow="The rest of it"
+        title="Go deeper"
+        standfirst="Everything the site holds, one tap away. Each page carries its sources on the same page as its figures."
       />
 
-      <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {ordered.map((party) => (
-          <li key={party.slug}>
+      <ul className="mt-5 border-y border-rule">
+        {SECTIONS.map((section) => (
+          <li key={section.href} className="border-b border-rule last:border-b-0">
             <Link
-              href={`/parties/${party.slug}`}
-              className="panel group flex h-full flex-col p-5 transition-colors hover:bg-[color:var(--paper-sunk)]/55"
-              style={{ borderTop: `4px solid ${party.colour}` }}
+              href={section.href}
+              className="group flex items-baseline gap-4 py-4 transition-colors hover:bg-[color:var(--paper-sunk)]/55 sm:py-5"
             >
-              <div className="flex items-start justify-between gap-3">
-                <PartyEmblem slug={party.slug} colour={party.colour} size={46} />
-                <span className="font-display text-3xl font-bold leading-none tabular">
-                  {(pollBySlug[party.slug] ?? 0).toFixed(1)}
-                  <span className="text-base text-ink-faint">%</span>
+              <span className="min-w-0 flex-1">
+                <span className="block font-display text-xl leading-tight group-hover:text-oxblood sm:text-2xl">
+                  {section.title}
                 </span>
-              </div>
-
-              <h3 className="mt-3 font-display text-2xl leading-tight group-hover:text-oxblood">
-                {party.shortName}
-              </h3>
-
-              <div className="mt-3 flex items-center gap-2.5">
-                <Portrait
-                  slug={party.leader.slug}
-                  name={party.leader.name}
-                  size="sm"
-                  accent={party.colour}
-                />
-                <div className="min-w-0">
-                  <p className="truncate text-sm font-semibold">{party.leader.name}</p>
-                  <p className="truncate text-[0.78rem] text-ink-faint">{party.leader.role}</p>
-                </div>
-              </div>
-
-              <p className="mt-3 line-clamp-3 text-[0.85rem] leading-relaxed text-ink-soft">
-                {party.summary}
-              </p>
-
-              <p className="mt-auto pt-4 text-[0.75rem] text-ink-faint">{party.mps}</p>
+                <span className="mt-1 block text-[0.92rem] leading-relaxed text-ink-soft">
+                  {section.blurb}
+                </span>
+              </span>
+              <span
+                aria-hidden
+                className="shrink-0 font-display text-2xl text-ink-faint transition-transform group-hover:translate-x-0.5 group-hover:text-oxblood"
+              >
+                &rsaquo;
+              </span>
             </Link>
           </li>
         ))}
