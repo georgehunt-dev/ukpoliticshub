@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AskBar from "@/components/AskBar";
 import { LogoLockup } from "@/components/Logo";
 
 const NAV = [
@@ -51,6 +52,7 @@ export default function SiteHeader() {
           ))}
         </ul>
       </nav>
+      <AskBar />
     </header>
   );
 }

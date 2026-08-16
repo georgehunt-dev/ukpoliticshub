@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import ConstituencyBand from "@/components/ConstituencyBand";
 import ElectionsStrip from "@/components/ElectionsStrip";
-import EmailSignup from "@/components/EmailSignup";
 import HeroRace from "@/components/HeroRace";
+import MorningEmail from "@/components/MorningEmail";
 import KeyIndicators from "@/components/KeyIndicators";
 import NewsDigest from "@/components/NewsDigest";
 import StartHere from "@/components/StartHere";
@@ -22,7 +22,16 @@ const today = () => new Date().toISOString().slice(0, 10);
 export default function Home() {
   return (
     <>
-      <HeroRace />
+      {/* The front page's lead: the race on the left, the morning email on
+          the right. On a phone the email lands directly under the race, which
+          is the natural next beat rather than a footer afterthought. */}
+      <div className="mx-auto max-w-6xl px-5 py-6">
+        <div className="grid gap-6 lg:grid-cols-[1.62fr_1fr] lg:items-start lg:gap-8">
+          <HeroRace />
+          <MorningEmail />
+        </div>
+      </div>
+
       <KeyIndicators today={today()} />
       <StartHere />
       <ConstituencyBand />
@@ -36,10 +45,6 @@ export default function Home() {
       </div>
 
       <ElectionsStrip today={today()} />
-
-      <div className="mx-auto max-w-6xl px-5 py-12">
-        <EmailSignup />
-      </div>
     </>
   );
 }
