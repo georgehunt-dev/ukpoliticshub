@@ -1,12 +1,28 @@
 import Link from "next/link";
-import { parties } from "@/data/parties";
+import SpectrumRow, { type SpectrumParty } from "@/components/SpectrumRow";
+import { OurAssessment } from "@/components/ui";
+import { allPlacements, partiesLeftToRight, spectrumBand } from "@/lib/spectrum";
 
 /**
  * Orientation for readers with no background in British politics: the whole
  * spectrum on one line, in plain English, before any of the detail below.
+ *
+ * The placements are a judgement of ours, so the panel carries the same
+ * assessment flag every other judgement on the site carries. The previous
+ * version published them bare, which it should not have.
  */
 export default function StartHere() {
-  const ordered = [...parties].sort((a, b) => a.spectrum - b.spectrum);
+  const placements = allPlacements();
+
+  const parties: SpectrumParty[] = partiesLeftToRight().map((party) => ({
+    slug: party.slug,
+    name: party.shortName,
+    band: spectrumBand(party.spectrum, placements),
+    spectrum: party.spectrum,
+    colour: party.colour,
+    gloss: party.spectrumGloss,
+    leader: party.leader.name,
+  }));
 
   return (
     <section aria-label="Start here" className="border-b border-rule bg-[color:var(--paper-sunk)]/45">
@@ -18,34 +34,20 @@ export default function StartHere() {
               The whole spectrum, left to right
             </h2>
           </div>
-          <p className="max-w-xl text-[0.9rem] leading-relaxed text-ink-soft">
-            Six parties matter in British politics right now. Broadly, the left favours more state
-            spending and looser immigration rules; the right favours lower taxes and tighter ones.
-            Tap any party to see what it actually says.
-          </p>
+          <OurAssessment />
         </div>
 
-        <ol className="mt-5 grid gap-px bg-[color:var(--rule)] sm:grid-cols-3 lg:grid-cols-6">
-          {ordered.map((party) => (
-            <li key={party.slug} className="bg-[color:var(--paper-raised)]">
-              <Link
-                href={`/parties/${party.slug}`}
-                className="group block h-full px-3.5 py-3 transition-colors hover:bg-[color:var(--paper-sunk)]/70"
-                style={{ borderTop: `3px solid ${party.colour}` }}
-              >
-                <p className="font-display text-lg leading-tight group-hover:text-oxblood">
-                  {party.shortName}
-                </p>
-                <p className="mt-0.5 text-[0.75rem] font-semibold uppercase tracking-[0.06em] text-ink-faint">
-                  {spectrumWord(party.spectrum)}
-                </p>
-                <p className="mt-1.5 line-clamp-3 text-[0.78rem] leading-snug text-ink-soft">
-                  {party.spectrumNote.split(".")[0]}.
-                </p>
-              </Link>
-            </li>
-          ))}
-        </ol>
+        <p className="measure mt-2.5 text-[0.9rem] leading-relaxed text-ink-soft">
+          Broadly, the left favours more state spending and looser immigration rules; the right
+          favours lower taxes and tighter ones. Each column says where a party sits and what that
+          means in practice —{" "}
+          <Link href="/how-we-work#spectrum" className="link-underline">
+            how we place them
+          </Link>
+          .
+        </p>
+
+        <SpectrumRow parties={parties} />
 
         <p className="measure mt-4 text-[0.82rem] text-ink-soft">
           Want the whole picture in one go?{" "}
@@ -57,23 +59,4 @@ export default function StartHere() {
       </div>
     </section>
   );
-}
-
-/**
- * A position on the scale, not a verdict on the party.
- *
- * The top band deliberately reads "Furthest right" rather than "Far right":
- * the first describes where we have placed a party relative to the other five,
- * which is ours to say; the second is a contested classification. Where that
- * classification is relevant it appears on the party's own page, attributed to
- * the people making it and printed alongside the party's rejection of it.
- */
-function spectrumWord(value: number): string {
-  if (value <= -7) return "Left";
-  if (value <= -3) return "Centre-left";
-  if (value < 0) return "Centre";
-  if (value < 4) return "Centre";
-  if (value < 7) return "Centre-right";
-  if (value < 9) return "Right";
-  return "Furthest right";
 }
