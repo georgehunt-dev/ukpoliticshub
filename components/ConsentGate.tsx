@@ -86,7 +86,7 @@ export default function ConsentGate({ gaId }: { gaId: string }) {
               <p id="consent-heading" className="font-display text-lg leading-tight">
                 Analytics cookies
               </p>
-              <p className="mt-1 text-[0.86rem] leading-relaxed text-ink-soft">
+              <p className="measure mt-1 text-[0.86rem] leading-relaxed text-ink-soft">
                 We count visits either way using a cookieless tool that stores nothing on your
                 device. May we also use Google Analytics, which sets a cookie? Declining changes
                 nothing about what you can read.{" "}

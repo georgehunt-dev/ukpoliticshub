@@ -80,9 +80,9 @@ const SECTIONS: {
   },
   {
     href: "/threat",
-    title: "Threat level",
+    title: "Threats & alliances",
     blurb:
-      "The official terrorism level, unadjusted, and our own six-factor read on Russian pressure.",
+      "The official terrorism level, unadjusted, plus our own weighted read on Russia, Iran and China — and on what the UK can rely on from the US, NATO and Europe.",
     photo: "royal-navy",
     alt: "HMS Kent, a Royal Navy Type 23 frigate, under way",
   },
