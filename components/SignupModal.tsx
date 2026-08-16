@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { LogoMark } from "@/components/Logo";
 import constituencyData from "@/data/generated/constituencies.json";
+import { SIGNUP_PROMPT_EVENT, type SignupPromptDetail } from "@/lib/signup-prompt";
 
 /**
  * First-visit newsletter prompt.
@@ -37,6 +38,7 @@ export default function SignupModal() {
   const [birthYear, setBirthYear] = useState("");
   const [company, setCompany] = useState(""); // honeypot
   const [state, setState] = useState<State>({ status: "idle" });
+  const [reason, setReason] = useState<string | null>(null);
 
   const startedAt = useRef(0);
   const dialog = useRef<HTMLDivElement>(null);
@@ -61,6 +63,27 @@ export default function SignupModal() {
     }, DELAY_MS);
 
     return () => window.clearTimeout(timer);
+  }, []);
+
+  /**
+   * Summoned from elsewhere on the site. This ignores the "already answered"
+   * record on purpose: the reader has just asked for the form by clicking,
+   * and refusing to show it because they dismissed a popup last week would be
+   * absurd. Any constituency passed in is filled in but left editable.
+   */
+  useEffect(() => {
+    function onOpen(event: Event) {
+      const detail = (event as CustomEvent<SignupPromptDetail>).detail ?? {};
+      if (detail.constituency) setConstituency(detail.constituency);
+      setReason(detail.reason ?? null);
+      setState({ status: "idle" });
+      startedAt.current = Date.now();
+      previouslyFocused.current = document.activeElement;
+      setVisible(true);
+    }
+
+    window.addEventListener(SIGNUP_PROMPT_EVENT, onOpen);
+    return () => window.removeEventListener(SIGNUP_PROMPT_EVENT, onOpen);
   }, []);
 
   function remember(answer: "subscribed" | "dismissed") {
@@ -188,9 +211,15 @@ export default function SignupModal() {
           <form onSubmit={submit} noValidate className="px-6 py-7">
             <LogoMark size={34} className="mx-auto" />
 
+            {reason ? (
+              <p className="mt-3 text-center text-[0.7rem] font-bold uppercase tracking-[0.14em] text-oxblood">
+                {reason}
+              </p>
+            ) : null}
+
             <h2
               id="signup-heading"
-              className="mt-4 text-center font-display text-2xl leading-tight sm:text-[1.75rem]"
+              className={`${reason ? "mt-1.5" : "mt-4"} text-center font-display text-2xl leading-tight sm:text-[1.75rem]`}
             >
               Know where Britain stands
             </h2>

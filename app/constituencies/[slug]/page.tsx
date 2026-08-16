@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ConstituencyResult from "@/components/ConstituencyResult";
+import SignupPromptButton from "@/components/SignupPromptButton";
 import { MoreLink, OfficialFigure, SectionHeading } from "@/components/ui";
 import {
   CONSTITUENCIES,
@@ -262,7 +263,12 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
             and we&rsquo;d rather say so than fill the space.
           </p>
           <p className="mt-3">
-            <MoreLink href="/#newsletter">Get told when it lands</MoreLink>
+            <SignupPromptButton
+              constituency={seat.name}
+              reason={`Local news for ${seat.name}`}
+            >
+              Get told when it lands
+            </SignupPromptButton>
           </p>
         </section>
 
