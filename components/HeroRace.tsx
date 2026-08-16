@@ -44,10 +44,7 @@ export default function HeroRace() {
       <div className="relative mx-auto grid max-w-6xl gap-8 px-5 pb-10 pt-14 lg:grid-cols-[1fr_minmax(360px,42%)] lg:items-end lg:gap-12 lg:pb-14 lg:pt-24">
         {/* Headline */}
         <div>
-          <p className="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[color:var(--paper)]/70">
-            Voting intention · rolling average
-          </p>
-          <h1 className="mt-3 font-display text-6xl leading-[0.92] tracking-tight sm:text-7xl lg:text-[5.5rem]">
+          <h1 className="font-display text-[4rem] leading-[0.92] tracking-tight sm:text-[5rem] lg:text-[6.25rem]">
             The Race
             <br />
             for No.10
