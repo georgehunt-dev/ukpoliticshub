@@ -13,7 +13,7 @@ import { CONSTITUENCY_NAMES } from "@/lib/constituencies";
 export default function ConstituencyBand() {
   return (
     <section className="border-y border-rule bg-[color:var(--paper-sunk)]/60">
-      <div className="mx-auto grid max-w-6xl gap-6 px-5 py-10 md:grid-cols-[1.1fr_1fr] md:items-center md:gap-12">
+      <div className="shell grid gap-6 py-10 md:grid-cols-[1.1fr_1fr] md:items-center md:gap-12">
         <div>
           <p className="eyebrow">Your area</p>
           <h2 className="mt-1 font-display text-3xl leading-tight sm:text-4xl">

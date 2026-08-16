@@ -25,7 +25,7 @@ export default function Home() {
       {/* The front page's lead: the race on the left, the morning email on
           the right. On a phone the email lands directly under the race, which
           is the natural next beat rather than a footer afterthought. */}
-      <div className="mx-auto max-w-6xl px-5 py-6">
+      <div className="shell py-6">
         <div className="grid gap-6 lg:grid-cols-[1.62fr_1fr] lg:items-start lg:gap-8">
           <HeroRace />
           <MorningEmail />
@@ -36,7 +36,7 @@ export default function Home() {
       <StartHere />
       <ConstituencyBand />
 
-      <div className="mx-auto max-w-6xl space-y-14 px-5 py-12">
+      <div className="shell space-y-14 py-12">
         <Suspense fallback={<NewsSkeleton />}>
           <NewsDigest />
         </Suspense>

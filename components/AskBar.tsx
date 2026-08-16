@@ -79,7 +79,7 @@ export default function AskBar() {
 
   return (
     <div className="border-t border-rule bg-[color:var(--paper-sunk)]/70">
-      <div className="mx-auto max-w-6xl px-5 py-3.5">
+      <div className="shell py-3.5">
         <form
           onSubmit={(event) => {
             event.preventDefault();
@@ -177,7 +177,7 @@ export default function AskBar() {
           </p>
         ) : null}
 
-        <p className="mt-2 text-[0.68rem] leading-snug text-ink-faint">
+        <p className="measure mt-2 text-[0.68rem] leading-snug text-ink-faint">
           <span className="font-semibold text-ink-soft">AI answers</span>, built only from this
           site&rsquo;s own sourced pages and returned with the citations attached. If we don&rsquo;t
           hold something, it says so rather than guessing.

@@ -46,7 +46,7 @@ export default function CompareIndex() {
                       {stated}/{total}
                     </span>
                   </div>
-                  <p className="mt-1 line-clamp-2 text-[0.8rem] leading-snug text-ink-faint">
+                  <p className="measure mt-1 line-clamp-2 text-[0.8rem] leading-snug text-ink-faint">
                     {area.question}
                   </p>
                 </Link>

@@ -11,7 +11,7 @@ export const revalidate = 600;
 
 export default function ThreatPage() {
   return (
-    <div className="mx-auto max-w-6xl px-5 py-11">
+    <div className="shell py-11">
       <ThreatPanel />
     </div>
   );

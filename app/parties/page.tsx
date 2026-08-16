@@ -20,7 +20,7 @@ export default function PartiesPage() {
   );
 
   return (
-    <div className="mx-auto max-w-6xl px-5 py-11">
+    <div className="shell py-11">
       <SectionHeading
         eyebrow="Who they are"
         title="The six parties"

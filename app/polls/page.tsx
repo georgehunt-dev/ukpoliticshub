@@ -14,7 +14,7 @@ export const revalidate = 600;
 
 export default function PollsPage() {
   return (
-    <div className="mx-auto max-w-6xl px-5 py-11">
+    <div className="shell py-11">
       <SectionHeading
         eyebrow="Behind the average"
         title="The polls themselves"

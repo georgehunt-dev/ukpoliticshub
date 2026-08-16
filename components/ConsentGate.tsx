@@ -81,7 +81,7 @@ export default function ConsentGate({ gaId }: { gaId: string }) {
           aria-labelledby="consent-heading"
           className="fixed inset-x-0 bottom-0 z-[100] border-t border-rule bg-[color:var(--paper-raised)] shadow-[0_-8px_28px_-18px_rgba(15,31,56,0.5)]"
         >
-          <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center">
+          <div className="shell flex flex-col gap-4 py-4 sm:flex-row sm:items-center">
             <div className="min-w-0 flex-1">
               <p id="consent-heading" className="font-display text-lg leading-tight">
                 Analytics cookies

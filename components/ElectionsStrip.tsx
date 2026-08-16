@@ -43,7 +43,7 @@ export default function ElectionsStrip({ today }: { today: string }) {
       ) : null}
 
       <Link href="/elections" className="group relative block">
-        <div className="mx-auto max-w-6xl px-5 py-9">
+        <div className="shell py-9">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[color:var(--paper)]/70">

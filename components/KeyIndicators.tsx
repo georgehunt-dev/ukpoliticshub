@@ -107,7 +107,7 @@ export default function KeyIndicators({ today }: { today: string }) {
       aria-label="Key indicators"
       className="border-y border-rule bg-[color:var(--paper-raised)]"
     >
-      <ul className="mx-auto grid max-w-6xl grid-cols-2 gap-px bg-[color:var(--rule)] lg:grid-cols-6">
+      <ul className="shell grid grid-cols-2 gap-px bg-[color:var(--rule)] lg:grid-cols-6">
         {cells.map((cell) => {
           const photo = getPhoto(cell.photo);
           return (

@@ -10,7 +10,7 @@ export default function StartHere() {
 
   return (
     <section aria-label="Start here" className="border-b border-rule bg-[color:var(--paper-sunk)]/45">
-      <div className="mx-auto max-w-6xl px-5 py-7">
+      <div className="shell py-7">
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
           <div>
             <p className="eyebrow">New to this?</p>
@@ -47,7 +47,7 @@ export default function StartHere() {
           ))}
         </ol>
 
-        <p className="mt-4 text-[0.82rem] text-ink-soft">
+        <p className="measure mt-4 text-[0.82rem] text-ink-soft">
           Want the whole picture in one go?{" "}
           <Link href="/briefing" className="link-underline font-semibold">
             Read today&rsquo;s briefing
