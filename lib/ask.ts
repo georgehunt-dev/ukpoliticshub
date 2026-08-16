@@ -1,4 +1,4 @@
-import { parties } from "@/data/parties";
+import { parties, partyBySlug } from "@/data/parties";
 import { POLICY_AREAS } from "@/data/policy-areas";
 import { GLOSSARY } from "@/data/glossary";
 import { CONSTITUENCIES } from "@/lib/constituencies";
@@ -6,219 +6,282 @@ import { pollAverage, POLL_AVERAGE_AS_OF, POLL_AVERAGE_SOURCE } from "@/data/pol
 import { officialTerrorismThreat, russiaBand, russiaScore } from "@/data/threat";
 import { crossingsYearToDate } from "@/data/immigration";
 import { primeMinisterRatings } from "@/data/government";
+import {
+  areasIn,
+  type FigureKey,
+  figuresIn,
+  normalise,
+  partiesIn,
+  tokenise,
+} from "@/lib/ask-intent";
+import type { PolicyArea } from "@/lib/types";
 
 /**
- * The corpus behind the ask bar.
+ * Answering from what the site already publishes.
  *
- * Every entry is something the site already publishes, with the page it lives
- * on. Nothing is generated here and nothing is inferred: an answer is a
- * passage we already stand behind, handed back with the link that lets the
- * reader check it. Where nothing scores well enough, the caller says we do not
- * cover it — which is the whole point. A confident wrong answer on the front
- * page would undo the promise every other page keeps.
+ * The question is read for what it names — a party, a subject, a figure, a
+ * constituency — and the answer is then looked up. Nothing is ranked by word
+ * overlap and nothing is stitched together across subjects, because both of
+ * those produced answers that were confidently about the wrong thing.
+ *
+ * Every branch returns the passage we already stand behind plus the page it
+ * lives on. Where the question names nothing we hold, `covered` is false and
+ * there is no answer at all.
  */
 
-export type Passage = {
-  /** What this passage is about, used for matching. */
-  terms: string;
-  /** The sentence(s) handed back to the reader. */
-  text: string;
-  label: string;
-  href: string;
+export type Source = { label: string; href: string };
+
+export type Answer = {
+  covered: boolean;
+  answer: string;
+  sources: Source[];
 };
 
-function partyPassages(): Passage[] {
-  const out: Passage[] = [];
-  const areaName = new Map(POLICY_AREAS.map((a) => [a.id, a.name]));
+const areaName = new Map(POLICY_AREAS.map((a) => [a.id, a.name]));
 
-  for (const party of parties) {
-    out.push({
-      terms: `${party.name} ${party.shortName} ${party.leader.name} leader party spectrum position`,
-      text: `${party.name} is led by ${party.leader.name}. ${party.spectrumNote}`,
-      label: `${party.shortName} — party page`,
-      href: `/parties/${party.slug}`,
-    });
+const NOT_COVERED: Answer = {
+  covered: false,
+  answer:
+    "We don't cover that yet. This bar only answers from pages we've already researched and sourced, so rather than guess at it we'd sooner say nothing — try asking about a party's position on an issue, a figure we track, or your own constituency.",
+  sources: [],
+};
 
-    for (const policy of party.policies) {
-      const area = areaName.get(policy.area) ?? policy.area;
-      out.push({
-        terms: `${party.name} ${party.shortName} ${area} ${policy.area} ${policy.summary}`,
-        text: `${party.shortName} on ${area.toLowerCase()}: ${policy.position}`,
-        label: `${party.shortName} — ${area}`,
-        href: `/parties/${party.slug}`,
-      });
-    }
+/* ── Constituencies ─────────────────────────────────────────────────────── */
+
+/**
+ * Longest name first, so "Islington South and Finsbury" is matched before
+ * "Islington North" can claim the "islington" in it.
+ */
+const SEATS_BY_LENGTH = [...CONSTITUENCIES]
+  .filter((seat) => seat.mp)
+  .sort((a, b) => b.name.length - a.name.length);
+
+function seatIn(question: string) {
+  const haystack = normalise(question);
+  return SEATS_BY_LENGTH.find((seat) => haystack.includes(` ${normalise(seat.name).trim()} `));
+}
+
+function seatAnswer(seat: (typeof CONSTITUENCIES)[number]): Answer {
+  const mp = seat.mp!;
+  const who = `${mp.name}${mp.party ? ` (${mp.party})` : ""}`;
+
+  // Where a by-election has intervened the sitting member did not win the 2024
+  // margin, so it must not be hung off their name.
+  let how = "";
+  if (seat.byElection) {
+    how = " They were returned at a by-election held since the general election.";
+  } else if (seat.election?.majorityPct != null) {
+    how = ` They won the seat at the 2024 general election by ${seat.election.majorityPct.toFixed(1)} points.`;
   }
-  return out;
+
+  return {
+    covered: true,
+    answer: `${seat.name} is represented by ${who}.${how}`,
+    sources: [{ label: `${seat.name} constituency`, href: `/constituencies/${seat.slug}` }],
+  };
 }
 
-function areaPassages(): Passage[] {
-  return POLICY_AREAS.map((area) => ({
-    terms: `${area.name} ${area.id} compare parties side by side ${area.question}`,
-    text: `${area.name}: ${area.question} Every party's position is set out side by side on the comparison page.`,
-    label: `Compare — ${area.name}`,
-    href: `/compare/${area.id}`,
-  }));
-}
+/* ── Figures ────────────────────────────────────────────────────────────── */
 
-function glossaryPassages(): Passage[] {
-  return GLOSSARY.map((entry) => ({
-    terms: `${entry.term} ${(entry.aliases ?? []).join(" ")} what is means definition`,
-    text: `${entry.term}: ${entry.definition}`,
-    label: `How we work — glossary`,
-    href: "/how-we-work",
-  }));
-}
-
-function constituencyPassages(): Passage[] {
-  return CONSTITUENCIES.filter((seat) => seat.mp).map((seat) => {
-    const who = `${seat.mp!.name}${seat.mp!.party ? ` (${seat.mp!.party})` : ""}`;
-
-    /**
-     * Where a by-election has been held, the sitting member is not the person
-     * who won in 2024 — so the 2024 margin must not be hung off their name.
-     * Six seats are in that position and each of them would otherwise read as
-     * a plain falsehood.
-     */
-    let how = "";
-    if (seat.byElection) {
-      how = ` They were returned at a by-election held since the general election; the full result for both is on the seat's page.`;
-    } else if (seat.election?.majorityPct != null) {
-      how = ` They won the seat at the 2024 general election by ${seat.election.majorityPct.toFixed(1)} points.`;
-    }
-
-    return {
-      terms: `${seat.name} constituency seat mp member of parliament who represents ${seat.mp!.name}`,
-      text: `${seat.name} is represented by ${who}.${how}`,
-      label: `${seat.name} constituency`,
-      href: `/constituencies/${seat.slug}`,
-    };
-  });
-}
-
-function figurePassages(): Passage[] {
-  const pm = primeMinisterRatings[0];
-  const lead = Number((pollAverage[0].pct - pollAverage[1].pct).toFixed(1));
-  const drop = Math.abs(crossingsYearToDate.comparisons[0].change);
-
-  return [
-    {
-      terms: "poll polls polling average race for number 10 who is leading ahead standings",
-      text: `As of ${POLL_AVERAGE_AS_OF}, the rolling average of British Polling Council polls puts ${pollAverage
+function figureAnswer(key: FigureKey): Answer {
+  switch (key) {
+    case "polls": {
+      const lead = Number((pollAverage[0].pct - pollAverage[1].pct).toFixed(1));
+      const top = pollAverage
         .slice(0, 3)
-        .map((entry) => `${entry.party} on ${entry.pct}%`)
-        .join(", ")} — a lead of ${lead} points. Source: ${POLL_AVERAGE_SOURCE.label}.`,
-      label: "The polls",
-      href: "/polls",
-    },
-    {
-      terms: "terrorism threat level severe attack likely security",
-      text: `The official UK terrorism threat level is ${officialTerrorismThreat.level}, meaning an attack is highly likely. This is the Home Office's own figure and we do not adjust it.`,
-      label: "Threat level",
-      href: "/threat",
-    },
-    {
-      terms: "russia russian pressure threat score sabotage hybrid",
-      text: `Our own six-factor read puts Russian pressure on the UK at ${russiaScore} out of 100 — ${russiaBand.label}. This is our assessment, not an official figure, and the six factors behind it are set out in full.`,
-      label: "Russia pressure",
-      href: "/threat",
-    },
-    {
-      terms: "channel crossings small boats immigration asylum backlog how many",
-      text: `${crossingsYearToDate.total.toLocaleString("en-GB")} people have crossed the Channel in small boats so far in 2026, ${drop}% ${
-        crossingsYearToDate.comparisons[0].change < 0 ? "lower" : "higher"
-      } than the same point in 2025. Home Office figures.`,
-      label: "Immigration tracker",
-      href: "/immigration",
-    },
-    {
-      terms: "prime minister approval rating popular net approve disapprove",
-      text: `The Prime Minister's net approval is ${pm.net != null && pm.net > 0 ? "+" : ""}${pm.net}, with ${pm.approve}% approving and ${pm.disapprove}% disapproving.`,
-      label: "The Prime Minister",
-      href: "/prime-minister",
-    },
-    {
-      terms: "next general election when due date deadline days",
-      text: "The next general election must be held by 15 August 2029 at the latest. The full timetable, and the other elections due before it, are on the elections page.",
-      label: "Upcoming elections",
-      href: "/elections",
-    },
+        .map((entry) => `${partyBySlug[entry.party].shortName} on ${entry.pct}%`)
+        .join(", ");
+      return {
+        covered: true,
+        answer: `As of ${POLL_AVERAGE_AS_OF}, the rolling average of British Polling Council polls puts ${top} — a lead of ${lead} points. Source: ${POLL_AVERAGE_SOURCE.label}.`,
+        sources: [{ label: "The polls", href: "/polls" }],
+      };
+    }
+    case "terrorism":
+      return {
+        covered: true,
+        answer: `The official UK terrorism threat level is ${officialTerrorismThreat.level}, meaning an attack is highly likely. That is the Home Office's own figure and we do not adjust it.`,
+        sources: [{ label: "Threat level", href: "/threat" }],
+      };
+    case "russia":
+      return {
+        covered: true,
+        answer: `Our own six-factor read puts Russian pressure on the UK at ${russiaScore} out of 100 — ${russiaBand.label}. This is our assessment rather than an official figure, and the six factors behind it are set out in full.`,
+        sources: [{ label: "Russia pressure", href: "/threat" }],
+      };
+    case "crossings": {
+      const change = crossingsYearToDate.comparisons[0].change;
+      return {
+        covered: true,
+        answer: `${crossingsYearToDate.total.toLocaleString("en-GB")} people have crossed the Channel in small boats so far in 2026, ${Math.abs(change)}% ${change < 0 ? "lower" : "higher"} than the same point in 2025. Home Office figures.`,
+        sources: [{ label: "Immigration tracker", href: "/immigration" }],
+      };
+    }
+    case "pm-approval": {
+      const pm = primeMinisterRatings[0];
+      return {
+        covered: true,
+        answer: `The Prime Minister's net approval is ${pm.net != null && pm.net > 0 ? "+" : ""}${pm.net}, with ${pm.approve}% approving and ${pm.disapprove}% disapproving.`,
+        sources: [{ label: "The Prime Minister", href: "/prime-minister" }],
+      };
+    }
+    case "election-date":
+      return {
+        covered: true,
+        answer:
+          "The next general election must be held by 15 August 2029 at the latest. The full timetable, and the other elections due before it, are on the elections page.",
+        sources: [{ label: "Upcoming elections", href: "/elections" }],
+      };
+  }
+}
+
+/* ── Parties and their positions ────────────────────────────────────────── */
+
+function partyOnArea(slug: string, area: PolicyArea): Answer {
+  const party = partyBySlug[slug as keyof typeof partyBySlug];
+  const name = areaName.get(area) ?? area;
+  const policy = party.policies.find((p) => p.area === area);
+
+  if (!policy) {
+    return {
+      covered: true,
+      answer: `We haven't been able to source a ${party.shortName} position on ${name.toLowerCase()} that we're confident enough to publish. The row is left blank on their page rather than filled with a guess — and that may be our gap as much as theirs.`,
+      sources: [{ label: `${party.shortName} — party page`, href: `/parties/${party.slug}` }],
+    };
+  }
+
+  const sources: Source[] = [
+    { label: `${party.shortName} — ${name}`, href: `/parties/${party.slug}` },
   ];
+  if (policy.source) sources.push({ label: policy.source.label, href: policy.source.url });
+
+  return {
+    covered: true,
+    answer: `${party.shortName} on ${name.toLowerCase()}: ${policy.position}${
+      policy.caveat ? ` Worth noting: ${policy.caveat}` : ""
+    }`,
+    sources,
+  };
 }
 
-let cached: Passage[] | null = null;
+/** Every party on one subject — the comparison, in spectrum order. */
+function allPartiesOnArea(area: PolicyArea): Answer {
+  const name = areaName.get(area) ?? area;
+  const ordered = [...parties].sort((a, b) => a.spectrum - b.spectrum);
 
-export function corpus(): Passage[] {
-  if (!cached) {
-    cached = [
-      ...figurePassages(),
-      ...partyPassages(),
-      ...areaPassages(),
-      ...glossaryPassages(),
-      ...constituencyPassages(),
-    ];
-  }
-  return cached;
+  const lines = ordered.map((party) => {
+    const policy = party.policies.find((p) => p.area === area);
+    return `${party.shortName}: ${policy ? policy.summary : "no position we could source"}.`;
+  });
+
+  return {
+    covered: true,
+    answer: `${name}, party by party. ${lines.join(" ")}`,
+    sources: [{ label: `Compare — ${name}`, href: `/compare/${area}` }],
+  };
 }
 
-/** Words too common to carry meaning in a question about British politics. */
-const STOP = new Set([
-  "the", "a", "an", "and", "or", "of", "to", "in", "on", "for", "is", "are", "was", "were",
-  "what", "which", "who", "whom", "how", "why", "when", "where", "do", "does", "did", "can",
-  "i", "my", "me", "we", "our", "you", "your", "it", "its", "they", "their", "this", "that",
-  "about", "with", "from", "at", "by", "be", "been", "have", "has", "had", "as", "if", "so",
-  "much", "many", "any", "all", "s", "uk", "britain", "british", "politics",
-]);
-
-function tokens(text: string): string[] {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, " ")
-    .split(/\s+/)
-    .filter((word) => word.length > 1 && !STOP.has(word));
+function partyOverview(slug: string): Answer {
+  const party = partyBySlug[slug as keyof typeof partyBySlug];
+  return {
+    covered: true,
+    answer: `${party.name} is led by ${party.leader.name}. ${party.spectrumNote}`,
+    sources: [{ label: `${party.shortName} — party page`, href: `/parties/${party.slug}` }],
+  };
 }
 
-export type Match = { passage: Passage; score: number };
+/* ── Glossary ───────────────────────────────────────────────────────────── */
 
-/**
- * Plain term-overlap scoring, weighted toward rarer words.
- *
- * Deliberately simple and deliberately strict: it is better to decline a
- * question we could half-answer than to return a passage that merely shares
- * some vocabulary with it.
- */
-export function search(question: string, limit = 3): Match[] {
-  const asked = tokens(question);
-  if (!asked.length) return [];
-
-  const all = corpus();
-
-  // Document frequency, so "labour" counts for less than "leasehold".
-  const df = new Map<string, number>();
-  for (const passage of all) {
-    for (const word of new Set(tokens(passage.terms))) {
-      df.set(word, (df.get(word) ?? 0) + 1);
-    }
-  }
-
-  const scored: Match[] = [];
-  for (const passage of all) {
-    const bag = new Set(tokens(passage.terms));
-    let score = 0;
-    for (const word of asked) {
-      if (!bag.has(word)) continue;
-      const rarity = Math.log(all.length / (df.get(word) ?? all.length));
-      score += Math.max(rarity, 0.2);
-    }
-    if (score > 0) scored.push({ passage, score: score / Math.sqrt(asked.length) });
-  }
-
-  return scored.sort((a, b) => b.score - a.score).slice(0, limit);
+function glossaryIn(question: string) {
+  const haystack = normalise(question);
+  const entries = [...GLOSSARY].sort((a, b) => b.term.length - a.term.length);
+  return entries.find((entry) =>
+    [entry.term, ...(entry.aliases ?? [])].some((term) =>
+      haystack.includes(` ${normalise(term).trim()} `)
+    )
+  );
 }
 
 /**
- * The bar below which we say we do not cover something. Set by hand against
- * real questions: high enough that a stray shared word cannot trigger an
- * answer, low enough that a plainly-worded question about our own content does.
+ * "What is ILR?" wants the definition, not six parties' asylum policies —
+ * even though ILR is also an immigration keyword. A question phrased as a
+ * request for a meaning is answered from the glossary first.
  */
-export const COVERAGE_THRESHOLD = 1.15;
+const DEFINITIONAL =
+  /\b(what (is|are|does|do)|whats|meaning of|define|definition of|stands for|explain)\b/;
+
+/* ── The router ─────────────────────────────────────────────────────────── */
+
+export function answer(question: string): Answer {
+  if (!tokenise(question).length) return NOT_COVERED;
+
+  const seat = seatIn(question);
+  const partySlugs = partiesIn(question);
+  const areas = areasIn(question);
+  const figures = figuresIn(question);
+
+  // A named seat is the most specific thing a question can contain.
+  if (seat) return seatAnswer(seat);
+
+  // Asking what a term means, with no party in the question.
+  if (DEFINITIONAL.test(normalise(question)) && !partySlugs.length) {
+    const term = glossaryIn(question);
+    if (term) {
+      return {
+        covered: true,
+        answer: `${term.term}: ${term.definition}`,
+        sources: [{ label: "How we work — glossary", href: "/how-we-work" }],
+      };
+    }
+  }
+
+  // A party and a subject together: exactly one passage, no stitching.
+  if (partySlugs.length === 1 && areas.length >= 1) {
+    return partyOnArea(partySlugs[0], areas[0]);
+  }
+
+  // Several parties named on one subject: the comparison.
+  if (partySlugs.length > 1 && areas.length >= 1) {
+    const name = areaName.get(areas[0]) ?? areas[0];
+    const lines = partySlugs.map((slug) => {
+      const party = partyBySlug[slug as keyof typeof partyBySlug];
+      const policy = party.policies.find((p) => p.area === areas[0]);
+      return `${party.shortName}: ${policy ? policy.summary : "no position we could source"}.`;
+    });
+    return {
+      covered: true,
+      answer: `${name}. ${lines.join(" ")}`,
+      sources: [{ label: `Compare — ${name}`, href: `/compare/${areas[0]}` }],
+    };
+  }
+
+  // A figure we track, asked about on its own.
+  if (figures.length && !areas.length && partySlugs.length !== 1) {
+    return figureAnswer(figures[0]);
+  }
+
+  // A subject with no party named: every party's position on it.
+  if (areas.length) {
+    // "How many Channel crossings" reads as immigration, but it is asking for
+    // the number, not the politics.
+    if (figures.length && figures[0] === "crossings") return figureAnswer("crossings");
+    return allPartiesOnArea(areas[0]);
+  }
+
+  if (figures.length) return figureAnswer(figures[0]);
+
+  // A party with no subject named.
+  if (partySlugs.length === 1) return partyOverview(partySlugs[0]);
+
+  // A term we define.
+  const entry = glossaryIn(question);
+  if (entry) {
+    return {
+      covered: true,
+      answer: `${entry.term}: ${entry.definition}`,
+      sources: [{ label: "How we work — glossary", href: "/how-we-work" }],
+    };
+  }
+
+  return NOT_COVERED;
+}

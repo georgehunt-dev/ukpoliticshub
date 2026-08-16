@@ -1,4 +1,4 @@
-import { COVERAGE_THRESHOLD, search } from "@/lib/ask";
+import { answer as answerFor } from "@/lib/ask";
 
 /**
  * The ask bar's endpoint.
@@ -67,27 +67,12 @@ export async function POST(request: Request) {
     );
   }
 
-  const matches = search(question, 3);
-  const best = matches[0];
-
-  if (!best || best.score < COVERAGE_THRESHOLD) {
-    return Response.json({
-      ok: true,
-      covered: false,
-      answer:
-        "We don't cover that yet. This bar only answers from pages we've already researched and sourced, so rather than guess at it we'd sooner say nothing — try asking about a party's position, a figure we track, or your own constituency.",
-      sources: [],
-    });
-  }
-
-  // Only passages close to the best one, so a weak third match cannot smuggle
-  // in an unrelated claim beside a strong first.
-  const kept = matches.filter((match) => match.score >= best.score * 0.6);
+  const result = answerFor(question);
 
   return Response.json({
     ok: true,
-    covered: true,
-    answer: kept.map((match) => match.passage.text).join(" "),
-    sources: kept.map((match) => ({ label: match.passage.label, href: match.passage.href })),
+    covered: result.covered,
+    answer: result.answer,
+    sources: result.sources,
   });
 }
