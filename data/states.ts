@@ -1,4 +1,5 @@
 import type { Source, ThreatFactor } from "@/lib/types";
+import type { PhotoSlug } from "@/lib/photos";
 import { russiaCaveat, russiaFactors, RUSSIA_ASSESSED_ON } from "@/data/threat";
 
 /**
@@ -24,6 +25,12 @@ import { russiaCaveat, russiaFactors, RUSSIA_ASSESSED_ON } from "@/data/threat";
 export type Assessment = {
   slug: string;
   name: string;
+  /**
+   * A civic landmark, not anything loaded. A threat assessment illustrated
+   * with soldiers or flags editorialises before a word has been read.
+   */
+  photo: PhotoSlug;
+  photoAlt: string;
   /** "threat" scores pressure on the UK; "partnership" scores what the UK can rely on. */
   kind: "threat" | "partnership";
   /** One sentence for the index row. */
@@ -490,6 +497,8 @@ export const assessments: Assessment[] = [
   {
     slug: "russia",
     name: "Russia",
+    photo: "russia",
+    photoAlt: "The walls of the Moscow Kremlin and the Spasskaya Tower",
     kind: "threat",
     summary: "Sustained grey-zone pressure on infrastructure, at sea and online.",
     standfirst:
@@ -518,6 +527,8 @@ export const assessments: Assessment[] = [
   {
     slug: "iran",
     name: "Iran",
+    photo: "iran",
+    photoAlt: "The Azadi Tower in Tehran",
     kind: "threat",
     summary: "The most direct pressure of the three: plots against people living here.",
     standfirst:
@@ -538,6 +549,8 @@ export const assessments: Assessment[] = [
   {
     slug: "china",
     name: "China",
+    photo: "china",
+    photoAlt: "The Great Hall of the People, Beijing",
     kind: "threat",
     summary: "Broad espionage and cyber activity — but no top-tier UK designation.",
     standfirst:
@@ -556,6 +569,8 @@ export const assessments: Assessment[] = [
   {
     slug: "united-states",
     name: "United States",
+    photo: "united-states",
+    photoAlt: "The United States Capitol, Washington DC",
     kind: "partnership",
     summary: "Institutionally deep, politically strained.",
     standfirst:
@@ -566,6 +581,8 @@ export const assessments: Assessment[] = [
   {
     slug: "nato",
     name: "NATO",
+    photo: "nato",
+    photoAlt: "NATO headquarters, Brussels",
     kind: "partnership",
     summary: "A leading contributor on a stated path to the new spending target.",
     standfirst:
@@ -576,6 +593,8 @@ export const assessments: Assessment[] = [
   {
     slug: "europe",
     name: "France & the EU",
+    photo: "europe-eu",
+    photoAlt: "The Berlaymont building, seat of the European Commission",
     kind: "partnership",
     summary: "Treaty ties with France hold; the EU reset has stalled on procurement.",
     standfirst:

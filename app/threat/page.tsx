@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import AssessmentCard from "@/components/AssessmentCard";
 import StatesOverview from "@/components/StatesOverview";
 import ThreatPanel from "@/components/ThreatPanel";
-import { partnerships, STATES_CAVEAT, threats } from "@/data/states";
+import { STATES_CAVEAT } from "@/data/states";
 
 export const metadata: Metadata = {
   title: "Threats & alliances",
@@ -17,27 +16,9 @@ export default function ThreatPage() {
     <div className="shell py-11">
       <ThreatPanel />
 
-      <div className="mt-14 border-t-2 border-ink pt-8">
+      <div className="mt-11">
         <StatesOverview />
       </div>
-
-      <section className="mt-12">
-        <h2 className="font-display text-2xl leading-tight">The threats in full</h2>
-        <div className="mt-4 space-y-6">
-          {threats.map((assessment) => (
-            <AssessmentCard key={assessment.slug} assessment={assessment} />
-          ))}
-        </div>
-      </section>
-
-      <section className="mt-12">
-        <h2 className="font-display text-2xl leading-tight">The alliances in full</h2>
-        <div className="mt-4 space-y-6">
-          {partnerships.map((assessment) => (
-            <AssessmentCard key={assessment.slug} assessment={assessment} />
-          ))}
-        </div>
-      </section>
 
       <p className="measure mt-10 border-t border-rule pt-4 text-[0.84rem] leading-relaxed text-ink-soft">
         {STATES_CAVEAT}

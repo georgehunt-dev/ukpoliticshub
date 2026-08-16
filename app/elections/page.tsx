@@ -28,6 +28,7 @@ export default function ElectionsPage() {
   return (
     <div className="shell py-11">
       <SectionImage
+        as="h1"
         photo="polling-station"
         eyebrow="The calendar"
         title="Upcoming elections"

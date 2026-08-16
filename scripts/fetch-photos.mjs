@@ -7,6 +7,10 @@
  * free licences only, no fair-use material.
  */
 import fs from "node:fs/promises";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
+
+const run = promisify(execFile);
 import path from "node:path";
 
 const UA = "ukpolitics.hub/1.0 (photo fetcher; contact: hello@ukpolitics.hub)";
@@ -90,6 +94,36 @@ const PHOTOS = {
     use: "Constituency pages — Northern Ireland",
     position: "50% 55%",
   },
+  russia: {
+    file: "Moscow Kremlin walls and the Spasskaya Tower (19340893964).jpg",
+    use: "Threat assessment — Russia",
+    position: "50% 55%",
+  },
+  iran: {
+    file: "Azadi Tower, Tehran.jpg",
+    use: "Threat assessment — Iran",
+    position: "50% 50%",
+  },
+  china: {
+    file: "Great Hall of the People (20200825114146).jpg",
+    use: "Threat assessment — China",
+    position: "50% 55%",
+  },
+  "united-states": {
+    file: "Capitol Building Full View.jpg",
+    use: "Alliance assessment — United States",
+    position: "50% 55%",
+  },
+  nato: {
+    file: "New HQ NATO 7.jpg",
+    use: "Alliance assessment — NATO",
+    position: "50% 50%",
+  },
+  "europe-eu": {
+    file: "Berlaymont building 2022.jpg",
+    use: "Alliance assessment — France & the EU",
+    position: "50% 45%",
+  },
 
 };
 
@@ -150,6 +184,11 @@ for (const [slug, spec] of Object.entries(PHOTOS)) {
     const ext = (src.match(/\.(jpe?g|png)$/i)?.[1] || "jpg").toLowerCase().replace("jpeg", "jpg");
     const buf = Buffer.from(await (await get(src)).arrayBuffer());
     await fs.writeFile(path.join(OUT_DIR, `${slug}.${ext}`), buf);
+
+    // Downloads are full-resolution masters — several MB each. Re-running this
+    // script used to silently undo any compression done afterwards, so the
+    // resize happens here instead of being remembered as a manual step.
+    await run("sips", ["-Z", "2000", "-s", "formatOptions", "68", out, "--out", out]).catch(() => {});
 
     results[slug] = {
       slug,

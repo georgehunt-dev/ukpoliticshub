@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-16T12:28:03.798Z",
+  "fetchedAt": "2026-08-16T20:21:54.404Z",
   "photos": {
     "downing-street": {
       "slug": "downing-street",
@@ -210,6 +210,90 @@
       "descriptionUrl": "https://commons.wikimedia.org/wiki/File:County_Antrim_-_Giant%27s_Causeway_02.jpg",
       "width": 2000,
       "height": 1331
+    },
+    "russia": {
+      "slug": "russia",
+      "file": "/img/photos/russia.jpg",
+      "use": "Threat assessment — Russia",
+      "position": "50% 55%",
+      "commonsFile": "Moscow Kremlin walls and the Spasskaya Tower (19340893964).jpg",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "author": "Jorge Láscar from Melbourne, Australia",
+      "description": "The Moscow Kremlin (Russian: Моско́вский Кремль, tr. Moskovskiy Kreml), usually referred to as the Kremlin, is a fortified complex at the heart of Moscow, overlooking the Moskva River to the south, Saint Basil's Cathedral and Red Square to ",
+      "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Moscow_Kremlin_walls_and_the_Spasskaya_Tower_(19340893964).jpg",
+      "width": 2000,
+      "height": 1335
+    },
+    "iran": {
+      "slug": "iran",
+      "file": "/img/photos/iran.jpg",
+      "use": "Threat assessment — Iran",
+      "position": "50% 50%",
+      "commonsFile": "Azadi Tower, Tehran.jpg",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Bernard Gagnon",
+      "description": "Azadi Tower, Tehran, Iran",
+      "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Azadi_Tower,_Tehran.jpg",
+      "width": 2000,
+      "height": 1333
+    },
+    "china": {
+      "slug": "china",
+      "file": "/img/photos/china.jpg",
+      "use": "Threat assessment — China",
+      "position": "50% 55%",
+      "commonsFile": "Great Hall of the People (20200825114146).jpg",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "N509FZ",
+      "description": "80-400 is not suitable for buildings around the square...",
+      "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Great_Hall_of_the_People_(20200825114146).jpg",
+      "width": 2000,
+      "height": 1333
+    },
+    "united-states": {
+      "slug": "united-states",
+      "file": "/img/photos/united-states.jpg",
+      "use": "Alliance assessment — United States",
+      "position": "50% 55%",
+      "commonsFile": "Capitol Building Full View.jpg",
+      "licence": "Public domain",
+      "licenceUrl": null,
+      "author": "Noclip",
+      "description": "The western front of the United States Capitol . The Capitol serves as the seat of government for the United States Congress , the legislative branch of the U.S. federal government . It is located in Washington, D.C. , on top of Capitol Hil",
+      "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Capitol_Building_Full_View.jpg",
+      "width": 2000,
+      "height": 857
+    },
+    "nato": {
+      "slug": "nato",
+      "file": "/img/photos/nato.jpg",
+      "use": "Alliance assessment — NATO",
+      "position": "50% 50%",
+      "commonsFile": "New HQ NATO 7.jpg",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Swadim",
+      "description": "NATO Headquarters in Brussels .",
+      "descriptionUrl": "https://commons.wikimedia.org/wiki/File:New_HQ_NATO_7.jpg",
+      "width": 2000,
+      "height": 1500
+    },
+    "europe-eu": {
+      "slug": "europe-eu",
+      "file": "/img/photos/europe-eu.jpg",
+      "use": "Alliance assessment — France & the EU",
+      "position": "50% 45%",
+      "commonsFile": "Berlaymont building 2022.jpg",
+      "licence": "CC BY 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+      "author": "Euro Pictures",
+      "description": "Berlaymont building European flag European Union European Commission headquarters Schuman area Brussels 2022",
+      "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Berlaymont_building_2022.jpg",
+      "width": 2000,
+      "height": 1350
     }
   }
 }

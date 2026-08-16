@@ -12,6 +12,7 @@ export default function PrivacyPage() {
   return (
     <div className="mx-auto max-w-3xl px-5 py-11">
       <SectionHeading
+        as="h1"
         eyebrow="Data"
         title="Privacy and cookies"
         standfirst="Short, because there is not much to tell. This site collects very little and sells nothing."

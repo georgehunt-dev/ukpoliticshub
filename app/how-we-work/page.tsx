@@ -17,6 +17,7 @@ export default function MethodologyPage() {
   return (
     <div className="mx-auto max-w-4xl px-5 py-11">
       <SectionHeading
+        as="h1"
         eyebrow="How this site works"
         title="Methodology"
         standfirst="A site that promises both sides has to show its workings. This page sets out how every judgement on ukpoliticshub is made — and, just as importantly, what each method cannot tell you."

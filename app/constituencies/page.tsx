@@ -56,6 +56,7 @@ export default function ConstituenciesPage() {
   return (
     <div>
       <SectionImage
+        as="h1"
         photo="polling-station"
         eyebrow="Your area"
         title="Your constituency"

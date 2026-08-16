@@ -32,6 +32,7 @@ export default async function NewsPage() {
     <div className="shell py-11">
       <NewsStructuredData items={items} dateModified={fetchedAt} />
       <SectionHeading
+        as="h1"
         eyebrow="The papers"
         title="The news, by topic"
         standfirst="Everything British politics is arguing about today, sorted by subject. Each story shows which masthead ran it and where that masthead sits on the political spectrum — so you can read the same event from both directions."

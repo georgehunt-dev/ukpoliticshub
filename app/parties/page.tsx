@@ -22,6 +22,7 @@ export default function PartiesPage() {
   return (
     <div className="shell py-11">
       <SectionHeading
+        as="h1"
         eyebrow="Who they are"
         title="The six parties"
         standfirst="Ordered by current polling average. Each dossier covers leadership, stated policy, where the party sits on the spectrum, what it can credibly claim, and what is fairly held against it."

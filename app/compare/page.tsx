@@ -17,6 +17,7 @@ export default function CompareIndex() {
   return (
     <div className="mx-auto max-w-5xl px-5 py-11">
       <SectionHeading
+        as="h1"
         eyebrow="Side by side"
         title="Compare the parties"
         standfirst="All six answer the same ten questions, so their answers can be read against each other rather than one at a time. Pick an issue, or put two parties head to head."

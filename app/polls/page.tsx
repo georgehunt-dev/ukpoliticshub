@@ -16,6 +16,7 @@ export default function PollsPage() {
   return (
     <div className="shell py-11">
       <SectionHeading
+        as="h1"
         eyebrow="Behind the average"
         title="The polls themselves"
         standfirst="The rolling average is only as good as what sits under it. Every poll in it is listed here with its fieldwork dates, and each links to the pollster's own write-up so any figure can be checked at source."

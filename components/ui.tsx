@@ -7,18 +7,26 @@ export function SectionHeading({
   title,
   standfirst,
   action,
+  /**
+   * Defaults to h2, because most of these introduce a section inside a page.
+   * Where the heading *is* the page title, pass "h1" — eleven pages were
+   * shipping without one, which on a site whose growth plan is search is a
+   * real cost rather than a nicety.
+   */
+  as: Heading = "h2",
 }: {
   eyebrow: string;
   title: string;
   standfirst?: string;
   action?: React.ReactNode;
+  as?: "h1" | "h2";
 }) {
   return (
     <header className="rule-gold pt-4">
       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
         <div>
           <p className="eyebrow">{eyebrow}</p>
-          <h2 className="mt-1 text-3xl leading-tight sm:text-4xl">{title}</h2>
+          <Heading className="mt-1 text-3xl leading-tight sm:text-4xl">{title}</Heading>
         </div>
         {action}
       </div>

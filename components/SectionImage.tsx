@@ -14,6 +14,13 @@ export default function SectionImage({
   alt,
   height = "h-60 sm:h-72",
   action,
+  /**
+   * Defaults to h2 because this band usually introduces a section inside a
+   * page that already has its own h1. Where the band *is* the page title —
+   * the state assessments — pass "h1" so the page is not published without
+   * one.
+   */
+  as: Heading = "h2",
 }: {
   photo: PhotoSlug;
   eyebrow: string;
@@ -22,6 +29,7 @@ export default function SectionImage({
   alt: string;
   height?: string;
   action?: React.ReactNode;
+  as?: "h1" | "h2";
 }) {
   const photo = getPhoto(slug);
 
@@ -70,7 +78,7 @@ export default function SectionImage({
           <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[color:var(--paper)]/70">
             {eyebrow}
           </p>
-          <h2 className="mt-1.5 font-display text-3xl leading-none sm:text-5xl">{title}</h2>
+          <Heading className="mt-1.5 font-display text-3xl leading-none sm:text-5xl">{title}</Heading>
           {standfirst ? (
             <p className="mt-2.5 max-w-2xl text-[0.88rem] leading-relaxed text-[color:var(--paper)]/85">
               {standfirst}

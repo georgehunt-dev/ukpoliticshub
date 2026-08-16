@@ -16,6 +16,7 @@ export default function ColophonPage() {
   return (
     <div className="mx-auto max-w-4xl px-5 py-11">
       <SectionHeading
+        as="h1"
         eyebrow="Credits"
         title="Colophon"
         standfirst="Every photograph on this site is freely licensed and credited to its author. If a credit here is wrong, it is our error and we will correct it."
