@@ -54,8 +54,10 @@ export default function PollDetail() {
           </p>
         </div>
 
-        {/* Underlying polls */}
-        <div>
+        {/* Underlying polls. min-w-0 is load-bearing: grid children default to
+            min-width:auto, so without it the 560px table below stretches this
+            column and drags the whole page sideways on a phone. */}
+        <div className="min-w-0">
           <p className="eyebrow">Every poll in the average</p>
           <h2 className="mt-1 font-display text-3xl leading-tight sm:text-4xl">
             The polls themselves
