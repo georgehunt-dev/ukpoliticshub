@@ -6,7 +6,8 @@
 const UA = "ukpolitics.hub/1.0 (photo sourcing; contact: hello@ukpolitics.hub)";
 
 const QUERIES = {
-  cliffs: "White Cliffs of Dover English Channel",
+  england: "Cotswolds village England landscape",
+  "northern-ireland": "Giants Causeway County Antrim",
 };
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

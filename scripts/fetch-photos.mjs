@@ -70,7 +70,27 @@ const PHOTOS = {
     file: "Royal Courts of Justice exterior - 01.jpg",
     use: "News topic — law and order",
     position: "50% 30%",
+  },  england: {
+    file: "Castle combe cotswolds.jpg",
+    use: "Constituency pages — England",
+    position: "50% 55%",
   },
+  scotland: {
+    file: "Near Torridon, Scotland (10500155186).jpg",
+    use: "Constituency pages — Scotland",
+    position: "50% 50%",
+  },
+  wales: {
+    file: "Hay making in the Dyfi Valley near Mallwyd.jpg",
+    use: "Constituency pages — Wales",
+    position: "50% 55%",
+  },
+  "northern-ireland": {
+    file: "County Antrim - Giant's Causeway 02.jpg",
+    use: "Constituency pages — Northern Ireland",
+    position: "50% 55%",
+  },
+
 };
 
 

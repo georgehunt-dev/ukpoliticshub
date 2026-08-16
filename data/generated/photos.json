@@ -1,10 +1,10 @@
 {
-  "fetchedAt": "2026-08-14T11:51:10.759Z",
+  "fetchedAt": "2026-08-16T12:28:03.798Z",
   "photos": {
     "downing-street": {
       "slug": "downing-street",
       "file": "/img/photos/downing-street.jpg",
-      "use": "Front page hero \u2014 The Race for No.10",
+      "use": "Front page hero — The Race for No.10",
       "position": "50% 42%",
       "commonsFile": "10 Downing Street (geograph 5460596).jpg",
       "licence": "CC BY-SA 2.0",
@@ -52,7 +52,7 @@
       "licence": "CC BY-SA 3.0",
       "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
       "author": "Diliff",
-      "description": "The view of the eastern fa\u00e7ade of Buckingham Palace and the Victoria Memorial, seen from the gardens.",
+      "description": "The view of the eastern façade of Buckingham Palace and the Victoria Memorial, seen from the gardens.",
       "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Buckingham_Palace_from_gardens,_London,_UK_-_Diliff.jpg",
       "width": 2000,
       "height": 1284
@@ -88,7 +88,7 @@
     "dover": {
       "slug": "dover",
       "file": "/img/photos/dover.jpg",
-      "use": "News topic \u2014 immigration and asylum",
+      "use": "News topic — immigration and asylum",
       "position": "50% 45%",
       "commonsFile": "South Foreland Lighthouse and cliffs from Strait of Dover 1.jpg",
       "licence": "CC BY-SA 4.0",
@@ -102,7 +102,7 @@
     "economy": {
       "slug": "economy",
       "file": "/img/photos/economy.jpg",
-      "use": "News topic \u2014 economy and tax",
+      "use": "News topic — economy and tax",
       "position": "50% 35%",
       "commonsFile": "Bank of England & the City (49121788047).jpg",
       "licence": "CC BY 2.0",
@@ -116,7 +116,7 @@
     "health": {
       "slug": "health",
       "file": "/img/photos/health.jpg",
-      "use": "News topic \u2014 health and the NHS",
+      "use": "News topic — health and the NHS",
       "position": "50% 40%",
       "commonsFile": "St. Thomas' Hospital - London - NHS.jpg",
       "licence": "CC BY 2.0",
@@ -130,7 +130,7 @@
     "energy": {
       "slug": "energy",
       "file": "/img/photos/energy.jpg",
-      "use": "News topic \u2014 energy and environment",
+      "use": "News topic — energy and environment",
       "position": "50% 50%",
       "commonsFile": "Barrow Offshore wind turbines NR.jpg",
       "licence": "CC BY-SA 3.0",
@@ -144,7 +144,7 @@
     "justice": {
       "slug": "justice",
       "file": "/img/photos/justice.jpg",
-      "use": "News topic \u2014 law and order",
+      "use": "News topic — law and order",
       "position": "50% 30%",
       "commonsFile": "Royal Courts of Justice exterior - 01.jpg",
       "licence": "CC BY-SA 4.0",
@@ -154,6 +154,62 @@
       "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Royal_Courts_of_Justice_exterior_-_01.jpg",
       "width": 2000,
       "height": 1333
+    },
+    "england": {
+      "slug": "england",
+      "file": "/img/photos/england.jpg",
+      "use": "Constituency pages — England",
+      "position": "50% 55%",
+      "commonsFile": "Castle combe cotswolds.jpg",
+      "licence": "CC BY-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "author": "Saffron Blaze",
+      "description": "Castle Combe is a small Cotswold village in Wiltshire, England. It is renowned for its attractiveness and for fine buildings including the medieval church. More recently it was the setting for the movie War Horse .",
+      "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Castle_combe_cotswolds.jpg",
+      "width": 2000,
+      "height": 1429
+    },
+    "scotland": {
+      "slug": "scotland",
+      "file": "/img/photos/scotland.jpg",
+      "use": "Constituency pages — Scotland",
+      "position": "50% 50%",
+      "commonsFile": "Near Torridon, Scotland (10500155186).jpg",
+      "licence": "CC BY-SA 2.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "author": "Andrew Smith from Seattle, WA, USA",
+      "description": "Note the truck in the bottom left for scale.",
+      "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Near_Torridon,_Scotland_(10500155186).jpg",
+      "width": 2000,
+      "height": 1333
+    },
+    "wales": {
+      "slug": "wales",
+      "file": "/img/photos/wales.jpg",
+      "use": "Constituency pages — Wales",
+      "position": "50% 55%",
+      "commonsFile": "Hay making in the Dyfi Valley near Mallwyd.jpg",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Osian Roberts",
+      "description": "This photo illustrates the juxtaposition of human activities (sheep farming and residential areas in the foreground; plantation forestry in the mountainous background) within the semi-natural landscape of the Dyfi Valley near Mallwyd. The a",
+      "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Hay_making_in_the_Dyfi_Valley_near_Mallwyd.jpg",
+      "width": 2000,
+      "height": 780
+    },
+    "northern-ireland": {
+      "slug": "northern-ireland",
+      "file": "/img/photos/northern-ireland.jpg",
+      "use": "Constituency pages — Northern Ireland",
+      "position": "50% 55%",
+      "commonsFile": "County Antrim - Giant's Causeway 02.jpg",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+      "author": "P. Hughes",
+      "description": "Giant's Causeway, County Antrim, Northern Ireland",
+      "descriptionUrl": "https://commons.wikimedia.org/wiki/File:County_Antrim_-_Giant%27s_Causeway_02.jpg",
+      "width": 2000,
+      "height": 1331
     }
   }
 }

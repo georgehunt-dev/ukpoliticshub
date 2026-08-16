@@ -29,7 +29,11 @@ export type PhotoSlug =
   | "economy"
   | "health"
   | "energy"
-  | "justice";
+  | "justice"
+  | "england"
+  | "scotland"
+  | "wales"
+  | "northern-ireland";
 
 export function getPhoto(slug: PhotoSlug): Photo | undefined {
   return photos[slug];

@@ -81,7 +81,10 @@ export default function SectionImage({
       </div>
 
       {photo ? (
-        <span className="absolute right-2 top-2 text-[0.6rem] text-[color:var(--paper)]/45">
+        <span
+          className="absolute right-2 top-2 text-[0.6rem] text-[color:var(--paper)]/70"
+          style={{ textShadow: "0 1px 4px rgba(8,16,30,0.9)" }}
+        >
           {credit(photo)}
         </span>
       ) : null}
