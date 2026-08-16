@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import ElectionsStrip from "@/components/ElectionsStrip";
 import EmailSignup from "@/components/EmailSignup";
@@ -7,6 +8,7 @@ import KeyIndicators from "@/components/KeyIndicators";
 import NewsDigest from "@/components/NewsDigest";
 import StartHere from "@/components/StartHere";
 import { SectionHeading } from "@/components/ui";
+import { getPhoto, type PhotoSlug } from "@/lib/photos";
 
 /** Rebuilt at most every 10 minutes; the scheduled refresh keeps it warmer
  *  than that. See DEPLOY.md and app/api/revalidate. */
@@ -46,45 +48,65 @@ export default function Home() {
  * skip. Each of those sections now has its own page, and this is the index to
  * them: one tap to any of it, and the front page stays short enough to read.
  */
-const SECTIONS: { href: string; title: string; blurb: string }[] = [
+const SECTIONS: {
+  href: string;
+  title: string;
+  blurb: string;
+  photo: PhotoSlug;
+  alt: string;
+}[] = [
   {
     href: "/polls",
     title: "The polls themselves",
     blurb:
       "Every poll inside the rolling average, with fieldwork dates and a link to each pollster's own write-up.",
+    photo: "polling-station",
+    alt: "A polling station sign outside a British polling place",
   },
   {
     href: "/immigration",
     title: "Immigration",
     blurb:
       "Channel crossings year-to-date and by year, the asylum backlog, and where each party stands.",
+    photo: "dover",
+    alt: "The White Cliffs of Dover and South Foreland Lighthouse, seen from the sea",
   },
   {
     href: "/threat",
     title: "Threat level",
     blurb:
       "The official terrorism level, unadjusted, and our own six-factor read on Russian pressure.",
+    photo: "royal-navy",
+    alt: "HMS Kent, a Royal Navy Type 23 frigate, under way",
   },
   {
     href: "/prime-minister",
     title: "The Prime Minister",
     blurb: "Approval, the best-prime-minister head-to-head, and how the government is standing.",
+    photo: "downing-street",
+    alt: "The front door of 10 Downing Street",
   },
   {
     href: "/parties",
     title: "The six parties",
     blurb:
       "Policies, leadership, spectrum position, what each can credibly claim and what is fairly held against it.",
+    photo: "buckingham-palace",
+    alt: "The eastern façade of Buckingham Palace",
   },
   {
     href: "/compare",
     title: "Compare the parties",
     blurb: "Every party answering the same ten questions, in the same order, side by side.",
+    photo: "westminster",
+    alt: "The Palace of Westminster seen across the Thames from the South Bank",
   },
   {
     href: "/briefing",
     title: "Today's briefing",
     blurb: "About five minutes, both sides of every argument, dated so you know how fresh it is.",
+    photo: "london",
+    alt: "A panorama of the London skyline",
   },
 ];
 
@@ -98,29 +120,51 @@ function GoDeeper() {
       />
 
       <ul className="mt-5 border-y border-rule">
-        {SECTIONS.map((section) => (
-          <li key={section.href} className="border-b border-rule last:border-b-0">
-            <Link
-              href={section.href}
-              className="group flex items-baseline gap-4 py-4 transition-colors hover:bg-[color:var(--paper-sunk)]/55 sm:py-5"
-            >
-              <span className="min-w-0 flex-1">
-                <span className="block font-display text-xl leading-tight group-hover:text-oxblood sm:text-2xl">
-                  {section.title}
-                </span>
-                <span className="mt-1 block text-[0.92rem] leading-relaxed text-ink-soft">
-                  {section.blurb}
-                </span>
-              </span>
-              <span
-                aria-hidden
-                className="shrink-0 font-display text-2xl text-ink-faint transition-transform group-hover:translate-x-0.5 group-hover:text-oxblood"
+        {SECTIONS.map((section) => {
+          const photo = getPhoto(section.photo);
+          return (
+            <li key={section.href} className="border-b border-rule last:border-b-0">
+              <Link
+                href={section.href}
+                className="group flex items-center gap-4 py-4 transition-colors hover:bg-[color:var(--paper-sunk)]/55 sm:gap-6 sm:py-5"
               >
-                &rsaquo;
-              </span>
-            </Link>
-          </li>
-        ))}
+                {photo ? (
+                  <span className="relative h-20 w-20 shrink-0 overflow-hidden bg-ink sm:h-24 sm:w-36 lg:h-28 lg:w-48">
+                    <Image
+                      src={photo.file}
+                      alt={section.alt}
+                      fill
+                      sizes="(max-width: 640px) 80px, (max-width: 1024px) 144px, 192px"
+                      className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                      style={{
+                        objectPosition: photo.position,
+                        // Matches SectionImage: these are overcast British
+                        // exteriors and read muddy without a small lift.
+                        filter: "brightness(1.18) contrast(0.97) saturate(1.06)",
+                      }}
+                    />
+                  </span>
+                ) : null}
+
+                <span className="min-w-0 flex-1">
+                  <span className="block font-display text-xl leading-tight group-hover:text-oxblood sm:text-2xl">
+                    {section.title}
+                  </span>
+                  <span className="mt-1 block max-w-2xl text-[0.92rem] leading-relaxed text-ink-soft">
+                    {section.blurb}
+                  </span>
+                </span>
+
+                <span
+                  aria-hidden
+                  className="shrink-0 font-display text-2xl text-ink-faint transition-transform group-hover:translate-x-0.5 group-hover:text-oxblood"
+                >
+                  &rsaquo;
+                </span>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
