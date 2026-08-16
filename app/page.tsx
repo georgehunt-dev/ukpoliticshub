@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ConstituencyBand from "@/components/ConstituencyBand";
 import ElectionsStrip from "@/components/ElectionsStrip";
 import EmailSignup from "@/components/EmailSignup";
 import HeroRace from "@/components/HeroRace";
@@ -24,6 +25,7 @@ export default function Home() {
       <HeroRace />
       <KeyIndicators today={today()} />
       <StartHere />
+      <ConstituencyBand />
 
       <div className="mx-auto max-w-6xl space-y-14 px-5 py-12">
         <Suspense fallback={<NewsSkeleton />}>
@@ -100,6 +102,14 @@ const SECTIONS: {
     blurb: "Every party answering the same ten questions, in the same order, side by side.",
     photo: "westminster",
     alt: "The Palace of Westminster seen across the Thames from the South Bank",
+  },
+  {
+    href: "/constituencies",
+    title: "Your constituency",
+    blurb:
+      "All 650 seats: your MP, the full 2024 result with every candidate, turnout and the margin.",
+    photo: "england",
+    alt: "Cottages and a bridge in a village in the Cotswolds",
   },
   {
     href: "/briefing",

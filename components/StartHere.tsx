@@ -59,6 +59,15 @@ export default function StartHere() {
   );
 }
 
+/**
+ * A position on the scale, not a verdict on the party.
+ *
+ * The top band deliberately reads "Furthest right" rather than "Far right":
+ * the first describes where we have placed a party relative to the other five,
+ * which is ours to say; the second is a contested classification. Where that
+ * classification is relevant it appears on the party's own page, attributed to
+ * the people making it and printed alongside the party's rejection of it.
+ */
 function spectrumWord(value: number): string {
   if (value <= -7) return "Left";
   if (value <= -3) return "Centre-left";
@@ -66,5 +75,5 @@ function spectrumWord(value: number): string {
   if (value < 4) return "Centre";
   if (value < 7) return "Centre-right";
   if (value < 9) return "Right";
-  return "Far right";
+  return "Furthest right";
 }
