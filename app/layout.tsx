@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import ConsentGate from "@/components/ConsentGate";
+import SignupModal from "@/components/SignupModal";
 import SiteFooter from "@/components/SiteFooter";
 import { SiteStructuredData } from "@/components/StructuredData";
 import SiteHeader from "@/components/SiteHeader";
@@ -63,6 +64,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Analytics />
         {/* GA4 is loaded only if the visitor accepts. */}
         <ConsentGate gaId={GA_ID} />
+        {/* Shown once, well after arrival, and never again once answered. */}
+        <SignupModal />
       </body>
     </html>
   );
