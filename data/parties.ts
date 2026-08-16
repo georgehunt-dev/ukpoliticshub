@@ -464,7 +464,7 @@ export const parties: Party[] = [
     colour: "#0087dc",
     spectrum: 3,
     spectrumNote:
-      "Centre-right to right. Squeezed between a Labour government and a Reform UK party occupying much of its former ground.",
+      "Centre-right. Squeezed between a Labour government and a Reform UK party occupying much of its former ground, which is why we place it nearer the centre than Reform rather than alongside it.",
     spectrumGloss: "Squeezed between a Labour government and Reform.",
     founded: "1834",
     mps: "121 seats won at the 2024 general election, reduced since by defections",
