@@ -80,9 +80,9 @@ export default function MorningEmail() {
   }
 
   return (
-    <aside className="flex flex-col border-t border-rule pt-5 lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0">
+    <aside className="flex flex-col border-t border-rule pt-5 lg:h-full lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0">
       {photo ? (
-        <div className="relative h-28 overflow-hidden bg-ink sm:h-32">
+        <div className="relative h-28 shrink-0 overflow-hidden bg-ink sm:h-32 lg:h-auto lg:min-h-32 lg:flex-1">
           <Image
             src={photo.file}
             alt="The London skyline at dusk, looking east along the Thames"

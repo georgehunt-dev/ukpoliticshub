@@ -26,7 +26,7 @@ export default function Home() {
           the right. On a phone the email lands directly under the race, which
           is the natural next beat rather than a footer afterthought. */}
       <div className="shell py-6">
-        <div className="grid gap-6 lg:grid-cols-[1.62fr_1fr] lg:items-start lg:gap-8">
+        <div className="grid gap-6 lg:grid-cols-[1.62fr_1fr] lg:items-stretch lg:gap-8">
           <HeroRace />
           <MorningEmail />
         </div>
