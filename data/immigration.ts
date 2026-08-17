@@ -32,13 +32,14 @@ export const crossingsYearToDate = {
   } satisfies Source,
 };
 
-/** Annual totals we can source directly. 2025's small-boat total is disputed
- *  between sources, so it is deliberately absent rather than guessed. */
+/** Final Home Office totals for each completed calendar year, as published.
+ *  The type still allows null so a year can be left blank rather than guessed
+ *  if a clean figure is ever genuinely unavailable. */
 export const crossingsByYear: { year: number; total: number | null; note?: string }[] = [
   { year: 2022, total: 45774, note: "Record year" },
   { year: 2023, total: 29437, note: "Down 36% on 2022" },
-  { year: 2024, total: 30431, note: "Up 14% on 2023" },
-  { year: 2025, total: null, note: "Sources disagree — see note below" },
+  { year: 2024, total: 36816, note: "Up 25% on 2023" },
+  { year: 2025, total: 41472, note: "Up 13% on 2024 — second highest on record" },
   { year: 2026, total: 15242, note: "Year to date, provisional" },
 ];
 
@@ -49,7 +50,7 @@ export const crossingsByYearSource: Source = {
 };
 
 export const crossingsYearNote =
-  "We show no 2025 small-boat total because published sources conflict: roughly 46,000 people were detected arriving by all unauthorised routes in 2025, of which small boats were about 89%, but that does not reconcile cleanly with the 2022 record of 45,774 small-boat arrivals. Rather than split the difference, we leave it blank.";
+  "Each completed year is the Home Office's final total for that calendar year. The 2026 row is a running year-to-date count and is not comparable with the full years above it — the two are easy to confuse, and a part-year tally read as an annual total is the mistake to watch for. The wider irregular-migration figure is larger than the small-boat figure in every year, because small boats are roughly 89% of detected irregular arrivals rather than all of them.";
 
 /** The wider system, so the headline number is not read in isolation. */
 export const asylumSystem: {
