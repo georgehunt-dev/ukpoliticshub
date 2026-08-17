@@ -4,6 +4,7 @@ import { allCompareSlugs } from "@/lib/compare";
 import { CONSTITUENCIES } from "@/lib/constituencies";
 import { assessments } from "@/data/states";
 import { subjects } from "@/data/subjects";
+import { outlets } from "@/data/news";
 import { coverageFor, MIN_INDEXABLE } from "@/lib/subjects";
 import { getNews } from "@/lib/news";
 
@@ -93,6 +94,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Feeds down: omit rather than guess at which subjects are covered.
   }
 
+  /**
+   * Outlet pages. Evergreen: "is the BBC biased" is asked every day and the
+   * answer does not decay the way a story page does.
+   */
+  const outletRoutes: MetadataRoute.Sitemap = [
+    { url: `${BASE}/news/outlets`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.8 },
+    ...outlets.map((outlet) => ({
+      url: `${BASE}/news/outlets/${outlet.id}`,
+      lastModified: now,
+      changeFrequency: "daily" as const,
+      priority: 0.7,
+    })),
+  ];
+
   const assessmentRoutes: MetadataRoute.Sitemap = assessments.map((a) => ({
     url: `${BASE}/threat/${a.slug}`,
     lastModified: now,
@@ -107,5 +122,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...constituencyRoutes,
     ...assessmentRoutes,
     ...subjectRoutes,
+    ...outletRoutes,
   ];
 }

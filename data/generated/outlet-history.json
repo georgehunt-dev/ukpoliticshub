@@ -1,0 +1,165 @@
+{
+ "days": [
+  {
+   "date": "2026-08-17",
+   "stories": 130,
+   "outlets": {
+    "novara": {
+     "total": 10,
+     "subjects": {
+      "andy-burnham": 1,
+      "labour": 1,
+      "energy": 4,
+      "nigel-farage": 2,
+      "reform-uk": 2,
+      "housing": 1
+     }
+    },
+    "guardian": {
+     "total": 12,
+     "subjects": {
+      "nigel-farage": 4,
+      "reform-uk": 4,
+      "andy-burnham": 4,
+      "labour": 4,
+      "nhs": 3,
+      "energy": 2,
+      "housing": 1,
+      "europe": 1,
+      "economy": 1
+     }
+    },
+    "mirror": {
+     "total": 12,
+     "subjects": {
+      "nigel-farage": 5,
+      "reform-uk": 5,
+      "nhs": 1,
+      "housing": 1,
+      "andy-burnham": 2,
+      "labour": 2,
+      "europe": 1,
+      "zack-polanski": 1,
+      "green-party": 1,
+      "energy": 1
+     }
+    },
+    "independent": {
+     "total": 7,
+     "subjects": {
+      "nigel-farage": 2,
+      "reform-uk": 2,
+      "energy": 1,
+      "andy-burnham": 1,
+      "labour": 1,
+      "economy": 1,
+      "housing": 1,
+      "defence": 1
+     }
+    },
+    "channel4": {
+     "total": 12,
+     "subjects": {
+      "andy-burnham": 3,
+      "labour": 3,
+      "energy": 2,
+      "defence": 1,
+      "crime": 1
+     }
+    },
+    "bbc": {
+     "total": 12,
+     "subjects": {
+      "andy-burnham": 2,
+      "labour": 2,
+      "nigel-farage": 3,
+      "reform-uk": 3,
+      "europe": 1,
+      "defence": 2
+     }
+    },
+    "sky": {
+     "total": 7,
+     "subjects": {
+      "andy-burnham": 3,
+      "labour": 3,
+      "energy": 1,
+      "nigel-farage": 2,
+      "reform-uk": 2,
+      "immigration": 1,
+      "zack-polanski": 1,
+      "green-party": 1,
+      "crime": 1
+     }
+    },
+    "ft": {
+     "total": 12,
+     "subjects": {
+      "nigel-farage": 3,
+      "reform-uk": 3,
+      "andy-burnham": 3,
+      "labour": 3,
+      "energy": 1,
+      "economy": 1,
+      "defence": 1,
+      "housing": 1
+     }
+    },
+    "sun": {
+     "total": 12,
+     "subjects": {
+      "andy-burnham": 4,
+      "labour": 4,
+      "nigel-farage": 2,
+      "reform-uk": 2,
+      "economy": 2,
+      "crime": 1,
+      "immigration": 2,
+      "housing": 1
+     }
+    },
+    "mail": {
+     "total": 12,
+     "subjects": {
+      "andy-burnham": 7,
+      "labour": 7,
+      "nigel-farage": 4,
+      "reform-uk": 4,
+      "housing": 1,
+      "economy": 3,
+      "kemi-badenoch": 1,
+      "conservatives": 1,
+      "nhs": 1,
+      "energy": 1,
+      "immigration": 1
+     }
+    },
+    "express": {
+     "total": 10,
+     "subjects": {
+      "andy-burnham": 5,
+      "labour": 5,
+      "economy": 3,
+      "nigel-farage": 2,
+      "reform-uk": 2,
+      "immigration": 1
+     }
+    },
+    "gbnews": {
+     "total": 12,
+     "subjects": {
+      "immigration": 1,
+      "andy-burnham": 6,
+      "labour": 6,
+      "nigel-farage": 4,
+      "kemi-badenoch": 1,
+      "reform-uk": 4,
+      "conservatives": 1,
+      "europe": 1
+     }
+    }
+   }
+  }
+ ],
+ "updatedAt": "2026-08-17T19:26:59.101Z"
+}

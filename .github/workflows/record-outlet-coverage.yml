@@ -1,0 +1,51 @@
+name: Record outlet coverage
+
+# Appends the day's outlet-by-subject story counts to
+# data/generated/outlet-history.json and commits it.
+#
+# The outlet pages report what a masthead chose to write about against the
+# press as a whole. One day of feeds is about a dozen stories per outlet,
+# which is noise; the figures only mean anything over a window. A day nobody
+# records is gone for good, so this runs whether or not anyone remembers.
+
+on:
+  schedule:
+    # 07:15 UTC daily, after the overnight pollster releases have landed.
+    - cron: "45 21 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: record-outlet-coverage
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Append today's average
+        run: npx tsx scripts/record-outlet-coverage.mjs
+
+      - name: Commit if the file changed
+        run: |
+          set -euo pipefail
+
+          if git diff --quiet -- data/generated/outlet-history.json; then
+            echo "No change — today is already recorded."
+            exit 0
+          fi
+
+          git config user.name "ukpoliticshub bot"
+          git config user.email "actions@github.com"
+          git add data/generated/outlet-history.json
+          git commit -m "outlet coverage for $(date -u +%Y-%m-%d)"
+          git push

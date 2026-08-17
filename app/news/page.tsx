@@ -4,7 +4,7 @@ import EmailCapture from "@/components/EmailCapture";
 import Storyline from "@/components/Storyline";
 import SubjectFinder from "@/components/SubjectFinder";
 import { NewsStructuredData } from "@/components/StructuredData";
-import { outletById } from "@/data/news";
+import { outletById, outlets } from "@/data/news";
 import { subjects } from "@/data/subjects";
 import { getNews } from "@/lib/news";
 import { coverageFor, labelFor, leanOf, subjectCounts } from "@/lib/subjects";
@@ -145,6 +145,25 @@ export default async function NewsPage() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="mt-11 border-t border-rule pt-6">
+        <h2 className="font-display text-2xl leading-tight sm:text-3xl">
+          Which papers are left wing, and which are right
+        </h2>
+        <p className="measure mt-1.5 text-[0.9rem] leading-relaxed text-ink-soft">
+          Every masthead we read on one scale — and what each actually covers, counted from its
+          own output rather than asserted.
+        </p>
+        <p className="mt-3">
+          <Link
+            href="/news/outlets"
+            className="group inline-flex items-center gap-1.5 font-body text-[0.8rem] font-semibold uppercase tracking-[0.12em] text-oxblood"
+          >
+            All {outlets.length} mastheads, left to right
+            <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
+          </Link>
+        </p>
       </section>
 
       <EmailCapture
