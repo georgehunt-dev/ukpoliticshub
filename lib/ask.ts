@@ -35,6 +35,8 @@ export type Answer = {
   covered: boolean;
   answer: string;
   sources: Source[];
+  /** Near-miss constituencies, offered for the reader to pick. Never assumed. */
+  suggestions?: Suggestion[];
 };
 
 const areaName = new Map(POLICY_AREAS.map((a) => [a.id, a.name]));
@@ -56,9 +58,80 @@ const SEATS_BY_LENGTH = [...CONSTITUENCIES]
   .filter((seat) => seat.mp)
   .sort((a, b) => b.name.length - a.name.length);
 
+/**
+ * Only exact names answer. Nothing is guessed.
+ *
+ * Fuzzy matching was tried and abandoned on the evidence: real seats score up
+ * to 0.894 against each other on character similarity — North East and North
+ * West Cambridgeshire, Edinburgh South and Edinburgh South West — while a
+ * genuine typo like "makerfeild" scores 0.667 against Makerfield. The ranges
+ * overlap, so any threshold loose enough to forgive a slip is loose enough to
+ * hand a reader the wrong MP for their area with complete confidence. On a
+ * site whose promise is that every answer is checkable, that is the worst
+ * failure available. So near misses are offered as suggestions and the reader
+ * chooses.
+ */
 function seatIn(question: string) {
   const haystack = normalise(question);
   return SEATS_BY_LENGTH.find((seat) => haystack.includes(` ${normalise(seat.name).trim()} `));
+}
+
+function bigrams(value: string): Set<string> {
+  const out = new Set<string>();
+  for (let i = 0; i < value.length - 1; i += 1) out.add(value.slice(i, i + 2));
+  return out;
+}
+
+function dice(a: Set<string>, b: Set<string>): number {
+  let shared = 0;
+  for (const gram of a) if (b.has(gram)) shared += 1;
+  return (2 * shared) / (a.size + b.size || 1);
+}
+
+const SEAT_GRAMS = SEATS_BY_LENGTH.map((seat) => {
+  const name = normalise(seat.name).trim();
+  return { seat, name, grams: bigrams(name) };
+});
+
+/** Low bar on purpose: these are offered, never asserted. */
+const SUGGEST_AT = 0.62;
+
+/**
+ * Only offer a constituency when the question is actually asking for one.
+ * Without this gate, "best recipe for lasagne" came back suggesting Wyre
+ * Forest — near enough on characters, nowhere near on meaning.
+ */
+const ASKING_ABOUT_A_SEAT =
+  /\b(mp|member of parliament|constituenc\w*|seats?|represent\w*|my area|elected)\b/;
+
+export type Suggestion = { name: string; href: string };
+
+function seatSuggestions(question: string): Suggestion[] {
+  if (!ASKING_ABOUT_A_SEAT.test(normalise(question))) return [];
+  const words = normalise(question).trim().split(" ");
+  const scored = new Map<string, { seat: (typeof CONSTITUENCIES)[number]; score: number }>();
+
+  for (let start = 0; start < words.length; start += 1) {
+    for (let length = 1; length <= 5 && start + length <= words.length; length += 1) {
+      const span = words.slice(start, start + length).join(" ");
+      if (span.length < 5) continue;
+      const spanGrams = bigrams(span);
+      for (const candidate of SEAT_GRAMS) {
+        if (Math.abs(candidate.name.length - span.length) > 6) continue;
+        const score = dice(spanGrams, candidate.grams);
+        if (score < SUGGEST_AT) continue;
+        const held = scored.get(candidate.seat.slug);
+        if (!held || score > held.score) {
+          scored.set(candidate.seat.slug, { seat: candidate.seat, score });
+        }
+      }
+    }
+  }
+
+  return [...scored.values()]
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map(({ seat }) => ({ name: seat.name, href: `/constituencies/${seat.slug}` }));
 }
 
 function seatAnswer(seat: (typeof CONSTITUENCIES)[number]): Answer {
@@ -280,6 +353,20 @@ export function answer(question: string): Answer {
       covered: true,
       answer: `${entry.term}: ${entry.definition}`,
       sources: [{ label: "How we work — glossary", href: "/how-we-work" }],
+    };
+  }
+
+  // A misspelt constituency should not dead-end. Offer, do not assume.
+  const near = seatSuggestions(question);
+  if (near.length) {
+    return {
+      covered: false,
+      answer:
+        near.length === 1
+          ? "We don't hold a constituency by that name. Did you mean this one?"
+          : "We don't hold a constituency by that name. Did you mean one of these?",
+      sources: [],
+      suggestions: near,
     };
   }
 

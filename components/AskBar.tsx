@@ -18,10 +18,18 @@ import Link from "next/link";
 
 type Source = { label: string; href: string };
 
+type Suggestion = { name: string; href: string };
+
 type State =
   | { status: "idle" }
   | { status: "asking" }
-  | { status: "answered"; answer: string; sources: Source[]; covered: boolean }
+  | {
+      status: "answered";
+      answer: string;
+      sources: Source[];
+      covered: boolean;
+      suggestions: Suggestion[];
+    }
   | { status: "error"; message: string };
 
 const EXAMPLES = [
@@ -65,6 +73,7 @@ export default function AskBar() {
           answer: data.answer,
           sources: data.sources ?? [],
           covered: data.covered !== false,
+          suggestions: data.suggestions ?? [],
         });
       } else {
         setState({ status: "error", message: data.error ?? "Something went wrong." });
@@ -152,6 +161,21 @@ export default function AskBar() {
               {state.covered ? "From our pages" : "Not covered yet"}
             </p>
             <p className="mt-2 text-[0.92rem] leading-relaxed">{state.answer}</p>
+
+            {state.suggestions.length ? (
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {state.suggestions.map((suggestion) => (
+                  <li key={suggestion.href}>
+                    <Link
+                      href={suggestion.href}
+                      className="inline-block border border-rule px-2.5 py-1 text-[0.82rem] font-medium text-ink-soft transition-colors hover:border-ink hover:text-ink"
+                    >
+                      {suggestion.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
 
             {state.sources.length ? (
               <div className="mt-3 border-t border-rule pt-2.5">

@@ -74,5 +74,6 @@ export async function POST(request: Request) {
     covered: result.covered,
     answer: result.answer,
     sources: result.sources,
+    suggestions: result.suggestions ?? [],
   });
 }
