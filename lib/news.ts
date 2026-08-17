@@ -33,13 +33,35 @@ function text(value: unknown): string {
   return "";
 }
 
-function stripHtml(value: string): string {
+/**
+ * Feeds publish entities, and not the tidy subset we used to handle.
+ *
+ * The Sun's feed alone carries &#034;, &#038;, &#039;, &#8211;, &#8216; and
+ * &#8217; — and the old list matched &#39; but not the zero-padded &#039;, so
+ * twenty apostrophes a day reached the page as literal code. Headlines were
+ * rendering as "faints &#8216;at sight of meat&#8217;".
+ *
+ * Numeric entities are decoded generically rather than enumerated, because
+ * the next feed will use one nobody listed. &amp; is decoded last so that
+ * decoding cannot manufacture a new entity from the text around it.
+ */
+function decodeEntities(value: string): string {
+  const named: Record<string, string> = {
+    "&nbsp;": " ", "&rsquo;": "\u2019", "&lsquo;": "\u2018",
+    "&ldquo;": "\u201c", "&rdquo;": "\u201d", "&quot;": '"',
+    "&apos;": "'", "&ndash;": "\u2013", "&mdash;": "\u2014", "&hellip;": "\u2026",
+    "&lt;": "<", "&gt;": ">",
+  };
+
   return value
-    .replace(/<[^>]*>/g, " ")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&#39;|&rsquo;/g, "'")
-    .replace(/&quot;|&ldquo;|&rdquo;/g, '"')
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(Number(dec)))
+    .replace(/&[a-z]+;/gi, (entity) => named[entity.toLowerCase()] ?? entity)
+    .replace(/&amp;/g, "&");
+}
+
+function stripHtml(value: string): string {
+  return decodeEntities(value.replace(/<[^>]*>/g, " "))
     .replace(/\s+/g, " ")
     .trim();
 }
