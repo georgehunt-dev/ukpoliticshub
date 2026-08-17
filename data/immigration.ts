@@ -16,13 +16,27 @@ import type { Source } from "@/lib/types";
 
 export const IMMIGRATION_AS_OF = "2026-08-14";
 
+const YEAR_TO_DATE_TOTAL = 15242;
+
+/**
+ * Percentage change from a published same-point figure to this year's, in
+ * whole points. Derived rather than stored: all three numbers are printed
+ * side by side, so a reader can check the arithmetic in their head, and a
+ * hand-written percentage silently stops matching the totals it describes the
+ * first time one of them is refreshed without the other. This is arithmetic on
+ * two published figures, not a figure of our own.
+ */
+function changeOnSamePoint(previous: number): number {
+  return Math.round(((YEAR_TO_DATE_TOTAL - previous) / previous) * 100);
+}
+
 export const crossingsYearToDate = {
-  total: 15242,
+  total: YEAR_TO_DATE_TOTAL,
   label: "People arriving by small boat in 2026 so far",
   provisional: true,
   comparisons: [
-    { label: "Same point in 2025", value: 25436, change: -43 },
-    { label: "Same point in 2024", value: 16903, change: -14 },
+    { label: "Same point in 2025", value: 25436, change: changeOnSamePoint(25436) },
+    { label: "Same point in 2024", value: 16903, change: changeOnSamePoint(16903) },
   ],
   note: "Boats successfully crossing are down 49% on last year — a bigger fall than the fall in people, meaning the boats that do cross are more crowded.",
   source: {
@@ -118,7 +132,7 @@ export const partyPositions: { party: string; position: string }[] = [
   {
     party: "labour",
     position:
-      "Enforcement co-operation with France and faster asylum processing to cut the backlog and hotel use. Points to the 43% year-on-year fall as evidence the approach is working.",
+      "Enforcement co-operation with France and faster asylum processing to cut the backlog and hotel use. Points to the year-on-year fall shown above as evidence the approach is working.",
   },
   {
     party: "reform",
