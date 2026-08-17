@@ -6,7 +6,7 @@ import ElectionsStrip from "@/components/ElectionsStrip";
 import HeroRace from "@/components/HeroRace";
 import MorningEmail from "@/components/MorningEmail";
 import KeyIndicators from "@/components/KeyIndicators";
-import NewsDigest from "@/components/NewsDigest";
+import FrontPageNews from "@/components/FrontPageNews";
 import StartHere from "@/components/StartHere";
 import { SectionHeading } from "@/components/ui";
 import { getPhoto, type PhotoSlug } from "@/lib/photos";
@@ -38,7 +38,7 @@ export default function Home() {
 
       <div className="shell space-y-14 py-12">
         <Suspense fallback={<NewsSkeleton />}>
-          <NewsDigest />
+          <FrontPageNews />
         </Suspense>
 
         <GoDeeper />
@@ -187,9 +187,9 @@ function GoDeeper() {
 
 function NewsSkeleton() {
   return (
-    <section className="panel p-8">
+    <section className="rule-gold pt-4">
       <p className="eyebrow">The papers</p>
-      <p className="mt-2 font-display text-2xl text-ink-faint">Fetching the front pages…</p>
+      <p className="mt-2 font-display text-3xl text-ink-faint">Reading the front pages…</p>
     </section>
   );
 }
