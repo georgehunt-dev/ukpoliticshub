@@ -29,7 +29,17 @@ export type PhotoSlug =
   | "economy"
   | "health"
   | "energy"
-  | "justice";
+  | "justice"
+  | "england"
+  | "scotland"
+  | "wales"
+  | "northern-ireland"
+  | "russia"
+  | "iran"
+  | "china"
+  | "united-states"
+  | "nato"
+  | "europe-eu";
 
 export function getPhoto(slug: PhotoSlug): Photo | undefined {
   return photos[slug];

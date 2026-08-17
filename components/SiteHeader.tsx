@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AskBar from "@/components/AskBar";
 import { LogoLockup } from "@/components/Logo";
 
 const NAV = [
@@ -7,13 +8,14 @@ const NAV = [
   { href: "/parties", label: "Parties" },
   { href: "/compare", label: "Compare" },
   { href: "/elections", label: "Elections" },
+  { href: "/constituencies", label: "Your area" },
   { href: "/how-we-work", label: "How we work" },
 ];
 
 export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-rule bg-[color:var(--paper)]/92 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-2.5">
+      <div className="shell flex items-center justify-between gap-6 py-2.5">
         <Link href="/" aria-label="ukpoliticshub — front page">
           <LogoLockup size={30} />
         </Link>
@@ -50,6 +52,7 @@ export default function SiteHeader() {
           ))}
         </ul>
       </nav>
+      <AskBar />
     </header>
   );
 }

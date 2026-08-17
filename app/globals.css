@@ -64,6 +64,28 @@ h1, h2, h3, h4, h5, h6, .font-display {
   letter-spacing: -0.012em;
 }
 
+/* ── Page shell ────────────────────────────────────────────────────────────
+   The width of the paper: the full screen, less a margin that grows with it.
+   The old 1152px cap left most of a modern monitor empty.
+
+   There is deliberately no max-width. Running text is what suffers from an
+   over-wide page, so it is held in separately: most blocks carry their own
+   max-w-* already, and the few that were relying on the old cap now carry
+   `.measure`. Grids, strips and photographs get the whole screen.
+   ------------------------------------------------------------------------ */
+.shell {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 2.6vw, 3.5rem);
+}
+
+/* A readable line length for running text that sits in a full-width row.
+   Most prose already has a max-w-* of its own; this is for the rows that
+   used to be held in by the old 1152px cap and now need their own. */
+.measure {
+  max-width: 78ch;
+}
+
 /* ── Typographic furniture ─────────────────────────────────────────────── */
 
 /* Small-caps section label sitting on a hairline rule, broadsheet style. */

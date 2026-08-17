@@ -5,17 +5,19 @@ import { SectionHeading } from "@/components/ui";
 import { outlets } from "@/data/news";
 import { parties } from "@/data/parties";
 import { RUSSIA_BANDS, russiaFactors, russiaScore } from "@/data/threat";
+import { PARTNERSHIP_BANDS, assessments, bandOf, scoreOf } from "@/data/states";
 
 export const metadata: Metadata = {
   title: "Methodology",
   description:
-    "How ukpoliticshub rates news outlets, places parties on the left–right spectrum, reports polling, and builds its Russia threat assessment — including what each method cannot tell you.",
+    "How ukpoliticshub rates news outlets, places parties on the left–right spectrum, reports polling, and builds its state threat and alliance assessments — including what each method cannot tell you.",
 };
 
 export default function MethodologyPage() {
   return (
     <div className="mx-auto max-w-4xl px-5 py-11">
       <SectionHeading
+        as="h1"
         eyebrow="How this site works"
         title="Methodology"
         standfirst="A site that promises both sides has to show its workings. This page sets out how every judgement on ukpoliticshub is made — and, just as importantly, what each method cannot tell you."
@@ -167,20 +169,30 @@ export default function MethodologyPage() {
 
       {/* ── Russia ──────────────────────────────────────────────────────── */}
       <section id="russia" className="mt-12 scroll-mt-24">
-        <h2 className="font-display text-3xl">The Russia assessment</h2>
+        <h2 className="font-display text-3xl">The state assessments</h2>
         <div className="mt-4 space-y-3.5 text-[0.95rem] leading-relaxed text-ink-soft">
           <p>
-            The score currently stands at{" "}
-            <strong className="font-semibold text-ink tabular">{russiaScore}/100</strong>. It
-            measures <em>sustained state-level pressure on the United Kingdom</em> — espionage,
-            sabotage, cyber operations and activity around UK infrastructure. It does not measure the
-            likelihood of open war, which remains low.
+            We publish six of these. Three measure{" "}
+            <em>sustained state-level pressure on the United Kingdom</em> — Russia, currently{" "}
+            <strong className="font-semibold text-ink tabular">{russiaScore}/100</strong>, alongside
+            Iran and China. Three measure the opposite: what the UK can currently rely on from the
+            United States, NATO, and France and the EU. None of them measures the likelihood of open
+            war, which remains low.
           </p>
           <p>
-            Six factors are each scored 0–100 on their own evidence and then weighted; the weights
-            sum to 100. Every factor on the front page expands to show the evidence behind its score
-            and links to the underlying reporting. The weights are:
+            Every one uses the same method. Each factor is scored 0–100 on its own evidence and then
+            weighted; the weights sum to 100, and each factor shows the reporting behind it. Where
+            the UK government has made a formal designation — Russia and Iran sit on the enhanced
+            tier of the Foreign Influence Registration Scheme and China does not — we print it and
+            score against it rather than around it. Where the state rejects the characterisation,
+            the rejection is printed beside our assessment.
           </p>
+          <p>
+            Threats and alliances are deliberately kept on separate scales. They share a method but
+            not a meaning, and one rail carrying both would invite the reading that a strong
+            alliance cancels out a hostile state.
+          </p>
+          <p>The Russia weights, as an example of the method:</p>
         </div>
 
         <ul className="panel mt-5 divide-y divide-[color:var(--rule)]">
@@ -198,12 +210,47 @@ export default function MethodologyPage() {
         </ul>
 
         <div className="panel mt-5 p-5">
-          <p className="eyebrow mb-3">Bands</p>
+          <p className="eyebrow mb-3">All six assessments, as they currently stand</p>
+          <ul className="space-y-1.5">
+            {assessments.map((a) => (
+              <li key={a.slug} className="flex flex-wrap items-baseline gap-x-3 text-[0.85rem]">
+                <span className="w-10 shrink-0 font-display text-lg font-bold tabular">
+                  {scoreOf(a)}
+                </span>
+                <span className="w-32 shrink-0 font-semibold">{a.name}</span>
+                <span className="w-24 shrink-0 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-ink-faint">
+                  {bandOf(a).label}
+                </span>
+                <span className="min-w-0 flex-1 text-ink-soft">
+                  {a.kind === "threat" ? "Pressure on the UK" : "What the UK can rely on"}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="panel mt-5 p-5">
+          <p className="eyebrow mb-3">Threat bands</p>
           <ul className="space-y-1.5">
             {RUSSIA_BANDS.map((band) => (
               <li key={band.label} className="flex flex-wrap items-baseline gap-x-3 text-[0.85rem]">
                 <span className="w-16 shrink-0 font-semibold tabular">
                   {band.min}–{band.max}
+                </span>
+                <span className="w-24 shrink-0 font-semibold">{band.label}</span>
+                <span className="min-w-0 flex-1 text-ink-soft">{band.note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="panel mt-5 p-5">
+          <p className="eyebrow mb-3">Alliance bands</p>
+          <ul className="space-y-1.5">
+            {PARTNERSHIP_BANDS.map((band) => (
+              <li key={band.label} className="flex flex-wrap items-baseline gap-x-3 text-[0.85rem]">
+                <span className="w-16 shrink-0 font-semibold tabular">
+                  {band.min}&ndash;{band.max}
                 </span>
                 <span className="w-24 shrink-0 font-semibold">{band.label}</span>
                 <span className="min-w-0 flex-1 text-ink-soft">{band.note}</span>

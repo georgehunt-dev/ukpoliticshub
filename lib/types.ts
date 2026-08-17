@@ -77,6 +77,12 @@ export type Party = {
   /** Position on a −10 (left) to +10 (right) economic/social composite. */
   spectrum: number;
   spectrumNote: string;
+  /**
+   * One line for the spectrum strip on the front page — what the placement
+   * means in practice. Shorter and plainer than spectrumNote, which is the
+   * full reasoning on the party's own page.
+   */
+  spectrumGloss: string;
   founded: string;
   leader: Person;
   deputy?: Person;

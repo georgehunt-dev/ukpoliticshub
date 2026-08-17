@@ -1,4 +1,8 @@
 import type { NextRequest } from "next/server";
+import constituencyData from "@/data/generated/constituencies.json";
+
+/** Validated against the real list rather than trusted from the client. */
+const CONSTITUENCIES = new Set<string>(constituencyData.constituencies);
 
 /**
  * Newsletter signup.
@@ -37,7 +41,26 @@ function rateLimited(ip: string): boolean {
   return hits.length > MAX_PER_WINDOW;
 }
 
-async function subscribe(email: string): Promise<{ ok: boolean; error?: string }> {
+/** Optional extras a subscriber may volunteer. Neither is required to sign up. */
+export type SubscriberMeta = {
+  /** Westminster constituency name, for local tailoring later. */
+  constituency?: string;
+  /**
+   * Year of birth, not full date of birth.
+   *
+   * The reason to ask at all is that under-13s cannot consent to a service
+   * like this on their own, and an age band is useful for knowing who reads
+   * it. Neither of those needs the day and month, and under UK GDPR you are
+   * expected to collect the minimum that serves the purpose — so a full date
+   * of birth would be more exposure for no extra use.
+   */
+  birthYear?: number;
+};
+
+async function subscribe(
+  email: string,
+  meta: SubscriberMeta
+): Promise<{ ok: boolean; error?: string }> {
   const provider = process.env.NEWSLETTER_PROVIDER;
   const key = process.env.NEWSLETTER_API_KEY;
   if (!provider || !key) return { ok: false, error: "not-configured" };
@@ -54,7 +77,19 @@ async function subscribe(email: string): Promise<{ ok: boolean; error?: string }
         // Treat an existing subscriber as success rather than a collision.
         "X-Buttondown-Collision-Behavior": "add",
       },
-      body: JSON.stringify({ email_address: email }),
+      body: JSON.stringify({
+        email_address: email,
+        // Buttondown stores arbitrary metadata against a subscriber; only
+        // send keys the reader actually filled in.
+        ...(meta.constituency || meta.birthYear
+          ? {
+              metadata: {
+                ...(meta.constituency ? { constituency: meta.constituency } : {}),
+                ...(meta.birthYear ? { birth_year: String(meta.birthYear) } : {}),
+              },
+            }
+          : {}),
+      }),
     });
 
     // 201 created; 400 is a collision, i.e. already subscribed, which is not
@@ -86,7 +121,13 @@ async function subscribe(email: string): Promise<{ ok: boolean; error?: string }
 }
 
 export async function POST(request: NextRequest) {
-  let body: { email?: string; company?: string; startedAt?: number };
+  let body: {
+    email?: string;
+    company?: string;
+    startedAt?: number;
+    constituency?: string;
+    birthYear?: number | string;
+  };
   try {
     body = await request.json();
   } catch {
@@ -118,7 +159,31 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const result = await subscribe(email);
+  // Only accept a constituency we actually recognise, so the field cannot be
+  // used to push arbitrary text into the mailing provider.
+  const constituency =
+    typeof body.constituency === "string" && CONSTITUENCIES.has(body.constituency.trim())
+      ? body.constituency.trim()
+      : undefined;
+
+  const year = Number(body.birthYear);
+  const thisYear = new Date().getUTCFullYear();
+  const birthYear =
+    Number.isInteger(year) && year >= thisYear - 120 && year <= thisYear ? year : undefined;
+
+  // Under-13s cannot consent to this on their own, so we decline rather than
+  // collect and sort it out later.
+  if (birthYear && thisYear - birthYear < 13) {
+    return Response.json(
+      {
+        ok: false,
+        error: "Sorry — you need to be at least 13 to sign up. Nothing was stored.",
+      },
+      { status: 400 }
+    );
+  }
+
+  const result = await subscribe(email, { constituency, birthYear });
 
   if (!result.ok && result.error === "not-configured") {
     return Response.json(

@@ -24,7 +24,7 @@ export default function SiteFooter() {
           </span>
         </div>
       ) : null}
-      <div className="mx-auto max-w-6xl px-5 py-10">
+      <div className="shell py-10">
         <div className="grid gap-8 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <LogoLockup size={34} showDomain />
@@ -62,7 +62,7 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-rule pt-5 text-[0.75rem] leading-relaxed text-ink-faint">
+        <div className="measure mt-8 border-t border-rule pt-5 text-[0.75rem] leading-relaxed text-ink-faint">
           <p>
             Photographs and portraits are from Wikimedia Commons and remain under their original
             licences — full credits at{" "}

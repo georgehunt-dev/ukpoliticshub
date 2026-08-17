@@ -34,7 +34,7 @@ export default function PartyHeader({
       {/* The true brand colour, used as a rule rather than a field */}
       <div className="h-1.5 w-full" style={{ backgroundColor: party.colour }} />
 
-      <div className="mx-auto max-w-6xl px-5 py-9 sm:py-11">
+      <div className="shell py-9 sm:py-11">
         <Link
           href="/parties"
           className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[color:var(--paper)]/60 transition-colors hover:text-[color:var(--paper)]"

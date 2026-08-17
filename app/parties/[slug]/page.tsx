@@ -36,7 +36,7 @@ export default async function PartyPage(props: PageProps<"/parties/[slug]">) {
     <article>
       <PartyHeader party={party} polling={polling?.pct} />
 
-      <div className="mx-auto max-w-6xl space-y-12 px-5 py-11">
+      <div className="shell space-y-12 py-11">
         {/* ── Spectrum ─────────────────────────────────────────────────── */}
         <section>
           <SectionHeading

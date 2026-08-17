@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { parties } from "@/data/parties";
 import { allCompareSlugs } from "@/lib/compare";
+import { CONSTITUENCIES } from "@/lib/constituencies";
+import { assessments } from "@/data/states";
 import { getNews } from "@/lib/news";
 
 const BASE = "https://ukpoliticshub.com";
@@ -35,6 +37,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/parties`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/compare`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/elections`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE}/constituencies`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${BASE}/threat`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE}/constituencies/all`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE}/how-we-work`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/colophon`, lastModified: now, changeFrequency: "monthly", priority: 0.3 },
     { url: `${BASE}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
@@ -56,5 +61,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...partyRoutes, ...compareRoutes];
+  // All 650 seats. These change only when a by-election is held or an MP
+  // changes party, so they are declared as monthly rather than inflating the
+  // whole sitemap with daily claims a crawler would learn to distrust.
+  const constituencyRoutes: MetadataRoute.Sitemap = CONSTITUENCIES.map((seat) => ({
+    url: `${BASE}/constituencies/${seat.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  // The six state assessments, each on its own page.
+  const assessmentRoutes: MetadataRoute.Sitemap = assessments.map((a) => ({
+    url: `${BASE}/threat/${a.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...partyRoutes,
+    ...compareRoutes,
+    ...constituencyRoutes,
+    ...assessmentRoutes,
+  ];
 }

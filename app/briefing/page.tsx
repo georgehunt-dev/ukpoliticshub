@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import AiMark from "@/components/AiMark";
+import AskBox from "@/components/AskBox";
 import BriefingBody from "@/components/BriefingBody";
 import ComposedBriefing, { ComposedSources } from "@/components/ComposedBriefing";
 import EditionNotice from "@/components/EditionNotice";
@@ -102,6 +103,12 @@ export default async function BriefingPage(props: PageProps<"/briefing">) {
         <SourceList sources={briefing.sources} label="The editorial draws on" />
         <ComposedSources />
       </article>
+
+      {/* Moved here when the front page was cut back for mobile. The questions
+          belong beside the briefing they interrogate, not on a landing page. */}
+      <div className="mt-12">
+        <AskBox />
+      </div>
     </div>
   );
 }

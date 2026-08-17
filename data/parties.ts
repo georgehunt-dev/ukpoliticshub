@@ -24,6 +24,7 @@ export const parties: Party[] = [
     spectrum: -3,
     spectrumNote:
       "Centre-left. In office since 2024 on a broadly fiscally orthodox platform; the Burnham leadership is positioned to its predecessor's left on public ownership and devolution.",
+    spectrumGloss: "In office, fiscally orthodox, led from the party's left.",
     founded: "1900",
     mps: "411 seats won at the 2024 general election",
     summary:
@@ -255,9 +256,10 @@ export const parties: Party[] = [
     name: "Reform UK",
     shortName: "Reform",
     colour: "#1eb8d0",
-    spectrum: 8,
+    spectrum: 6,
     spectrumNote:
       "Right. Restrictionist on immigration, opposed to net zero targets, and campaigning against both established parties.",
+    spectrumGloss: "Restrictionist on immigration, against net zero targets.",
     founded: "2018 (as the Brexit Party; renamed 2021)",
     mps: "5 at the 2024 general election, since increased by defections from the Conservatives",
     summary:
@@ -460,9 +462,10 @@ export const parties: Party[] = [
     name: "The Conservative and Unionist Party",
     shortName: "Conservative",
     colour: "#0087dc",
-    spectrum: 5,
+    spectrum: 3,
     spectrumNote:
-      "Centre-right to right. Squeezed between a Labour government and a Reform UK party occupying much of its former ground.",
+      "Centre-right. Squeezed between a Labour government and a Reform UK party occupying much of its former ground, which is why we place it nearer the centre than Reform rather than alongside it.",
+    spectrumGloss: "Squeezed between a Labour government and Reform.",
     founded: "1834",
     mps: "121 seats won at the 2024 general election, reduced since by defections",
     summary:
@@ -662,9 +665,10 @@ export const parties: Party[] = [
     name: "The Green Party of England and Wales",
     shortName: "Green",
     colour: "#02a95b",
-    spectrum: -7,
+    spectrum: -8,
     spectrumNote:
       "Left. Moved further left under Zack Polanski, on public ownership, wealth taxes and climate spending.",
+    spectrumGloss: "Public ownership, wealth taxes and heavy climate spending.",
     founded: "1990 (in its present form; predecessors from 1973)",
     mps: "5 — four elected in 2024 plus the Gorton and Denton by-election gain",
     membership: "Over 200,000",
@@ -850,6 +854,7 @@ export const parties: Party[] = [
     spectrum: -2,
     spectrumNote:
       "Centre to centre-left. Socially liberal and pro-European, with a campaigning focus on health and social care and, since 2025, on opposing Reform UK directly.",
+    spectrumGloss: "Socially liberal, pro-European, campaigning on care.",
     founded: "1988",
     mps: "72 seats won at the 2024 general election — the party's best ever result",
     summary:
@@ -992,9 +997,10 @@ export const parties: Party[] = [
     name: "Restore Britain",
     shortName: "Restore",
     colour: "#051d3f",
-    spectrum: 9,
+    spectrum: 7,
     spectrumNote:
       "The furthest right of the six on our placement. Political scientists classify it as far-right; the party rejects that description. Both are set out under Credibility and concerns below.",
+    spectrumGloss: "Newest of the six; its own classification is contested.",
     founded: "Pressure group 30 June 2025; registered as a party 13 February 2026",
     mps: "1 — Rupert Lowe",
     membership: "130,000 (June 2026)",

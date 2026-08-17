@@ -29,9 +29,10 @@ export default async function NewsPage() {
   });
 
   return (
-    <div className="mx-auto max-w-6xl px-5 py-11">
+    <div className="shell py-11">
       <NewsStructuredData items={items} dateModified={fetchedAt} />
       <SectionHeading
+        as="h1"
         eyebrow="The papers"
         title="The news, by topic"
         standfirst="Everything British politics is arguing about today, sorted by subject. Each story shows which masthead ran it and where that masthead sits on the political spectrum — so you can read the same event from both directions."
@@ -113,7 +114,7 @@ export default async function NewsPage() {
                         </a>
                       </h3>
                       {item.summary ? (
-                        <p className="mt-1 line-clamp-2 text-[0.86rem] leading-relaxed text-ink-soft">
+                        <p className="measure mt-1 line-clamp-2 text-[0.86rem] leading-relaxed text-ink-soft">
                           {item.summary}
                         </p>
                       ) : null}
@@ -154,7 +155,7 @@ export default async function NewsPage() {
               </div>
             ))}
         </div>
-        <p className="mt-3 text-[0.82rem] leading-relaxed text-ink-soft">
+        <p className="measure mt-3 text-[0.82rem] leading-relaxed text-ink-soft">
           The Times and The Spectator publish no open feed, so they are rated here but carry no
           stories. Headlines and links belong to their publishers; we neither host nor edit their
           copy.

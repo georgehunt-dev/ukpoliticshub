@@ -26,8 +26,9 @@ const CERTAINTY_LABEL: Record<string, string> = {
 
 export default function ElectionsPage() {
   return (
-    <div className="mx-auto max-w-6xl px-5 py-11">
+    <div className="shell py-11">
       <SectionImage
+        as="h1"
         photo="polling-station"
         eyebrow="The calendar"
         title="Upcoming elections"
