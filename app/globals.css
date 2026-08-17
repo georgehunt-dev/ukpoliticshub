@@ -44,7 +44,19 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /**
+   * Deliberately NOT scroll-behavior: smooth.
+   *
+   * With smooth set globally the browser animates the scroll-to-top that runs
+   * on every route change. The animation is interrupted by the new page
+   * rendering, so a reader who clicked a link half way down a page landed part
+   * way down the next one — with the sticky header covering what they landed on.
+   *
+   * scroll-padding-top keeps in-page anchors clear of that header, which is
+   * about 155px once the ask bar is counted. Without it, jumping to #threat
+   * put the heading underneath the bar.
+   */
+  scroll-padding-top: 10.5rem;
 }
 
 body {
@@ -142,7 +154,6 @@ h1, h2, h3, h4, h5, h6, .font-display {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;

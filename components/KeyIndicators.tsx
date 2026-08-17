@@ -107,7 +107,11 @@ export default function KeyIndicators({ today }: { today: string }) {
       aria-label="Key indicators"
       className="border-y border-rule bg-[color:var(--paper-raised)]"
     >
-      <ul className="shell grid grid-cols-2 gap-px bg-[color:var(--rule)] lg:grid-cols-6">
+      {/* The shell's padding goes on the wrapper, not on the grid. With both on
+          the same element the grid's rule-coloured background painted the
+          padding too, drawing a grey strip down each side of the row. */}
+      <div className="shell">
+        <ul className="grid grid-cols-2 gap-px bg-[color:var(--rule)] lg:grid-cols-6">
         {cells.map((cell) => {
           const photo = getPhoto(cell.photo);
           return (
@@ -151,8 +155,9 @@ export default function KeyIndicators({ today }: { today: string }) {
               </Link>
             </li>
           );
-        })}
-      </ul>
+          })}
+        </ul>
+      </div>
     </section>
   );
 }
