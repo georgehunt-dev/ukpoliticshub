@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ConstituencyResult from "@/components/ConstituencyResult";
+import EmailCapture from "@/components/EmailCapture";
 import SignupPromptButton from "@/components/SignupPromptButton";
 import { MoreLink, OfficialFigure, SectionHeading } from "@/components/ui";
 import {
@@ -293,6 +294,14 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
             </p>
           </section>
         ) : null}
+
+        <EmailCapture
+          className="mt-10"
+          heading={`The morning email, and ${seat.name} when it lands`}
+          blurb="One email each morning on where Britain stands — and local news for your seat as soon as we build it."
+          reason={`Local news for ${seat.name}`}
+          constituency={seat.name}
+        />
 
         <footer className="mt-10 border-t border-rule pt-4">
           <p className="eyebrow mb-2">Source</p>

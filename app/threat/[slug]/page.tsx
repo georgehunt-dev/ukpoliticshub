@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AssessmentCard from "@/components/AssessmentCard";
+import EmailCapture from "@/components/EmailCapture";
 import SectionImage from "@/components/SectionImage";
 import { MoreLink } from "@/components/ui";
 import {
@@ -105,6 +106,13 @@ export default async function AssessmentPage({ params }: PageProps<"/threat/[slu
             <MoreLink href="/threat">All six, and the official terrorism level</MoreLink>
           </p>
         </section>
+
+        <EmailCapture
+          className="mt-10"
+          heading="The threat picture, every morning"
+          blurb="The official terrorism level, our own read on state pressure, and the day's politics from both sides."
+          reason="The morning email"
+        />
 
         <p className="measure mt-8 border-t border-rule pt-4 text-[0.84rem] leading-relaxed text-ink-soft">
           {STATES_CAVEAT}

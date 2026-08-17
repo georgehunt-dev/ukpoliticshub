@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import EmailCapture from "@/components/EmailCapture";
 import Storyline from "@/components/Storyline";
 import SubjectFinder from "@/components/SubjectFinder";
 import { NewsStructuredData } from "@/components/StructuredData";
@@ -145,6 +146,13 @@ export default async function NewsPage() {
           ))}
         </ul>
       </section>
+
+      <EmailCapture
+        className="mt-11"
+        heading="Both sides, before your first coffee"
+        blurb="The same stories you have just been reading, sorted the same way, in one email each morning."
+        reason="The morning email"
+      />
 
       <footer className="mt-10 border-t border-rule pt-4">
         <p className="measure text-[0.84rem] leading-relaxed text-ink-soft">

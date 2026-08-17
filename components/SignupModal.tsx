@@ -74,6 +74,7 @@ export default function SignupModal() {
   useEffect(() => {
     function onOpen(event: Event) {
       const detail = (event as CustomEvent<SignupPromptDetail>).detail ?? {};
+      if (detail.email) setEmail(detail.email);
       if (detail.constituency) setConstituency(detail.constituency);
       setReason(detail.reason ?? null);
       setState({ status: "idle" });

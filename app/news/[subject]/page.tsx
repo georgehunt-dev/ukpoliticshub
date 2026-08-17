@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Storyline from "@/components/Storyline";
+import EmailCapture from "@/components/EmailCapture";
 import StoryRow from "@/components/StoryRow";
 import { MoreLink, formatDate } from "@/components/ui";
 import { subjectBySlug, subjects } from "@/data/subjects";
@@ -165,6 +166,13 @@ export default async function SubjectPage({ params }: PageProps<"/news/[subject]
           </div>
         </section>
       ) : null}
+
+      <EmailCapture
+        className="mt-10"
+        heading={`Follow ${subject.name} from both sides`}
+        blurb="The day's stories as the left and the right each told them, in one email before breakfast."
+        reason={`Coverage of ${subject.name}`}
+      />
 
       <footer className="mt-10 border-t border-rule pt-4">
         <p className="measure text-[0.84rem] leading-relaxed text-ink-soft">

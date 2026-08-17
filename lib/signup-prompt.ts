@@ -13,6 +13,12 @@
 export const SIGNUP_PROMPT_EVENT = "ukph:open-signup";
 
 export type SignupPromptDetail = {
+  /**
+   * An address the reader has already typed into a small inline form. The
+   * prompt opens with it filled in and asks only for the two things the
+   * inline form has no room for.
+   */
+  email?: string;
   /** Pre-fills the constituency field. The reader can still change it. */
   constituency?: string;
   /** Why the prompt appeared, shown above the form. */
