@@ -30,7 +30,7 @@ export default async function NewsDigest() {
         eyebrow="The papers"
         title="Today, from left and right"
         standfirst="The main stories across the British press right now. Every masthead carries a fixed left–right rating so you can see who is telling you the story before you read it."
-        action={<MoreLink href="/news">All {items.length} stories, by topic</MoreLink>}
+        action={<MoreLink href="/news">By person, party or issue</MoreLink>}
       />
 
       <ol className="mt-5 divide-y divide-[color:var(--rule)] border-y border-rule">

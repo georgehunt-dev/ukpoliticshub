@@ -44,6 +44,34 @@ function stripHtml(value: string): string {
     .trim();
 }
 
+/**
+ * Pull the publisher's thumbnail out of a feed item.
+ *
+ * There is no single convention. Most use media:content or media:thumbnail,
+ * Sky adds an enclosure, and the Mail embeds the image in the description
+ * HTML — which is why an earlier check concluded, wrongly, that the Mail
+ * published no images at all.
+ */
+function imageFrom(item: Record<string, unknown>): string | undefined {
+  const candidates: string[] = [];
+  const push = (value: unknown) => {
+    if (typeof value === "string" && /^https?:\/\//.test(value)) candidates.push(value);
+  };
+
+  for (const key of ["media:content", "media:thumbnail", "enclosure"]) {
+    const node = item[key];
+    for (const entry of (Array.isArray(node) ? node : [node]).filter(Boolean)) {
+      push((entry as Record<string, string>)?.["@_url"]);
+    }
+  }
+
+  const described = `${text(item.description)}${text(item["content:encoded"])}`;
+  const embedded = described.match(/<img[^>]+src=["']([^"']+)["']/i);
+  if (embedded) push(embedded[1]);
+
+  return candidates[0];
+}
+
 function toIso(value: string): string {
   const parsed = new Date(value);
   return Number.isNaN(parsed.getTime()) ? new Date().toISOString() : parsed.toISOString();
@@ -78,6 +106,7 @@ async function fetchOutlet(outlet: NewsOutlet): Promise<NewsItem[]> {
         outlet: outlet.id,
         publishedAt: toIso(text(item.pubDate) || text(item.published) || text(item.updated)),
         summary: stripHtml(text(item.description) || text(item.summary)).slice(0, 220) || undefined,
+        imageUrl: imageFrom(item),
       };
     })
     .filter((item: NewsItem) => item.title && item.url);

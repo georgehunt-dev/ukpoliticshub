@@ -124,6 +124,11 @@ const PHOTOS = {
     use: "Alliance assessment — France & the EU",
     position: "50% 45%",
   },
+  "press-generic": {
+    file: "Cylindrical stereotype for Rotary printing press.jpg",
+    use: "Fallback thumbnail where a feed carries no image",
+    position: "50% 50%",
+  },
 
 };
 
@@ -183,12 +188,13 @@ for (const [slug, spec] of Object.entries(PHOTOS)) {
     const src = (info.thumburl || info.url).split("?")[0];
     const ext = (src.match(/\.(jpe?g|png)$/i)?.[1] || "jpg").toLowerCase().replace("jpeg", "jpg");
     const buf = Buffer.from(await (await get(src)).arrayBuffer());
-    await fs.writeFile(path.join(OUT_DIR, `${slug}.${ext}`), buf);
+    const outPath = path.join(OUT_DIR, `${slug}.${ext}`);
+    await fs.writeFile(outPath, buf);
 
     // Downloads are full-resolution masters — several MB each. Re-running this
     // script used to silently undo any compression done afterwards, so the
     // resize happens here instead of being remembered as a manual step.
-    await run("sips", ["-Z", "2000", "-s", "formatOptions", "68", out, "--out", out]).catch(() => {});
+    await run("sips", ["-Z", "2000", "-s", "formatOptions", "68", outPath, "--out", outPath]).catch(() => {});
 
     results[slug] = {
       slug,

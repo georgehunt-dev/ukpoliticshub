@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { BRIEFING_DATE, briefingAgeInDays } from "@/data/briefing";
 import { formatDate } from "@/components/ui";
 
@@ -23,9 +24,9 @@ export default function EditionNotice({ className = "" }: { className?: string }
       </strong>{" "}
       — written {age === 1 ? "yesterday" : `${age} days ago`} and not since rewritten, so it
       describes the picture as it stood then. The{" "}
-      <a href="/news" className="link-underline font-medium">
+      <Link href="/news" className="link-underline font-medium">
         news
-      </a>{" "}
+      </Link>{" "}
       and the figures across the site are live and refresh through the day.
     </p>
   );

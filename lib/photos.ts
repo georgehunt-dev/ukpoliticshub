@@ -39,7 +39,8 @@ export type PhotoSlug =
   | "china"
   | "united-states"
   | "nato"
-  | "europe-eu";
+  | "europe-eu"
+  | "press-generic";
 
 export function getPhoto(slug: PhotoSlug): Photo | undefined {
   return photos[slug];

@@ -147,6 +147,13 @@ export type NewsOutlet = {
 };
 
 export type NewsItem = {
+  /**
+   * The publisher's own thumbnail, taken from the feed. Feeds carry these for
+   * syndication; we show them next to a link back to the original. Eleven of
+   * the thirteen feeds provide one — Channel 4 and the FT do not, and those
+   * fall back to a generic press photograph.
+   */
+  imageUrl?: string;
   title: string;
   url: string;
   outlet: string;

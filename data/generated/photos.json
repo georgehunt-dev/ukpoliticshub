@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-16T20:21:54.404Z",
+  "fetchedAt": "2026-08-17T17:43:33.274Z",
   "photos": {
     "downing-street": {
       "slug": "downing-street",
@@ -294,6 +294,20 @@
       "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Berlaymont_building_2022.jpg",
       "width": 2000,
       "height": 1350
+    },
+    "press-generic": {
+      "slug": "press-generic",
+      "file": "/img/photos/press-generic.jpg",
+      "use": "Fallback thumbnail where a feed carries no image",
+      "position": "50% 50%",
+      "commonsFile": "Cylindrical stereotype for Rotary printing press.jpg",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Printhusiast",
+      "description": "cylindrical stereotype for Rotary printing press. see File:stereotyping plaque.jpg",
+      "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Cylindrical_stereotype_for_Rotary_printing_press.jpg",
+      "width": 2000,
+      "height": 1328
     }
   }
 }

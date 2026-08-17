@@ -3,6 +3,8 @@ import { parties } from "@/data/parties";
 import { allCompareSlugs } from "@/lib/compare";
 import { CONSTITUENCIES } from "@/lib/constituencies";
 import { assessments } from "@/data/states";
+import { subjects } from "@/data/subjects";
+import { coverageFor, MIN_INDEXABLE } from "@/lib/subjects";
 import { getNews } from "@/lib/news";
 
 const BASE = "https://ukpoliticshub.com";
@@ -72,6 +74,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // The six state assessments, each on its own page.
+  /**
+   * Subject pages, but only the ones carrying enough coverage to be worth
+   * ranking. A thin page in the sitemap is an invitation to be judged on it.
+   */
+  let subjectRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const { items } = await getNews();
+    subjectRoutes = subjects
+      .filter((subject) => coverageFor(subject, items).stories.length >= MIN_INDEXABLE)
+      .map((subject) => ({
+        url: `${BASE}/news/${subject.slug}`,
+        lastModified: newestStory,
+        changeFrequency: "daily" as const,
+        priority: 0.7,
+      }));
+  } catch {
+    // Feeds down: omit rather than guess at which subjects are covered.
+  }
+
   const assessmentRoutes: MetadataRoute.Sitemap = assessments.map((a) => ({
     url: `${BASE}/threat/${a.slug}`,
     lastModified: now,
@@ -85,5 +106,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...compareRoutes,
     ...constituencyRoutes,
     ...assessmentRoutes,
+    ...subjectRoutes,
   ];
 }
