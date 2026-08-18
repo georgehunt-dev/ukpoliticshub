@@ -1,19 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { credit, getPhoto } from "@/lib/photos";
+import { openSignupPrompt } from "@/lib/signup-prompt";
 
 /**
  * The morning email, sitting beside the race on the front page.
  *
  * This is the front page's one ask, so it says what arrives rather than
- * asserting that it is good: four lines of contents, then the field. The
- * address goes to /api/subscribe, which forwards it to whichever provider is
- * configured and stores nothing here. Until one is configured the endpoint
- * refuses and the form says so — taking an address and quietly dropping it
- * would be worse than declining it.
+ * asserting that it is good: four lines of contents, then the field.
+ *
+ * One field here, then the prompt. The address is carried into the prompt,
+ * which asks for the constituency and the year of birth — the two things this
+ * column has no room for, and the two that decide whether the email can carry
+ * local news and whether the reader is old enough to be on the list. Sending
+ * straight to /api/subscribe from here skipped both, so the front page was the
+ * one place on the site that signed people up without ever asking.
  */
 
 const INCLUDED: { title: string; detail: string }[] = [
@@ -35,49 +39,9 @@ const INCLUDED: { title: string; detail: string }[] = [
   },
 ];
 
-type State =
-  | { status: "idle" }
-  | { status: "sending" }
-  | { status: "done" }
-  | { status: "error"; message: string };
-
 export default function MorningEmail() {
   const photo = getPhoto("london");
   const [email, setEmail] = useState("");
-  const [company, setCompany] = useState(""); // honeypot
-  const [state, setState] = useState<State>({ status: "idle" });
-
-  // Set after mount: Date.now() during render is impure.
-  const startedAt = useRef(0);
-  useEffect(() => {
-    startedAt.current = Date.now();
-  }, []);
-
-  async function submit(event: React.FormEvent) {
-    event.preventDefault();
-    if (state.status === "sending") return;
-    setState({ status: "sending" });
-
-    try {
-      const res = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, company, startedAt: startedAt.current || undefined }),
-      });
-      const data = await res.json();
-      if (data.ok) {
-        setState({ status: "done" });
-        setEmail("");
-      } else {
-        setState({ status: "error", message: data.error ?? "Something went wrong." });
-      }
-    } catch {
-      setState({
-        status: "error",
-        message: "Could not reach the server. Check your connection and try again.",
-      });
-    }
-  }
 
   return (
     <aside className="flex flex-col border-t border-rule pt-5 lg:h-full lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0">
@@ -114,61 +78,41 @@ export default function MorningEmail() {
         ))}
       </ul>
 
-      {state.status === "done" ? (
-        <div className="mt-4 border border-rule bg-[color:var(--paper-raised)] p-4">
-          <p className="font-display text-lg leading-tight">Check your inbox</p>
-          <p className="mt-1 text-[0.82rem] leading-relaxed text-ink-soft">
-            We&rsquo;ve sent a confirmation link. Click it and you&rsquo;re on the list.
-          </p>
+      {/* The prompt owns the submit, the consent copy, the honeypot and the
+          under-13 check, so there is one path to maintain rather than two. */}
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          openSignupPrompt({ email: email.trim() || undefined, reason: "The morning email" });
+        }}
+        className="mt-4"
+      >
+        <div className="flex">
+          <label htmlFor="morning-email" className="sr-only">
+            Email address
+          </label>
+          <input
+            id="morning-email"
+            type="email"
+            autoComplete="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="you@example.co.uk"
+            className="min-w-0 flex-1 border border-rule border-r-0 bg-[color:var(--paper-raised)] px-3 py-2.5 font-body text-[0.88rem] placeholder:text-ink-faint focus:border-ink focus:outline-none"
+          />
+          <button
+            type="submit"
+            className="shrink-0 border border-oxblood bg-oxblood px-4 py-2.5 font-body text-[0.7rem] font-bold uppercase tracking-[0.13em] text-[color:var(--paper)] transition-opacity hover:opacity-90"
+          >
+            Sign up
+          </button>
         </div>
-      ) : (
-        <form onSubmit={submit} noValidate className="mt-4">
-          <div className="flex">
-            <label htmlFor="morning-email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="morning-email"
-              type="email"
-              required
-              autoComplete="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              placeholder="you@example.co.uk"
-              className="min-w-0 flex-1 border border-rule border-r-0 bg-[color:var(--paper-raised)] px-3 py-2.5 font-body text-[0.88rem] placeholder:text-ink-faint focus:border-ink focus:outline-none"
-            />
-            <button
-              type="submit"
-              disabled={state.status === "sending"}
-              className="shrink-0 border border-oxblood bg-oxblood px-4 py-2.5 font-body text-[0.7rem] font-bold uppercase tracking-[0.13em] text-[color:var(--paper)] transition-opacity hover:opacity-90 disabled:cursor-wait disabled:opacity-60"
-            >
-              {state.status === "sending" ? "Adding…" : "Sign up"}
-            </button>
-          </div>
-
-          {/* Hidden from people, tempting to bots. */}
-          <div aria-hidden="true" className="absolute h-0 w-0 overflow-hidden">
-            <label htmlFor="morning-company">Company</label>
-            <input
-              id="morning-company"
-              type="text"
-              tabIndex={-1}
-              autoComplete="off"
-              value={company}
-              onChange={(event) => setCompany(event.target.value)}
-            />
-          </div>
-
-          {state.status === "error" ? (
-            <p role="alert" className="mt-2 text-[0.78rem] leading-snug text-oxblood">
-              {state.message}
-            </p>
-          ) : null}
-        </form>
-      )}
+      </form>
 
       <p className="mt-2.5 text-[0.68rem] leading-snug text-ink-faint">
-        No spam, one click to leave, and we never share your address.{" "}
+        We&rsquo;ll ask for your constituency and year of birth next — both optional, and the year
+        only so we know readers are 13 or over. No spam, one click to leave, and we never share
+        your address.{" "}
         <Link href="/privacy" className="link-underline">
           How we handle data
         </Link>
