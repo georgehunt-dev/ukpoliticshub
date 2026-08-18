@@ -57,6 +57,65 @@ export function SiteStructuredData() {
   );
 }
 
+/**
+ * A constituency page: the seat as a place, and its MP as a person holding a
+ * role. This is the markup behind "who is my MP" results, and the seat pages
+ * had none of it.
+ *
+ * Only facts already on the page go in here. Nothing is asserted to a crawler
+ * that a reader cannot also see and check.
+ */
+export function ConstituencyStructuredData({
+  name,
+  slug,
+  nation,
+  mp,
+  places,
+}: {
+  name: string;
+  slug: string;
+  nation: string;
+  mp: { name: string; party: string | null; memberId: number | null } | null;
+  places: string[];
+}) {
+  const url = `${BASE}/constituencies/${slug}`;
+  return (
+    <Ld
+      data={{
+        "@context": "https://schema.org",
+        "@type": "Place",
+        "@id": `${url}#place`,
+        url,
+        name: `${name} constituency`,
+        description: `${name} is a UK parliamentary constituency in ${nation}${
+          places.length ? `, covering ${places.slice(0, 6).join(", ")}` : ""
+        }.`,
+        additionalType: "https://schema.org/AdministrativeArea",
+        containedInPlace: { "@type": "Country", name: nation },
+        isPartOf: { "@id": `${BASE}/#website` },
+        ...(places.length
+          ? { containsPlace: places.slice(0, 12).map((p) => ({ "@type": "Place", name: p })) }
+          : {}),
+        ...(mp
+          ? {
+              // The seat is represented by a person; the person holds the role.
+              // Modelled this way round because the page is about the seat.
+              subjectOf: {
+                "@type": "Person",
+                name: mp.name,
+                jobTitle: `Member of Parliament for ${name}`,
+                ...(mp.party ? { affiliation: { "@type": "Organization", name: mp.party } } : {}),
+                ...(mp.memberId
+                  ? { sameAs: `https://members.parliament.uk/member/${mp.memberId}` }
+                  : {}),
+              },
+            }
+          : {}),
+      }}
+    />
+  );
+}
+
 /** The news index: what it is, when it last changed, and what is on it. */
 export function NewsStructuredData({
   items,

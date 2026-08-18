@@ -4,7 +4,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ConstituencyResult from "@/components/ConstituencyResult";
 import EmailCapture from "@/components/EmailCapture";
+import SafetyMeter from "@/components/SafetyMeter";
 import SignupPromptButton from "@/components/SignupPromptButton";
+import { ConstituencyStructuredData } from "@/components/StructuredData";
 import { MoreLink, OfficialFigure, SectionHeading } from "@/components/ui";
 import {
   CONSTITUENCIES,
@@ -17,6 +19,8 @@ import {
   safetyOf,
 } from "@/lib/constituencies";
 import { credit, getPhoto } from "@/lib/photos";
+import { headlinePlaces, PLACE_SOURCE } from "@/lib/places";
+import { NATIONAL, seatContext } from "@/lib/seat-context";
 
 export function generateStaticParams() {
   return CONSTITUENCIES.map((seat) => ({ slug: seat.slug }));
@@ -30,9 +34,14 @@ export async function generateMetadata({
   if (!seat) return { title: "Constituency not found" };
 
   const mp = seat.mp ? `${seat.mp.name} (${seat.mp.party ?? "no party listed"})` : "the sitting MP";
+  // Naming the towns is what makes the description match how people search —
+  // almost nobody types a constituency name.
+  const places = headlinePlaces(seat.slug, 3).map((place) => place.name);
+  const covering = places.length ? ` Covers ${places.join(", ")}.` : "";
+
   return {
-    title: `${seat.name} constituency`,
-    description: `${seat.name}: ${mp}, the full 2024 general election result, turnout and majority. Sourced from Parliament's own records.`,
+    title: `${seat.name} constituency — MP and 2024 election result`,
+    description: `Who is the MP for ${seat.name}? ${mp}, with the full 2024 general election result, turnout and majority.${covering}`,
     alternates: { canonical: `/constituencies/${seat.slug}` },
   };
 }
@@ -55,13 +64,18 @@ function Result({
   title,
   standfirst,
   footnote,
+  /** Only the general election is set against the national picture. */
+  compareToNation = false,
 }: {
   result: ElectionResult;
   title: string;
   standfirst?: string;
   footnote?: React.ReactNode;
+  compareToNation?: boolean;
 }) {
   const label = electionLabel(result);
+  const turnoutDelta =
+    compareToNation && result.turnoutPct != null ? result.turnoutPct - NATIONAL.turnoutPct : null;
   return (
     <section className="mt-10">
       <SectionHeading eyebrow={label} title={title} standfirst={standfirst} />
@@ -80,9 +94,13 @@ function Result({
           label="Turnout"
           value={result.turnoutPct != null ? `${result.turnoutPct.toFixed(1)}%` : "—"}
           note={
-            result.turnout != null && result.electorate != null
-              ? `${fmt.format(result.turnout)} of ${fmt.format(result.electorate)} on the register.`
-              : undefined
+            turnoutDelta != null
+              ? `${turnoutDelta >= 0 ? "+" : ""}${turnoutDelta.toFixed(
+                  1
+                )} points on the UK figure of ${NATIONAL.turnoutPct.toFixed(1)}%.`
+              : result.turnout != null && result.electorate != null
+                ? `${fmt.format(result.turnout)} of ${fmt.format(result.electorate)} on the register.`
+                : undefined
           }
         />
         <Stat
@@ -97,7 +115,11 @@ function Result({
       </div>
 
       <div className="mt-6 overflow-x-auto">
-        <ConstituencyResult candidates={result.candidates} label={label} />
+        <ConstituencyResult
+          candidates={result.candidates}
+          label={label}
+          nationalShare={compareToNation ? NATIONAL.share : undefined}
+        />
       </div>
 
       {footnote ? (
@@ -119,9 +141,19 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
   const runnerUp = election?.candidates[1];
   const safety = safetyOf(election?.majorityPct ?? null);
   const nearby = nearbyByName(seat.slug);
+  const context = election ? seatContext(election) : null;
+  const places = headlinePlaces(seat.slug);
 
   return (
     <div>
+      <ConstituencyStructuredData
+        name={seat.name}
+        slug={seat.slug}
+        nation={seat.nation}
+        mp={seat.mp}
+        places={places.map((place) => place.name)}
+      />
+
       {/* A photograph of the nation, captioned as exactly that. No free source
           of 650 representative constituency photographs exists, and putting the
           wrong town on a seat page would be a small lie repeated 650 times. */}
@@ -158,7 +190,16 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
             {seat.nation} · Constituency
           </p>
           <h1 className="mt-1.5 font-display text-3xl leading-none sm:text-5xl">{seat.name}</h1>
-          {seat.mp ? (
+          {places.length ? (
+            <p className="mt-2.5 text-[0.9rem] leading-relaxed text-[color:var(--paper)]/85">
+              Covers{" "}
+              {places
+                .slice(0, 4)
+                .map((place) => place.name)
+                .join(" · ")}
+              {places.length > 4 ? " and more" : ""}
+            </p>
+          ) : seat.mp ? (
             <p className="mt-2.5 text-[0.9rem] leading-relaxed text-[color:var(--paper)]/85">
               Represented by {seat.mp.name}
               {seat.mp.party ? ` (${seat.mp.party})` : ""}
@@ -182,7 +223,9 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
           individual seats.
         </p>
 
-        {/* ── The MP ─────────────────────────────────────────────────────── */}
+        {/* ── The answer ─────────────────────────────────────────────────── */}
+        {/* Readers arrive asking two things: who represents me, and is this
+            seat safe. Both are answered here in words before any table. */}
         {seat.mp ? (
           <section className="mt-6 border border-rule bg-[color:var(--paper-raised)] p-5 sm:p-6">
             <p className="eyebrow">Your member of parliament</p>
@@ -199,6 +242,26 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
                 </span>
               ) : null}
             </div>
+
+            {context ? (
+              <p className="mt-4 max-w-2xl text-[1rem] leading-relaxed text-ink-soft">
+                {context.winner} won {seat.name} at the {electionLabel(election!)} with a majority
+                of <b className="text-ink">{fmt.format(context.majority)} votes</b> —{" "}
+                {context.majorityPct.toFixed(1)} points.
+                {context.challenger ? (
+                  <>
+                    {" "}
+                    A swing of{" "}
+                    <b className="text-ink">{context.swingToLose.toFixed(1)} points</b> to{" "}
+                    {context.challenger} would take it.
+                  </>
+                ) : null}{" "}
+                That makes it safer than {fmt.format(context.saferThan)} of the{" "}
+                {fmt.format(context.totalRanked)} seats with a published margin, and less safe than
+                the other {fmt.format(context.totalRanked - context.saferThan)}.
+              </p>
+            ) : null}
+
             {seat.mp.memberId ? (
               <p className="mt-3">
                 <a
@@ -213,6 +276,8 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
             ) : null}
           </section>
         ) : null}
+
+        {context ? <SafetyMeter context={context} label={safety.label} /> : null}
 
         {/* ── The results ────────────────────────────────────────────────── */}
         {/* Where a by-election has been held it comes first: it is both the
@@ -238,10 +303,13 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
                   )} votes.`
                 : undefined
             }
+            compareToNation
             footnote={
               <>
-                <span className="font-semibold">{safety.label}.</span> {safety.note} That
-                describes the {electionLabel(election)} result only — arithmetic on the published
+                <span className="font-semibold">{safety.label}.</span> {safety.note} The{" "}
+                <span className="font-semibold">vs UK</span> column is each party&rsquo;s share
+                here against its own national share, summed from all {NATIONAL.seats} results.
+                That describes the {electionLabel(election)} only — arithmetic on the published
                 count, not a forecast.
               </>
             }
@@ -316,7 +384,23 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
               {CONSTITUENCY_SOURCE.label}
             </a>
             . Vote shares, turnout percentage and the margin are worked out from those published
-            counts. Photograph:{" "}
+            counts, and the national comparisons are the same arithmetic across all{" "}
+            {NATIONAL.seats} results.{" "}
+            {places.length ? (
+              <>
+                Places in this seat are from{" "}
+                <a
+                  href={PLACE_SOURCE.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline font-medium"
+                >
+                  {PLACE_SOURCE.label}
+                </a>
+                .{" "}
+              </>
+            ) : null}
+            Photograph:{" "}
             {photo ? (
               <a
                 href={photo.descriptionUrl ?? "#"}

@@ -1,6 +1,8 @@
 import Link from "next/link";
-import ConstituencySearch from "@/components/ConstituencySearch";
-import { CONSTITUENCY_NAMES } from "@/lib/constituencies";
+import SeatSearch from "@/components/SeatSearch";
+import { PLACE_COUNT } from "@/lib/places";
+
+const fmt = new Intl.NumberFormat("en-GB");
 
 /**
  * The front page's one personal question.
@@ -21,8 +23,8 @@ export default function ConstituencyBand() {
           </h2>
           <p className="mt-3 max-w-xl text-[0.95rem] leading-relaxed text-ink-soft">
             All 650 seats: your MP, how they won, the full result with every candidate on the
-            ballot, and how safely the seat is held. No postcode required — we don&rsquo;t ask
-            for one.
+            ballot, and how safely the seat is held. Enter a postcode, your town, or the
+            constituency name.
           </p>
           <p className="mt-3 text-[0.82rem] text-ink-soft">
             Or{" "}
@@ -34,7 +36,10 @@ export default function ConstituencyBand() {
         </div>
 
         <div className="border border-rule bg-[color:var(--paper-raised)] p-5">
-          <ConstituencySearch seats={CONSTITUENCY_NAMES} />
+          <SeatSearch placeholder="Postcode, town, or constituency" />
+          <p className="mt-2.5 text-[0.75rem] leading-snug text-ink-faint">
+            {fmt.format(PLACE_COUNT)} towns and villages mapped to the 2024 boundaries.
+          </p>
         </div>
       </div>
     </section>

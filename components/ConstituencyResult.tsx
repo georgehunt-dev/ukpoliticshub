@@ -11,12 +11,43 @@ import type { Candidate } from "@/lib/constituencies";
 
 const fmt = new Intl.NumberFormat("en-GB");
 
+/**
+ * How far this party ran ahead of or behind its own national share. A party
+ * that stood only here has no national figure, and gets an em dash rather than
+ * a zero — those are different statements.
+ */
+function NationalCell({ share, national }: { share: number; national: number | undefined }) {
+  if (national == null) {
+    return (
+      <td className="py-2.5 pl-3 text-right text-[0.8rem] text-ink-faint tabular-nums" title="Did not stand nationally">
+        —
+      </td>
+    );
+  }
+  const delta = share - national;
+  return (
+    <td className="py-2.5 pl-3 text-right text-[0.8rem] tabular-nums">
+      <span className={delta >= 0 ? "text-ink-soft" : "text-[color:var(--oxblood)]"}>
+        {delta >= 0 ? "+" : ""}
+        {delta.toFixed(1)}
+      </span>
+    </td>
+  );
+}
+
 export default function ConstituencyResult({
   candidates,
   label,
+  nationalShare,
 }: {
   candidates: Candidate[];
   label: string;
+  /**
+   * Party to national vote share at the same election. Passed only for the
+   * general election — setting a by-election against national shares from a
+   * different contest would compare two unlike things.
+   */
+  nationalShare?: Record<string, number>;
 }) {
   const total = candidates.reduce((sum, c) => sum + c.votes, 0);
   const top = candidates[0]?.votes ?? 0;
@@ -29,17 +60,19 @@ export default function ConstituencyResult({
       </caption>
       <thead>
         <tr className="border-b border-ink/25">
-          {["Candidate", "Party", "Votes", "Share"].map((heading, i) => (
-            <th
-              key={heading}
-              scope="col"
-              className={`pb-2 text-[0.66rem] font-bold uppercase tracking-[0.14em] text-ink-faint ${
-                i >= 2 ? "text-right" : ""
-              }`}
-            >
-              {heading}
-            </th>
-          ))}
+          {[...["Candidate", "Party", "Votes", "Share"], ...(nationalShare ? ["vs UK"] : [])].map(
+            (heading, i) => (
+              <th
+                key={heading}
+                scope="col"
+                className={`pb-2 text-[0.66rem] font-bold uppercase tracking-[0.14em] text-ink-faint ${
+                  i >= 2 ? "text-right" : ""
+                }`}
+              >
+                {heading}
+              </th>
+            )
+          )}
         </tr>
       </thead>
       <tbody>
@@ -85,6 +118,7 @@ export default function ConstituencyResult({
                   <span className="shrink-0 tabular-nums">{share.toFixed(1)}%</span>
                 </span>
               </td>
+              {nationalShare ? <NationalCell share={share} national={nationalShare[candidate.party]} /> : null}
             </tr>
           );
         })}

@@ -24,7 +24,11 @@ export default function AllConstituenciesPage() {
       {NATIONS.map((nation) => {
         const seats = CONSTITUENCIES.filter((seat) => seat.nation === nation);
         return (
-          <section key={nation} className="mt-9">
+          <section
+            key={nation}
+            id={nation.toLowerCase().replace(/\s+/g, "-")}
+            className="mt-9 scroll-mt-40"
+          >
             <h2 className="border-b-2 border-ink pb-1.5 font-display text-2xl leading-none">
               {nation}
               <span className="ml-2 font-body text-[0.72rem] font-bold uppercase tracking-[0.14em] text-ink-faint">
