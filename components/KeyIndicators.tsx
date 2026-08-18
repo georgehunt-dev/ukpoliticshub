@@ -97,8 +97,8 @@ export default function KeyIndicators({ today }: { today: string }) {
       suffix: days != null ? "days" : undefined,
       note: "By 15 August 2029 at the latest",
       tag: "Fixed-term rules",
-      photo: "polling-station",
-      alt: "A polling station sign outside a British polling place",
+      photo: "election-count",
+      alt: "Sealed ballot boxes waiting to be opened at a general election count",
     },
   ];
 

@@ -25,6 +25,7 @@ export type PhotoSlug =
   | "buckingham-palace"
   | "london"
   | "polling-station"
+  | "election-count"
   | "dover"
   | "economy"
   | "health"

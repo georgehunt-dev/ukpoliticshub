@@ -15,7 +15,8 @@ export function SectionHeading({
    */
   as: Heading = "h2",
 }: {
-  eyebrow: string;
+  /** Omitted where the title alone should carry the section. */
+  eyebrow?: string;
   title: string;
   standfirst?: string;
   action?: React.ReactNode;
@@ -25,8 +26,10 @@ export function SectionHeading({
     <header className="rule-gold pt-4">
       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
         <div>
-          <p className="eyebrow">{eyebrow}</p>
-          <Heading className="mt-1 text-3xl leading-tight sm:text-4xl">{title}</Heading>
+          {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
+          <Heading className={`text-3xl leading-tight sm:text-4xl ${eyebrow ? "mt-1" : ""}`}>
+            {title}
+          </Heading>
         </div>
         {action}
       </div>

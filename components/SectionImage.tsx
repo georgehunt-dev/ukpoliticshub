@@ -14,6 +14,8 @@ export default function SectionImage({
   alt,
   height = "h-60 sm:h-72",
   action,
+  /** Override where the band carries the page title and wants more weight. */
+  titleClassName = "text-3xl sm:text-5xl",
   /**
    * Defaults to h2 because this band usually introduces a section inside a
    * page that already has its own h1. Where the band *is* the page title —
@@ -23,12 +25,15 @@ export default function SectionImage({
   as: Heading = "h2",
 }: {
   photo: PhotoSlug;
-  eyebrow: string;
+  /** Omitted where the title alone should carry the band. */
+  eyebrow?: string;
   title: string;
-  standfirst?: string;
+  /** Takes a node so a page can control where the line breaks. */
+  standfirst?: React.ReactNode;
   alt: string;
   height?: string;
   action?: React.ReactNode;
+  titleClassName?: string;
   as?: "h1" | "h2";
 }) {
   const photo = getPhoto(slug);
@@ -75,10 +80,16 @@ export default function SectionImage({
         style={{ textShadow: "0 1px 12px rgba(8,16,30,0.75)" }}
       >
         <div className="min-w-0">
-          <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[color:var(--paper)]/70">
-            {eyebrow}
-          </p>
-          <Heading className="mt-1.5 font-display text-3xl leading-none sm:text-5xl">{title}</Heading>
+          {eyebrow ? (
+            <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[color:var(--paper)]/70">
+              {eyebrow}
+            </p>
+          ) : null}
+          <Heading
+            className={`font-display leading-none ${eyebrow ? "mt-1.5" : ""} ${titleClassName}`}
+          >
+            {title}
+          </Heading>
           {standfirst ? (
             <p className="mt-2.5 max-w-2xl text-[0.88rem] leading-relaxed text-[color:var(--paper)]/85">
               {standfirst}

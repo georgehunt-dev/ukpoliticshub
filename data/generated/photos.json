@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-17T17:43:33.274Z",
+  "fetchedAt": "2026-08-18T12:51:56.509Z",
   "photos": {
     "downing-street": {
       "slug": "downing-street",
@@ -74,7 +74,7 @@
     "polling-station": {
       "slug": "polling-station",
       "file": "/img/photos/polling-station.jpg",
-      "use": "Elections page",
+      "use": "Polls page",
       "position": "50% 18%",
       "commonsFile": "Polling station in Swansea - EU Election 2019 (1).jpg",
       "licence": "CC0",
@@ -84,6 +84,20 @@
       "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Polling_station_in_Swansea_-_EU_Election_2019_(1).jpg",
       "width": 2000,
       "height": 1500
+    },
+    "election-count": {
+      "slug": "election-count",
+      "file": "/img/photos/election-count.jpg",
+      "use": "Elections page and the election countdown tile",
+      "position": "50% 62%",
+      "commonsFile": "North East Somerset constituency 2019 general election count.jpg",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Rwendland",
+      "description": "The count being carried out for the North East Somerset constituency of the 2019 United Kingdom general election. The count was held in half of the University of Bath Sports Training Village hall, with the Bath count in the other half of th",
+      "descriptionUrl": "https://commons.wikimedia.org/wiki/File:North_East_Somerset_constituency_2019_general_election_count.jpg",
+      "width": 2000,
+      "height": 1333
     },
     "dover": {
       "slug": "dover",

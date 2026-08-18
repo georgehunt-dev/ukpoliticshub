@@ -47,8 +47,15 @@ const PHOTOS = {
   },
   "polling-station": {
     file: "Polling station in Swansea - EU Election 2019 (1).jpg",
-    use: "Elections page",
+    use: "Polls page",
     position: "50% 18%",
+  },
+  "election-count": {
+    file: "North East Somerset constituency 2019 general election count.jpg",
+    use: "Elections page and the election countdown tile",
+    // The sealed ballot boxes sit across the lower-middle band; cropping to
+    // the centre keeps them and the counting tables, and drops dead ceiling.
+    position: "50% 62%",
   },
   dover: {
     file: "South Foreland Lighthouse and cliffs from Strait of Dover 1.jpg",
