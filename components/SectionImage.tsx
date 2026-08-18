@@ -55,23 +55,10 @@ export default function SectionImage({
               filter: "brightness(1.28) contrast(0.96) saturate(1.08)",
             }}
           />
-          {/* Two light washes rather than one heavy one: a diagonal to seat the
-              type on the left, and a shallow foot so the credit stays readable.
-              A single strong top-to-bottom wash flattened every photograph to
-              near-black in a band this short. */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(105deg, rgba(8,16,30,0.88) 0%, rgba(8,16,30,0.72) 34%, rgba(8,16,30,0.32) 58%, rgba(8,16,30,0.08) 100%)",
-            }}
-          />
-          <div
-            className="absolute inset-x-0 bottom-0 h-1/2"
-            style={{
-              background: "linear-gradient(to top, rgba(8,16,30,0.55) 0%, rgba(8,16,30,0) 100%)",
-            }}
-          />
+          {/* Both washes are defined in globals.css because they change shape
+              between phone and desktop — see the ".section-wash" note there. */}
+          <div className="section-wash absolute inset-0" />
+          <div className="section-wash-foot absolute inset-x-0 bottom-0 h-1/2" />
         </>
       ) : null}
 

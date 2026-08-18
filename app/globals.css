@@ -147,6 +147,54 @@ h1, h2, h3, h4, h5, h6, .font-display {
   text-decoration-color: var(--oxblood);
 }
 
+/* ── Section image wash ────────────────────────────────────────────────────
+   The photographic bands have to be dark enough under the type to stay
+   legible and light enough elsewhere to still read as photographs. That is
+   two different problems at two different widths.
+
+   Wide: there is room to seat the type on the left and let the picture win on
+   the right, so the wash runs diagonally.
+
+   Narrow: the band is barely wider than the headline, so that same diagonal
+   covers the entire frame and the photograph disappears. A phone gets a
+   bottom-anchored scrim instead, darkening only the strip the words sit on
+   and leaving the top third of the picture alone. */
+.section-wash {
+  background:
+    /* short guard so the credit line survives a bright top corner */
+    linear-gradient(to bottom, rgba(8, 16, 30, 0.52) 0%, rgba(8, 16, 30, 0) 20%),
+    linear-gradient(
+      to top,
+      rgba(8, 16, 30, 0.9) 0%,
+      rgba(8, 16, 30, 0.76) 40%,
+      rgba(8, 16, 30, 0.34) 70%,
+      rgba(8, 16, 30, 0.04) 100%
+    );
+}
+
+/* The shallow foot is folded into the scrim above, so it is only needed once
+   the diagonal takes over. */
+.section-wash-foot {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .section-wash {
+    background: linear-gradient(
+      105deg,
+      rgba(8, 16, 30, 0.88) 0%,
+      rgba(8, 16, 30, 0.72) 34%,
+      rgba(8, 16, 30, 0.32) 58%,
+      rgba(8, 16, 30, 0.08) 100%
+    );
+  }
+
+  .section-wash-foot {
+    display: block;
+    background: linear-gradient(to top, rgba(8, 16, 30, 0.55) 0%, rgba(8, 16, 30, 0) 100%);
+  }
+}
+
 /* Numerals: tabular so poll percentages and vote counts align in columns. */
 .tabular {
   font-variant-numeric: tabular-nums;
