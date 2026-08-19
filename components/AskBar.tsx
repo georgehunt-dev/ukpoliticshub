@@ -146,12 +146,6 @@ export default function AskBar() {
               ))}
             </ul>
           ) : null}
-
-          <p className="ml-auto max-w-[70ch] text-[0.68rem] leading-snug text-ink-faint">
-            <span className="font-semibold text-ink-soft">AI answers</span>, built only from this
-            site&rsquo;s own sourced pages and returned with the citations attached. If we
-            don&rsquo;t hold something, it says so rather than guessing.
-          </p>
         </div>
 
         {state.status === "answered" ? (
@@ -176,6 +170,17 @@ export default function AskBar() {
                 ))}
               </ul>
             ) : null}
+
+            {/* The standing note that used to sit under the bar has moved to
+                /how-we-work. The disclosure itself belongs on the answer, not
+                on every page of the site whether or not anyone has asked
+                anything — so it is stated here, once, where the answer is. */}
+            <p className="mt-2.5 text-[0.72rem] leading-snug text-ink-faint">
+              Assembled by AI from this site&rsquo;s own sourced pages.{" "}
+              <Link href="/how-we-work#ask" className="link-underline">
+                How this works
+              </Link>
+            </p>
 
             {state.sources.length ? (
               <div className="mt-3 border-t border-rule pt-2.5">

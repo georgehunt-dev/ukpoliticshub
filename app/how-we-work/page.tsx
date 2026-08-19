@@ -274,6 +274,43 @@ export default function MethodologyPage() {
         </div>
       </section>
 
+      {/* ── The ask bar ─────────────────────────────────────────────────── */}
+      <section id="ask" className="mt-12 scroll-mt-40">
+        <h2 className="font-display text-3xl">The search bar, and what answers it</h2>
+        <p className="mt-4 text-[0.95rem] leading-relaxed text-ink-soft">
+          The bar at the top of every page answers questions using AI. It is worth being precise
+          about what that does and does not mean here, because the phrase covers a lot of very
+          different things.
+        </p>
+
+        <div className="mt-5 space-y-4 text-[0.95rem] leading-relaxed text-ink-soft">
+          <p>
+            <span className="font-semibold text-ink">It only reads our own pages.</span> Answers
+            are assembled from the sourced pages already published on this site — the polling
+            average, the party positions, the constituency results, the state assessments and so
+            on. It cannot reach the open web, and it is not asked to recall anything from its own
+            training.
+          </p>
+          <p>
+            <span className="font-semibold text-ink">It shows you where each answer came from.</span>{" "}
+            Every answer lists the pages behind it, so you can check the claim against the same
+            source we used rather than taking the answer on trust.
+          </p>
+          <p>
+            <span className="font-semibold text-ink">It says when it does not know.</span> Where a
+            question falls outside what we publish, it says the site does not cover that and
+            offers the nearest pages we do hold. It is built to decline rather than to produce a
+            confident guess — a plausible invented figure is the one failure this site cannot
+            absorb.
+          </p>
+          <p>
+            It can still be wrong, in the ordinary way that a summary of a longer page can be
+            wrong. Where an answer and a page disagree, the page is the record. If you find one
+            that is off, the correction note below applies to it as much as to any figure here.
+          </p>
+        </div>
+      </section>
+
       {/* ── Corrections ─────────────────────────────────────────────────── */}
       <section className="mt-12">
         <h2 className="font-display text-3xl">Corrections</h2>
