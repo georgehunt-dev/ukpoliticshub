@@ -33,11 +33,17 @@ No masthead or dateline on the front page. Do not drift toward generic SaaS styl
 rounded cards, gradient hero, purple accent, sans-serif headings are all wrong here. When
 adding a component, match the surrounding pages rather than introducing a new visual idiom.
 
-The front page carries one line saying what the site is — "British politics in one place,
-from both sides" — and it is the page's `h1`. That is a deliberate exception to the
-no-slogan rule this file used to state: reader feedback was that the value was obvious once
-you used the site and invisible before. It is one line, it makes a claim about coverage
-rather than a promise about quality, and it stays that way.
+The front page carries one line saying what the site is — "All In One Hub For British
+Politics, From Both Sides." — and it is the page's `h1`. That is a deliberate exception to
+the no-slogan rule this file used to state: reader feedback was that the value was obvious
+once you used the site and invisible before. It is one line, it makes a claim about
+coverage rather than a promise about quality, and it stays that way.
+
+That opening block is sized to end at the fold on a wide screen
+(`lg:min-h-[calc(100dvh-9rem)]`), so the indicator tiles below start below it rather than
+showing as a strip of half-visible boxes. It is a minimum, not a maximum — a short window
+scrolls normally and nothing is ever clipped. If the header's height changes, that `9rem`
+has to change with it.
 
 ## Neutrality
 
