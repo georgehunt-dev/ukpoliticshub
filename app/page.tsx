@@ -22,10 +22,26 @@ const today = () => new Date().toISOString().slice(0, 10);
 export default function Home() {
   return (
     <>
+      {/* What the site is, said once, before anything else. It spans both
+          columns because it is a claim about the whole page: the polls on the
+          left and the morning email on the right are two examples of it, not
+          the subject of it. The room for it comes from the race panel, which
+          gave up three stacked lines above its title to pay for this. */}
+      <div className="shell pt-4">
+        <h1 className="max-w-4xl font-display text-[1.9rem] leading-[1.06] tracking-tight text-balance sm:text-[2.5rem]">
+          British politics in one place, from both sides.
+        </h1>
+      </div>
+
       {/* The front page's lead: the race on the left, the morning email on
           the right. On a phone the email lands directly under the race, which
-          is the natural next beat rather than a footer afterthought. */}
-      <div className="shell py-6">
+          is the natural next beat rather than a footer afterthought.
+
+          Tight top padding on purpose: the line above is this block's own
+          heading, so the usual gap would read as a gap between two unrelated
+          things — and the sign-up button sits within a few pixels of the fold
+          on a small laptop, which is the one thing here worth protecting. */}
+      <div className="shell pb-6 pt-3">
         <div className="grid gap-6 lg:grid-cols-[1.62fr_1fr] lg:items-stretch lg:gap-8">
           <HeroRace />
           <MorningEmail />

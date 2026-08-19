@@ -33,11 +33,11 @@ export const metadata: Metadata = {
     template: "%s · ukpoliticshub",
   },
   description:
-    "Stop scanning social media and news sites for hours. Polls, threat levels, elections and news from across the political spectrum — every figure sourced. Not endorsed by or affiliated with any political party.",
+    "British politics in one place: the polls, your MP, the elections ahead, where the parties stand and today's news from both sides. Every figure sourced.",
   openGraph: {
     title: "ukpoliticshub",
     description:
-      "Up-to-date information from both sides of the political spectrum about the United Kingdom.",
+      "British politics in one place, from both sides. The polls, your MP, the elections ahead — sourced and dated.",
     type: "website",
     locale: "en_GB",
   },

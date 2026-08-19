@@ -55,18 +55,13 @@ export default function HeroRace() {
         className="relative flex w-full flex-col justify-end px-5 py-6 sm:px-7 sm:py-7"
         style={{ textShadow: "0 1px 10px rgba(8,16,30,0.8)" }}
       >
-        <p className="text-[0.66rem] font-bold uppercase tracking-[0.18em] text-[color:var(--paper)]/72">
-          Rolling average · {formatDate(POLL_AVERAGE_AS_OF)}
-        </p>
-        <h1 className="mt-1.5 font-display text-[2.75rem] leading-[0.94] tracking-tight sm:text-[3.5rem]">
-          The Race
-          <br />
-          for No.10
-        </h1>
-        <p className="mt-3 max-w-md text-[0.9rem] leading-relaxed text-[color:var(--paper)]/86">
-          Labour, Reform UK and the Conservatives are separated by under five points. An average of
-          published British Polling Council polls.
-        </p>
+        {/* The page's h1 is the site's own line, above this panel. This is a
+            section heading, on one line — the date and the sourcing that used
+            to sit here have moved into the footer below, which was already
+            carrying a source link. */}
+        <h2 className="font-display text-[2.25rem] leading-[0.98] tracking-tight sm:text-[2.9rem]">
+          The Race for No.10
+        </h2>
 
         <ol className="mt-4 border-t border-white/20">
           {pollAverage.map((entry, index) => {
@@ -113,7 +108,13 @@ export default function HeroRace() {
           })}
         </ol>
 
-        <p className="mt-3 text-[0.66rem] text-[color:var(--paper)]/62">
+        {/* Carries the date and what the average is made of. Both used to have
+            their own lines above the title; a polling figure without a visible
+            date is the one thing this site does not do, so it moved rather
+            than went. */}
+        <p className="mt-3 text-[0.66rem] leading-relaxed text-[color:var(--paper)]/62">
+          Rolling average of published British Polling Council polls ·{" "}
+          {formatDate(POLL_AVERAGE_AS_OF)} ·{" "}
           <a
             href={POLL_AVERAGE_SOURCE.url}
             target="_blank"
