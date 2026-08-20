@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MoreLink, SectionHeading, formatDate } from "@/components/ui";
@@ -8,6 +9,7 @@ import {
   getBallot,
   pollsCloseAt,
 } from "@/lib/byelections";
+import { councilCredit, councilPhoto } from "@/lib/council-photos";
 import { getParty } from "@/data/parties";
 
 export function generateStaticParams() {
@@ -38,10 +40,47 @@ export default async function BallotPage({ params }: PageProps<"/elections/[ball
 
   const { ballot, date } = entry;
   const closed = pollsCloseAt(date) <= new Date();
+  const photo = councilPhoto(ballot.council);
 
   return (
     <div className="shell py-11">
-      <p className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-ink-faint">
+      {/* A photograph of the council area, captioned as exactly that. There is
+          no free source of representative pictures of individual wards, and
+          putting a picture of the wrong end of the borough under a ward name
+          would be a small lie on every one of these pages. */}
+      {photo ? (
+        <figure className="m-0">
+          <div className="relative h-44 overflow-hidden bg-ink sm:h-60">
+            <Image
+              src={photo.file}
+              alt={`${photo.shows}, in the ${ballot.council} council area`}
+              fill
+              priority
+              sizes="(max-width: 1100px) 100vw, 1100px"
+              className="object-cover"
+              style={{ objectPosition: photo.position }}
+            />
+          </div>
+          <figcaption className="mt-1.5 text-[0.72rem] leading-snug text-ink-faint">
+            {photo.shows} — a photograph of the {ballot.council} area, not of {ballot.ward}{" "}
+            itself.{" "}
+            {photo.descriptionUrl ? (
+              <a
+                href={photo.descriptionUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline"
+              >
+                {councilCredit(photo)}
+              </a>
+            ) : (
+              councilCredit(photo)
+            )}
+          </figcaption>
+        </figure>
+      ) : null}
+
+      <p className="mt-7 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-ink-faint">
         <Link href="/elections/by-elections" className="link-underline">
           Council by-elections
         </Link>{" "}

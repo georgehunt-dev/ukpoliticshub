@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SectionHeading } from "@/components/ui";
 import { PORTRAITS_FETCHED_AT, allPortraits } from "@/lib/portraits";
 import { allPhotos } from "@/lib/photos";
+import { allCouncilPhotos } from "@/lib/council-photos";
 
 export const metadata: Metadata = {
   title: "Colophon and image credits",
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function ColophonPage() {
   const portraits = allPortraits();
   const photos = allPhotos();
+  const councilPhotos = allCouncilPhotos();
 
   return (
     <div className="mx-auto max-w-4xl px-5 py-11">
@@ -69,6 +71,39 @@ export default function ColophonPage() {
               <span className="w-44 shrink-0 text-sm font-semibold">{photo.use}</span>
               <span className="min-w-0 flex-1 text-[0.82rem] text-ink-soft">
                 {photo.author ?? "Author not recorded"}
+              </span>
+              <span className="shrink-0 text-[0.78rem] font-semibold text-ink-faint">
+                {photo.licence}
+              </span>
+              {photo.descriptionUrl ? (
+                <a
+                  href={photo.descriptionUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline shrink-0 text-[0.78rem] text-ink-faint"
+                >
+                  File
+                </a>
+              ) : null}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="mt-10 font-display text-2xl">Council photographs</h2>
+      <p className="mt-2 text-[0.9rem] leading-relaxed text-ink-soft">
+        Each by-election page carries a photograph of the council area rather than of the ward
+        being contested. No free source of representative pictures of individual wards exists, so
+        every one of these is captioned on the page with what it actually shows.
+      </p>
+
+      <div className="panel mt-4 divide-y divide-[color:var(--rule)]">
+        {councilPhotos.map((photo) => (
+          <div key={photo.slug} className="px-5 py-3">
+            <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+              <span className="w-44 shrink-0 text-sm font-semibold">{photo.council}</span>
+              <span className="min-w-0 flex-1 text-[0.82rem] text-ink-soft">
+                {photo.shows} · {photo.author ?? "Author not recorded"}
               </span>
               <span className="shrink-0 text-[0.78rem] font-semibold text-ink-faint">
                 {photo.licence}
