@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { parties } from "@/data/parties";
 import { allCompareSlugs } from "@/lib/compare";
+import { allBallots } from "@/lib/byelections";
 import { CONSTITUENCIES } from "@/lib/constituencies";
 import { assessments } from "@/data/states";
 import { subjects } from "@/data/subjects";
@@ -43,6 +44,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/constituencies`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/threat`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/constituencies/all`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE}/elections/by-elections`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
     { url: `${BASE}/how-we-work`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/colophon`, lastModified: now, changeFrequency: "monthly", priority: 0.3 },
     { url: `${BASE}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
@@ -71,6 +73,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${BASE}/constituencies/${seat.slug}`,
     lastModified: now,
     changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  /**
+   * One page per by-election. Declared daily because the candidate list moves
+   * until nominations close and the result lands after the poll — and they
+   * drop out of the sitemap entirely once the contest ages out of the data.
+   */
+  const byElectionRoutes: MetadataRoute.Sitemap = allBallots().map(({ ballot }) => ({
+    url: `${BASE}/elections/${ballot.slug}`,
+    lastModified: now,
+    changeFrequency: "daily",
     priority: 0.6,
   }));
 
@@ -120,6 +134,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...partyRoutes,
     ...compareRoutes,
     ...constituencyRoutes,
+    ...byElectionRoutes,
     ...assessmentRoutes,
     ...subjectRoutes,
     ...outletRoutes,

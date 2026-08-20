@@ -1,0 +1,1017 @@
+{
+  "fetchedAt": "2026-08-20T16:54:02.064Z",
+  "days": [
+    {
+      "date": "2026-08-20",
+      "ballots": [
+        {
+          "id": "local.barnsley.penistone-east.by.2026-08-20",
+          "slug": "barnsley-penistone-east-2026-08-20",
+          "council": "Barnsley",
+          "ward": "Penistone East",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Andy Waters",
+              "party": "Liberal Democrats",
+              "partySlug": "liberal-democrats"
+            },
+            {
+              "name": "Carlo Turner",
+              "party": "Independent",
+              "partySlug": null
+            },
+            {
+              "name": "David Wood",
+              "party": "Restore Britain",
+              "partySlug": "restore-britain"
+            },
+            {
+              "name": "Ehren Holt",
+              "party": "Green Party",
+              "partySlug": "green"
+            },
+            {
+              "name": "Eunice Asante",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            },
+            {
+              "name": "John Roberts",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "Peter Millar",
+              "party": "Independent",
+              "partySlug": null
+            },
+            {
+              "name": "Steven John Burkinshaw",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.barnsley.penistone-east.by.2026-08-20/"
+          }
+        },
+        {
+          "id": "local.cumberland.harraby-south.by.2026-08-20",
+          "slug": "cumberland-harraby-south-2026-08-20",
+          "council": "Cumberland",
+          "ward": "Harraby South",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Josh Kirkwood",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            },
+            {
+              "name": "Rob Currie",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Rose-Ellen Kemp",
+              "party": "Green Party",
+              "partySlug": "green"
+            },
+            {
+              "name": "Ruth Elizabeth Alcroft",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "Stuart Kelly",
+              "party": "Liberal Democrats",
+              "partySlug": "liberal-democrats"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.cumberland.harraby-south.by.2026-08-20/"
+          }
+        },
+        {
+          "id": "local.huntingdonshire.st-neots-eynesbury.by.2026-08-20",
+          "slug": "huntingdonshire-st-neots-eynesbury-2026-08-20",
+          "council": "Huntingdonshire",
+          "ward": "St Neots Eynesbury",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Alexander Pushkarev",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Anna Lisa Clenachan Pritchard",
+              "party": "Green Party",
+              "partySlug": "green"
+            },
+            {
+              "name": "Daniel Laycock",
+              "party": "Independent",
+              "partySlug": null
+            },
+            {
+              "name": "Ian Pele Taylor",
+              "party": "Liberal Democrats",
+              "partySlug": "liberal-democrats"
+            },
+            {
+              "name": "Michael Peter Gilks",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "Steve O'Hara",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.huntingdonshire.st-neots-eynesbury.by.2026-08-20/"
+          }
+        },
+        {
+          "id": "local.nottingham.leen-valley.by.2026-08-20",
+          "slug": "nottingham-leen-valley-2026-08-20",
+          "council": "Nottingham",
+          "ward": "Leen Valley",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Abbas Hussain",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "Gail Janise Stancliffe",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Hugh Mc Guinness",
+              "party": "Green Party",
+              "partySlug": "green"
+            },
+            {
+              "name": "Liz Morgan-Danvers",
+              "party": "Liberal Democrats",
+              "partySlug": "liberal-democrats"
+            },
+            {
+              "name": "Parveen Begum",
+              "party": "Nottingham People’s Alliance",
+              "partySlug": null
+            },
+            {
+              "name": "Stuart Andrew Frost",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.nottingham.leen-valley.by.2026-08-20/"
+          }
+        }
+      ]
+    },
+    {
+      "date": "2026-08-27",
+      "ballots": [
+        {
+          "id": "local.dover.guston-kingsdown-st-margarets-at-cliffe.by.2026-08-27",
+          "slug": "dover-guston-kingsdown-st-margarets-at-cliffe-2026-08-27",
+          "council": "Dover",
+          "ward": "Guston, Kingsdown & St Margaret's-at-Cliffe",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "David Arthur Hawkes",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Graham Richard Wanstall",
+              "party": "Independent",
+              "partySlug": null
+            },
+            {
+              "name": "Ingrid Dodd",
+              "party": "Green Party",
+              "partySlug": "green"
+            },
+            {
+              "name": "James Robert Defriend",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            },
+            {
+              "name": "Jez Hermer",
+              "party": "Restore Britain",
+              "partySlug": "restore-britain"
+            },
+            {
+              "name": "Steve Wisbey",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.dover.guston-kingsdown-st-margarets-at-cliffe.by.2026-08-27/"
+          }
+        },
+        {
+          "id": "local.newcastle-upon-tyne.throckley-walbottle-newburn.by.2026-08-27",
+          "slug": "newcastle-upon-tyne-throckley-walbottle-newburn-2026-08-27",
+          "council": "Newcastle upon Tyne",
+          "ward": "Throckley, Walbottle & Newburn",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Alexis Fernandes",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Kimberley Barrass",
+              "party": "Green Party",
+              "partySlug": "green"
+            },
+            {
+              "name": "Linda Isabel Wright",
+              "party": "Labour and Co-operative Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "Martin Evison",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            },
+            {
+              "name": "Stephen Kelly",
+              "party": "Liberal Democrats",
+              "partySlug": "liberal-democrats"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.newcastle-upon-tyne.throckley-walbottle-newburn.by.2026-08-27/"
+          }
+        },
+        {
+          "id": "local.sheffield.southey.by.2026-08-27",
+          "slug": "sheffield-southey-2026-08-27",
+          "council": "Sheffield",
+          "ward": "Southey",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Daniel Gage",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Daniel John Moy",
+              "party": "Green Party",
+              "partySlug": "green"
+            },
+            {
+              "name": "Jayne Dunn",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "Oliver Edward George",
+              "party": "Liberal Democrats",
+              "partySlug": "liberal-democrats"
+            },
+            {
+              "name": "Paul Jakeman",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.sheffield.southey.by.2026-08-27/"
+          }
+        },
+        {
+          "id": "local.st-helens.billinge-seneley-green.by.2026-08-27",
+          "slug": "st-helens-billinge-seneley-green-2026-08-27",
+          "council": "St. Helens",
+          "ward": "Billinge & Seneley Green",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Colin Richard Betts",
+              "party": "Independent",
+              "partySlug": null
+            },
+            {
+              "name": "David Michael Titmuss",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Karen Hatch",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            },
+            {
+              "name": "Steve Owen",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "Sue Rahman",
+              "party": "Green Party",
+              "partySlug": "green"
+            },
+            {
+              "name": "Tom Middleton-Leonard",
+              "party": "Independent",
+              "partySlug": null
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.st-helens.billinge-seneley-green.by.2026-08-27/"
+          }
+        },
+        {
+          "id": "local.wandsworth.trinity.by.2026-08-27",
+          "slug": "wandsworth-trinity-2026-08-27",
+          "council": "Wandsworth",
+          "ward": "Trinity",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Dylan Connor Peter Henderson",
+              "party": "Liberal Democrats",
+              "partySlug": "liberal-democrats"
+            },
+            {
+              "name": "Josh Stanton",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            },
+            {
+              "name": "Otto Jacobsson",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Shirin Chiara Georgiani",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "Sylvain Magne",
+              "party": "Green Party",
+              "partySlug": "green"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.wandsworth.trinity.by.2026-08-27/"
+          }
+        }
+      ]
+    },
+    {
+      "date": "2026-09-02",
+      "ballots": [
+        {
+          "id": "local.stroud.kingswood.by.2026-09-02",
+          "slug": "stroud-kingswood-2026-09-02",
+          "council": "Stroud",
+          "ward": "Kingswood",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Alasdair Liddell",
+              "party": "Green Party",
+              "partySlug": "green"
+            },
+            {
+              "name": "Claire Louise Cook",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "Fred Hulls",
+              "party": "Liberal Democrats",
+              "partySlug": "liberal-democrats"
+            },
+            {
+              "name": "Louise Jane Tandy",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Michael Alun Rees",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.stroud.kingswood.by.2026-09-02/"
+          }
+        }
+      ]
+    },
+    {
+      "date": "2026-09-03",
+      "ballots": [
+        {
+          "id": "local.edinburgh.portobellocraigmillar.by.2026-09-03",
+          "slug": "edinburgh-portobellocraigmillar-2026-09-03",
+          "council": "Edinburgh",
+          "ward": "Portobello/Craigmillar",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Andrew McLaughlin",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            },
+            {
+              "name": "David Craig Ballantine",
+              "party": "Alliance for Democracy and Freedom",
+              "partySlug": null
+            },
+            {
+              "name": "Haris Young",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Jim Patrick Wyke",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "Liss Owen",
+              "party": "Liberal Democrats",
+              "partySlug": "liberal-democrats"
+            },
+            {
+              "name": "Lorenzo Martinico",
+              "party": "Scottish Green Party",
+              "partySlug": null
+            },
+            {
+              "name": "Niel Deepnarain",
+              "party": "Scottish Family Party",
+              "partySlug": null
+            },
+            {
+              "name": "Pete Gregson",
+              "party": "Workers Party of Britain",
+              "partySlug": null
+            },
+            {
+              "name": "Peter Olech",
+              "party": "Communist Party of Britain",
+              "partySlug": null
+            },
+            {
+              "name": "Silas McGilvray",
+              "party": "Scottish National Party (SNP)",
+              "partySlug": null
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.edinburgh.portobellocraigmillar.by.2026-09-03/"
+          }
+        },
+        {
+          "id": "local.edinburgh.southsidenewington.by.2026-09-03",
+          "slug": "edinburgh-southsidenewington-2026-09-03",
+          "council": "Edinburgh",
+          "ward": "Southside/Newington",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Artie Khovanov",
+              "party": "Liberal Democrats",
+              "partySlug": "liberal-democrats"
+            },
+            {
+              "name": "Derrick Emms",
+              "party": "Edinburgh & East Lothian People",
+              "partySlug": null
+            },
+            {
+              "name": "Gary Neill",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            },
+            {
+              "name": "Isabella Gastel Alejandre",
+              "party": "Scottish Green Party",
+              "partySlug": null
+            },
+            {
+              "name": "Marc Wilkinson",
+              "party": "Edinburgh & East Lothian People",
+              "partySlug": null
+            },
+            {
+              "name": "Mark Rowbotham",
+              "party": "Edinburgh & East Lothian People",
+              "partySlug": null
+            },
+            {
+              "name": "Nick Layden",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Richard Crewe Lucas",
+              "party": "Scottish Family Party",
+              "partySlug": null
+            },
+            {
+              "name": "Richard Shillcock",
+              "party": "Communist Party of Britain",
+              "partySlug": null
+            },
+            {
+              "name": "Roisin Keirdashian",
+              "party": "Independent",
+              "partySlug": null
+            },
+            {
+              "name": "Ruth Elliott",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "Sam Alexander Mackenzie",
+              "party": "Scottish National Party (SNP)",
+              "partySlug": null
+            },
+            {
+              "name": "Sean McGregor Moffat",
+              "party": "Alliance for Democracy and Freedom",
+              "partySlug": null
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.edinburgh.southsidenewington.by.2026-09-03/"
+          }
+        },
+        {
+          "id": "local.oxfordshire.chesterton-launton.by.2026-09-03",
+          "slug": "oxfordshire-chesterton-launton-2026-09-03",
+          "council": "Oxfordshire",
+          "ward": "Chesterton & Launton",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Gregory Michael Fish",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "Ian Richard Hodgson",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            },
+            {
+              "name": "James Henry Dean Hartley",
+              "party": "Liberal Democrats",
+              "partySlug": "liberal-democrats"
+            },
+            {
+              "name": "Meri Mosharrafa",
+              "party": "Green Party",
+              "partySlug": "green"
+            },
+            {
+              "name": "Sandy Lewis Dallimore",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.oxfordshire.chesterton-launton.by.2026-09-03/"
+          }
+        },
+        {
+          "id": "local.rhondda-cynon-taf.llantwit-fardre.by.2026-09-03",
+          "slug": "rhondda-cynon-taf-llantwit-fardre-2026-09-03",
+          "council": "Rhondda Cynon Taf",
+          "ward": "Llantwit Fardre",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Danny Lyn Crudge",
+              "party": "Plaid Cymru - The Party of Wales",
+              "partySlug": null
+            },
+            {
+              "name": "Joel James",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Jonathan Bishop",
+              "party": "Independent",
+              "partySlug": null
+            },
+            {
+              "name": "Lloyd Watkins",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "Lyndon Evans",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.rhondda-cynon-taf.llantwit-fardre.by.2026-09-03/"
+          }
+        },
+        {
+          "id": "local.somerset.frome-west.by.2026-09-03",
+          "slug": "somerset-frome-west-2026-09-03",
+          "council": "Somerset",
+          "ward": "Frome West",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Christopher David Wildridge",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "David Salter Quantrill-Simon",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Dominic James Ellison",
+              "party": "Green Party",
+              "partySlug": "green"
+            },
+            {
+              "name": "Drew Gardner",
+              "party": "Liberal Democrats",
+              "partySlug": "liberal-democrats"
+            },
+            {
+              "name": "Joseph Williams",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.somerset.frome-west.by.2026-09-03/"
+          }
+        }
+      ]
+    },
+    {
+      "date": "2026-09-10",
+      "ballots": [
+        {
+          "id": "local.city-of-london-alder.cordwainer.2026-09-10",
+          "slug": "city-of-london-alder-cordwainer-2026-09-10",
+          "council": "City of London",
+          "ward": "Cordwainer",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Alex Barr",
+              "party": "Independent",
+              "partySlug": null
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.city-of-london-alder.cordwainer.2026-09-10/"
+          }
+        },
+        {
+          "id": "local.city-of-london-alder.bridge.2026-09-10",
+          "slug": "city-of-london-alder-bridge-2026-09-10",
+          "council": "City of London",
+          "ward": "Bridge",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Tim Levene",
+              "party": "Independent",
+              "partySlug": null
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.city-of-london-alder.bridge.2026-09-10/"
+          }
+        },
+        {
+          "id": "local.manchester.burnage.by.2026-09-10",
+          "slug": "manchester-burnage-2026-09-10",
+          "council": "Manchester",
+          "ward": "Burnage",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Abdullah Vavdiwala",
+              "party": "Liberal Democrats",
+              "partySlug": "liberal-democrats"
+            },
+            {
+              "name": "Bhupinder Kumar",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Carl Jason Austin-Behan",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "Douad Nawaz",
+              "party": "Green Party",
+              "partySlug": "green"
+            },
+            {
+              "name": "Gaz Ranjha",
+              "party": "Workers Party of Britain",
+              "partySlug": null
+            },
+            {
+              "name": "Heather McDonagh",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.manchester.burnage.by.2026-09-10/"
+          }
+        },
+        {
+          "id": "local.north-east-derbyshire.eckington-south-renishaw.by.2026-09-10",
+          "slug": "north-east-derbyshire-eckington-south-renishaw-2026-09-10",
+          "council": "North East Derbyshire",
+          "ward": "Eckington South & Renishaw",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "David Landall",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "Hannah Jane Court",
+              "party": "Green Party",
+              "partySlug": "green"
+            },
+            {
+              "name": "Jackie Foster",
+              "party": "Independent",
+              "partySlug": null
+            },
+            {
+              "name": "Jamie Hadyn Hodgson",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            },
+            {
+              "name": "Philip Wheelhouse",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.north-east-derbyshire.eckington-south-renishaw.by.2026-09-10/"
+          }
+        },
+        {
+          "id": "local.north-somerset.hutton-locking.by.2026-09-10",
+          "slug": "north-somerset-hutton-locking-2026-09-10",
+          "council": "North Somerset",
+          "ward": "Hutton & Locking",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Georgina Barry",
+              "party": "Liberal Democrats",
+              "partySlug": "liberal-democrats"
+            },
+            {
+              "name": "James Willis-Boden",
+              "party": "Green Party",
+              "partySlug": "green"
+            },
+            {
+              "name": "John Edward Standfield",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "William Oliver Jones",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            },
+            {
+              "name": "Yue He Parkinson",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.north-somerset.hutton-locking.by.2026-09-10/"
+          }
+        },
+        {
+          "id": "local.west-suffolk.haverhill-west.by.2026-09-10",
+          "slug": "west-suffolk-haverhill-west-2026-09-10",
+          "council": "West Suffolk",
+          "ward": "Haverhill West",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Claire Higson",
+              "party": "Green Party",
+              "partySlug": "green"
+            },
+            {
+              "name": "Graham Cone",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Heike Sowa",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            },
+            {
+              "name": "James William Porter",
+              "party": "Liberal Democrats",
+              "partySlug": "liberal-democrats"
+            },
+            {
+              "name": "Quinn Cox",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.west-suffolk.haverhill-west.by.2026-09-10/"
+          }
+        }
+      ]
+    },
+    {
+      "date": "2026-09-15",
+      "ballots": [
+        {
+          "id": "local.bassetlaw.east-markham.by.2026-09-15",
+          "slug": "bassetlaw-east-markham-2026-09-15",
+          "council": "Bassetlaw",
+          "ward": "East Markham",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Colette Maureen Roberts",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "David Bean",
+              "party": "Green Party",
+              "partySlug": "green"
+            },
+            {
+              "name": "James Robert Purle",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Matthew Stephen Evans",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.bassetlaw.east-markham.by.2026-09-15/"
+          }
+        }
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "ballots": [
+        {
+          "id": "local.south-lanarkshire.avondale-and-stonehouse.by.2026-09-17",
+          "slug": "south-lanarkshire-avondale-and-stonehouse-2026-09-17",
+          "council": "South Lanarkshire",
+          "ward": "Avondale and Stonehouse",
+          "seats": 1,
+          "candidates": [
+            {
+              "name": "Ade Aibinu",
+              "party": "Conservative and Unionist Party",
+              "partySlug": "conservative"
+            },
+            {
+              "name": "Andrew Forde",
+              "party": "Independent",
+              "partySlug": null
+            },
+            {
+              "name": "David Glennie",
+              "party": "Liberal Democrats",
+              "partySlug": "liberal-democrats"
+            },
+            {
+              "name": "Gary Allan",
+              "party": "Your Party",
+              "partySlug": null
+            },
+            {
+              "name": "George Hobbins",
+              "party": "Reform UK",
+              "partySlug": "reform"
+            },
+            {
+              "name": "Hannah Miller",
+              "party": "Labour Party",
+              "partySlug": "labour"
+            },
+            {
+              "name": "Ken Thomson",
+              "party": "Alliance for Democracy and Freedom",
+              "partySlug": null
+            },
+            {
+              "name": "Leigh Payne",
+              "party": "Scottish National Party (SNP)",
+              "partySlug": null
+            },
+            {
+              "name": "Michael Grant",
+              "party": "Scottish Green Party",
+              "partySlug": null
+            }
+          ],
+          "result": null,
+          "source": {
+            "label": "Democracy Club — candidates and elections database",
+            "url": "https://whocanivotefor.co.uk/elections/local.south-lanarkshire.avondale-and-stonehouse.by.2026-09-17/"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ByElectionBand from "@/components/ByElectionBand";
 import ConstituencyBand from "@/components/ConstituencyBand";
 import ElectionsStrip from "@/components/ElectionsStrip";
 import HeroRace from "@/components/HeroRace";
@@ -64,6 +65,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Renders nothing at all unless a poll is close or has just been held,
+          so the front page is never carrying a dead countdown. */}
+      <ByElectionBand />
 
       <KeyIndicators today={today()} />
       <StartHere />
