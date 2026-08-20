@@ -1,11 +1,6 @@
 import Link from "next/link";
 import ElectionCountdown from "@/components/ElectionCountdown";
-import {
-  type BandState,
-  bandState,
-  candidateCount,
-  partiesStanding,
-} from "@/lib/byelections";
+import { type BandState, bandState, candidateCount } from "@/lib/byelections";
 
 /**
  * The by-election band on the front page.
@@ -57,7 +52,6 @@ export default function ByElectionBand() {
   const date = new Date(`${day.date}T12:00:00Z`);
   const seats = day.ballots.reduce((sum, ballot) => sum + ballot.seats, 0);
   const candidates = candidateCount(day);
-  const parties = partiesStanding(day);
   const index = `/elections/by-elections`;
 
   return (
@@ -84,23 +78,23 @@ export default function ByElectionBand() {
               {day.ballots.length === 1 ? "one ward" : `${day.ballots.length} wards`}.
             </p>
 
-            <ul className="mt-4 grid gap-x-8 gap-y-1.5 sm:grid-cols-2">
+            <ul className="mt-5 grid gap-x-10 gap-y-2.5 sm:grid-cols-2">
               {day.ballots.map((ballot) => (
-                <li key={ballot.slug} className="border-t border-white/20 pt-1.5">
+                <li key={ballot.slug} className="border-t border-white/20 pt-2">
                   <Link
                     href={`/elections/${ballot.slug}`}
                     className="group flex items-baseline justify-between gap-3"
                   >
                     <span className="min-w-0">
-                      <span className="block truncate font-display text-[1.05rem] leading-tight underline decoration-transparent underline-offset-4 transition-colors group-hover:decoration-[color:var(--paper)]/60">
+                      <span className="block truncate font-display text-[1.35rem] leading-tight underline decoration-transparent underline-offset-4 transition-colors group-hover:decoration-[color:var(--paper)]/60 sm:text-[1.5rem]">
                         {ballot.ward}
                       </span>
-                      <span className="block truncate text-[0.72rem] text-[color:var(--paper)]/60">
+                      <span className="block truncate text-[0.78rem] text-[color:var(--paper)]/60">
                         {ballot.council}
                         {ballot.result ? ` · ${ballot.result.party} hold or gain` : ""}
                       </span>
                     </span>
-                    <span className="shrink-0 text-[0.72rem] tabular text-[color:var(--paper)]/60">
+                    <span className="shrink-0 text-[0.78rem] tabular text-[color:var(--paper)]/60">
                       {ballot.candidates.length}
                     </span>
                   </Link>
@@ -108,11 +102,7 @@ export default function ByElectionBand() {
               ))}
             </ul>
 
-            <p className="mt-4 text-[0.78rem] text-[color:var(--paper)]/70">
-              Standing: {parties.join(" · ")}
-            </p>
-
-            <p className="mt-4">
+            <p className="mt-5">
               <Link
                 href={index}
                 className="inline-flex items-center gap-2 border border-[color:var(--paper)]/45 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.14em] transition-colors hover:bg-[color:var(--paper)] hover:text-ink"

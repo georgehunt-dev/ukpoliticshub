@@ -65,28 +65,31 @@ export default function ElectionCountdown({
   ];
 
   return (
-    <div>
+    /* The digits and their caption share one bordered plate, so the block reads
+       as a single object aligned with the ward list rather than as numbers with
+       a stray line under them. */
+    <div className="inline-block border border-[color:var(--paper)]/30">
       <ul
-        className="flex items-end gap-3 sm:gap-4"
+        className="flex items-end justify-between gap-4 px-5 pb-3 pt-4 sm:gap-5"
         aria-label="Time until polls close"
         /* The digits change every second; announcing that would make the page
-           unusable with a screen reader. The static sentence beneath carries
-           the same information. */
+           unusable with a screen reader. The caption below carries the same
+           information without ticking. */
         aria-hidden="true"
       >
         {units.map((unit) => (
           <li key={unit.label} className="text-center">
-            <span className="block min-w-[2.6ch] font-display text-[2.6rem] font-bold leading-none tabular text-[color:var(--paper)] sm:text-[3.2rem]">
+            <span className="block min-w-[2.4ch] font-display text-[2.4rem] font-bold leading-none tabular text-[color:var(--paper)] sm:text-[2.9rem]">
               {unit.value == null ? "—" : String(unit.value).padStart(2, "0")}
             </span>
-            <span className="mt-1 block text-[0.58rem] font-bold uppercase tracking-[0.16em] text-[color:var(--paper)]/60">
+            <span className="mt-1 block text-[0.56rem] font-bold uppercase tracking-[0.16em] text-[color:var(--paper)]/60">
               {unit.label}
             </span>
           </li>
         ))}
       </ul>
-      <p className="mt-2 text-[0.72rem] text-[color:var(--paper)]/70">
-        until polls close at 10pm
+      <p className="border-t border-[color:var(--paper)]/25 px-5 py-2 text-center text-[0.68rem] font-bold uppercase tracking-[0.13em] text-[color:var(--paper)]/70">
+        Until polls close at 10pm
       </p>
     </div>
   );
