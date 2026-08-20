@@ -46,6 +46,9 @@ export default function MorningEmail() {
   return (
     <aside className="flex flex-col border-t border-rule pt-5 lg:h-full lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0">
       {photo ? (
+        /* The photograph takes whatever the text leaves. Its floor stays low
+           on purpose: this column sets the height of the whole row, so a tall
+           minimum here pushes the opening screen past the fold. */
         <div className="relative h-28 shrink-0 overflow-hidden bg-ink sm:h-32 lg:h-auto lg:min-h-32 lg:flex-1">
           <Image
             src={photo.file}
@@ -64,14 +67,17 @@ export default function MorningEmail() {
         </div>
       ) : null}
 
-      <p className="eyebrow mt-4">One email each morning</p>
+      {/* Spacing is tight through this column on purpose. It is the taller of
+          the two on the front page, so it sets the height of the whole row —
+          every pixel saved here is a pixel the photograph above gets back. */}
+      <p className="eyebrow mt-3.5">One email each morning</p>
       <h2 className="mt-1.5 font-display text-2xl leading-tight sm:text-[1.7rem]">
         Know where Britain stands before your first coffee.
       </h2>
 
-      <ul className="mt-4">
+      <ul className="mt-3">
         {INCLUDED.map((item) => (
-          <li key={item.title} className="border-t border-rule py-2.5">
+          <li key={item.title} className="border-t border-rule py-2.5 lg:py-1.5 xl:py-2">
             <p className="text-[0.85rem] font-semibold leading-snug">{item.title}</p>
             <p className="mt-0.5 text-[0.76rem] leading-snug text-ink-soft">{item.detail}</p>
           </li>

@@ -52,14 +52,18 @@ export default function HeroRace() {
       ) : null}
 
       <div
-        className="relative flex w-full flex-col justify-end px-5 py-6 sm:px-7 sm:py-7"
+        /* Centred rather than bottom-anchored on a wide screen. The panel is
+           stretched to match the taller column beside it, and pinning the
+           content to the foot piled every spare pixel into one band of empty
+           photograph above the title — 205px of it on a 1080p display. */
+        className="relative flex w-full flex-col justify-end px-5 py-6 sm:px-7 sm:py-7 lg:justify-center"
         style={{ textShadow: "0 1px 10px rgba(8,16,30,0.8)" }}
       >
         {/* The page's h1 is the site's own line, above this panel. This is a
             section heading, on one line — the date and the sourcing that used
             to sit here have moved into the footer below, which was already
             carrying a source link. */}
-        <h2 className="font-display text-[2.25rem] leading-[0.98] tracking-tight sm:text-[2.9rem]">
+        <h2 className="font-display text-[2.35rem] leading-[0.98] tracking-tight sm:text-[3.2rem]">
           The Race for No.10
         </h2>
 
@@ -70,7 +74,11 @@ export default function HeroRace() {
               <li key={entry.party} className="border-b border-white/20">
                 <Link
                   href={`/parties/${party.slug}`}
-                  className="group flex items-center gap-3 py-2 transition-colors hover:bg-white/[0.07]"
+                  /* Rows breathe on a wide screen: the panel is sized to the
+                     viewport there, and tight rows left a band of empty
+                     photograph above the title rather than a table that used
+                     the room it had. */
+                  className="group flex items-center gap-3 py-2 transition-colors hover:bg-white/[0.07] lg:py-3"
                 >
                   <span className="w-3.5 shrink-0 font-display text-base text-[color:var(--paper)]/50 tabular">
                     {index + 1}

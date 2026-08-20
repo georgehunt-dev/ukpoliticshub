@@ -37,8 +37,16 @@ export default function Home() {
           is far taller than any minimum, which makes this inert. */}
       <section className="lg:flex lg:min-h-[calc(100dvh-9rem)] lg:flex-col">
         <div className="shell pt-4">
-          <h1 className="font-display text-[2.05rem] leading-[1.04] tracking-tight text-balance sm:text-[2.75rem] lg:text-[3.35rem]">
-            All In One Hub For British Politics, From Both Sides.
+          {/* Broken deliberately rather than left to wrap: the clause after
+              the comma is the half that says what makes the site different,
+              and it earns its own line. */}
+          {/* Steps down on shorter desktops. Two lines of type at the largest
+              size costs about 55px, which on a 1280x800 window is the
+              difference between the sign-up button sitting above the fold and
+              below it. */}
+          <h1 className="font-display text-[2.05rem] leading-[1.04] tracking-tight sm:text-[2.75rem] lg:text-[2.9rem] xl:text-[3.15rem] 2xl:text-[3.5rem]">
+            <span className="block">All In One Hub For British Politics,</span>
+            <span className="block">From Both Sides.</span>
           </h1>
         </div>
 
