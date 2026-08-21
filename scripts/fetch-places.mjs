@@ -87,12 +87,18 @@ async function settlements() {
     // response is what the endpoint keeps hanging up on. Ordered by item so
     // the pages do not overlap or skip.
     for (;;) {
+      // Population comes back too, and it is optional: it is what lets a
+      // caller say which settlement in a seat is the principal one. Joining
+      // population by name instead would attach County Durham's Stanley to
+      // Stanley in Perthshire, which is exactly the class of error the rest of
+      // this file exists to avoid.
       const query = `
-        SELECT ?p ?name ?lat ?lon WHERE {
+        SELECT ?p ?name ?lat ?lon ?pop WHERE {
           ?p wdt:P31 wd:${qid} ; wdt:P17 wd:Q145 .
           ?p rdfs:label ?name . FILTER(lang(?name)="en")
           ?p p:P625/psv:P625 ?v .
           ?v wikibase:geoLatitude ?lat ; wikibase:geoLongitude ?lon .
+          OPTIONAL { ?p wdt:P1082 ?pop }
         } ORDER BY ?p LIMIT ${PAGE} OFFSET ${offset}`;
 
       const body = await getJson(`${WDQS}?format=json&query=${encodeURIComponent(query)}`, {
@@ -106,10 +112,11 @@ async function settlements() {
         if (!name || /\(|\bdisambiguation\b|^[0-9]/i.test(name)) continue;
         const lat = Math.round(Number(row.lat.value) * 1000) / 1000;
         const lon = Math.round(Number(row.lon.value) * 1000) / 1000;
+        const population = row.pop ? Number(row.pop.value) : null;
         const key = `${name}|${lat}|${lon}`;
         const existing = found.get(key);
         if (!existing || RANK.indexOf(label) < RANK.indexOf(existing.type)) {
-          found.set(key, { name, lat, lon, type: label });
+          found.set(key, { name, lat, lon, type: label, population });
         }
       }
 
@@ -158,6 +165,9 @@ async function locate(places) {
       located.push({
         name: place.name,
         type: place.type,
+        lat: place.lat,
+        lon: place.lon,
+        population: place.population ?? null,
         seat,
         district: hit.admin_district ?? null,
         country: hit.country ?? null,

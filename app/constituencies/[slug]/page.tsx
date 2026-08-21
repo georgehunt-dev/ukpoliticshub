@@ -20,6 +20,7 @@ import {
 } from "@/lib/constituencies";
 import { credit, getPhoto } from "@/lib/photos";
 import { headlinePlaces, PLACE_SOURCE } from "@/lib/places";
+import { seatPhoto, seatPhotoCredit } from "@/lib/seat-photos";
 import { NATIONAL, seatContext } from "@/lib/seat-context";
 
 export function generateStaticParams() {
@@ -134,6 +135,10 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
   const seat = getConstituency(slug);
   if (!seat) notFound();
 
+  // A photograph of a named town in the seat, where we have one. The nation
+  // photograph is the fallback, not the default — it was the same picture on
+  // 543 pages.
+  const local = seatPhoto(seat.slug);
   const photo = getPhoto(photoForNation(seat.nation));
   const election = seat.election;
   const byElection = seat.byElection;
@@ -154,21 +159,27 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
         places={places.map((place) => place.name)}
       />
 
-      {/* A photograph of the nation, captioned as exactly that. No free source
-          of 650 representative constituency photographs exists, and putting the
-          wrong town on a seat page would be a small lie repeated 650 times. */}
+      {/* A photograph of a named town in this seat, captioned as that town.
+          There is still no such thing as a photograph of a whole constituency,
+          so the caption never claims one — it says which place is shown and
+          that it is not the whole seat. Where we hold nothing for a seat, the
+          nation photograph stands in and says so instead. */}
       <div className="relative isolate flex h-56 items-end overflow-hidden bg-ink sm:h-72">
         {photo ? (
           <>
             <Image
-              src={photo.file}
-              alt={photo.description ?? `Landscape in ${seat.nation}.`}
+              src={local ? local.file : photo.file}
+              alt={
+                local
+                  ? `${local.shows}, in the ${seat.name} constituency`
+                  : (photo.description ?? `Landscape in ${seat.nation}.`)
+              }
               fill
               priority
               sizes="(max-width: 1100px) 100vw, 1100px"
               className="object-cover"
               style={{
-                objectPosition: photo.position,
+                objectPosition: local ? "50% 50%" : photo.position,
                 filter: "brightness(1.28) contrast(0.96) saturate(1.08)",
               }}
             />
@@ -212,15 +223,34 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
             className="absolute right-2 top-2 text-[0.6rem] text-[color:var(--paper)]/70"
             style={{ textShadow: "0 1px 4px rgba(8,16,30,0.9)" }}
           >
-            {credit(photo)}
+            {local ? seatPhotoCredit(local) : credit(photo)}
           </span>
         ) : null}
       </div>
 
       <div className="mx-auto max-w-3xl px-5 py-8 sm:px-7 sm:py-10">
         <p className="text-[0.75rem] leading-snug text-ink-faint">
-          Photograph shows {seat.nation}, not {seat.name} — we don&rsquo;t hold pictures of
-          individual seats.
+          {local ? (
+            /* Where the town shares the seat's name, "not the whole of
+               Basingstoke" under a picture of Basingstoke reads as nonsense.
+               Same point, said the other way round. */
+            seat.name.toLowerCase().includes(local.shows.toLowerCase()) ? (
+              <>
+                Photograph shows {local.shows}. The constituency reaches beyond the{" "}
+                {local.placeType.toLowerCase()} itself.
+              </>
+            ) : (
+              <>
+                Photograph shows {local.shows}, a {local.placeType.toLowerCase()} in this
+                constituency — not the whole of {seat.name}.
+              </>
+            )
+          ) : (
+            <>
+              Photograph shows {seat.nation}, not {seat.name} — we don&rsquo;t hold a picture of
+              a place in this seat.
+            </>
+          )}
         </p>
 
         {/* ── The answer ─────────────────────────────────────────────────── */}

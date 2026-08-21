@@ -3,6 +3,7 @@ import { SectionHeading } from "@/components/ui";
 import { PORTRAITS_FETCHED_AT, allPortraits } from "@/lib/portraits";
 import { allPhotos } from "@/lib/photos";
 import { allCouncilPhotos } from "@/lib/council-photos";
+import { SEAT_PHOTO_COUNT, allSeatPhotos } from "@/lib/seat-photos";
 
 export const metadata: Metadata = {
   title: "Colophon and image credits",
@@ -14,6 +15,7 @@ export default function ColophonPage() {
   const portraits = allPortraits();
   const photos = allPhotos();
   const councilPhotos = allCouncilPhotos();
+  const seatPhotos = allSeatPhotos();
 
   return (
     <div className="mx-auto max-w-4xl px-5 py-11">
@@ -102,6 +104,41 @@ export default function ColophonPage() {
           <div key={photo.slug} className="px-5 py-3">
             <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
               <span className="w-44 shrink-0 text-sm font-semibold">{photo.council}</span>
+              <span className="min-w-0 flex-1 text-[0.82rem] text-ink-soft">
+                {photo.shows} · {photo.author ?? "Author not recorded"}
+              </span>
+              <span className="shrink-0 text-[0.78rem] font-semibold text-ink-faint">
+                {photo.licence}
+              </span>
+              {photo.descriptionUrl ? (
+                <a
+                  href={photo.descriptionUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline shrink-0 text-[0.78rem] text-ink-faint"
+                >
+                  File
+                </a>
+              ) : null}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="mt-10 font-display text-2xl">Constituency photographs</h2>
+      <p className="mt-2 text-[0.9rem] leading-relaxed text-ink-soft">
+        {SEAT_PHOTO_COUNT} of the 650 seat pages carry a photograph of a named town or village
+        inside the constituency, in place of the nation photograph they used to share. None is a
+        picture of a whole constituency — no such thing exists for most of them — so each page
+        names the place shown and says it is not the whole seat. Where nothing suitable was
+        found, the nation photograph still stands in.
+      </p>
+
+      <div className="panel mt-4 divide-y divide-[color:var(--rule)]">
+        {seatPhotos.map((photo) => (
+          <div key={photo.slug} className="px-5 py-3">
+            <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+              <span className="w-52 shrink-0 text-sm font-semibold">{photo.seat}</span>
               <span className="min-w-0 flex-1 text-[0.82rem] text-ink-soft">
                 {photo.shows} · {photo.author ?? "Author not recorded"}
               </span>
