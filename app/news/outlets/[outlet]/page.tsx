@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CoverageBars from "@/components/CoverageBars";
+import MastheadPlate from "@/components/MastheadPlate";
 import EmailCapture from "@/components/EmailCapture";
 import StoryRow from "@/components/StoryRow";
 import { MoreLink, OurAssessment } from "@/components/ui";
 import { outletById, outlets } from "@/data/news";
+import { noteFor } from "@/data/outlet-notes";
 import { getNews } from "@/lib/news";
 import { coverageOf, ENOUGH_DAYS, withArticle } from "@/lib/outlet-coverage";
 import { leanOf, LEAN_LABEL } from "@/lib/subjects";
@@ -23,10 +25,24 @@ export async function generateMetadata({
   const outlet = outletById[id];
   if (!outlet) return { title: "Outlet not found" };
 
+  const leaning = leanOf(outlet.bias);
+  const sign = outlet.bias > 0 ? "+" : "";
+  // "Sky News is centre" is not a sentence. The centre gets its own wording.
+  const verdict =
+    leaning === "centre"
+      ? "sits at the centre of our scale"
+      : `is ${LEAN_LABEL[leaning].toLowerCase()}`;
+  // withArticle gives "the Daily Mail", which is right mid-sentence and wrong
+  // at the start of one.
+  const opener = withArticle(outlet.name).replace(/^./, (c) => c.toUpperCase());
+
   return {
-    // The query people actually type, and one that never goes stale.
-    title: `Is ${withArticle(outlet.name)} biased? Where it sits, left to right`,
-    description: `Where ${withArticle(outlet.name)} sits on the political spectrum, and what it actually covers measured against the rest of the UK press — from its own published output, updated daily.`,
+    // Worded as the question is typed. Search Console shows every one of this
+    // site's page-one queries is "is X left or right" — the previous title
+    // asked "is X biased?", which is a different question and a word nobody
+    // searches for.
+    title: `Is ${withArticle(outlet.name)} left or right? Where it sits on the spectrum`,
+    description: `${opener} ${verdict}. We place it at ${sign}${outlet.bias} on a −10 to +10 scale, and measure what it actually covers against the rest of the UK press.`,
     alternates: { canonical: `/news/outlets/${outlet.id}` },
   };
 }
@@ -57,6 +73,33 @@ export default async function OutletPage({ params }: PageProps<"/news/outlets/[o
 
   const others = outlets.filter((o) => o.id !== outlet.id).sort((a, b) => a.bias - b.bias);
 
+  const note = noteFor(outlet.id, withArticle(outlet.name));
+
+  /**
+   * Where it sits among the fifteen, said in words. Ties are common — three
+   * outlets share +6 — so this counts how many are further out rather than
+   * claiming a unique rank.
+   */
+  const furtherOut = outlets.filter((o) =>
+    outlet.bias >= 0 ? o.bias > outlet.bias : o.bias < outlet.bias
+  ).length;
+  const rank =
+    outlet.bias === 0
+      ? null
+      : furtherOut === 0
+        ? `the furthest ${outlet.bias > 0 ? "right" : "left"} of the ${outlets.length} outlets we read`
+        : furtherOut <= 2
+          ? `among the furthest ${outlet.bias > 0 ? "right" : "left"} of the ${outlets.length} outlets we read`
+          : null;
+
+  /** The single most distinctive thing the measured coverage shows. */
+  const top = coverage.more[0];
+  const headline =
+    top && coverage.stories > 0
+      ? `Over the last ${coverage.days} ${coverage.days === 1 ? "day" : "days"} it covered ${top.name} at ${top.index.toFixed(1)}× the rate of the press as a whole.`
+      : null;
+
+
   return (
     <div className="shell py-9">
       <nav className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[0.78rem] text-ink-soft">
@@ -71,46 +114,80 @@ export default async function OutletPage({ params }: PageProps<"/news/outlets/[o
         <span>{outlet.name}</span>
       </nav>
 
-      <header className="mt-4 border-t-2 border-ink pt-5">
-        <p className="eyebrow">Masthead</p>
-        <h1 className="mt-1 font-display text-4xl leading-none sm:text-5xl">{outlet.name}</h1>
-        <p className="measure mt-3 text-[0.95rem] leading-relaxed text-ink-soft">
-          Two different things sit on this page. Where we place {withArticle(outlet.name)} on the left–right
-          scale is a judgement of ours. What it covers, below that, is arithmetic on its own
-          published output — not an opinion about it.
-        </p>
-      </header>
+      {/* The question as it is typed, answered in the first line, with the
+          qualification directly beneath rather than buried or dropped. */}
+      <div className="mt-4 grid gap-7 border-t-2 border-ink pt-6 lg:grid-cols-[1.25fr_1fr] lg:gap-10">
+        <div className="min-w-0">
+          <MastheadPlate id={outlet.id} name={outlet.name} />
 
-      {/* Our judgement — flagged as such */}
-      <section className="mt-6 border border-rule bg-[color:var(--paper-raised)] p-5">
-        <div className="flex flex-wrap items-baseline justify-between gap-3">
-          <p className="eyebrow">Where we place it</p>
-          <OurAssessment />
-        </div>
-        <p className="mt-2 font-display text-3xl leading-none">
-          {outlet.bias > 0 ? "+" : ""}
-          {outlet.bias}
-          <span className="ml-2 font-body text-[0.8rem] font-normal uppercase tracking-[0.14em] text-ink-faint">
-            {LEAN_LABEL[lean]}
-          </span>
-        </p>
+          <h1 className="mt-5 font-display text-3xl leading-tight sm:text-4xl">
+            Is {withArticle(outlet.name)} left or right?
+          </h1>
 
-        <div className="relative mt-5 h-8">
-          <div className="absolute inset-x-0 top-4 h-px bg-ink/40" />
-          <div className="absolute left-1/2 top-1 h-7 w-px bg-gold" />
-          <div
-            className="absolute top-[10px] -translate-x-1/2"
-            style={{ left: `${position(outlet.bias)}%` }}
-          >
-            <span className="block h-[11px] w-[11px] bg-oxblood outline outline-2 outline-[color:var(--paper-raised)]" />
+          <p className="measure mt-3 text-[1.05rem] leading-relaxed text-ink-soft">
+            <strong className="font-semibold text-oxblood">
+              {lean === "centre" ? "Centre-ground" : LEAN_LABEL[lean]}.
+            </strong>{" "}
+            We place{" "}
+            {withArticle(outlet.name)} at{" "}
+            <strong className="font-semibold text-ink tabular">
+              {outlet.bias > 0 ? "+" : ""}
+              {outlet.bias}
+            </strong>{" "}
+            on a scale from −10 (left) to +10 (right)
+            {rank ? `, ${rank}` : ""}.
+          </p>
+
+          {/* This outlet alone on the scale. The other fourteen are linked
+              lower down, where they do not crowd the answer. */}
+          <div className="mt-6">
+            <div className="relative h-9">
+              <div className="absolute inset-x-0 top-5 h-px bg-ink/40" />
+              <div className="absolute left-1/2 top-2 h-7 w-px bg-gold" />
+              <div
+                className="absolute top-[14px] -translate-x-1/2"
+                style={{ left: `${position(outlet.bias)}%` }}
+              >
+                <span className="block h-[13px] w-[13px] bg-oxblood outline outline-2 outline-[color:var(--paper)]" />
+              </div>
+            </div>
+            <div className="flex justify-between text-[0.6rem] font-bold uppercase tracking-[0.16em] text-ink-faint">
+              <span>Left −10</span>
+              <span>Centre</span>
+              <span>Right +10</span>
+            </div>
           </div>
         </div>
-        <div className="flex justify-between text-[0.6rem] font-bold uppercase tracking-[0.16em] text-ink-faint">
-          <span>Left</span>
-          <span>Centre</span>
-          <span>Right</span>
-        </div>
-      </section>
+
+        <aside className="border border-rule bg-[color:var(--paper-raised)] p-5">
+          <div className="flex flex-wrap items-baseline justify-between gap-3">
+            <p className="eyebrow">In one line</p>
+            <OurAssessment />
+          </div>
+          {note ? (
+            <p className="mt-2 text-[0.9rem] leading-relaxed text-ink-soft">{note}</p>
+          ) : null}
+          <p className="mt-2.5 text-[0.9rem] leading-relaxed text-ink-soft">
+            The placement is a judgement of ours, drawn from Ofcom&rsquo;s news-consumption
+            research and the Reuters Institute&rsquo;s placement of news audiences, taking the
+            midpoint where they disagree. It describes the masthead, not the article in front of
+            you — a right-leaning paper runs stories that damage the right, and the reverse.
+          </p>
+
+          {headline ? (
+            <>
+              <p className="eyebrow mt-5">Measured, not judged</p>
+              <p className="mt-2 text-[0.9rem] leading-relaxed text-ink-soft">{headline}</p>
+            </>
+          ) : null}
+
+          <p className="mt-4 text-[0.78rem]">
+            <Link href="/how-we-work#bias" className="link-underline font-medium text-ink-soft">
+              How we place outlets
+            </Link>
+          </p>
+        </aside>
+      </div>
 
       {/* Measured behaviour */}
       <section className="mt-9">

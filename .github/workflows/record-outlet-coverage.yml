@@ -10,7 +10,7 @@ name: Record outlet coverage
 
 on:
   schedule:
-    # 07:15 UTC daily, after the overnight pollster releases have landed.
+    # 21:45 UTC daily, after the evening feeds have settled.
     - cron: "45 21 * * *"
   workflow_dispatch:
 
@@ -31,8 +31,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
-      - name: Append today's average
+      # Unlike the polling recorder, this script reaches lib/news.ts, which
+      # parses the feeds with fast-xml-parser. Without an install the job dies
+      # on a missing module — which is exactly what it did, silently, for five
+      # nights before anyone looked at the run history.
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Append today's counts
         run: npx tsx scripts/record-outlet-coverage.mjs
 
       - name: Commit if the file changed

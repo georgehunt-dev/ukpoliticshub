@@ -23,7 +23,13 @@ type Day = {
   outlets: Record<string, { total: number; subjects: Record<string, number> }>;
 };
 
-const DAYS: Day[] = (history.days ?? []) as Day[];
+/**
+ * Through `unknown` on purpose. TypeScript infers a literal type from the JSON
+ * with exactly the subject keys each recorded day happens to contain, so the
+ * inferred shape stops matching Record<string, number> as soon as two days
+ * carry different subjects — which is every day after the first.
+ */
+const DAYS: Day[] = (history.days ?? []) as unknown as Day[];
 
 /** Below this the numbers are reported as provisional rather than as findings. */
 export const ENOUGH_DAYS = 14;
