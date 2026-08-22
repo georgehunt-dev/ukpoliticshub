@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AssessmentCard from "@/components/AssessmentCard";
+import AssessmentNews from "@/components/AssessmentNews";
 import EmailCapture from "@/components/EmailCapture";
 import SectionImage from "@/components/SectionImage";
 import { MoreLink } from "@/components/ui";
@@ -106,6 +107,13 @@ export default async function AssessmentPage({ params }: PageProps<"/threat/[slu
             <MoreLink href="/threat">All six, and the official terrorism level</MoreLink>
           </p>
         </section>
+
+        {/* Coverage updates itself; the score above does not. */}
+        <AssessmentNews
+          slug={assessment.slug}
+          name={assessment.name}
+          assessedOn={assessment.assessedOn}
+        />
 
         <EmailCapture
           className="mt-10"

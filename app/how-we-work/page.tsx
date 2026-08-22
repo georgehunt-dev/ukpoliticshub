@@ -180,19 +180,35 @@ export default function MethodologyPage() {
             war, which remains low.
           </p>
           <p>
-            Every one uses the same method. Each factor is scored 0–100 on its own evidence and then
-            weighted; the weights sum to 100, and each factor shows the reporting behind it. Where
-            the UK government has made a formal designation — Russia and Iran sit on the enhanced
-            tier of the Foreign Influence Registration Scheme and China does not — we print it and
-            score against it rather than around it. Where the state rejects the characterisation,
-            the rejection is printed beside our assessment.
+            The three threat assessments answer the <em>same six questions</em>, with the same
+            weights applied to all of them. That was not always true. Each state used to be scored
+            on its own set of factors, which meant the composites could not honestly be compared:
+            a fifth of Russia&rsquo;s score came from a question about Russian capacity being
+            absorbed in Ukraine, a factor no other state faced, and the result was that Russia
+            scored below China. That was an artefact of which questions were asked, not a judgement
+            about which state presses hardest on Britain.
+          </p>
+          <p>
+            Each factor is still scored 0–100 on its own evidence, and each shows the reporting
+            behind it. Where a state has no evidence against one of the six, the factor still
+            appears, scores low, and says the evidence is absent — dropping the inconvenient
+            question is what broke the old model. Where the UK government has made a formal
+            designation — Russia and Iran sit on the enhanced tier of the Foreign Influence
+            Registration Scheme and China does not — we print it and score against it rather than
+            around it. Where the state rejects the characterisation, the rejection is printed
+            beside our assessment.
+          </p>
+          <p>
+            The three alliance assessments still carry their own factors and are not yet on a
+            shared set. They are comparable with each other only loosely, and that is the next
+            piece of work rather than something to gloss over here.
           </p>
           <p>
             Threats and alliances are deliberately kept on separate scales. They share a method but
             not a meaning, and one rail carrying both would invite the reading that a strong
             alliance cancels out a hostile state.
           </p>
-          <p>The Russia weights, as an example of the method:</p>
+          <p>The six questions and the weights every threat assessment carries:</p>
         </div>
 
         <ul className="panel mt-5 divide-y divide-[color:var(--rule)]">

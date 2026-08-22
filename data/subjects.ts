@@ -130,6 +130,24 @@ const ISSUES: Subject[] = [
           "foreign policy", "defence spending"],
     linked: [], photo: "royal-navy",
   },
+  /* The three states carrying a threat assessment. These exist so that
+     coverage can be shown against the assessment — the score itself never
+     moves on a headline. */
+  {
+    slug: "russia", name: "Russia", role: "State threat", kind: "issue",
+    own: ["russia", "russian", "putin", "kremlin", "moscow"],
+    linked: [], photo: "russia",
+  },
+  {
+    slug: "china", name: "China", role: "State threat", kind: "issue",
+    own: ["china", "chinese", "beijing", "xi jinping"],
+    linked: [], photo: "china",
+  },
+  {
+    slug: "iran", name: "Iran", role: "State threat", kind: "issue",
+    own: ["iran", "iranian", "tehran", "irgc", "revolutionary guard"],
+    linked: [], photo: "iran",
+  },
   {
     slug: "europe", name: "Europe & the ECHR", role: "Issue", kind: "issue",
     own: ["echr", "european convention", "human rights act", "brexit", "european union",

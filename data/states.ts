@@ -1,6 +1,28 @@
 import type { Source, ThreatFactor } from "@/lib/types";
 import type { PhotoSlug } from "@/lib/photos";
-import { russiaCaveat, russiaFactors, RUSSIA_ASSESSED_ON } from "@/data/threat";
+import { russiaCaveat, RUSSIA_ASSESSED_ON } from "@/data/threat";
+import { factorById, type Reading } from "@/data/threat-model";
+import { READINGS_BY_SLUG } from "@/data/threat-readings";
+
+/**
+ * The shared model stores a score per question; the page renders a list of
+ * named, weighted factors. This is the join between them — the name and the
+ * weight come from the model, so a state cannot quietly carry its own.
+ */
+function factorsFrom(readings: Reading[]): ThreatFactor[] {
+  return readings.map((reading) => {
+    const definition = factorById(reading.factor);
+    return {
+      name: definition.name,
+      score: reading.score,
+      weight: definition.weight,
+      evidence:
+        reading.evidence ??
+        "We hold no sourced evidence against this question for this state.",
+      sources: reading.sources,
+    };
+  });
+}
 
 /**
  * The UK's threats and its alliances, on one scale each.
@@ -62,191 +84,6 @@ export const PARTNERSHIP_BANDS = [
 ] as const;
 
 /* ── Threats ──────────────────────────────────────────────────────────── */
-
-const chinaFactors: ThreatFactor[] = [
-  {
-    name: "Espionage and recruitment against UK institutions",
-    score: 62,
-    weight: 25,
-    evidence:
-      "MI5 issued an espionage alert to parliamentarians in November 2025 over Chinese intelligence officers approaching them through professional networking sites. In June 2026 the Five Eyes partners issued a joint bulletin warning that Chinese military intelligence officers pose as recruiters and consultants for cover companies registered outside China, targeting people with access to classified or privileged information.",
-    sources: [
-      {
-        label: "CNN — Chinese spies using LinkedIn to target British lawmakers, MI5 warns",
-        url: "https://www.cnn.com/2025/11/18/uk/britain-china-spy-linkedin-mi5-latam-intl",
-        date: "2025-11-18",
-      },
-      {
-        label: "House of Commons Library — Chinese state threat activities in the UK",
-        url: "https://commonslibrary.parliament.uk/research-briefings/cbp-10417/",
-        date: "2026-06-03",
-      },
-    ],
-  },
-  {
-    name: "Where the UK has formally placed China",
-    score: 30,
-    weight: 20,
-    evidence:
-      "China is not on the enhanced tier of the Foreign Influence Registration Scheme. Russia and Iran were specified from 1 July 2025; the government has instead been considering whether to specify selected Chinese state-linked bodies rather than the state itself. That gap is the clearest official signal that the UK does not currently rank China alongside the two states it has designated, and it holds this assessment down.",
-    sources: [
-      {
-        label: "Skadden — The UK Foreign Influence Registration Scheme",
-        url: "https://www.skadden.com/insights/publications/2025/04/the-uk-foreign-influence-registration-scheme",
-        date: "2025-04-01",
-      },
-      {
-        label: "DLA Piper — Westminster Watch: the Foreign Influence Registration Scheme",
-        url: "https://www.dlapiper.com/en-us/insights/publications/westminster-watch/2026/westminster-watch-the-foreign-influence-registration-scheme",
-        date: "2026-01-01",
-      },
-    ],
-  },
-  {
-    name: "Political interference and prosecutions",
-    score: 50,
-    weight: 15,
-    evidence:
-      "Parliament debated foreign interference arrests connected to China in March 2026, and a National Security (State Threats) Bill was before the Commons in June 2026. Cases have been brought and legislation is being extended, which is a sign of activity — and of a system responding to it.",
-    sources: [
-      {
-        label: "Hansard — China: Foreign Interference Arrests",
-        url: "https://hansard.parliament.uk/commons/2026-03-04/debates/90A75341-E7F7-4202-924E-FB8B53053639/ChinaForeignInterferenceArrests",
-        date: "2026-03-04",
-      },
-      {
-        label: "Hansard — National Security (State Threats) Bill",
-        url: "https://hansard.parliament.uk/commons/2026-06-17/debates/6272449D-1898-40B9-AA34-0B55C169B19E/NationalSecurity(StateThreats)Bill",
-        date: "2026-06-17",
-      },
-    ],
-  },
-  {
-    name: "Cyber operations against UK networks",
-    score: 55,
-    weight: 20,
-    evidence:
-      "Chinese state-linked cyber activity against UK institutions is described by the government as continual, and directed at obtaining information on UK policymaking. Steady and persistent rather than a step change.",
-    sources: [
-      {
-        label: "MI5 — State threats",
-        url: "https://www.mi5.gov.uk/news-categories/state-threats",
-        date: "2026-06-03",
-      },
-    ],
-  },
-  {
-    name: "Trajectory of official assessment",
-    score: 55,
-    weight: 20,
-    evidence:
-      "The MI5 director general said in October 2025 that state threat activity had risen by around a third in a year and was now comparable to, or greater than, the threat from terrorism. That is a statement about state threats as a whole rather than China alone, so it is weighted here but not treated as a China-specific figure.",
-    sources: [
-      {
-        label: "Bloomberg — MI5 warns UK lawmakers of new Chinese espionage threat",
-        url: "https://www.bloomberg.com/news/articles/2025-11-18/mi5-warns-uk-lawmakers-of-new-chinese-espionage-threat",
-        date: "2025-11-18",
-      },
-    ],
-  },
-];
-
-const iranFactors: ThreatFactor[] = [
-  {
-    name: "Plots against people in the United Kingdom",
-    score: 65,
-    weight: 28,
-    evidence:
-      "MI5 and police have responded to more than twenty Iran-backed plots presenting potentially lethal threats to British citizens and UK residents since the start of 2022, including assassination and kidnap. This is the single most direct form of state pressure in any assessment on this page: it targets named individuals living here.",
-    sources: [
-      {
-        label: "The Record — Iran linked to more than 20 plots to kill or kidnap British citizens and residents",
-        url: "https://therecord.media/iran-britain-kidnapping-murder-plots-dan-jarvis-mi5",
-        date: "2025-03-01",
-      },
-      {
-        label: "Al Jazeera — MI5 chief says Russia and Iran behind rise in assassination plots in UK",
-        url: "https://aljazeera.com/news/2024/10/8/mi5-chief-says-russia-and-iran-behind-rise-in-assassination-plots-in-uk",
-        date: "2024-10-08",
-      },
-    ],
-  },
-  {
-    name: "Where the UK has formally placed Iran",
-    score: 70,
-    weight: 18,
-    evidence:
-      "Iran has been a specified foreign power under the enhanced tier of the Foreign Influence Registration Scheme since 1 July 2025 — one of only two states so specified, alongside Russia. The enhanced tier captures any activity carried out in the UK under an arrangement with the specified power, commercial or otherwise, not merely political influence.",
-    sources: [
-      {
-        label: "Sullivan & Cromwell — UK Foreign Influence Registration Scheme goes live",
-        url: "https://www.sullcrom.com/insights/memo/2025/July/UK-Foreign-Influence-Registration-Scheme-Goes-Live",
-        date: "2025-07-01",
-      },
-      {
-        label: "GOV.UK — Foreign Influence Registration Scheme",
-        url: "https://gov.uk/government/collections/foreign-influence-registration-scheme",
-        date: "2025-07-01",
-      },
-    ],
-  },
-  {
-    name: "Use of criminal proxies",
-    score: 58,
-    weight: 14,
-    evidence:
-      "Iranian state actors have made extensive use of criminals as intermediaries — from international drug traffickers to low-level offenders — which widens the pool of people who can be tasked and makes attribution slower.",
-    sources: [
-      {
-        label: "ICCT — Iranian external operations in Europe: the criminal connection",
-        url: "https://icct.nl/publication/iranian-external-operations-europe-criminal-connection",
-        date: "2025-01-01",
-      },
-    ],
-  },
-  {
-    name: "Spillover from the regional conflict",
-    score: 52,
-    weight: 15,
-    evidence:
-      "The UK declined to support offensive US and Israeli military action against Iran in late February 2026, then said in early March that it would provide defensive support for UK bases and allies in the region once the conflict began. That posture reduces the UK's exposure relative to the states conducting strikes, without removing it.",
-    sources: [
-      {
-        label: "CNBC — The US-UK special relationship sours ahead of royal visit to Washington",
-        url: "https://www.cnbc.com/2026/04/18/us-uk-special-relationship-trump-starmer-king-charles.html",
-        date: "2026-04-18",
-      },
-    ],
-  },
-  {
-    name: "Cyber operations",
-    score: 38,
-    weight: 10,
-    evidence:
-      "Iranian cyber activity against UK targets is documented but sits well below the scale of Russian or Chinese operations against UK critical national infrastructure.",
-    sources: [
-      {
-        label: "MI5 — State threats",
-        url: "https://www.mi5.gov.uk/news-categories/state-threats",
-        date: "2026-06-03",
-      },
-    ],
-  },
-  {
-    name: "Disruption and prosecution record",
-    score: 35,
-    weight: 15,
-    evidence:
-      "The plots above are known because they were detected and disrupted, and cases have been brought through the courts. A high rate of successful disruption is evidence of pressure, but it is also evidence that the pressure is being contained — so it is scored low here and pulls the composite down.",
-    sources: [
-      {
-        label: "The Record — Iran linked to more than 20 plots to kill or kidnap British citizens and residents",
-        url: "https://therecord.media/iran-britain-kidnapping-murder-plots-dan-jarvis-mi5",
-        date: "2025-03-01",
-      },
-    ],
-  },
-];
 
 /* ── Partnerships ─────────────────────────────────────────────────────── */
 
@@ -503,7 +340,7 @@ export const assessments: Assessment[] = [
     summary: "Sustained grey-zone pressure on infrastructure, at sea and online.",
     standfirst:
       "Survey and submarine activity around UK undersea cables, a high tempo of naval transits shadowed in UK waters, and continuing sabotage and cyber activity. Not a warning of imminent attack: the Ukraine war still absorbs most Russian conventional capacity, and no UK national threat level has been raised on account of Russia.",
-    factors: russiaFactors,
+    factors: factorsFrom(READINGS_BY_SLUG.russia),
     assessedOn: RUSSIA_ASSESSED_ON,
     official: {
       label: "Enhanced tier, Foreign Influence Registration Scheme",
@@ -533,7 +370,7 @@ export const assessments: Assessment[] = [
     summary: "The most direct pressure of the three: plots against people living here.",
     standfirst:
       "More than twenty Iran-backed plots presenting potentially lethal threats to British citizens and residents since 2022, run substantially through criminal proxies. Iran sits alongside Russia on the enhanced tier of the Foreign Influence Registration Scheme. The score is held down by the disruption record: these plots are known because they were stopped.",
-    factors: iranFactors,
+    factors: factorsFrom(READINGS_BY_SLUG.iran),
     assessedOn: ASSESSED_ON,
     official: {
       label: "Enhanced tier, Foreign Influence Registration Scheme",
@@ -555,7 +392,7 @@ export const assessments: Assessment[] = [
     summary: "Broad espionage and cyber activity — but no top-tier UK designation.",
     standfirst:
       "Espionage alerts to parliamentarians, a Five Eyes bulletin on intelligence officers posing as recruiters, prosecutions for foreign interference, and continual cyber activity. What holds the score below Russia and Iran is that the UK has not placed China on the enhanced tier of the Foreign Influence Registration Scheme, having considered specifying selected state-linked bodies instead.",
-    factors: chinaFactors,
+    factors: factorsFrom(READINGS_BY_SLUG.china),
     assessedOn: ASSESSED_ON,
     dispute: {
       text: "China's government has lodged formal representations with the UK rejecting the espionage allegations.",
