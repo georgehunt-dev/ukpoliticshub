@@ -143,7 +143,23 @@
         "label": "PollCheck — 7-poll moving average",
         "url": "https://www.pollcheck.co.uk/gb-polls"
       }
+    },
+    {
+      "recordedOn": "2026-08-24",
+      "averageAsOf": "2026-08-13",
+      "shares": {
+        "labour": 25.4,
+        "reform": 23.6,
+        "conservative": 20.7,
+        "green": 12,
+        "liberal-democrats": 10,
+        "restore-britain": 4
+      },
+      "source": {
+        "label": "PollCheck — 7-poll moving average",
+        "url": "https://www.pollcheck.co.uk/gb-polls"
+      }
     }
   ],
-  "updatedAt": "2026-08-23T07:48:18.894Z"
+  "updatedAt": "2026-08-24T08:05:20.912Z"
 }
