@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import CoverageBars from "@/components/CoverageBars";
 import MastheadPlate from "@/components/MastheadPlate";
+import { OutletStructuredData } from "@/components/StructuredData";
 import EmailCapture from "@/components/EmailCapture";
 import StoryRow from "@/components/StoryRow";
 import { MoreLink, OurAssessment } from "@/components/ui";
@@ -44,6 +45,14 @@ export async function generateMetadata({
     title: `Is ${withArticle(outlet.name)} left or right? Where it sits on the spectrum`,
     description: `${opener} ${verdict}. We place it at ${sign}${outlet.bias} on a −10 to +10 scale, and measure what it actually covers against the rest of the UK press.`,
     alternates: { canonical: `/news/outlets/${outlet.id}` },
+    // Without these every outlet page shared as the site-wide card: the same
+    // title and the same picture, fifteen times over.
+    openGraph: {
+      title: `Is ${withArticle(outlet.name)} left or right?`,
+      description: `${opener} ${verdict}, at ${sign}${outlet.bias} on our −10 to +10 scale.`,
+      url: `/news/outlets/${outlet.id}`,
+      type: "article",
+    },
   };
 }
 
@@ -102,6 +111,14 @@ export default async function OutletPage({ params }: PageProps<"/news/outlets/[o
 
   return (
     <div className="shell py-9">
+      <OutletStructuredData
+        id={outlet.id}
+        name={withArticle(outlet.name)}
+        bias={outlet.bias}
+        lean={LEAN_LABEL[lean].toLowerCase()}
+        note={note}
+      />
+
       <nav className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[0.78rem] text-ink-soft">
         <Link href="/news" className="link-underline font-medium">
           The news desk

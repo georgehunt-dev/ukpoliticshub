@@ -116,6 +116,50 @@ export function ConstituencyStructuredData({
   );
 }
 
+/**
+ * An outlet page: what the masthead is, and the image we hold for it.
+ *
+ * The `image` matters beyond tidiness. The only other pictures on these pages
+ * are publishers' own feed thumbnails, hotlinked from their sites — not ours to
+ * offer as the page's representative image. This points at a card we generate
+ * and host ourselves.
+ */
+export function OutletStructuredData({
+  id,
+  name,
+  bias,
+  lean,
+  note,
+}: {
+  id: string;
+  name: string;
+  bias: number;
+  lean: string;
+  note: string | null;
+}) {
+  const url = `${BASE}/news/outlets/${id}`;
+  return (
+    <Ld
+      data={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": `${url}#page`,
+        url,
+        name: `Is ${name} left or right?`,
+        description: `${name} is ${lean}. We place it at ${bias > 0 ? "+" : ""}${bias} on a −10 to +10 scale.`,
+        image: `${url}/opengraph-image`,
+        isPartOf: { "@id": `${BASE}/#website` },
+        inLanguage: "en-GB",
+        about: {
+          "@type": "NewsMediaOrganization",
+          name,
+          ...(note ? { description: note } : {}),
+        },
+      }}
+    />
+  );
+}
+
 /** The news index: what it is, when it last changed, and what is on it. */
 export function NewsStructuredData({
   items,
