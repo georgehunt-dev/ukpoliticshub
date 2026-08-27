@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ByElectionBand from "@/components/ByElectionBand";
+import MissionBand from "@/components/MissionBand";
 import ConstituencyBand from "@/components/ConstituencyBand";
 import ElectionsStrip from "@/components/ElectionsStrip";
 import HeroRace from "@/components/HeroRace";
@@ -65,6 +66,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* What the site stands for, before it starts handing over numbers.
+          Below the fold, so the opening screen is unaffected. */}
+      <MissionBand />
 
       {/* Renders nothing at all unless a poll is close or has just been held,
           so the front page is never carrying a dead countdown. */}
@@ -153,13 +158,6 @@ const SECTIONS: {
       "All 650 seats: your MP, the full 2024 result with every candidate, turnout and the margin.",
     photo: "england",
     alt: "Cottages and a bridge in a village in the Cotswolds",
-  },
-  {
-    href: "/briefing",
-    title: "Today's briefing",
-    blurb: "About five minutes, both sides of every argument, dated so you know how fresh it is.",
-    photo: "london",
-    alt: "A panorama of the London skyline",
   },
 ];
 

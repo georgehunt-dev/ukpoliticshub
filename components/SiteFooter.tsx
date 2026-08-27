@@ -42,7 +42,6 @@ export default function SiteFooter() {
             <ul className="space-y-1.5 text-[0.85rem]">
               <li><Link href="/#polls" className="link-underline text-ink-soft">The Race for No.10</Link></li>
               <li><Link href="/#immigration" className="link-underline text-ink-soft">Channel crossings</Link></li>
-              <li><Link href="/briefing" className="link-underline text-ink-soft">Daily briefing</Link></li>
               <li><Link href="/#threat" className="link-underline text-ink-soft">Threat levels</Link></li>
               <li><Link href="/news" className="link-underline text-ink-soft">News by topic</Link></li>
               <li><Link href="/parties" className="link-underline text-ink-soft">The parties</Link></li>
@@ -53,6 +52,7 @@ export default function SiteFooter() {
           <div>
             <p className="eyebrow mb-2.5">About</p>
             <ul className="space-y-1.5 text-[0.85rem]">
+              <li><Link href="/mission" className="link-underline text-ink-soft">Our mission</Link></li>
               <li><Link href="/how-we-work" className="link-underline text-ink-soft">How we work</Link></li>
               <li><Link href="/how-we-work#bias" className="link-underline text-ink-soft">How we rate outlets</Link></li>
               <li><Link href="/how-we-work#russia" className="link-underline text-ink-soft">The Russia assessment</Link></li>

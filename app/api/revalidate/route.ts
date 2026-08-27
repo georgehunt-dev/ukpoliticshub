@@ -18,7 +18,7 @@ import type { NextRequest } from "next/server";
 export const dynamic = "force-dynamic";
 
 /** Paths whose content changes when the feeds do. */
-const PATHS = ["/", "/news", "/briefing"];
+const PATHS = ["/", "/news"];
 
 /** Constant-time compare, so the endpoint can't be probed byte by byte. */
 function matches(provided: string, expected: string | undefined): boolean {

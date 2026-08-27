@@ -48,14 +48,6 @@ export default function StartHere() {
         </p>
 
         <SpectrumRow parties={parties} />
-
-        <p className="measure mt-4 text-[0.82rem] text-ink-soft">
-          Want the whole picture in one go?{" "}
-          <Link href="/briefing" className="link-underline font-semibold">
-            Read today&rsquo;s briefing
-          </Link>{" "}
-          — about five minutes, both sides of every argument.
-        </p>
       </div>
     </section>
   );

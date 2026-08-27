@@ -4,11 +4,11 @@ import { LogoLockup } from "@/components/Logo";
 
 const NAV = [
   { href: "/news", label: "News" },
-  { href: "/briefing", label: "Briefing" },
   { href: "/parties", label: "Parties" },
   { href: "/compare", label: "Compare" },
   { href: "/elections", label: "Elections" },
   { href: "/constituencies", label: "Your area" },
+  { href: "/mission", label: "Mission" },
   { href: "/how-we-work", label: "How we work" },
 ];
 

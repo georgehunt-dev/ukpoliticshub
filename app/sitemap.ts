@@ -37,7 +37,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${BASE}/`, lastModified: newestStory, changeFrequency: "hourly", priority: 1 },
     { url: `${BASE}/news`, lastModified: newestStory, changeFrequency: "hourly", priority: 0.9 },
-    { url: `${BASE}/briefing`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
     { url: `${BASE}/parties`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/compare`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/elections`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
@@ -45,6 +44,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/threat`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/constituencies/all`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE}/elections/by-elections`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
+    { url: `${BASE}/mission`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/how-we-work`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/colophon`, lastModified: now, changeFrequency: "monthly", priority: 0.3 },
     { url: `${BASE}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },

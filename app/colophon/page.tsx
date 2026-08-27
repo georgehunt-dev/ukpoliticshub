@@ -35,7 +35,7 @@ export default function ColophonPage() {
 
         <h2 className="mt-7 font-display text-2xl">Emblems</h2>
         <p className="mt-2.5 text-[0.95rem] leading-relaxed text-ink-soft">
-          The party emblems, the Union Flag ornament, the No.10 door and the briefing mark are all
+          The party emblems, the Union Flag ornament and the No.10 door are all
           original drawings made for this site. They are deliberately{" "}
           <strong className="font-semibold text-ink">not</strong> the parties&rsquo; official logos,
           which are registered trademarks and are not reproduced here. Each emblem uses a generic
