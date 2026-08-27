@@ -40,7 +40,7 @@ export default function StartHere() {
         <p className="measure mt-2.5 text-[0.9rem] leading-relaxed text-ink-soft">
           Broadly, the left favours more state spending and looser immigration rules; the right
           favours lower taxes and tighter ones. Each column says where a party sits and what that
-          means in practice —{" "}
+          means in practice,{" "}
           <Link href="/how-we-work#spectrum" className="link-underline">
             how we place them
           </Link>

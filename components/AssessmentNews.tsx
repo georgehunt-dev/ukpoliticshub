@@ -9,7 +9,7 @@ import { subjectBySlug } from "@/data/subjects";
  * This is the "adaptable to the news" half, and it is deliberately only half.
  * The stories update on their own; the score does not. A threat score that
  * rose because a newspaper ran a scare story would be a number we invented,
- * which is the one failure this site does not absorb — so coverage sits next
+ * which is the one failure this site does not absorb, so coverage sits next
  * to the assessment as something for a person to weigh, with the date of the
  * last assessment stated so a reader can see whether it predates the news.
  */
@@ -46,7 +46,7 @@ export default async function AssessmentNews({
       </div>
 
       <p className="measure mt-2.5 text-[0.9rem] leading-relaxed text-ink-soft">
-        These update on their own. The assessment above does not — it was last reviewed on{" "}
+        These update on their own. The assessment above does not. It was last reviewed on{" "}
         {assessed.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })},
         and only changes when someone changes it.
         {newer > 0 ? (

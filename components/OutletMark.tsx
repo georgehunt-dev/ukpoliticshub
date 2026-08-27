@@ -4,7 +4,7 @@ import { outletById } from "@/data/news";
  * Outlet identifiers, set typographically.
  *
  * These are NOT the broadcasters' and newspapers' logos. Those are registered
- * trademarks and, in nearly every case, non-free artwork — the same problem as
+ * trademarks and, in nearly every case, non-free artwork: the same problem as
  * the party logos. Each masthead instead gets its name set in the site's own
  * display face on a bar in a colour associated with it, which identifies the
  * source at a glance without reproducing anyone's mark.

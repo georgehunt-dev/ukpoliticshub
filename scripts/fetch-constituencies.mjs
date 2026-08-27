@@ -3,7 +3,7 @@
  * API, which is the authoritative list and already on post-2024 boundaries.
  *
  * Used by the signup form's constituency field, and the seed of any local
- * feature later — a name here maps to a real seat with a real MP.
+ * feature later: a name here maps to a real seat with a real MP.
  *
  * Run: node scripts/fetch-constituencies.mjs
  */
@@ -56,5 +56,5 @@ await fs.writeFile(
 
 console.log(`\n  saved ${sorted.length} constituencies`);
 if (sorted.length !== 650) {
-  console.log(`  WARNING: expected 650 — check whether boundaries have changed`);
+  console.log(`  WARNING: expected 650, check whether boundaries have changed`);
 }

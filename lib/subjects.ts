@@ -8,7 +8,7 @@ import type { NewsItem } from "@/lib/types";
  *
  * Two rules keep this honest. A story only reaches a subject page because one
  * of that subject's own terms, or its linked party's, appears in the headline
- * or summary — and where it arrived through the link, the page says so. And
+ * or summary, and where it arrived through the link, the page says so. And
  * where a storyline has nothing from one side, the page says we could not
  * detect coverage rather than that none exists: grouping misses re-worded
  * headlines, so absence here is a limit of ours, not a finding about a paper.
@@ -94,7 +94,7 @@ function overlap(a: Set<string>, b: Set<string>): number {
 /**
  * Deliberately cautious. A lower bar merges stories that only share a subject,
  * which would put unrelated headlines side by side as though they were the
- * same event — the failure this whole design exists to avoid.
+ * same event: the failure this whole design exists to avoid.
  */
 const SAME_STORY = 0.3;
 
@@ -102,7 +102,7 @@ const SAME_STORY = 0.3;
  * A neutral name for a storyline.
  *
  * Using one masthead's headline as the title would hand that paper the framing
- * for the whole group — the exact thing this page exists to expose. So the
+ * for the whole group: the exact thing this page exists to expose. So the
  * label is built from the words every headline in the group shares, which
  * belongs to none of them. Where they share too little to be readable, the
  * shortest headline is used and the reader can see it is a headline.
@@ -114,7 +114,7 @@ export function labelFor(storyline: Storyline): string | null {
   if (shared.length < 2) return null;
 
   const shortest = storyline.stories
-    .map((line) => line.title.replace(/\s*[–—-]\s*as it happened.*$/i, ""))
+    .map((line) => line.title.replace(/\s*[–: -]\s*as it happened.*$/i, ""))
     .sort((a, b) => a.length - b.length)[0];
 
   const words = shortest.split(/\s+/);

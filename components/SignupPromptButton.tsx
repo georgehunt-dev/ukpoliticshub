@@ -5,7 +5,7 @@ import { openSignupPrompt } from "@/lib/signup-prompt";
 /**
  * Opens the signup prompt in place, rather than sending the reader to the
  * front page to find a form. Where a constituency is given it arrives in the
- * form already filled in — they are standing on that seat's page — but stays
+ * form already filled in (they are standing on that seat's page), but stays
  * editable, because someone reading about a seat is not always living in it.
  */
 export default function SignupPromptButton({

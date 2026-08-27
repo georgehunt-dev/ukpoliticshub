@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Privacy and cookies",
   description:
-    "What ukpoliticshub stores, what it does not, and how analytics cookies are handled — written to be read rather than clicked past.",
+    "What ukpoliticshub stores, what it does not, and how analytics cookies are handled, written to be read rather than clicked past.",
 };
 
 export default function PrivacyPage() {
@@ -37,7 +37,7 @@ export default function PrivacyPage() {
             Google Analytics, which gives us a more detailed picture of how people move through the
             site. It <strong className="font-semibold text-ink">does</strong> set a cookie, which is
             why we ask first. If you decline, the Google script is never loaded and no Google cookie
-            is ever written — it is not loaded and then switched off, it is simply not fetched.
+            is ever written. It is not loaded and then switched off, it is simply not fetched.
           </p>
           <p className="mt-2.5 text-[0.95rem] leading-relaxed text-ink-soft">
             Your choice is remembered in your browser&rsquo;s local storage under{" "}
@@ -71,7 +71,7 @@ export default function PrivacyPage() {
             We ask for one thing: your email address. It is passed straight to the mailing provider
             that sends the newsletter and is{" "}
             <strong className="font-semibold text-ink">not stored on this site</strong>, so there is
-            no subscriber list here to lose. It is used for the daily email and nothing else — never
+            no subscriber list here to lose. It is used for the daily email and nothing else, never
             sold, never shared, never used to build an advertising profile.
           </p>
           <p className="mt-2.5 text-[0.95rem] leading-relaxed text-ink-soft">

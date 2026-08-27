@@ -6,7 +6,7 @@ import { STATES_CAVEAT } from "@/data/states";
 export const metadata: Metadata = {
   title: "Threats & alliances",
   description:
-    "The official UK terrorism threat level, never adjusted by us, alongside our own weighted assessments of pressure from Russia, Iran and China — and of what the UK can rely on from the United States, NATO and Europe. Every factor sourced.",
+    "The official UK terrorism threat level, never adjusted by us, alongside our own weighted assessments of pressure from Russia, Iran and China, and of what the UK can rely on from the United States, NATO and Europe. Every factor sourced.",
 };
 
 export const revalidate = 600;

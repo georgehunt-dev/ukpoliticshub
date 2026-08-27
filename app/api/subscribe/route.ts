@@ -16,7 +16,7 @@ const CONSTITUENCIES = new Set<string>(constituencyData.constituencies);
  *   NEWSLETTER_LIST_ID  = Resend audience id (Resend only)
  *
  * With nothing configured the endpoint returns 503 and the form says plainly
- * that signups are not open. That is deliberate — silently accepting an
+ * that signups are not open. That is deliberate: silently accepting an
  * address and dropping it would be worse than refusing it.
  */
 
@@ -26,7 +26,7 @@ export const dynamic = "force-dynamic";
  *  than passing a bad one to the provider, which validates properly. */
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-/** Crude in-memory throttle. Resets on cold start, which is fine — it exists
+/** Crude in-memory throttle. Resets on cold start, which is fine. It exists
  *  to blunt casual abuse, not to be a security control. */
 const recent = new Map<string, number[]>();
 const WINDOW_MS = 60_000;
@@ -51,7 +51,7 @@ export type SubscriberMeta = {
    * The reason to ask at all is that under-13s cannot consent to a service
    * like this on their own, and an age band is useful for knowing who reads
    * it. Neither of those needs the day and month, and under UK GDPR you are
-   * expected to collect the minimum that serves the purpose — so a full date
+   * expected to collect the minimum that serves the purpose, so a full date
    * of birth would be more exposure for no extra use.
    */
   birthYear?: number;
@@ -66,7 +66,7 @@ async function subscribe(
   if (!provider || !key) return { ok: false, error: "not-configured" };
 
   if (provider === "buttondown") {
-    // Host is api.buttondown.com — api.buttondown.email is the old domain and
+    // Host is api.buttondown.com: api.buttondown.email is the old domain and
     // fails. No tags: the tagging feature 403s on free plans, and a tag is not
     // worth losing a subscriber over.
     const res = await fetch("https://api.buttondown.com/v1/subscribers", {
@@ -177,7 +177,7 @@ export async function POST(request: NextRequest) {
     return Response.json(
       {
         ok: false,
-        error: "Sorry — you need to be at least 13 to sign up. Nothing was stored.",
+        error: "Sorry. You need to be at least 13 to sign up. Nothing was stored.",
       },
       { status: 400 }
     );
@@ -190,7 +190,7 @@ export async function POST(request: NextRequest) {
       {
         ok: false,
         error:
-          "Sign-ups aren't open yet — nothing was stored. Do come back.",
+          "Sign-ups aren't open yet, nothing was stored. Do come back.",
         notConfigured: true,
       },
       { status: 503 }
@@ -205,7 +205,7 @@ export async function POST(request: NextRequest) {
       {
         ok: false,
         error: authFailure
-          ? "Sign-ups are misconfigured at our end — we've been alerted. Nothing was stored."
+          ? "Sign-ups are misconfigured at our end. We've been alerted. Nothing was stored."
           : "Something went wrong at our end. Please try again later.",
       },
       { status: 502 }

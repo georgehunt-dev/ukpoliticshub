@@ -43,7 +43,7 @@ export const POLLING_DAYS = data.days as PollingDay[];
 export const BYELECTIONS_FETCHED_AT = data.fetchedAt as string;
 
 export const BYELECTION_SOURCE = {
-  label: "Democracy Club — candidates and elections database",
+  label: "Democracy Club, candidates and elections database",
   url: "https://democracyclub.org.uk/",
 };
 
@@ -85,7 +85,7 @@ export function bandState(now: Date = new Date()): BandState {
     return { kind: "counting-down", day, closesAt: pollsCloseAt(day.date).toISOString() };
   }
 
-  // Nothing ahead — look back for a poll still inside its results window.
+  // Nothing ahead: look back for a poll still inside its results window.
   const recent = POLLING_DAYS.filter((day) => {
     const closed = pollsCloseAt(day.date).getTime();
     return closed <= now.getTime() && now.getTime() - closed < RESULTS_WINDOW_DAYS * 86_400_000;

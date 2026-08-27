@@ -34,7 +34,7 @@ export const POLICY_AREAS: {
   {
     id: "crime",
     name: "Crime & justice",
-    question: "Policing, sentencing and prisons — how much punishment, and how much prevention.",
+    question: "Policing, sentencing and prisons: how much punishment, and how much prevention.",
   },
   {
     id: "energy",
@@ -44,7 +44,7 @@ export const POLICY_AREAS: {
   {
     id: "education",
     name: "Education",
-    question: "Schools, universities and skills — funding, standards and who pays for what.",
+    question: "Schools, universities and skills, funding, standards and who pays for what.",
   },
   {
     id: "defence",
@@ -74,4 +74,4 @@ export const policyAreaById = Object.fromEntries(POLICY_AREAS.map((a) => [a.id, 
  * this site does not get to make those.
  */
 export const NO_POSITION =
-  "No current published position located. This may mean the party has said little on the subject, or that we have not found what it has said — we would rather show the gap than fill it with inference.";
+  "No current published position located. This may mean the party has said little on the subject, or that we have not found what it has said. We would rather show the gap than fill it with inference.";

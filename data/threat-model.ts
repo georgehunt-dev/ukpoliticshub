@@ -5,7 +5,7 @@ import type { Source } from "@/lib/types";
  *
  * The old model asked each state a different set of questions with a different
  * set of weights. That produced a composite for Russia of 44 against China's 51
- * and Iran's 56 — not a judgement that China presses harder on the UK than
+ * and Iran's 56, not a judgement that China presses harder on the UK than
  * Russia does, but an artefact of which questions were asked. A fifth of
  * Russia's score came from "Ukraine trajectory and Russian force commitment",
  * a factor no other state had and which measured Russian capacity being
@@ -13,7 +13,7 @@ import type { Source } from "@/lib/types";
  *
  * Now every state answers the same six questions, and the same weights apply
  * to all of them. The weights are argued for once, here, rather than per
- * state — which is what stops them being tuned until the answer looks right.
+ * state, which is what stops them being tuned until the answer looks right.
  *
  * Where a state has no evidence against a factor, it scores low and says so.
  * It is not dropped. Dropping the inconvenient question is what broke the old
@@ -107,7 +107,7 @@ export type Reading = {
   factor: FactorId;
   score: number;
   /**
-   * The evidence behind the score. Null where we hold none — the factor still
+   * The evidence behind the score. Null where we hold none: the factor still
    * renders, scores low, and says the gap is ours.
    */
   evidence: string | null;

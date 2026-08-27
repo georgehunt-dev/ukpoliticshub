@@ -6,7 +6,7 @@ import { READINGS_BY_SLUG } from "@/data/threat-readings";
 
 /**
  * The shared model stores a score per question; the page renders a list of
- * named, weighted factors. This is the join between them — the name and the
+ * named, weighted factors. This is the join between them: the name and the
  * weight come from the model, so a state cannot quietly carry its own.
  */
 function factorsFrom(readings: Reading[]): ThreatFactor[] {
@@ -29,7 +29,7 @@ function factorsFrom(readings: Reading[]): ThreatFactor[] {
  *
  * The Russia score was the only state assessment on the site. This widens it,
  * using the same method: each factor scored 0–100 on its own evidence, then
- * weighted, weights summing to 100. Conservative throughout — documented
+ * weighted, weights summing to 100. Conservative throughout: documented
  * grey-zone activity is not an imminent-attack warning, and a strained
  * alliance is not a broken one.
  *
@@ -93,10 +93,10 @@ const usFactors: ThreatFactor[] = [
     score: 85,
     weight: 25,
     evidence:
-      "The Five Eyes partnership remains the deepest and most institutionalised part of the relationship, and continued to operate jointly through 2026 — the partners issued a joint bulletin on Chinese intelligence recruitment in June 2026. Nothing in the public record suggests the political friction below has reached it.",
+      "The Five Eyes partnership remains the deepest and most institutionalised part of the relationship, and continued to operate jointly through 2026: the partners issued a joint bulletin on Chinese intelligence recruitment in June 2026. Nothing in the public record suggests the political friction below has reached it.",
     sources: [
       {
-        label: "House of Commons Library — Chinese state threat activities in the UK",
+        label: "House of Commons Library, Chinese state threat activities in the UK",
         url: "https://commonslibrary.parliament.uk/research-briefings/cbp-10417/",
         date: "2026-06-03",
       },
@@ -110,7 +110,7 @@ const usFactors: ThreatFactor[] = [
       "The nuclear and defence-industrial relationship is treaty-based and long-run, and is the part of the partnership least exposed to a change of administration.",
     sources: [
       {
-        label: "Institute for Government — The US-UK special relationship",
+        label: "Institute for Government, The US-UK special relationship",
         url: "https://www.instituteforgovernment.org.uk/explainer/us-uk-special-relationship",
         date: "2026-01-01",
       },
@@ -124,12 +124,12 @@ const usFactors: ThreatFactor[] = [
       "The Economic Prosperity Deal agreed in May 2025 capped most additional US tariffs on UK goods at 10% and gave relief on steel and cars. In 2026 the President warned that the deal could be torn up. A deal that exists but is publicly conditional is worth less than one that is settled.",
     sources: [
       {
-        label: "Congressional Research Service — US-UK trade relations",
+        label: "Congressional Research Service, US-UK trade relations",
         url: "https://www.congress.gov/crs-product/R49037",
         date: "2026-01-01",
       },
       {
-        label: "CNBC — The US-UK special relationship sours ahead of royal visit to Washington",
+        label: "CNBC, The US-UK special relationship sours ahead of royal visit to Washington",
         url: "https://www.cnbc.com/2026/04/18/us-uk-special-relationship-trump-starmer-king-charles.html",
         date: "2026-04-18",
       },
@@ -143,7 +143,7 @@ const usFactors: ThreatFactor[] = [
       "The President has criticised NATO allies over Iran and singled out the UK, denigrating its military and its domestic and foreign policies and questioning its loyalty. Rhetoric is not policy, but sustained public criticism from the head of the allied government is a real cost to the relationship and is scored as one.",
     sources: [
       {
-        label: "CNBC — The US-UK special relationship sours ahead of royal visit to Washington",
+        label: "CNBC, The US-UK special relationship sours ahead of royal visit to Washington",
         url: "https://www.cnbc.com/2026/04/18/us-uk-special-relationship-trump-starmer-king-charles.html",
         date: "2026-04-18",
       },
@@ -157,7 +157,7 @@ const usFactors: ThreatFactor[] = [
       "The UK declined to join offensive US and Israeli action against Iran in late February 2026, then provided defensive support for UK bases and allies in the region from early March. Divergence on the offensive question, convergence on defence of shared assets.",
     sources: [
       {
-        label: "CNBC — The US-UK special relationship sours ahead of royal visit to Washington",
+        label: "CNBC, The US-UK special relationship sours ahead of royal visit to Washington",
         url: "https://www.cnbc.com/2026/04/18/us-uk-special-relationship-trump-starmer-king-charles.html",
         date: "2026-04-18",
       },
@@ -171,15 +171,15 @@ const natoFactors: ThreatFactor[] = [
     score: 60,
     weight: 25,
     evidence:
-      "NATO members agreed in July 2025 to reach 5% of GDP by 2035 — 3.5% on core defence and 1.5% on related security. The UK spent 2.3% in 2024 and has committed to 2.5% by 2027, 3% in the next Parliament and 3.5% by 2035. On the core measure the UK is on a stated path to the target; it is not there yet, and the later commitments fall beyond this Parliament.",
+      "NATO members agreed in July 2025 to reach 5% of GDP by 2035: 3.5% on core defence and 1.5% on related security. The UK spent 2.3% in 2024 and has committed to 2.5% by 2027, 3% in the next Parliament and 3.5% by 2035. On the core measure the UK is on a stated path to the target; it is not there yet, and the later commitments fall beyond this Parliament.",
     sources: [
       {
-        label: "Institute for Government — UK defence spending",
+        label: "Institute for Government, UK defence spending",
         url: "https://www.instituteforgovernment.org.uk/explainer/uk-defence-spending",
         date: "2026-01-01",
       },
       {
-        label: "House of Commons Library — UK defence spending",
+        label: "House of Commons Library, UK defence spending",
         url: "https://commonslibrary.parliament.uk/research-briefings/cbp-8175/",
         date: "2026-01-01",
       },
@@ -190,10 +190,10 @@ const natoFactors: ThreatFactor[] = [
     score: 75,
     weight: 25,
     evidence:
-      "The UK remains one of the alliance's principal contributors of deployable capability, and its own naval activity around UK waters — 116 Royal Navy activations in 2025–26 — is conducted as part of that posture.",
+      "The UK remains one of the alliance's principal contributors of deployable capability, and its own naval activity around UK waters (116 Royal Navy activations in 2025–26) is conducted as part of that posture.",
     sources: [
       {
-        label: "UK Defence Journal — Royal Navy shadowed 61 Russian warships around UK waters",
+        label: "UK Defence Journal, Royal Navy shadowed 61 Russian warships around UK waters",
         url: "https://ukdefencejournal.org.uk/royal-navy-shadowed-61-russian-warships-around-uk-waters/",
         date: "2026-06-01",
       },
@@ -207,7 +207,7 @@ const natoFactors: ThreatFactor[] = [
       "Public criticism of allies by the US administration over the Iran conflict, and questions raised about the UK specifically, are a strain on cohesion at the political level even where military integration is unaffected.",
     sources: [
       {
-        label: "CNBC — The US-UK special relationship sours ahead of royal visit to Washington",
+        label: "CNBC, The US-UK special relationship sours ahead of royal visit to Washington",
         url: "https://www.cnbc.com/2026/04/18/us-uk-special-relationship-trump-starmer-king-charles.html",
         date: "2026-04-18",
       },
@@ -221,7 +221,7 @@ const natoFactors: ThreatFactor[] = [
       "The UK is one of the alliance's three nuclear powers and the deterrent is committed to NATO. This is the most stable element of the UK's contribution and the least sensitive to the year's politics.",
     sources: [
       {
-        label: "Institute for Government — UK defence spending",
+        label: "Institute for Government, UK defence spending",
         url: "https://www.instituteforgovernment.org.uk/explainer/uk-defence-spending",
         date: "2026-01-01",
       },
@@ -235,12 +235,12 @@ const natoFactors: ThreatFactor[] = [
       "The Strategic Defence Review set out capability ambitions on the argument that they can be delivered within the planned spending increase. Independent analysis has questioned whether the money covers the commitments. Stated intent is clear; delivery is not yet demonstrated.",
     sources: [
       {
-        label: "IFS — UK defence spending: composition, commitments and challenges",
+        label: "IFS, UK defence spending: composition, commitments and challenges",
         url: "https://ifs.org.uk/publications/uk-defence-spending-composition-commitments-and-challenges",
         date: "2025-09-01",
       },
       {
-        label: "Chatham House — Will Britain face up to its huge new defence bill?",
+        label: "Chatham House, Will Britain face up to its huge new defence bill?",
         url: "https://www.chathamhouse.org/publications/the-world-today/2026-03/will-britain-face-its-huge-new-defence-bill",
         date: "2026-03-01",
       },
@@ -257,12 +257,12 @@ const europeFactors: ThreatFactor[] = [
       "Defence cooperation with France runs on the 2010 Lancaster House treaties, the most structural part of the bilateral relationship, since modernised in a follow-on agreement. Treaty-based and durable across changes of government on both sides.",
     sources: [
       {
-        label: "House of Commons Library — UK-French defence cooperation: a decade on from Lancaster House",
+        label: "House of Commons Library, UK-French defence cooperation: a decade on from Lancaster House",
         url: "https://commonslibrary.parliament.uk/research-briefings/cbp-9743/",
         date: "2026-01-01",
       },
       {
-        label: "House of Commons Library — UK relations with France",
+        label: "House of Commons Library, UK relations with France",
         url: "https://commonslibrary.parliament.uk/research-briefings/cdp-2026-0005/",
         date: "2026-01-01",
       },
@@ -276,7 +276,7 @@ const europeFactors: ThreatFactor[] = [
       "The UK and EU signed a Security and Defence Partnership at the first EU-UK summit on 19 May 2025, providing for regular cooperation on maritime, space and cyber security among other areas. A framework for talking, newly established and not yet long-tested.",
     sources: [
       {
-        label: "ECFR — Channelling security: a new era for EU-UK defence cooperation",
+        label: "ECFR, Channelling security: a new era for EU-UK defence cooperation",
         url: "https://ecfr.eu/article/channelling-security-a-new-era-for-eu-uk-defence-cooperation/",
         date: "2025-05-19",
       },
@@ -290,7 +290,7 @@ const europeFactors: ThreatFactor[] = [
       "Talks on UK participation in the EU's €150bn SAFE defence-procurement instrument collapsed in November 2025, with the UK citing value for money, and the UK is not joining the EU's new defence fund. This is where the reset has most clearly not delivered, and it is the weakest part of the picture.",
     sources: [
       {
-        label: "Chatham House — The UK will not join the EU's new defence fund",
+        label: "Chatham House, The UK will not join the EU's new defence fund",
         url: "https://www.chathamhouse.org/2025/12/uk-will-not-join-eus-new-defence-fund-can-uk-eu-security-reset-still-succeed",
         date: "2025-12-01",
       },
@@ -304,7 +304,7 @@ const europeFactors: ThreatFactor[] = [
       "Cooperation on maritime security, undersea infrastructure and support to Ukraine continues at working level and is where most of the day-to-day value sits.",
     sources: [
       {
-        label: "Parliament — The UK contribution to European security: government response",
+        label: "Parliament, The UK contribution to European security: government response",
         url: "https://publications.parliament.uk/pa/cm5901/cmselect/cmdfence/1658/report.html",
         date: "2026-01-01",
       },
@@ -318,7 +318,7 @@ const europeFactors: ThreatFactor[] = [
       "A further EU-UK summit was scheduled for spring 2026 to take stock of the reset, including the areas where progress had not been made. Direction of travel is toward closer cooperation; the pace is disputed.",
     sources: [
       {
-        label: "ECFR — Channelling security: a new era for EU-UK defence cooperation",
+        label: "ECFR, Channelling security: a new era for EU-UK defence cooperation",
         url: "https://ecfr.eu/article/channelling-security-a-new-era-for-eu-uk-defence-cooperation/",
         date: "2025-05-19",
       },
@@ -345,9 +345,9 @@ export const assessments: Assessment[] = [
     official: {
       label: "Enhanced tier, Foreign Influence Registration Scheme",
       detail:
-        "Specified from 1 July 2025 — one of two states so designated. Any arrangement to act in the UK for the Russian state must be registered, commercial or political.",
+        "Specified from 1 July 2025: one of two states so designated. Any arrangement to act in the UK for the Russian state must be registered, commercial or political.",
       source: {
-        label: "Sullivan & Cromwell — UK Foreign Influence Registration Scheme goes live",
+        label: "Sullivan & Cromwell, UK Foreign Influence Registration Scheme goes live",
         url: "https://www.sullcrom.com/insights/memo/2025/July/UK-Foreign-Influence-Registration-Scheme-Goes-Live",
         date: "2025-07-01",
       },
@@ -355,7 +355,7 @@ export const assessments: Assessment[] = [
     dispute: {
       text: "Russia's embassy in London has called the undersea-cable allegations \"completely groundless\".",
       source: {
-        label: "Breaking Defense — UK accuses Russia of covert submarine operation threatening undersea cables",
+        label: "Breaking Defense, UK accuses Russia of covert submarine operation threatening undersea cables",
         url: "https://breakingdefense.com/2026/04/uk-accuses-russia-of-covert-submarine-operation-threatening-undersea-cables/",
         date: "2026-04-01",
       },
@@ -377,7 +377,7 @@ export const assessments: Assessment[] = [
       detail:
         "Specified from 1 July 2025, alongside Russia. The Islamic Revolutionary Guard Corps is not proscribed as a terrorist organisation, which remains a live argument in Parliament.",
       source: {
-        label: "Sullivan & Cromwell — UK Foreign Influence Registration Scheme goes live",
+        label: "Sullivan & Cromwell, UK Foreign Influence Registration Scheme goes live",
         url: "https://www.sullcrom.com/insights/memo/2025/July/UK-Foreign-Influence-Registration-Scheme-Goes-Live",
         date: "2025-07-01",
       },
@@ -389,7 +389,7 @@ export const assessments: Assessment[] = [
     photo: "china",
     photoAlt: "The Great Hall of the People, Beijing",
     kind: "threat",
-    summary: "Broad espionage and cyber activity — but no top-tier UK designation.",
+    summary: "Broad espionage and cyber activity, but no top-tier UK designation.",
     standfirst:
       "Espionage alerts to parliamentarians, a Five Eyes bulletin on intelligence officers posing as recruiters, prosecutions for foreign interference, and continual cyber activity. What holds the score below Russia and Iran is that the UK has not placed China on the enhanced tier of the Foreign Influence Registration Scheme, having considered specifying selected state-linked bodies instead.",
     factors: factorsFrom(READINGS_BY_SLUG.china),
@@ -397,7 +397,7 @@ export const assessments: Assessment[] = [
     dispute: {
       text: "China's government has lodged formal representations with the UK rejecting the espionage allegations.",
       source: {
-        label: "GlobalSecurity — China lodges stern representations with the UK over espionage claims",
+        label: "GlobalSecurity, China lodges stern representations with the UK over espionage claims",
         url: "https://www.globalsecurity.org/intell/library/news/2025/intell-251119-globaltimes01.htm",
         date: "2025-11-19",
       },
@@ -423,7 +423,7 @@ export const assessments: Assessment[] = [
     kind: "partnership",
     summary: "A leading contributor on a stated path to the new spending target.",
     standfirst:
-      "The UK is one of three nuclear powers in the alliance and a principal contributor of deployable capability. It spent 2.3% of GDP on defence in 2024 against a target of 3.5% on core defence by 2035, with staged commitments in between — a credible path on paper, most of it falling beyond this Parliament, and questioned by independent analysts on affordability.",
+      "The UK is one of three nuclear powers in the alliance and a principal contributor of deployable capability. It spent 2.3% of GDP on defence in 2024 against a target of 3.5% on core defence by 2035, with staged commitments in between: a credible path on paper, most of it falling beyond this Parliament, and questioned by independent analysts on affordability.",
     factors: natoFactors,
     assessedOn: ASSESSED_ON,
   },
@@ -435,7 +435,7 @@ export const assessments: Assessment[] = [
     kind: "partnership",
     summary: "Treaty ties with France hold; the EU reset has stalled on procurement.",
     standfirst:
-      "Defence cooperation with France rests on the Lancaster House treaties and is the most durable part of the picture. The EU Security and Defence Partnership signed in May 2025 gave the relationship a framework, but talks on joining the EU's €150bn defence-procurement instrument collapsed in November 2025 over value for money — which is where the reset has most clearly not delivered.",
+      "Defence cooperation with France rests on the Lancaster House treaties and is the most durable part of the picture. The EU Security and Defence Partnership signed in May 2025 gave the relationship a framework, but talks on joining the EU's €150bn defence-procurement instrument collapsed in November 2025 over value for money, which is where the reset has most clearly not delivered.",
     factors: europeFactors,
     assessedOn: ASSESSED_ON,
   },

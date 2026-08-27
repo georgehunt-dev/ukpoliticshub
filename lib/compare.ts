@@ -6,12 +6,12 @@ import type { Party, PartySlug, Policy, PolicyArea } from "@/lib/types";
  * The comparison view's routing and ordering.
  *
  * One dynamic segment serves two shapes of page:
- *   /compare/immigration        — every party on one issue
- *   /compare/labour-vs-reform   — two parties across every issue
+ *   /compare/immigration. Every party on one issue
+ *   /compare/labour-vs-reform, two parties across every issue
  *
  * They cannot collide: no policy area id contains "-vs-". Both are real URLs
  * rather than client state, so each is indexable, linkable and gets its own
- * share card — which is most of the value of building this at all.
+ * share card, which is most of the value of building this at all.
  */
 
 export type IssueView = {
@@ -29,7 +29,7 @@ export type PairView = {
 
 export type CompareView = IssueView | PairView;
 
-/** Left to right by our spectrum placement — the site's organising spine. */
+/** Left to right by our spectrum placement: the site's organising spine. */
 export const partiesBySpectrum = [...parties].sort((a, b) => a.spectrum - b.spectrum);
 
 function policyFor(party: Party, area: PolicyArea): Policy | undefined {

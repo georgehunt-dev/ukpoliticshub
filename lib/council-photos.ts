@@ -5,7 +5,7 @@ import data from "@/data/generated/council-photos.json";
  *
  * These show the council area, never the ward. There is no free source of
  * representative photographs of individual wards, and the site's rule is that
- * a picture is captioned as what it actually is — so every use of this carries
+ * a picture is captioned as what it actually is, so every use of this carries
  * the `shows` line, and a ward page without a photograph simply has none
  * rather than borrowing one from somewhere close by.
  */
@@ -14,7 +14,7 @@ export type CouncilPhoto = {
   council: string;
   slug: string;
   file: string;
-  /** What the picture is actually of — "Barnsley Town Hall", "Dronfield". */
+  /** What the picture is actually of, "Barnsley Town Hall", "Dronfield". */
   shows: string;
   position: string;
   commonsFile: string;
@@ -37,7 +37,7 @@ function slugify(name: string): string {
     .replace(/^-|-$/g, "");
 }
 
-/** Undefined where we hold no photograph — the caller shows nothing. */
+/** Undefined where we hold no photograph: the caller shows nothing. */
 export function councilPhoto(council: string): CouncilPhoto | undefined {
   return councils[slugify(council)];
 }

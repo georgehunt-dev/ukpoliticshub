@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 /**
  * The live clock inside the by-election band.
  *
- * Only the digits are a client component — the surrounding band is rendered on
+ * Only the digits are a client component: the surrounding band is rendered on
  * the server, so the wards, the candidate counts and the links are all in the
  * HTML a crawler sees. This part is here purely because it has to tick.
  *

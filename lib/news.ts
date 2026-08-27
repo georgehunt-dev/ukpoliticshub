@@ -37,7 +37,7 @@ function text(value: unknown): string {
  * Feeds publish entities, and not the tidy subset we used to handle.
  *
  * The Sun's feed alone carries &#034;, &#038;, &#039;, &#8211;, &#8216; and
- * &#8217; — and the old list matched &#39; but not the zero-padded &#039;, so
+ * &#8217;, and the old list matched &#39; but not the zero-padded &#039;, so
  * twenty apostrophes a day reached the page as literal code. Headlines were
  * rendering as "faints &#8216;at sight of meat&#8217;".
  *
@@ -71,7 +71,7 @@ function stripHtml(value: string): string {
  *
  * There is no single convention. Most use media:content or media:thumbnail,
  * Sky adds an enclosure, and the Mail embeds the image in the description
- * HTML — which is why an earlier check concluded, wrongly, that the Mail
+ * HTML, which is why an earlier check concluded, wrongly, that the Mail
  * published no images at all.
  */
 function imageFrom(item: Record<string, unknown>): string | undefined {
@@ -134,7 +134,7 @@ async function fetchOutlet(outlet: NewsOutlet): Promise<NewsItem[]> {
     .filter((item: NewsItem) => item.title && item.url);
 
   // Only applied where the outlet publishes a general news feed rather than a
-  // politics one — see the note on politicsFilter in data/news.ts.
+  // politics one: see the note on politicsFilter in data/news.ts.
   const relevant = outlet.politicsFilter
     ? mapped.filter((item) =>
         outlet.politicsFilter!.test(`${item.title} ${item.summary ?? ""} ${item.url}`)

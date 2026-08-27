@@ -12,7 +12,7 @@
  *     have left all eighteen Northern Ireland seats with no place names.
  *   - postcodes.io to turn each coordinate into a 2024 constituency.
  *
- * The hard part is that British place names repeat constantly — there are
+ * The hard part is that British place names repeat constantly. There are
  * eight Whitchurches, nine Hooks, ten Overtons. So the index is a name to
  * *many* seats, never name to one seat, and every entry carries its district
  * so the site can ask which one the reader meant.
@@ -30,7 +30,7 @@ const TYPES = {
   Q515: "City",
   Q3957: "Town",
   // Without suburbs, twenty-one dense urban seats came back with no places at
-  // all — inner Birmingham, Liverpool, Glasgow and London, where the names
+  // all: inner Birmingham, Liverpool, Glasgow and London, where the names
   // people actually use are neighbourhoods rather than settlements.
   Q188509: "Suburb",
   Q532: "Village",
@@ -46,7 +46,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 /**
  * Returns parsed JSON, not a Response. Wikidata drops the socket part-way
  * through a large result set, which surfaces during the body read rather than
- * during the fetch — so the read has to sit inside the retry too.
+ * during the fetch, so the read has to sit inside the retry too.
  */
 async function getJson(url, init, tries = 5) {
   for (let attempt = 0; ; attempt++) {
@@ -70,7 +70,7 @@ async function getJson(url, init, tries = 5) {
 
 /**
  * Deliberately avoids the transitive `wdt:P131*` walk up the administrative
- * tree — it is correct but times the endpoint out on the larger classes. The
+ * tree. It is correct but times the endpoint out on the larger classes. The
  * direct country property is enough, because the nation comes back from the
  * reverse geocode anyway.
  */
@@ -184,8 +184,8 @@ async function locate(places) {
 
 /**
  * The network half of this script takes about a quarter of an hour. Caching it
- * means a failure in the reconciliation below — which is where the interesting
- * failures happen — costs seconds to retry rather than starting over. Delete
+ * means a failure in the reconciliation below, which is where the interesting
+ * failures happen: costs seconds to retry rather than starting over. Delete
  * the file to force a genuine refresh.
  */
 const CACHE = path.join(process.cwd(), "data", "generated", ".places-cache.json");
@@ -203,7 +203,7 @@ async function cachedLocations() {
       return cached.located;
     }
   } catch {
-    /* No usable cache — fall through and fetch. */
+    /* No usable cache: fall through and fetch. */
   }
   return null;
 }

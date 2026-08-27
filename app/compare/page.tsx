@@ -8,7 +8,7 @@ import { allPairs, coverageFor, partiesBySpectrum } from "@/lib/compare";
 export const metadata: Metadata = {
   title: "Compare the parties",
   description:
-    "Every major UK party on the same ten questions, side by side and sourced — or any two parties compared across all of them.",
+    "Every major UK party on the same ten questions, side by side and sourced, or any two parties compared across all of them.",
 };
 
 export default function CompareIndex() {

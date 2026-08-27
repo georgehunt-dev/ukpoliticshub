@@ -2,7 +2,7 @@
  * A photograph for each council holding a by-election.
  * Run: node scripts/fetch-council-photos.mjs
  *
- * These are pictures of the council area, not of the ward being contested —
+ * These are pictures of the council area, not of the ward being contested,
  * there is no free source of representative photographs of individual council
  * wards, and inventing one would be a small lie repeated on every page. The
  * caption on each page says which town it shows, so the picture is never

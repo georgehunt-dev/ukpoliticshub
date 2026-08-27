@@ -18,7 +18,7 @@
   --rule: rgba(15, 31, 56, 0.16);
   --rule-strong: rgba(15, 31, 56, 0.38);
 
-  /* Party brand colours — sourced from Wikipedia's {{party color}} template */
+  /* Party brand colours, sourced from Wikipedia's {{party color}} template */
   --party-labour: #e4003b;
   --party-conservative: #0087dc;
   --party-reform: #1eb8d0;
@@ -50,7 +50,7 @@ html {
    * With smooth set globally the browser animates the scroll-to-top that runs
    * on every route change. The animation is interrupted by the new page
    * rendering, so a reader who clicked a link half way down a page landed part
-   * way down the next one — with the sticky header covering what they landed on.
+   * way down the next one, with the sticky header covering what they landed on.
    *
    * scroll-padding-top keeps in-page anchors clear of that header, which is
    * about 155px once the ask bar is counted. Without it, jumping to #threat
@@ -114,7 +114,7 @@ h1, h2, h3, h4, h5, h6, .font-display {
   border-top: 1px solid var(--gold);
 }
 
-/* Double rule — the masthead separator on a printed front page. */
+/* Double rule: the masthead separator on a printed front page. */
 .rule-double {
   border-top: 3px double var(--rule-strong);
 }

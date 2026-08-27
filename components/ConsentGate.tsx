@@ -9,7 +9,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
  *
  * GA4 sets cookies, which under UK PECR are non-essential and therefore need
  * consent *before* they are set. So gtag is not loaded at all until someone
- * accepts — not loaded-then-disabled, genuinely not loaded. Declining means no
+ * accepts, not loaded-then-disabled, genuinely not loaded. Declining means no
  * Google script is ever fetched and no Google cookie is ever written.
  *
  * Vercel Analytics runs regardless: it is cookieless and stores nothing on the

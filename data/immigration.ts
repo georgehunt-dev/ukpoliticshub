@@ -38,9 +38,9 @@ export const crossingsYearToDate = {
     { label: "Same point in 2025", value: 25436, change: changeOnSamePoint(25436) },
     { label: "Same point in 2024", value: 16903, change: changeOnSamePoint(16903) },
   ],
-  note: "Boats successfully crossing are down 49% on last year — a bigger fall than the fall in people, meaning the boats that do cross are more crowded.",
+  note: "Boats successfully crossing are down 49% on last year: a bigger fall than the fall in people, meaning the boats that do cross are more crowded.",
   source: {
-    label: "Home Office — small boat activity in the English Channel",
+    label: "Home Office, small boat activity in the English Channel",
     url: "https://www.gov.uk/government/publications/migrants-detected-crossing-the-english-channel-in-small-boats",
     date: "2026-08-13",
   } satisfies Source,
@@ -53,18 +53,18 @@ export const crossingsByYear: { year: number; total: number | null; note?: strin
   { year: 2022, total: 45774, note: "Record year" },
   { year: 2023, total: 29437, note: "Down 36% on 2022" },
   { year: 2024, total: 36816, note: "Up 25% on 2023" },
-  { year: 2025, total: 41472, note: "Up 13% on 2024 — second highest on record" },
+  { year: 2025, total: 41472, note: "Up 13% on 2024: second highest on record" },
   { year: 2026, total: 15242, note: "Year to date, provisional" },
 ];
 
 export const crossingsByYearSource: Source = {
-  label: "House of Commons Library — statistics on small boat Channel crossings",
+  label: "House of Commons Library, statistics on small boat Channel crossings",
   url: "https://commonslibrary.parliament.uk/research-briefings/cbp-10590/",
   date: "2026-08-01",
 };
 
 export const crossingsYearNote =
-  "Each completed year is the Home Office's final total for that calendar year. The 2026 row is a running year-to-date count and is not comparable with the full years above it — the two are easy to confuse, and a part-year tally read as an annual total is the mistake to watch for. The wider irregular-migration figure is larger than the small-boat figure in every year, because small boats are roughly 89% of detected irregular arrivals rather than all of them.";
+  "Each completed year is the Home Office's final total for that calendar year. The 2026 row is a running year-to-date count and is not comparable with the full years above it: the two are easy to confuse, and a part-year tally read as an annual total is the mistake to watch for. The wider irregular-migration figure is larger than the small-boat figure in every year, because small boats are roughly 89% of detected irregular arrivals rather than all of them.";
 
 /** The wider system, so the headline number is not read in isolation. */
 export const asylumSystem: {
@@ -81,7 +81,7 @@ export const asylumSystem: {
     detail:
       "At the end of March 2026, down from 109,536 a year earlier as the Home Office cleared initial decisions faster.",
     source: {
-      label: "Migration Observatory — asylum accommodation in the UK",
+      label: "Migration Observatory, asylum accommodation in the UK",
       url: "https://migrationobservatory.ox.ac.uk/resources/briefings/asylum-accommodation-in-the-uk/",
       date: "2026-03-31",
     },
@@ -93,7 +93,7 @@ export const asylumSystem: {
     detail:
       "21% of the 98,000 people in asylum accommodation at the end of March 2026, down from 42% in hotels in March 2023.",
     source: {
-      label: "Migration Observatory — asylum accommodation in the UK",
+      label: "Migration Observatory, asylum accommodation in the UK",
       url: "https://migrationobservatory.ox.ac.uk/resources/briefings/asylum-accommodation-in-the-uk/",
       date: "2026-03-31",
     },
@@ -102,9 +102,9 @@ export const asylumSystem: {
     label: "Asylum-related returns",
     value: "11,631",
     change: "+23% year on year",
-    detail: "31% of all returns from the UK in 2026 — people removed or leaving after a refused claim.",
+    detail: "31% of all returns from the UK in 2026: people removed or leaving after a refused claim.",
     source: {
-      label: "Migration Observatory — returns and removals",
+      label: "Migration Observatory, returns and removals",
       url: "https://migrationobservatory.ox.ac.uk/resources/briefings/asylum-accommodation-in-the-uk/",
       date: "2026-06-30",
     },
@@ -115,7 +115,7 @@ export const asylumSystem: {
 export const plainEnglish = [
   {
     q: "What counts as “irregular” arrival?",
-    a: "Arriving without prior permission — overwhelmingly by small boat across the Channel, plus smaller numbers detected at ports or arriving by air without adequate documents. In 2025 small boats were about 89% of all such detections.",
+    a: "Arriving without prior permission: overwhelmingly by small boat across the Channel, plus smaller numbers detected at ports or arriving by air without adequate documents. In 2025 small boats were about 89% of all such detections.",
   },
   {
     q: "Is claiming asylum illegal?",
@@ -123,7 +123,7 @@ export const plainEnglish = [
   },
   {
     q: "Why do the numbers jump around so much?",
-    a: "Crossings are highly weather-dependent — a single calm week can produce more arrivals than a stormy month. Day-to-day figures are close to meaningless; the year-to-date comparison is the number worth watching.",
+    a: "Crossings are highly weather-dependent: a single calm week can produce more arrivals than a stormy month. Day-to-day figures are close to meaningless; the year-to-date comparison is the number worth watching.",
   },
 ];
 

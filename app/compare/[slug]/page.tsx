@@ -59,7 +59,7 @@ export default async function ComparePage(props: PageProps<"/compare/[slug]">) {
         <>
           <p className="mt-5 max-w-3xl text-[0.95rem] leading-relaxed text-ink-soft">
             {view.area.question} Parties are ordered left to right by our placement on the spectrum.
-            Each line is the position in brief — open <em>in full</em> for the detail and where it is
+            Each line is the position in brief: open <em>in full</em> for the detail and where it is
             contested.
           </p>
           <IssueComparison view={view} />

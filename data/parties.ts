@@ -5,7 +5,7 @@ import type { Party, PartySlug } from "@/lib/types";
  *
  * Ground rules for this file, because it is the part of the site most likely
  * to be accused of bias:
- *   • "concerns" lists documented, attributable matters — court cases,
+ *   • "concerns" lists documented, attributable matters: court cases,
  *     regulator findings, published academic classification, reporting from
  *     named outlets. It never states a verdict of our own.
  *   • Where a party disputes a characterisation, the dispute is printed next
@@ -35,7 +35,7 @@ export const parties: Party[] = [
         area: "immigration",
         summary: "Continues Mahmood reforms; cites 43% fall in crossings",
         source: {
-          label: "What to expect from Andy Burnham — Travers Smith",
+          label: "What to expect from Andy Burnham, Travers Smith",
           url: "https://www.traverssmith.com/knowledge/knowledge-container/what-to-expect-from-andy-burnham-potential-legal-and-policy-changes-under-the-new-uk-prime-minister/",
         },
         position:
@@ -47,11 +47,11 @@ export const parties: Party[] = [
         area: "economy",
         summary: "Act on the frozen personal allowance; wealth tax not ruled out",
         source: {
-          label: "Andy Burnham's main policy pledges — Yahoo News",
+          label: "Andy Burnham's main policy pledges, Yahoo News",
           url: "https://www.yahoo.com/news/politics/articles/andy-burnham-key-policies-083422419.html",
         },
         position:
-          "Action on the income tax personal allowance, frozen at £12,570 — which Burnham called \"the thing I heard most on the doorsteps\". Business rates would rise on large warehouses while high-street shops and pubs are exempted. He has not ruled out a wealth tax.",
+          "Action on the income tax personal allowance, frozen at £12,570, which Burnham called \"the thing I heard most on the doorsteps\". Business rates would rise on large warehouses while high-street shops and pubs are exempted. He has not ruled out a wealth tax.",
         caveat:
           "A £4.7bn gap in the existing spending plan is to be \"confirmed at Budget 2026\", so the funding is not yet set out.",
       },
@@ -59,7 +59,7 @@ export const parties: Party[] = [
         area: "health",
         summary: "A publicly funded national care service",
         source: {
-          label: "Andy Burnham's main policy pledges — Yahoo News",
+          label: "Andy Burnham's main policy pledges, Yahoo News",
           url: "https://www.yahoo.com/news/politics/articles/andy-burnham-key-policies-083422419.html",
         },
         position:
@@ -69,7 +69,7 @@ export const parties: Party[] = [
         area: "housing",
         summary: "End rough sleeping; biggest council housebuilding since the war",
         source: {
-          label: "Andy Burnham's main policy pledges — Yahoo News",
+          label: "Andy Burnham's main policy pledges, Yahoo News",
           url: "https://www.yahoo.com/news/politics/articles/andy-burnham-key-policies-083422419.html",
         },
         position:
@@ -79,7 +79,7 @@ export const parties: Party[] = [
         area: "energy",
         summary: "Strip policy levies from bills, worth about £130 a year",
         source: {
-          label: "Andy Burnham's main policy pledges — Yahoo News",
+          label: "Andy Burnham's main policy pledges, Yahoo News",
           url: "https://www.yahoo.com/news/politics/articles/andy-burnham-key-policies-083422419.html",
         },
         position:
@@ -89,7 +89,7 @@ export const parties: Party[] = [
         area: "defence",
         summary: "Keep NATO and the nuclear deterrent; upgrade equipment",
         source: {
-          label: "Andy Burnham's main policy pledges — Yahoo News",
+          label: "Andy Burnham's main policy pledges, Yahoo News",
           url: "https://www.yahoo.com/news/politics/articles/andy-burnham-key-policies-083422419.html",
         },
         position:
@@ -99,7 +99,7 @@ export const parties: Party[] = [
         area: "crime",
         summary: "3,000 more neighbourhood officers within twelve months",
         source: {
-          label: "Burnham's policing plan — Greater Manchester Combined Authority",
+          label: "Burnham's policing plan, Greater Manchester Combined Authority",
           url: "https://www.greatermanchester-ca.gov.uk/news/mayor-andy-burnham-unveils-plan-to-drive-further-improvements-in-policing/",
         },
         position:
@@ -109,19 +109,19 @@ export const parties: Party[] = [
         area: "education",
         summary: "VAT on private school fees, in force since January 2025",
         source: {
-          label: "VAT on private school fees — House of Commons Library",
+          label: "VAT on private school fees, House of Commons Library",
           url: "https://commonslibrary.parliament.uk/research-briefings/cbp-10125/",
         },
         position:
           "VAT has been charged at the standard 20% rate on private school fees since 1 January 2025, removing a long-standing exemption. The Treasury forecast the measure would raise £1.51bn in 2025/26.",
         caveat:
-          "The government's own forecast expected 37,000 pupils — about 6% of the private sector — to move into state schools as a result. Several large private schools responded by sharply expanding bursaries.",
+          "The government's own forecast expected 37,000 pupils (about 6% of the private sector) to move into state schools as a result. Several large private schools responded by sharply expanding bursaries.",
       },
       {
         area: "culture",
         summary: "Keep the licence fee to charter end, while reviewing it",
         source: {
-          label: "The future of the BBC licence fee — House of Commons Library",
+          label: "The future of the BBC licence fee, House of Commons Library",
           url: "https://commonslibrary.parliament.uk/research-briefings/cbp-10050/",
         },
         position:
@@ -131,7 +131,7 @@ export const parties: Party[] = [
         area: "europe",
         summary: "Closer co-operation, not rejoining; devolution at home",
         source: {
-          label: "Andy Burnham's main policy pledges — Yahoo News",
+          label: "Andy Burnham's main policy pledges, Yahoo News",
           url: "https://www.yahoo.com/news/politics/articles/andy-burnham-key-policies-083422419.html",
         },
         position:
@@ -140,38 +140,38 @@ export const parties: Party[] = [
     ],
     policySources: [
       {
-        label: "Yahoo News — Andy Burnham's main policy pledges, and what they mean for you",
+        label: "Yahoo News, Andy Burnham's main policy pledges, and what they mean for you",
         url: "https://www.yahoo.com/news/politics/articles/andy-burnham-key-policies-083422419.html",
         date: "2026-07-20",
       },
       {
-        label: "Travers Smith — What to expect from Andy Burnham: legal and policy changes",
+        label: "Travers Smith, What to expect from Andy Burnham: legal and policy changes",
         url: "https://www.traverssmith.com/knowledge/knowledge-container/what-to-expect-from-andy-burnham-potential-legal-and-policy-changes-under-the-new-uk-prime-minister/",
         date: "2026-07-01",
       },
       {
-        label: "Greater Manchester Combined Authority — Burnham unveils plan to drive further improvements in policing",
+        label: "Greater Manchester Combined Authority, Burnham unveils plan to drive further improvements in policing",
         url: "https://www.greatermanchester-ca.gov.uk/news/mayor-andy-burnham-unveils-plan-to-drive-further-improvements-in-policing/",
       },
       {
-        label: "House of Commons Library — The future of the BBC licence fee",
+        label: "House of Commons Library, The future of the BBC licence fee",
         url: "https://commonslibrary.parliament.uk/research-briefings/cbp-10050/",
       },
       {
-        label: "House of Commons Library — VAT on private school fees",
+        label: "House of Commons Library, VAT on private school fees",
         url: "https://commonslibrary.parliament.uk/research-briefings/cbp-10125/",
       },
     ],
     credibility: [
       "Won a Commons majority at the 2024 general election and has governed since.",
       "Burnham was elected Mayor of Greater Manchester three times and served as Health Secretary and Chief Secretary to the Treasury under Brown.",
-      "He took the leadership on 379 nominations — over 94% of Labour MPs — and was unopposed.",
+      "He took the leadership on 379 nominations (over 94% of Labour MPs), and was unopposed.",
     ],
     concerns: [
       "Seven Prime Ministers in ten years, two of them Labour, is itself the instability Burnham says he was chosen to end.",
       "The Mandelson affair ran through the first half of 2026: he resigned from the party on 1 February and the Lords on 3 February over the Epstein files, and was arrested on 23 February on suspicion of misconduct in public office. Downing Street's chief of staff and communications director both resigned in the fallout.",
       "Ipsos finds the public divided on the government's direction and unconvinced it will deliver on immigration and the cost of living, despite Burnham's strong personal ratings.",
-      "The Greens took Gorton and Denton from Labour in February 2026 — the first Green by-election gain in history — with Labour third.",
+      "The Greens took Gorton and Denton from Labour in February 2026 (the first Green by-election gain in history) with Labour third.",
     ],
     leader: {
       slug: "andy-burnham",
@@ -186,7 +186,7 @@ export const parties: Party[] = [
         "Was blocked from standing in the Gorton and Denton by-election in January 2026, and needed a second by-election, in Makerfield, to re-enter the Commons and become eligible for the leadership.",
       sources: [
         {
-          label: "CFR — Andy Burnham: what to expect from the UK's new Prime Minister",
+          label: "CFR, Andy Burnham: what to expect from the UK's new Prime Minister",
           url: "https://www.cfr.org/articles/andy-burnham-what-to-expect-from-the-uks-new-prime-minister",
         },
       ],
@@ -232,7 +232,7 @@ export const parties: Party[] = [
         headline: "Starmer announces his resignation after losing the confidence of Labour MPs",
         date: "2026-06-22",
         source: {
-          label: "Wikipedia — 2026 Labour Party leadership election",
+          label: "Wikipedia, 2026 Labour Party leadership election",
           url: "https://en.wikipedia.org/wiki/2026_Labour_Party_leadership_election",
           date: "2026-06-22",
         },
@@ -240,11 +240,11 @@ export const parties: Party[] = [
     ],
     sources: [
       {
-        label: "Wikipedia — Burnham ministry",
+        label: "Wikipedia, Burnham ministry",
         url: "https://en.wikipedia.org/wiki/Burnham_ministry",
       },
       {
-        label: "Wikipedia — 2026 in United Kingdom politics and government",
+        label: "Wikipedia, 2026 in United Kingdom politics and government",
         url: "https://en.wikipedia.org/wiki/2026_in_United_Kingdom_politics_and_government",
       },
     ],
@@ -263,26 +263,26 @@ export const parties: Party[] = [
     founded: "2018 (as the Brexit Party; renamed 2021)",
     mps: "5 at the 2024 general election, since increased by defections from the Conservatives",
     summary:
-      "Led by Nigel Farage, Reform UK topped national polls from early 2025 through much of 2026 and absorbed a run of senior Conservative defectors — Nadhim Zahawi, Robert Jenrick and Suella Braverman all crossed in January 2026. It has slipped behind Labour in the most recent averages.",
+      "Led by Nigel Farage, Reform UK topped national polls from early 2025 through much of 2026 and absorbed a run of senior Conservative defectors. Nadhim Zahawi, Robert Jenrick and Suella Braverman all crossed in January 2026. It has slipped behind Labour in the most recent averages.",
     ideology: ["Right", "Immigration restriction", "Economic liberalism", "Opposed to net zero"],
     policies: [
       {
         area: "immigration",
         summary: "Freeze non-essential immigration; abolish ILR; Deportation Command",
         source: {
-          label: "Policies — Reform UK",
+          label: "Policies, Reform UK",
           url: "https://www.reformparty.uk/policies",
         },
         position:
           "An immediate freeze on non-essential immigration and a new Deportation Command. Indefinite Leave to Remain would be abolished and existing grants rescinded, replaced by a five-year renewable visa carrying higher salary thresholds, mandatory English fluency and stricter good-character requirements.",
         caveat:
-          "Rupert Lowe left the party in part over his claim that Reform was \"watering down\" deportation policy — placing Reform to the left of Restore Britain on its own signature issue.",
+          "Rupert Lowe left the party in part over his claim that Reform was \"watering down\" deportation policy, placing Reform to the left of Restore Britain on its own signature issue.",
       },
       {
         area: "economy",
         summary: "Around £70bn a year of tax cuts",
         source: {
-          label: "Reform UK manifesto: policy breakdown — London Daily",
+          label: "Reform UK manifesto: policy breakdown, London Daily",
           url: "https://londondaily.com/reform-uk-s-election-manifesto-policy-breakdown",
         },
         position:
@@ -294,7 +294,7 @@ export const parties: Party[] = [
         area: "health",
         summary: "Re-examine the funding model; tax breaks for NHS staff",
         source: {
-          label: "Policies — Reform UK",
+          label: "Policies, Reform UK",
           url: "https://www.reformparty.uk/policies",
         },
         position:
@@ -304,7 +304,7 @@ export const parties: Party[] = [
         area: "crime",
         summary: "40,000 more police; mandatory minimums; more prison places",
         source: {
-          label: "Reform UK manifesto: policy breakdown — London Daily",
+          label: "Reform UK manifesto: policy breakdown, London Daily",
           url: "https://londondaily.com/reform-uk-s-election-manifesto-policy-breakdown",
         },
         position:
@@ -314,7 +314,7 @@ export const parties: Party[] = [
         area: "energy",
         summary: "Scrap net zero targets; return to North Sea gas",
         source: {
-          label: "Policies — Reform UK",
+          label: "Policies, Reform UK",
           url: "https://www.reformparty.uk/policies",
         },
         position:
@@ -324,7 +324,7 @@ export const parties: Party[] = [
         area: "europe",
         summary: "Leave the ECHR immediately",
         source: {
-          label: "Policies — Reform UK",
+          label: "Policies, Reform UK",
           url: "https://www.reformparty.uk/policies",
         },
         position:
@@ -336,7 +336,7 @@ export const parties: Party[] = [
         area: "defence",
         summary: "Little published beyond withdrawing from institutions",
         source: {
-          label: "Reform UK: a foreign policy of withdrawal — Next Century Foundation",
+          label: "Reform UK: a foreign policy of withdrawal, Next Century Foundation",
           url: "https://www.nextcenturyfoundation.org/reform-uk-a-foreign-policy-of-withdrawal/",
         },
         position:
@@ -348,7 +348,7 @@ export const parties: Party[] = [
         area: "culture",
         summary: "Abolish the BBC licence fee; scrap DEI rules",
         source: {
-          label: "The future of the BBC licence fee — House of Commons Library",
+          label: "The future of the BBC licence fee, House of Commons Library",
           url: "https://commonslibrary.parliament.uk/research-briefings/cbp-10050/",
         },
         position:
@@ -358,7 +358,7 @@ export const parties: Party[] = [
         area: "housing",
         summary: "Restrict social housing and welfare access for migrants",
         source: {
-          label: "Policies — Reform UK",
+          label: "Policies, Reform UK",
           url: "https://www.reformparty.uk/policies",
         },
         position:
@@ -368,19 +368,19 @@ export const parties: Party[] = [
     ],
     policySources: [
       {
-        label: "Reform UK — Policies",
+        label: "Reform UK, Policies",
         url: "https://www.reformparty.uk/policies",
       },
       {
-        label: "London Daily — Reform UK election manifesto: policy breakdown",
+        label: "London Daily, Reform UK election manifesto: policy breakdown",
         url: "https://londondaily.com/reform-uk-s-election-manifesto-policy-breakdown",
       },
       {
-        label: "Next Century Foundation — Reform UK: a foreign policy of withdrawal",
+        label: "Next Century Foundation, Reform UK: a foreign policy of withdrawal",
         url: "https://www.nextcenturyfoundation.org/reform-uk-a-foreign-policy-of-withdrawal/",
       },
       {
-        label: "House of Commons Library — The future of the BBC licence fee",
+        label: "House of Commons Library, The future of the BBC licence fee",
         url: "https://commonslibrary.parliament.uk/research-briefings/cbp-10050/",
       },
     ],
@@ -392,7 +392,7 @@ export const parties: Party[] = [
     concerns: [
       "Farage resigned his seat on 8 July 2026 amid parliamentary scrutiny of his personal finances and allegations of undeclared gifts and support, including a reported £5m donation from Christopher Harborne revealed in April 2026 for personal protection.",
       "The Clacton by-election he called on himself was uncontested by every major party, so the 63.3% result is not a competitive test.",
-      "Turnout in that by-election fell 13.6 points, and the novelty candidate Count Binface took 26.9% — read by commentators as a protest at the exercise.",
+      "Turnout in that by-election fell 13.6 points, and the novelty candidate Count Binface took 26.9%: read by commentators as a protest at the exercise.",
       "The party has lost figures in both directions: Rupert Lowe was suspended in March 2025 over allegations of threatening behaviour and bullying, which he denied, and went on to found a rival party to its right.",
     ],
     leader: {
@@ -408,7 +408,7 @@ export const parties: Party[] = [
         "Resigned and re-contested his seat amid scrutiny of undeclared gifts and a £5m donation for personal protection.",
       sources: [
         {
-          label: "Al Jazeera — Why has UK Reform's Nigel Farage resigned as MP?",
+          label: "Al Jazeera, Why has UK Reform's Nigel Farage resigned as MP?",
           url: "https://www.aljazeera.com/news/2026/7/8/why-has-uk-reforms-nigel-farage-resigned-as-mp-what-happens-next",
           date: "2026-07-08",
         },
@@ -433,7 +433,7 @@ export const parties: Party[] = [
         headline: "Farage holds Clacton with 63.3% after every major party stands aside",
         date: "2026-08-13",
         source: {
-          label: "Wikipedia — 2026 Clacton by-election",
+          label: "Wikipedia, 2026 Clacton by-election",
           url: "https://en.wikipedia.org/wiki/2026_Clacton_by-election",
           date: "2026-08-13",
         },
@@ -442,7 +442,7 @@ export const parties: Party[] = [
         headline: "Farage reveals £5m donation from Christopher Harborne for personal protection",
         date: "2026-04-29",
         source: {
-          label: "Wikipedia — 2026 in United Kingdom politics and government",
+          label: "Wikipedia, 2026 in United Kingdom politics and government",
           url: "https://en.wikipedia.org/wiki/2026_in_United_Kingdom_politics_and_government",
           date: "2026-04-29",
         },
@@ -450,7 +450,7 @@ export const parties: Party[] = [
     ],
     sources: [
       {
-        label: "Wikipedia — Frontbench team of Nigel Farage",
+        label: "Wikipedia, Frontbench team of Nigel Farage",
         url: "https://en.wikipedia.org/wiki/Frontbench_team_of_Nigel_Farage",
       },
     ],
@@ -476,7 +476,7 @@ export const parties: Party[] = [
         area: "immigration",
         summary: "Ban asylum claims from illegal entrants; remove 150,000 a year",
         source: {
-          label: "Our Borders Plan — Conservatives",
+          label: "Our Borders Plan, Conservatives",
           url: "https://www.conservatives.com/our-borders-plan",
         },
         position:
@@ -486,7 +486,7 @@ export const parties: Party[] = [
         area: "europe",
         summary: "Leave the ECHR; repeal the Human Rights Act",
         source: {
-          label: "Our Borders Plan — Conservatives",
+          label: "Our Borders Plan, Conservatives",
           url: "https://www.conservatives.com/our-borders-plan",
         },
         position:
@@ -496,7 +496,7 @@ export const parties: Party[] = [
         area: "energy",
         summary: "Repeal the Climate Change Act; net zero by 2050 unreachable",
         source: {
-          label: "Net zero by 2050 'impossible', says Badenoch — BBC News",
+          label: "Net zero by 2050 'impossible', says Badenoch, BBC News",
           url: "https://feeds.bbci.co.uk/news/articles/cly3pnjyzp4o",
         },
         position:
@@ -506,17 +506,17 @@ export const parties: Party[] = [
         area: "economy",
         summary: "Scrap stamp duty; £23bn of welfare savings",
         source: {
-          label: "Why only the Conservatives can fix Britain's problems — Conservative Home",
+          label: "Why only the Conservatives can fix Britain's problems, Conservative Home",
           url: "https://conservativehome.com/2026/01/28/kemi-badenoch-why-only-the-conservatives-can-fix-britains-problems/",
         },
         position:
-          "A stated \"fully funded\" plan to scrap stamp duty, and £23bn of savings from welfare — framed as ending Britain's \"welfare addiction\" and building a high-growth, low-immigration economy in which reform expands the domestic workforce rather than immigration filling the gap.",
+          "A stated \"fully funded\" plan to scrap stamp duty, and £23bn of savings from welfare: framed as ending Britain's \"welfare addiction\" and building a high-growth, low-immigration economy in which reform expands the domestic workforce rather than immigration filling the gap.",
       },
       {
         area: "health",
         summary: "92,000 more nurses and 28,000 more doctors",
         source: {
-          label: "Conservative manifesto summary — Local Government Association",
+          label: "Conservative manifesto summary, Local Government Association",
           url: "https://www.local.gov.uk/about/campaigns/general-election-hub/conservative-party-manifesto",
         },
         position:
@@ -528,7 +528,7 @@ export const parties: Party[] = [
         area: "crime",
         summary: "8,000 more neighbourhood police; 20,000 prison places",
         source: {
-          label: "Conservative manifesto summary — Local Government Association",
+          label: "Conservative manifesto summary, Local Government Association",
           url: "https://www.local.gov.uk/about/campaigns/general-election-hub/conservative-party-manifesto",
         },
         position:
@@ -539,18 +539,18 @@ export const parties: Party[] = [
         area: "defence",
         summary: "Defence spending to 2.5% of GDP by 2030",
         source: {
-          label: "Conservative manifesto summary — Local Government Association",
+          label: "Conservative manifesto summary, Local Government Association",
           url: "https://www.local.gov.uk/about/campaigns/general-election-hub/conservative-party-manifesto",
         },
         position:
-          "Defence spending raised to 2.5% of GDP by 2030 on what the party called a fully funded path — presented as the largest sustained increase since the Cold War, keeping the UK the largest defence power in Europe.",
+          "Defence spending raised to 2.5% of GDP by 2030 on what the party called a fully funded path: presented as the largest sustained increase since the Cold War, keeping the UK the largest defence power in Europe.",
         caveat: "2024 manifesto commitment; not restated as a costed pledge under the current leadership.",
       },
       {
         area: "education",
         summary: "Criticises VAT on school fees but will not reverse it",
         source: {
-          label: "VAT on private school fees — House of Commons Library",
+          label: "VAT on private school fees, House of Commons Library",
           url: "https://commonslibrary.parliament.uk/research-briefings/cbp-10125/",
         },
         position:
@@ -561,7 +561,7 @@ export const parties: Party[] = [
         area: "housing",
         summary: "Scrapping stamp duty is the main housing measure",
         source: {
-          label: "Why only the Conservatives can fix Britain's problems — Conservative Home",
+          label: "Why only the Conservatives can fix Britain's problems, Conservative Home",
           url: "https://conservativehome.com/2026/01/28/kemi-badenoch-why-only-the-conservatives-can-fix-britains-problems/",
         },
         position:
@@ -571,24 +571,24 @@ export const parties: Party[] = [
     ],
     policySources: [
       {
-        label: "Conservatives — Our Borders Plan",
+        label: "Conservatives, Our Borders Plan",
         url: "https://www.conservatives.com/our-borders-plan",
       },
       {
-        label: "Conservative Home — Kemi Badenoch: why only the Conservatives can fix Britain's problems",
+        label: "Conservative Home, Kemi Badenoch: why only the Conservatives can fix Britain's problems",
         url: "https://conservativehome.com/2026/01/28/kemi-badenoch-why-only-the-conservatives-can-fix-britains-problems/",
         date: "2026-01-28",
       },
       {
-        label: "BBC News — Net zero by 2050 'impossible' for UK, says Badenoch",
+        label: "BBC News, Net zero by 2050 'impossible' for UK, says Badenoch",
         url: "https://feeds.bbci.co.uk/news/articles/cly3pnjyzp4o",
       },
       {
-        label: "Local Government Association — Conservative Party manifesto summary",
+        label: "Local Government Association, Conservative Party manifesto summary",
         url: "https://www.local.gov.uk/about/campaigns/general-election-hub/conservative-party-manifesto",
       },
       {
-        label: "House of Commons Library — VAT on private school fees",
+        label: "House of Commons Library, VAT on private school fees",
         url: "https://commonslibrary.parliament.uk/research-briefings/cbp-10125/",
       },
     ],
@@ -599,9 +599,9 @@ export const parties: Party[] = [
     ],
     concerns: [
       "A sustained haemorrhage of senior figures to Reform UK: Nadhim Zahawi on 12 January 2026, Robert Jenrick on 15 January after losing the whip for what the party called plotting to defect, and Suella Braverman on 26 January.",
-      "Ruth Davidson and Andy Street launched a rival centrist grouping, Prosper UK, on 26 January 2026 — pressure from the other flank.",
+      "Ruth Davidson and Andy Street launched a rival centrist grouping, Prosper UK, on 26 January 2026: pressure from the other flank.",
       "Third place in most published averages, at around 20%.",
-      "Finished behind Restore Britain — a party months old — in the Makerfield by-election in June 2026.",
+      "Finished behind Restore Britain (a party months old) in the Makerfield by-election in June 2026.",
     ],
     leader: {
       slug: "kemi-badenoch",
@@ -616,7 +616,7 @@ export const parties: Party[] = [
         "Has lost three cabinet-rank colleagues to Reform UK in a single month and faces open commentary about whether the party can recover under any leader.",
       sources: [
         {
-          label: "New Statesman — Kemi Badenoch is the Conservative Party's only hope",
+          label: "New Statesman, Kemi Badenoch is the Conservative Party's only hope",
           url: "https://www.newstatesman.com/politics/uk-politics/2026/08/kemi-badenoch-is-the-conservative-partys-only-hope",
           date: "2026-08-01",
         },
@@ -636,7 +636,7 @@ export const parties: Party[] = [
         headline: "Suella Braverman defects to Reform UK",
         date: "2026-01-26",
         source: {
-          label: "Wikipedia — 2026 in United Kingdom politics and government",
+          label: "Wikipedia, 2026 in United Kingdom politics and government",
           url: "https://en.wikipedia.org/wiki/2026_in_United_Kingdom_politics_and_government",
           date: "2026-01-26",
         },
@@ -645,7 +645,7 @@ export const parties: Party[] = [
         headline: "Robert Jenrick loses the Conservative whip and joins Reform UK the same day",
         date: "2026-01-15",
         source: {
-          label: "Wikipedia — 2026 in United Kingdom politics and government",
+          label: "Wikipedia, 2026 in United Kingdom politics and government",
           url: "https://en.wikipedia.org/wiki/2026_in_United_Kingdom_politics_and_government",
           date: "2026-01-15",
         },
@@ -653,7 +653,7 @@ export const parties: Party[] = [
     ],
     sources: [
       {
-        label: "Wikipedia — Badenoch shadow cabinet",
+        label: "Wikipedia, Badenoch shadow cabinet",
         url: "https://en.wikipedia.org/wiki/Badenoch_shadow_cabinet",
       },
     ],
@@ -670,22 +670,22 @@ export const parties: Party[] = [
       "Left. Moved further left under Zack Polanski, on public ownership, wealth taxes and climate spending.",
     spectrumGloss: "Public ownership, wealth taxes and heavy climate spending.",
     founded: "1990 (in its present form; predecessors from 1973)",
-    mps: "5 — four elected in 2024 plus the Gorton and Denton by-election gain",
+    mps: "5: four elected in 2024 plus the Gorton and Denton by-election gain",
     membership: "Over 200,000",
     membershipSource: {
-      label: "Wikipedia — 2026 in United Kingdom politics and government",
+      label: "Wikipedia, 2026 in United Kingdom politics and government",
       url: "https://en.wikipedia.org/wiki/2026_in_United_Kingdom_politics_and_government",
       date: "2026-03-01",
     },
     summary:
-      "The fastest-growing party in British politics by membership. Zack Polanski won the leadership in September 2025 on an eco-populist platform, and in February 2026 the Greens took Gorton and Denton — their first Westminster by-election win ever, in a seat where the party had never previously passed 10%.",
+      "The fastest-growing party in British politics by membership. Zack Polanski won the leadership in September 2025 on an eco-populist platform, and in February 2026 the Greens took Gorton and Denton. Their first Westminster by-election win ever, in a seat where the party had never previously passed 10%.",
     ideology: ["Green politics", "Left", "Public ownership"],
     policies: [
       {
         area: "economy",
         summary: "Wealth tax on assets over £10m; £15 minimum wage",
         source: {
-          label: "What are the Green Party's economic plans? — Economics Observatory",
+          label: "What are the Green Party's economic plans?, Economics Observatory",
           url: "https://www.economicsobservatory.com/what-are-the-green-partys-economic-plans",
         },
         position:
@@ -697,7 +697,7 @@ export const parties: Party[] = [
         area: "energy",
         summary: "£90bn a year capital spending; water, rail and energy in public hands",
         source: {
-          label: "What are the Green Party's economic plans? — Economics Observatory",
+          label: "What are the Green Party's economic plans?, Economics Observatory",
           url: "https://www.economicsobservatory.com/what-are-the-green-partys-economic-plans",
         },
         position:
@@ -707,11 +707,11 @@ export const parties: Party[] = [
         area: "housing",
         summary: "Social housing funded from the capital programme",
         source: {
-          label: "What are the Green Party's economic plans? — Economics Observatory",
+          label: "What are the Green Party's economic plans?, Economics Observatory",
           url: "https://www.economicsobservatory.com/what-are-the-green-partys-economic-plans",
         },
         position:
-          "Social housing is funded from the same £90bn capital programme, alongside health and education — the party's answer to supply being public building rather than planning liberalisation.",
+          "Social housing is funded from the same £90bn capital programme, alongside health and education: the party's answer to supply being public building rather than planning liberalisation.",
       },
       {
         area: "immigration",
@@ -729,7 +729,7 @@ export const parties: Party[] = [
         area: "defence",
         summary: "Cancel Trident and begin disarming, while staying in NATO",
         source: {
-          label: "The Green Party's defence plan — British Brief",
+          label: "The Green Party's defence plan, British Brief",
           url: "https://www.britbrief.co.uk/politics/defence/greens-defence-plan-scrap-trident-cut-forces-terror-sympathy.html",
         },
         position:
@@ -741,7 +741,7 @@ export const parties: Party[] = [
         area: "europe",
         summary: "Rejoin the European Union",
         source: {
-          label: "Polanski outlines Green economic policy — AOL / PA",
+          label: "Polanski outlines Green economic policy, AOL / PA",
           url: "https://www.aol.com/news/wealth-tax-rejoining-eu-zack-135154434.html",
         },
         position: "Rejoining the European Union is party policy.",
@@ -750,7 +750,7 @@ export const parties: Party[] = [
         area: "health",
         summary: "More health spending; opposes private provision in the NHS",
         source: {
-          label: "What are the Green Party's economic plans? — Economics Observatory",
+          label: "What are the Green Party's economic plans?, Economics Observatory",
           url: "https://www.economicsobservatory.com/what-are-the-green-partys-economic-plans",
         },
         position:
@@ -760,27 +760,27 @@ export const parties: Party[] = [
     ],
     policySources: [
       {
-        label: "Economics Observatory — What are the Green Party's economic plans?",
+        label: "Economics Observatory, What are the Green Party's economic plans?",
         url: "https://www.economicsobservatory.com/what-are-the-green-partys-economic-plans",
       },
       {
-        label: "AOL / PA — From a wealth tax to rejoining the EU: Polanski outlines Green economic policy",
+        label: "AOL / PA, From a wealth tax to rejoining the EU: Polanski outlines Green economic policy",
         url: "https://www.aol.com/news/wealth-tax-rejoining-eu-zack-135154434.html",
       },
       {
-        label: "Left Foot Forward — Polanski reveals three economic principles the Green Party will follow",
+        label: "Left Foot Forward, Polanski reveals three economic principles the Green Party will follow",
         url: "https://leftfootforward.org/2026/03/zack-polanski-reveals-three-economic-principles-the-green-party-will-follow/",
         date: "2026-03-01",
       },
       {
-        label: "British Brief — the Green Party's defence plan",
+        label: "British Brief, the Green Party's defence plan",
         url: "https://www.britbrief.co.uk/politics/defence/greens-defence-plan-scrap-trident-cut-forces-terror-sympathy.html",
       },
     ],
     credibility: [
       "First Westminster by-election victory in the party's history, on 41% with a majority above 4,000, pushing Labour into third.",
       "Membership passed 200,000 in March 2026, up from roughly 184,000 in December 2025.",
-      "Polling around 12% nationally — historically high for the party — with five MPs and two peers.",
+      "Polling around 12% nationally (historically high for the party) with five MPs and two peers.",
     ],
     concerns: [
       "Recent averages show the Greens slipping back from their spring peak alongside Reform UK.",
@@ -797,7 +797,7 @@ export const parties: Party[] = [
         "Membership and poll share have both risen sharply since he took over, and the party won its first ever Westminster by-election under his leadership.",
       sources: [
         {
-          label: "Al Jazeera — Who is Zack Polanski, UK Greens leader and rising political star?",
+          label: "Al Jazeera, Who is Zack Polanski, UK Greens leader and rising political star?",
           url: "https://www.aljazeera.com/news/2026/5/6/who-is-zack-polanski-uk-greens-leader-and-rising-political-star",
           date: "2026-05-06",
         },
@@ -819,10 +819,10 @@ export const parties: Party[] = [
     ],
     recentNews: [
       {
-        headline: "Greens win Gorton and Denton — their first ever Westminster by-election",
+        headline: "Greens win Gorton and Denton. Their first ever Westminster by-election",
         date: "2026-02-26",
         source: {
-          label: "Wikipedia — 2026 in United Kingdom politics and government",
+          label: "Wikipedia, 2026 in United Kingdom politics and government",
           url: "https://en.wikipedia.org/wiki/2026_in_United_Kingdom_politics_and_government",
           date: "2026-02-26",
         },
@@ -831,7 +831,7 @@ export const parties: Party[] = [
         headline: "Green membership passes 200,000 following the by-election win",
         date: "2026-03-01",
         source: {
-          label: "Wikipedia — 2026 in United Kingdom politics and government",
+          label: "Wikipedia, 2026 in United Kingdom politics and government",
           url: "https://en.wikipedia.org/wiki/2026_in_United_Kingdom_politics_and_government",
           date: "2026-03-01",
         },
@@ -839,7 +839,7 @@ export const parties: Party[] = [
     ],
     sources: [
       {
-        label: "Wikipedia — Green Party of England and Wales",
+        label: "Wikipedia, Green Party of England and Wales",
         url: "https://en.wikipedia.org/wiki/Green_Party_of_England_and_Wales",
       },
     ],
@@ -856,7 +856,7 @@ export const parties: Party[] = [
       "Centre to centre-left. Socially liberal and pro-European, with a campaigning focus on health and social care and, since 2025, on opposing Reform UK directly.",
     spectrumGloss: "Socially liberal, pro-European, campaigning on care.",
     founded: "1988",
-    mps: "72 seats won at the 2024 general election — the party's best ever result",
+    mps: "72 seats won at the 2024 general election: the party's best ever result",
     summary:
       "Led by Sir Ed Davey, the Liberal Democrats won 72 seats in 2024, their strongest showing since the party was formed. Through 2026 they have made opposition to Nigel Farage the centre of their messaging, with Davey pledging to \"stop Trump's America becoming Farage's Britain\".",
     ideology: ["Liberalism", "Social liberalism", "Pro-Europeanism", "Federalism"],
@@ -865,11 +865,11 @@ export const parties: Party[] = [
         area: "health",
         summary: "Free personal care for everyone who needs it",
         source: {
-          label: "Ed Davey launches plan for free personal care — Liberal Democrats",
+          label: "Ed Davey launches plan for free personal care, Liberal Democrats",
           url: "https://www.libdems.org.uk/press/release/ed-davey-launches-plan-for-free-personal-care-to-end-hospital-crisis-and-help-people-stay-in-their-own-homes",
         },
         position:
-          "Free personal care for everyone who needs it, costed at £2.7bn a year by 2028–29 and funded by reversing tax cuts given to the large banks since 2016 — so that nobody has to sell their home to pay for personal care. Alongside it a Carer's Minimum Wage set £2 above the minimum wage, a Royal College of Care Workers, and Carer's Allowance raised by £20 a week with eligibility extended to anyone earning under £183 a week.",
+          "Free personal care for everyone who needs it, costed at £2.7bn a year by 2028–29 and funded by reversing tax cuts given to the large banks since 2016, so that nobody has to sell their home to pay for personal care. Alongside it a Carer's Minimum Wage set £2 above the minimum wage, a Royal College of Care Workers, and Carer's Allowance raised by £20 a week with eligibility extended to anyone earning under £183 a week.",
         caveat:
           "Analysts have welcomed the seriousness of the reform while questioning whether the funding stream covers the long-run cost.",
       },
@@ -877,7 +877,7 @@ export const parties: Party[] = [
         area: "economy",
         summary: "£9.4bn for care and the NHS from bank and capital gains taxes",
         source: {
-          label: "Lib Dem social care proposals examined — The Conversation",
+          label: "Lib Dem social care proposals examined, The Conversation",
           url: "https://theconversation.com/lib-dem-proposals-take-social-care-reform-seriously-but-doubts-remain-over-how-theyd-pay-for-it-232049",
         },
         position:
@@ -893,7 +893,7 @@ export const parties: Party[] = [
         area: "crime",
         summary: "Restore community policing; scrap Police and Crime Commissioners",
         source: {
-          label: "Stronger Communities, Safer Citizens — Liberal Democrats",
+          label: "Stronger Communities, Safer Citizens, Liberal Democrats",
           url: "https://www.libdems.org.uk/fileadmin/groups/2_Federal_Party/Documents/PolicyPapers/17_-_Stronger_Communities__Safer_Citizens__Proposals_for_Crime_and_Policing_Policy_in_England_and_Wales_.pdf",
         },
         position:
@@ -920,26 +920,26 @@ export const parties: Party[] = [
     ],
     policySources: [
       {
-        label: "Liberal Democrats — Ed Davey launches plan for free personal care",
+        label: "Liberal Democrats, Ed Davey launches plan for free personal care",
         url: "https://www.libdems.org.uk/press/release/ed-davey-launches-plan-for-free-personal-care-to-end-hospital-crisis-and-help-people-stay-in-their-own-homes",
       },
       {
-        label: "The Conversation — Lib Dem proposals take social care reform seriously, but doubts remain over how they'd pay for it",
+        label: "The Conversation, Lib Dem proposals take social care reform seriously, but doubts remain over how they'd pay for it",
         url: "https://theconversation.com/lib-dem-proposals-take-social-care-reform-seriously-but-doubts-remain-over-how-theyd-pay-for-it-232049",
       },
       {
-        label: "Liberal Democrats — Stronger Communities, Safer Citizens: proposals for crime and policing policy",
+        label: "Liberal Democrats, Stronger Communities, Safer Citizens: proposals for crime and policing policy",
         url: "https://www.libdems.org.uk/fileadmin/groups/2_Federal_Party/Documents/PolicyPapers/17_-_Stronger_Communities__Safer_Citizens__Proposals_for_Crime_and_Policing_Policy_in_England_and_Wales_.pdf",
       },
     ],
     credibility: [
-      "72 seats in 2024 — the best result in the party's history.",
+      "72 seats in 2024: the best result in the party's history.",
       "Record-breaking local election gains, which Davey has said position the party to \"win again in 2026\".",
       "A large and effective ground operation in southern English seats taken from the Conservatives.",
     ],
     concerns: [
       "Polling around 10%, below its 2024 vote share and behind the Greens for fourth place in most averages.",
-      "The heavy focus on Farage — by one count, more than 30 references at the party's conference, far more than to the Prime Minister — has drawn criticism that it crowds out a distinct offer of its own.",
+      "The heavy focus on Farage, by one count, more than 30 references at the party's conference, far more than to the Prime Minister: has drawn criticism that it crowds out a distinct offer of its own.",
       "The party's seat total rests on tactical anti-Conservative voting in southern seats, a coalition that a three-way national race makes harder to hold.",
     ],
     leader: {
@@ -953,7 +953,7 @@ export const parties: Party[] = [
         "Delivered 72 seats and record local election gains; one of the longest-serving current party leaders.",
       sources: [
         {
-          label: "Liberal Democrats — Ed Davey spring conference speech 2026",
+          label: "Liberal Democrats, Ed Davey spring conference speech 2026",
           url: "https://www.libdems.org.uk/news/article/ed-davey-speech-spring-2026",
           date: "2026-03-01",
         },
@@ -977,7 +977,7 @@ export const parties: Party[] = [
         headline: "Davey calls on all parties to stand aside in Clacton rather than give Farage \"oxygen\"",
         date: "2026-07-09",
         source: {
-          label: "Mark Pack — Government should block Nigel Farage's resignation",
+          label: "Mark Pack, Government should block Nigel Farage's resignation",
           url: "https://www.markpack.org.uk/177141/government-should-block-nigel-farages-resignation/",
           date: "2026-07-09",
         },
@@ -985,7 +985,7 @@ export const parties: Party[] = [
     ],
     sources: [
       {
-        label: "Wikipedia — Frontbench team of Ed Davey",
+        label: "Wikipedia, Frontbench team of Ed Davey",
         url: "https://en.wikipedia.org/wiki/Frontbench_team_of_Ed_Davey",
       },
     ],
@@ -1002,10 +1002,10 @@ export const parties: Party[] = [
       "The furthest right of the six on our placement. Political scientists classify it as far-right; the party rejects that description. Both are set out under Credibility and concerns below.",
     spectrumGloss: "Newest of the six; its own classification is contested.",
     founded: "Pressure group 30 June 2025; registered as a party 13 February 2026",
-    mps: "1 — Rupert Lowe",
+    mps: "1. Rupert Lowe",
     membership: "130,000 (June 2026)",
     membershipSource: {
-      label: "Wikipedia — Restore Britain",
+      label: "Wikipedia, Restore Britain",
       url: "https://en.wikipedia.org/wiki/Restore_Britain",
       date: "2026-06-01",
     },
@@ -1018,7 +1018,7 @@ export const parties: Party[] = [
         area: "immigration",
         summary: "Abolish asylum; deport everyone here illegally within three years",
         source: {
-          label: "Restore Britain and its proposed policies — National Media",
+          label: "Restore Britain and its proposed policies, National Media",
           url: "https://www.nationalmedia.uk/2026/03/a-summary-of-restore-britain-and.html",
         },
         position:
@@ -1030,7 +1030,7 @@ export const parties: Party[] = [
         area: "crime",
         summary: "A referendum on restoring the death penalty",
         source: {
-          label: "Restore Britain and its proposed policies — National Media",
+          label: "Restore Britain and its proposed policies, National Media",
           url: "https://www.nationalmedia.uk/2026/03/a-summary-of-restore-britain-and.html",
         },
         position:
@@ -1042,7 +1042,7 @@ export const parties: Party[] = [
         area: "culture",
         summary: "Defund the BBC; ban the burqa; end halal and kosher slaughter",
         source: {
-          label: "Restore Britain — Wikipedia",
+          label: "Restore Britain, Wikipedia",
           url: "https://en.wikipedia.org/wiki/Restore_Britain",
         },
         position:
@@ -1054,7 +1054,7 @@ export const parties: Party[] = [
         area: "economy",
         summary: "Libertarian outlook: smaller state, lower taxes",
         source: {
-          label: "Restore Britain and its proposed policies — National Media",
+          label: "Restore Britain and its proposed policies, National Media",
           url: "https://www.nationalmedia.uk/2026/03/a-summary-of-restore-britain-and.html",
         },
         position:
@@ -1064,23 +1064,23 @@ export const parties: Party[] = [
     ],
     policySources: [
       {
-        label: "Wikipedia — Restore Britain",
+        label: "Wikipedia, Restore Britain",
         url: "https://en.wikipedia.org/wiki/Restore_Britain",
       },
       {
-        label: "National Media — A summary of Restore Britain and its proposed policies",
+        label: "National Media, A summary of Restore Britain and its proposed policies",
         url: "https://www.nationalmedia.uk/2026/03/a-summary-of-restore-britain-and.html",
         date: "2026-03-01",
       },
       {
-        label: "Workers' Liberty — Farage's outrider on the further right",
+        label: "Workers' Liberty, Farage's outrider on the further right",
         url: "https://www.workersliberty.org/story/2026-07-29/farages-outrider-further-right",
         date: "2026-07-29",
       },
     ],
     credibility: [
       "Went from registration in February 2026 to roughly 4% in national polling and 130,000 members by June.",
-      "Took 6.8% at the Makerfield by-election in June 2026, finishing third — ahead of the Conservatives.",
+      "Took 6.8% at the Makerfield by-election in June 2026, finishing third: ahead of the Conservatives.",
       "35 councillors, and its affiliate Great Yarmouth First won all ten seats it contested in the 2026 local elections.",
     ],
     concerns: [
@@ -1103,7 +1103,7 @@ export const parties: Party[] = [
         "Suspended by Reform UK over allegations of threatening behaviour and bullying, which he denies; recognised by fewer than one in ten voters.",
       sources: [
         {
-          label: "Wikipedia — Rupert Lowe",
+          label: "Wikipedia, Rupert Lowe",
           url: "https://en.wikipedia.org/wiki/Rupert_Lowe",
         },
       ],
@@ -1125,7 +1125,7 @@ export const parties: Party[] = [
         headline: "Restore Britain takes 6.8% at Makerfield, finishing ahead of the Conservatives",
         date: "2026-06-18",
         source: {
-          label: "Wikipedia — 2026 Makerfield by-election",
+          label: "Wikipedia, 2026 Makerfield by-election",
           url: "https://en.wikipedia.org/wiki/2026_Makerfield_by-election",
           date: "2026-06-18",
         },
@@ -1133,11 +1133,11 @@ export const parties: Party[] = [
     ],
     sources: [
       {
-        label: "Wikipedia — Restore Britain",
+        label: "Wikipedia, Restore Britain",
         url: "https://en.wikipedia.org/wiki/Restore_Britain",
       },
       {
-        label: "YouGov — What do Restore Britain supporters see in the party?",
+        label: "YouGov, What do Restore Britain supporters see in the party?",
         url: "https://yougov.com/en-gb/articles/55157-big-yougov-voter-study-2026-what-do-restore-britain-supporters-see-in-the-party",
       },
     ],

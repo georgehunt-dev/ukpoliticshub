@@ -1,7 +1,7 @@
 /**
  * ukpoliticshub brand marks.
  *
- * The mark is a ballot cross inside an engraved roundel — the one symbol every
+ * The mark is a ballot cross inside an engraved roundel: the one symbol every
  * British voter recognises, and one nobody owns. Navy ring, oxblood cross, with
  * the saltire of the Union Flag implied in the fine diagonals behind it. It
  * reads at 16px in a browser tab and at 200px on a title card.

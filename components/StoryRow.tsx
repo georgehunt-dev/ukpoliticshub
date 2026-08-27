@@ -10,7 +10,7 @@ import type { MatchedStory } from "@/lib/subjects";
  * them through our optimiser would mean caching and re-serving their pictures
  * from our infrastructure, which is a bigger imposition than linking to them.
  *
- * Two of the thirteen feeds — Channel 4 and the Financial Times — publish no
+ * Two of the thirteen feeds (Channel 4 and the Financial Times) publish no
  * images at all, so those fall back to a generic press photograph rather than
  * leaving a hole in the row.
  */

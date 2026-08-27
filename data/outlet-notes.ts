@@ -1,7 +1,7 @@
 /**
  * One plain line about what each masthead is.
  *
- * Written for the outlets that actually draw search traffic — the ones people
+ * Written for the outlets that actually draw search traffic: the ones people
  * type "is X left or right" about. The rest fall back to a line built from what
  * we already hold, rather than to something invented for the sake of symmetry.
  *

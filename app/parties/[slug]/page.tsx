@@ -146,7 +146,7 @@ export default async function PartyPage(props: PageProps<"/parties/[slug]">) {
           <SectionHeading
             eyebrow="The case each way"
             title="Credibility and concerns"
-            standfirst="What the party can point to, and what is fairly put against it. Both columns are drawn from documented, attributable material — never from our own opinion of the party."
+            standfirst="What the party can point to, and what is fairly put against it. Both columns are drawn from documented, attributable material, never from our own opinion of the party."
           />
 
           <div className="mt-5 grid gap-4 lg:grid-cols-2">

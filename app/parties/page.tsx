@@ -10,7 +10,7 @@ import { pollAverage } from "@/data/polls";
 export const metadata: Metadata = {
   title: "The parties",
   description:
-    "The six major parties in British politics: policies, leadership, position on the left–right spectrum, credibility and concerns — every claim sourced.",
+    "The six major parties in British politics: policies, leadership, position on the left–right spectrum, credibility and concerns. Every claim sourced.",
 };
 
 export default function PartiesPage() {

@@ -1,8 +1,8 @@
 /**
  * Opening the signup prompt from anywhere on the site.
  *
- * The prompt itself lives once, in the layout. Pages that want to summon it —
- * the "tell me when local news lands" line on a constituency page, say — fire
+ * The prompt itself lives once, in the layout. Pages that want to summon it:
+ * the "tell me when local news lands" line on a constituency page, say: fire
  * this event rather than each keeping their own copy of the form.
  *
  * A window event rather than a shared module variable: the modal and the

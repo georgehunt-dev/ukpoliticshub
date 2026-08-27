@@ -8,8 +8,8 @@ import type { Party } from "@/lib/types";
  * The top of a party page: leader and party name together on a band in the
  * party's own colour, with the numbers a reader wants immediately.
  *
- * The band is a heavily inked tint rather than the raw brand colour — see
- * bandColour — so all six read consistently instead of Liberal Democrat amber
+ * The band is a heavily inked tint rather than the raw brand colour: see
+ * bandColour, so all six read consistently instead of Liberal Democrat amber
  * glaring and Restore Britain navy disappearing.
  */
 export default function PartyHeader({

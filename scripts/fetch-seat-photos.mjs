@@ -8,15 +8,15 @@
  *
  * A photograph of a named town in the seat, captioned as that town, is a
  * better answer to the same problem. It is still not a photograph of the
- * constituency — no such thing exists for most of them — so the caption always
+ * constituency (no such thing exists for most of them), so the caption always
  * names the place and says which seat it sits in.
  *
  * Three sources, in order of preference:
  *   1. The lead image of the settlement's own Wikipedia article. Curated by
  *      people who know the place, and free by Wikipedia's own rules.
  *   2. Failing that, a geotagged photograph within a few kilometres of the
- *      settlement. Geosearch makes a wrong-place error structurally impossible
- *      — a picture geotagged near Edinburgh cannot be of Hong Kong, which is
+ *      settlement. Geosearch makes a wrong-place error structurally impossible:
+ *      a picture geotagged near Edinburgh cannot be of Hong Kong, which is
  *      what a plain keyword search returned when this was first attempted.
  *   3. Failing both, nothing. The page falls back to the nation photograph,
  *      which is what it does today.
@@ -54,7 +54,7 @@ const NOT_A_PHOTO =
 /**
  * Things Geograph has plenty of that say nothing about a place. Geograph's
  * purpose is to cover every grid square, so left alone this route returns
- * doctors' surgeries, tyre depots and roundabouts — all genuinely in the
+ * doctors' surgeries, tyre depots and roundabouts: all genuinely in the
  * constituency and all worthless as its photograph.
  */
 const DULL =
@@ -261,7 +261,7 @@ for (const [index, seat] of targets.entries()) {
   let place = options[0];
 
   try {
-    // Every settlement's own article first — a curated lead image of the
+    // Every settlement's own article first: a curated lead image of the
     // second town beats a geotagged shed in the first.
     for (const option of options) {
       const lead = await leadImage(option.name, option.district, option.lat, option.lon);

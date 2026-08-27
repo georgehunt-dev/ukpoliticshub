@@ -111,7 +111,7 @@ async function fetchOne(slug, title) {
     `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title.replace(/ /g, "_"))}`
   );
   // Prefer the thumbnail URL: it is a /thumb/ path whose width we can rewrite.
-  // originalimage is the full-resolution master — often several megabytes, far
+  // originalimage is the full-resolution master, often several megabytes, far
   // more than a 176px portrait plate needs.
   const src = summary?.thumbnail?.source || summary?.originalimage?.source;
   if (!src) throw new Error("no lead image on article");

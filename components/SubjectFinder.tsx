@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 /**
  * Find a person, party or issue.
  *
- * Same shape as the constituency lookup, deliberately — a reader who has used
+ * Same shape as the constituency lookup, deliberately: a reader who has used
  * one should recognise the other. Everything is matched in the browser; the
  * list is a few dozen short strings.
  */
@@ -77,7 +77,7 @@ export default function SubjectFinder({ subjects }: { subjects: FinderSubject[] 
               setQuery("");
             }
           }}
-          placeholder="A person, a party or an issue — try Nigel Farage"
+          placeholder="A person, a party or an issue: try Nigel Farage"
           className="min-w-0 flex-1 bg-transparent px-3.5 py-3 font-body text-[0.92rem] placeholder:text-ink-faint focus:outline-none"
         />
         <button

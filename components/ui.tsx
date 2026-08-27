@@ -9,7 +9,7 @@ export function SectionHeading({
   action,
   /**
    * Defaults to h2, because most of these introduce a section inside a page.
-   * Where the heading *is* the page title, pass "h1" — eleven pages were
+   * Where the heading *is* the page title, pass "h1": eleven pages were
    * shipping without one, which on a site whose growth plan is search is a
    * real cost rather than a nicety.
    */

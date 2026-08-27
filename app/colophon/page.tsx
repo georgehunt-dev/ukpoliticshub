@@ -45,7 +45,7 @@ export default function ColophonPage() {
 
         <h2 className="mt-7 font-display text-2xl">Photographs</h2>
         <p className="mt-2.5 text-[0.95rem] leading-relaxed text-ink-soft">
-          Portraits come from Wikimedia Commons — in most cases the official parliamentary portrait
+          Portraits come from Wikimedia Commons, in most cases the official parliamentary portrait
           released under the Open Government Licence, or a photograph released under a Creative
           Commons licence. They remain under those licences; reuse from this site carries the same
           conditions. Retrieved{" "}
@@ -129,7 +129,7 @@ export default function ColophonPage() {
       <p className="mt-2 text-[0.9rem] leading-relaxed text-ink-soft">
         {SEAT_PHOTO_COUNT} of the 650 seat pages carry a photograph of a named town or village
         inside the constituency, in place of the nation photograph they used to share. None is a
-        picture of a whole constituency — no such thing exists for most of them — so each page
+        picture of a whole constituency (no such thing exists for most of them), so each page
         names the place shown and says it is not the whole seat. Where nothing suitable was
         found, the nation photograph still stands in.
       </p>

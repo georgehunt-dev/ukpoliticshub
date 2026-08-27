@@ -4,7 +4,7 @@ import type { PhotoSlug } from "@/lib/photos";
  * The subjects a reader can look up on the news desk.
  *
  * Each one carries two sets of terms. `own` is what makes a story directly
- * about the subject. `linked` is the other half of a leader/party pair — a
+ * about the subject. `linked` is the other half of a leader/party pair: a
  * Reform UK policy story belongs on Nigel Farage's page too, because he leads
  * the party and drove the policy, but the reader is told it arrived that way
  * rather than being shown it as though he was named.
@@ -19,7 +19,7 @@ export type SubjectKind = "person" | "party" | "issue";
 export type Subject = {
   slug: string;
   name: string;
-  /** Shown under the name — "Reform UK leader", "Party", "Issue". */
+  /** Shown under the name, "Reform UK leader", "Party", "Issue". */
   role: string;
   kind: SubjectKind;
   /** Terms that make a story directly about this subject. */
@@ -131,7 +131,7 @@ const ISSUES: Subject[] = [
     linked: [], photo: "royal-navy",
   },
   /* The three states carrying a threat assessment. These exist so that
-     coverage can be shown against the assessment — the score itself never
+     coverage can be shown against the assessment: the score itself never
      moves on a headline. */
   {
     slug: "russia", name: "Russia", role: "State threat", kind: "issue",

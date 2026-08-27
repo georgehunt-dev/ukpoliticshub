@@ -3,7 +3,7 @@
  * and records licence + photographer for each, so every picture can be
  * credited at /colophon. Run: node scripts/fetch-photos.mjs
  *
- * Files were chosen by hand from the candidates listed by find-photos.mjs —
+ * Files were chosen by hand from the candidates listed by find-photos.mjs,
  * free licences only, no fair-use material.
  */
 import fs from "node:fs/promises";
@@ -22,7 +22,7 @@ const WIDTH = 2000;
 const PHOTOS = {
   "downing-street": {
     file: "10 Downing Street (geograph 5460596).jpg",
-    use: "Front page hero — The Race for No.10",
+    use: "Front page hero. The Race for No.10",
     position: "50% 42%",
   },
   westminster: {
@@ -59,76 +59,76 @@ const PHOTOS = {
   },
   dover: {
     file: "South Foreland Lighthouse and cliffs from Strait of Dover 1.jpg",
-    use: "News topic — immigration and asylum",
+    use: "News topic: immigration and asylum",
     position: "50% 45%",
   },
   economy: {
     file: "Bank of England & the City (49121788047).jpg",
-    use: "News topic — economy and tax",
+    use: "News topic: economy and tax",
     position: "50% 35%",
   },
   health: {
     file: "St. Thomas' Hospital - London - NHS.jpg",
-    use: "News topic — health and the NHS",
+    use: "News topic: health and the NHS",
     position: "50% 40%",
   },
   energy: {
     file: "Barrow Offshore wind turbines NR.jpg",
-    use: "News topic — energy and environment",
+    use: "News topic: energy and environment",
     position: "50% 50%",
   },
   justice: {
     file: "Royal Courts of Justice exterior - 01.jpg",
-    use: "News topic — law and order",
+    use: "News topic: law and order",
     position: "50% 30%",
   },  england: {
     file: "Castle combe cotswolds.jpg",
-    use: "Constituency pages — England",
+    use: "Constituency pages. England",
     position: "50% 55%",
   },
   scotland: {
     file: "Near Torridon, Scotland (10500155186).jpg",
-    use: "Constituency pages — Scotland",
+    use: "Constituency pages. Scotland",
     position: "50% 50%",
   },
   wales: {
     file: "Hay making in the Dyfi Valley near Mallwyd.jpg",
-    use: "Constituency pages — Wales",
+    use: "Constituency pages. Wales",
     position: "50% 55%",
   },
   "northern-ireland": {
     file: "County Antrim - Giant's Causeway 02.jpg",
-    use: "Constituency pages — Northern Ireland",
+    use: "Constituency pages. Northern Ireland",
     position: "50% 55%",
   },
   russia: {
     file: "Moscow Kremlin walls and the Spasskaya Tower (19340893964).jpg",
-    use: "Threat assessment — Russia",
+    use: "Threat assessment. Russia",
     position: "50% 55%",
   },
   iran: {
     file: "Azadi Tower, Tehran.jpg",
-    use: "Threat assessment — Iran",
+    use: "Threat assessment. Iran",
     position: "50% 50%",
   },
   china: {
     file: "Great Hall of the People (20200825114146).jpg",
-    use: "Threat assessment — China",
+    use: "Threat assessment. China",
     position: "50% 55%",
   },
   "united-states": {
     file: "Capitol Building Full View.jpg",
-    use: "Alliance assessment — United States",
+    use: "Alliance assessment. United States",
     position: "50% 55%",
   },
   nato: {
     file: "New HQ NATO 7.jpg",
-    use: "Alliance assessment — NATO",
+    use: "Alliance assessment. NATO",
     position: "50% 50%",
   },
   "europe-eu": {
     file: "Berlaymont building 2022.jpg",
-    use: "Alliance assessment — France & the EU",
+    use: "Alliance assessment. France & the EU",
     position: "50% 45%",
   },
   "press-generic": {
@@ -198,7 +198,7 @@ for (const [slug, spec] of Object.entries(PHOTOS)) {
     const outPath = path.join(OUT_DIR, `${slug}.${ext}`);
     await fs.writeFile(outPath, buf);
 
-    // Downloads are full-resolution masters — several MB each. Re-running this
+    // Downloads are full-resolution masters: several MB each. Re-running this
     // script used to silently undo any compression done afterwards, so the
     // resize happens here instead of being remembered as a manual step.
     await run("sips", ["-Z", "2000", "-s", "formatOptions", "68", outPath, "--out", outPath]).catch(() => {});

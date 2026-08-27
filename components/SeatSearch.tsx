@@ -8,7 +8,7 @@ import type { PlaceHit } from "@/app/api/place/route";
 /**
  * One box for three kinds of answer: a postcode, a place, or a constituency.
  *
- * The rule that shapes it is that British place names repeat — eight
+ * The rule that shapes it is that British place names repeat, eight
  * Whitchurches, nine Hooks, ten Overtons. So the box never redirects on a
  * guess. A postcode has exactly one answer and goes straight through; a name
  * matching several seats lists them and asks. Getting this wrong would quietly
@@ -158,7 +158,7 @@ export default function SeatSearch({
 
         {mode === "postcode" && async_.kind === "none" ? (
           <p className="mt-2.5 text-[0.82rem] text-ink-faint">
-            Looks like a postcode — press Find.
+            Looks like a postcode: press Find.
           </p>
         ) : null}
 

@@ -22,7 +22,7 @@ export const officialTerrorismThreat = {
   scope: "United Kingdom (England, Wales, Scotland and Northern Ireland)",
   setBy: "Joint Terrorism Analysis Centre (JTAC) and MI5",
   source: {
-    label: "GOV.UK — Terrorism threat levels",
+    label: "GOV.UK, Terrorism threat levels",
     url: "https://www.gov.uk/terrorism-national-emergency/terrorism-threat-levels",
     date: "2026-08-14",
   } satisfies Source,
@@ -31,8 +31,8 @@ export const officialTerrorismThreat = {
 /* ── 2. Our Russia assessment ──────────────────────────────────────────────
    This is ukpoliticshub's own editorial score, not a government figure, and
    it is labelled as such everywhere it appears. It measures sustained
-   state-level pressure on the United Kingdom — espionage, sabotage, cyber
-   operations and activity around UK infrastructure — not the likelihood of
+   state-level pressure on the United Kingdom (espionage, sabotage, cyber
+   operations and activity around UK infrastructure) not the likelihood of
    open war, which remains low.
 
    Each factor is scored 0–100 on its own evidence, then weighted. Weights sum
@@ -74,7 +74,7 @@ export const russiaBand =
 export const RUSSIA_ASSESSED_ON = "2026-08-14";
 
 export const russiaSummary =
-  "Sustained, documented grey-zone pressure — survey and submarine activity around UK undersea cables, a high tempo of naval transits shadowed in UK waters, and continuing sabotage and cyber activity. It is not a warning of imminent attack: the Ukraine war still absorbs most Russian conventional capacity, and no UK national threat level has been raised on account of Russia.";
+  "Sustained, documented grey-zone pressure: survey and submarine activity around UK undersea cables, a high tempo of naval transits shadowed in UK waters, and continuing sabotage and cyber activity. It is not a warning of imminent attack: the Ukraine war still absorbs most Russian conventional capacity, and no UK national threat level has been raised on account of Russia.";
 
 export const russiaCaveat =
   "This score is ukpoliticshub's own editorial assessment. It is not produced, endorsed or reviewed by the UK government, JTAC, MI5 or any intelligence agency. The only official figure on this page is the terrorism threat level above.";

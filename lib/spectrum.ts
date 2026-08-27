@@ -7,7 +7,7 @@ import { parties } from "@/data/parties";
  * describes where a party sits against the other five, which is a claim we can
  * make; a threshold would have silently dropped the label the moment the
  * highest-placed party moved below it. Where two parties tie at the top,
- * neither gets it — only one party can be furthest right.
+ * neither gets it, only one party can be furthest right.
  *
  * It also reads "Furthest right" rather than "Far right" on purpose: the first
  * describes where we have placed a party against the other five, which is ours

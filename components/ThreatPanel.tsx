@@ -6,7 +6,7 @@ import { OFFICIAL_LEVELS, officialTerrorismThreat } from "@/data/threat";
  * The official terrorism threat level, laid out along the page rather than
  * down it.
  *
- * This is the only authoritative number on the site — set by JTAC and MI5,
+ * This is the only authoritative number on the site: set by JTAC and MI5,
  * published exactly as issued, never adjusted. It used to share the row with
  * our Russia score, which put an official figure and an editorial one side by
  * side as equals. Russia now sits with the other five assessments below, all

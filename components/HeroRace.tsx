@@ -13,7 +13,7 @@ import { onDark } from "@/lib/colour";
  *
  * It now occupies the left column of the front page rather than the full
  * width, so the type is smaller and the standings sit under the headline
- * instead of beside it — but everything on the plate is still real. The image
+ * instead of beside it, but everything on the plate is still real. The image
  * is a freely licensed Commons photograph; the numbers are the published
  * rolling average.
  *
@@ -55,12 +55,12 @@ export default function HeroRace() {
         /* Centred rather than bottom-anchored on a wide screen. The panel is
            stretched to match the taller column beside it, and pinning the
            content to the foot piled every spare pixel into one band of empty
-           photograph above the title — 205px of it on a 1080p display. */
+           photograph above the title: 205px of it on a 1080p display. */
         className="relative flex w-full flex-col justify-end px-5 py-6 sm:px-7 sm:py-7 lg:justify-center"
         style={{ textShadow: "0 1px 10px rgba(8,16,30,0.8)" }}
       >
         {/* The page's h1 is the site's own line, above this panel. This is a
-            section heading, on one line — the date and the sourcing that used
+            section heading, on one line: the date and the sourcing that used
             to sit here have moved into the footer below, which was already
             carrying a source link. */}
         <h2 className="font-display text-[2.35rem] leading-[0.98] tracking-tight sm:text-[3.2rem]">

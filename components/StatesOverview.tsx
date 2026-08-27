@@ -7,13 +7,13 @@ import { getPhoto } from "@/lib/photos";
 /**
  * The index of the six assessments: a picture, a score and a sentence each.
  *
- * The full working — every factor, its weight and its sources — lives on the
+ * The full working (every factor, its weight and its sources) lives on the
  * assessment's own page. Stacked on one page it ran to forty factors of
  * unbroken prose, which is a reference document rather than something anyone
  * reads.
  *
  * Threats and alliances are kept on separate rows on purpose. They share a
- * method — weighted factors, weights summing to 100 — but not a meaning, and
+ * method (weighted factors, weights summing to 100), but not a meaning, and
  * one row carrying both would invite the reading that a strong alliance
  * cancels out a hostile state.
  */
@@ -87,7 +87,7 @@ export default function StatesOverview() {
         <SectionHeading
           eyebrow="Pressure on the UK"
           title="State threats"
-          standfirst="Our own weighted assessments, not government figures. Higher is worse, and scored conservatively — documented grey-zone activity is not a warning of imminent attack. Open any one for the full working."
+          standfirst="Our own weighted assessments, not government figures. Higher is worse, and scored conservatively: documented grey-zone activity is not a warning of imminent attack. Open any one for the full working."
           action={<OurAssessment />}
         />
         <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

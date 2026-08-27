@@ -4,7 +4,7 @@ import { MEDIAN_METER_PCT, type SeatContext } from "@/lib/seat-context";
  * Where this seat sits between knife-edge and fortress.
  *
  * A majority quoted as a percentage is precise and almost meaningless to read
- * cold — "13.2 points" tells you nothing until you know what a typical seat
+ * cold: "13.2 points" tells you nothing until you know what a typical seat
  * looks like. The scale carries the median of all 650 as a marked point so the
  * number has something to be compared against.
  *

@@ -16,7 +16,7 @@ export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-rule bg-[color:var(--paper)]/92 backdrop-blur-sm">
       <div className="shell flex items-center justify-between gap-6 py-2.5">
-        <Link href="/" aria-label="ukpoliticshub — front page">
+        <Link href="/" aria-label="ukpoliticshub: front page">
           <LogoLockup size={30} />
         </Link>
 

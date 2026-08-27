@@ -10,7 +10,7 @@ import { PARTNERSHIP_BANDS, assessments, bandOf, scoreOf } from "@/data/states";
 export const metadata: Metadata = {
   title: "Methodology",
   description:
-    "How ukpoliticshub rates news outlets, places parties on the left–right spectrum, reports polling, and builds its state threat and alliance assessments — including what each method cannot tell you.",
+    "How ukpoliticshub rates news outlets, places parties on the left–right spectrum, reports polling, and builds its state threat and alliance assessments, including what each method cannot tell you.",
 };
 
 export default function MethodologyPage() {
@@ -20,7 +20,7 @@ export default function MethodologyPage() {
         as="h1"
         eyebrow="How this site works"
         title="Methodology"
-        standfirst="A site that promises both sides has to show its workings. This page sets out how every judgement on ukpoliticshub is made — and, just as importantly, what each method cannot tell you."
+        standfirst="A site that promises both sides has to show its workings. This page sets out how every judgement on ukpoliticshub is made, and, just as importantly, what each method cannot tell you."
       />
 
       {/* ── Independence ────────────────────────────────────────────────── */}
@@ -74,7 +74,7 @@ export default function MethodologyPage() {
           <p>
             We rate the outlet rather than the article on purpose. The news table is filled from live
             RSS feeds with no human in the loop, so per-article scoring would mean having a model
-            judge the slant of every headline — precisely the point at which a site promising
+            judge the slant of every headline: precisely the point at which a site promising
             neutrality becomes the story.
           </p>
           <p>
@@ -173,7 +173,7 @@ export default function MethodologyPage() {
         <div className="mt-4 space-y-3.5 text-[0.95rem] leading-relaxed text-ink-soft">
           <p>
             We publish six of these. Three measure{" "}
-            <em>sustained state-level pressure on the United Kingdom</em> — Russia, currently{" "}
+            <em>sustained state-level pressure on the United Kingdom</em>: Russia, currently{" "}
             <strong className="font-semibold text-ink tabular">{russiaScore}/100</strong>, alongside
             Iran and China. Three measure the opposite: what the UK can currently rely on from the
             United States, NATO, and France and the EU. None of them measures the likelihood of open
@@ -191,10 +191,10 @@ export default function MethodologyPage() {
           <p>
             Each factor is still scored 0–100 on its own evidence, and each shows the reporting
             behind it. Where a state has no evidence against one of the six, the factor still
-            appears, scores low, and says the evidence is absent — dropping the inconvenient
+            appears, scores low, and says the evidence is absent, dropping the inconvenient
             question is what broke the old model. Where the UK government has made a formal
-            designation — Russia and Iran sit on the enhanced tier of the Foreign Influence
-            Registration Scheme and China does not — we print it and score against it rather than
+            designation. Russia and Iran sit on the enhanced tier of the Foreign Influence
+            Registration Scheme and China does not. We print it and score against it rather than
             around it. Where the state rejects the characterisation, the rejection is printed
             beside our assessment.
           </p>
@@ -284,7 +284,7 @@ export default function MethodologyPage() {
             intelligence agency, and it carries no official standing whatsoever. We built it because
             the official threat-level system covers terrorism, not state pressure, and readers
             deserve something more structured than a headline. Treat it as a way of organising
-            public evidence — nothing more. The terrorism threat level published beside it is the
+            public evidence, nothing more. The terrorism threat level published beside it is the
             genuine official figure, and we never adjust that.
           </p>
         </div>
@@ -302,7 +302,7 @@ export default function MethodologyPage() {
         <div className="mt-5 space-y-4 text-[0.95rem] leading-relaxed text-ink-soft">
           <p>
             <span className="font-semibold text-ink">It only reads our own pages.</span> Answers
-            are assembled from the sourced pages already published on this site — the polling
+            are assembled from the sourced pages already published on this site: the polling
             average, the party positions, the constituency results, the state assessments and so
             on. It cannot reach the open web, and it is not asked to recall anything from its own
             training.
@@ -316,7 +316,7 @@ export default function MethodologyPage() {
             <span className="font-semibold text-ink">It says when it does not know.</span> Where a
             question falls outside what we publish, it says the site does not cover that and
             offers the nearest pages we do hold. It is built to decline rather than to produce a
-            confident guess — a plausible invented figure is the one failure this site cannot
+            confident guess: a plausible invented figure is the one failure this site cannot
             absorb.
           </p>
           <p>

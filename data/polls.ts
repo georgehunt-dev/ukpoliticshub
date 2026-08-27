@@ -12,7 +12,7 @@ import type { Poll, PollEntry, Source } from "@/lib/types";
 export const POLL_AVERAGE_AS_OF = "2026-08-13";
 
 export const POLL_AVERAGE_SOURCE: Source = {
-  label: "PollCheck — 7-poll moving average",
+  label: "PollCheck, 7-poll moving average",
   url: "https://www.pollcheck.co.uk/gb-polls",
   date: "2026-08-13",
 };
@@ -40,7 +40,7 @@ export const trendNotes: { text: string; source: Source }[] = [
     text:
       "Labour's 24% in YouGov's 9–10 August poll is its highest in that tracker since July 2025, and up eight points on the 16% low it recorded in May.",
     source: {
-      label: "YouGov — Voting intention, 9–10 August 2026",
+      label: "YouGov, Voting intention, 9–10 August 2026",
       url: "https://yougov.com/en-gb/articles/55331-voting-intention-9-10-august-2026-lab-24-ref-22-con-21-grn-12-ld-11",
       date: "2026-08-10",
     },
@@ -49,7 +49,7 @@ export const trendNotes: { text: string; source: Source }[] = [
     text:
       "Opinium's 5 August poll had Labour unchanged on 27% with Reform UK up one to 25% and the Conservatives up one to 19%.",
     source: {
-      label: "Opinium — Voting intention, 5 August 2026",
+      label: "Opinium, Voting intention, 5 August 2026",
       url: "https://www.opinium.com/resource-center/voting-intention-5-august-2026/",
       date: "2026-08-05",
     },

@@ -55,7 +55,7 @@ export const CONSTITUENCY_SOURCE = {
   url: "https://members-api.parliament.uk/",
 };
 
-/** Names only — the search page ships this, not the megabyte of detail. */
+/** Names only: the search page ships this, not the megabyte of detail. */
 export const CONSTITUENCY_NAMES: { name: string; slug: string }[] = CONSTITUENCIES.map(
   ({ name, slug }) => ({ name, slug })
 );
@@ -77,7 +77,7 @@ const NATION_PHOTO: Record<Constituency["nation"], PhotoSlug> = {
  * A photograph of the nation, not of the seat.
  *
  * There is no free, reliable source of 650 representative constituency
- * photographs — a constituency is not a town, and guessing which settlement
+ * photographs: a constituency is not a town, and guessing which settlement
  * stands for a seat would put the wrong place on hundreds of pages. So the
  * image is captioned as what it actually is.
  */
@@ -102,7 +102,7 @@ export function safetyOf(majorityPct: number | null): {
   return { label: "Marginal", note: "Decided by under five points." };
 }
 
-/** "2024 general election" / "by-election of 18 June 2026" — always from the data. */
+/** "2024 general election" / "by-election of 18 June 2026", always from the data. */
 export function electionLabel(result: ElectionResult): string {
   if (result.isGeneralElection) {
     const year = result.date?.slice(0, 4);

@@ -11,13 +11,13 @@ import {
 } from "@/lib/byelections";
 
 export const metadata: Metadata = {
-  title: "UK council by-elections — dates and candidates",
+  title: "UK council by-elections: dates and candidates",
   description:
     "Every upcoming UK council by-election with the full list of candidates standing, their parties, and where each party stands. Sourced from the councils' own published nominations.",
   alternates: { canonical: "/elections/by-elections" },
 };
 
-/** Kept fresh without a redeploy — nominations and dates both move. */
+/** Kept fresh without a redeploy: nominations and dates both move. */
 export const revalidate = 3600;
 
 export default function ByElectionsPage() {
@@ -99,7 +99,7 @@ export default function ByElectionsPage() {
           </a>
           , which records them against each council&rsquo;s published statement of persons
           nominated. A ward only appears here once nominations have closed and that statement has
-          been published — before then the list can still change, and a provisional list of
+          been published, before then the list can still change, and a provisional list of
           candidates is not something we will print.
         </p>
       </footer>

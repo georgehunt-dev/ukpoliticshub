@@ -26,7 +26,7 @@ export default function ImmigrationTracker() {
         photo="dover"
         eyebrow="Tracker"
         title="Channel crossings"
-        standfirst="Small boat arrivals, the asylum backlog and returns — the official figures, updated as the Home Office publishes them."
+        standfirst="Small boat arrivals, the asylum backlog and returns: the official figures, updated as the Home Office publishes them."
         alt="The white cliffs and the Strait of Dover"
       />
 

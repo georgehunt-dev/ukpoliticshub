@@ -35,13 +35,13 @@ export async function generateMetadata({
   if (!seat) return { title: "Constituency not found" };
 
   const mp = seat.mp ? `${seat.mp.name} (${seat.mp.party ?? "no party listed"})` : "the sitting MP";
-  // Naming the towns is what makes the description match how people search —
+  // Naming the towns is what makes the description match how people search:
   // almost nobody types a constituency name.
   const places = headlinePlaces(seat.slug, 3).map((place) => place.name);
   const covering = places.length ? ` Covers ${places.join(", ")}.` : "";
 
   return {
-    title: `${seat.name} constituency — MP and 2024 election result`,
+    title: `${seat.name} constituency. MP and 2024 election result`,
     description: `Who is the MP for ${seat.name}? ${mp}, with the full 2024 general election result, turnout and majority.${covering}`,
     alternates: { canonical: `/constituencies/${seat.slug}` },
   };
@@ -136,7 +136,7 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
   if (!seat) notFound();
 
   // A photograph of a named town in the seat, where we have one. The nation
-  // photograph is the fallback, not the default — it was the same picture on
+  // photograph is the fallback, not the default. It was the same picture on
   // 543 pages.
   const local = seatPhoto(seat.slug);
   const photo = getPhoto(photoForNation(seat.nation));
@@ -161,7 +161,7 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
 
       {/* A photograph of a named town in this seat, captioned as that town.
           There is still no such thing as a photograph of a whole constituency,
-          so the caption never claims one — it says which place is shown and
+          so the caption never claims one. It says which place is shown and
           that it is not the whole seat. Where we hold nothing for a seat, the
           nation photograph stands in and says so instead. */}
       <div className="relative isolate flex h-56 items-end overflow-hidden bg-ink sm:h-72">
@@ -242,12 +242,12 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
             ) : (
               <>
                 Photograph shows {local.shows}, a {local.placeType.toLowerCase()} in this
-                constituency — not the whole of {seat.name}.
+                constituency, not the whole of {seat.name}.
               </>
             )
           ) : (
             <>
-              Photograph shows {seat.nation}, not {seat.name} — we don&rsquo;t hold a picture of
+              Photograph shows {seat.nation}, not {seat.name}. We don&rsquo;t hold a picture of
               a place in this seat.
             </>
           )}
@@ -276,7 +276,7 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
             {context ? (
               <p className="mt-4 max-w-2xl text-[1rem] leading-relaxed text-ink-soft">
                 {context.winner} won {seat.name} at the {electionLabel(election!)} with a majority
-                of <b className="text-ink">{fmt.format(context.majority)} votes</b> —{" "}
+                of <b className="text-ink">{fmt.format(context.majority)} votes</b>, or{" "}
                 {context.majorityPct.toFixed(1)} points.
                 {context.challenger ? (
                   <>
@@ -339,7 +339,7 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
                 <span className="font-semibold">{safety.label}.</span> {safety.note} The{" "}
                 <span className="font-semibold">vs UK</span> column is each party&rsquo;s share
                 here against its own national share, summed from all {NATIONAL.seats} results.
-                That describes the {electionLabel(election)} only — arithmetic on the published
+                That describes the {electionLabel(election)} only: arithmetic on the published
                 count, not a forecast.
               </>
             }
@@ -396,7 +396,7 @@ export default async function ConstituencyPage({ params }: PageProps<"/constitue
         <EmailCapture
           className="mt-10"
           heading={`The morning email, and ${seat.name} when it lands`}
-          blurb="One email each morning on where Britain stands — and local news for your seat as soon as we build it."
+          blurb="One email each morning on where Britain stands, and local news for your seat as soon as we build it."
           reason={`Local news for ${seat.name}`}
           constituency={seat.name}
         />

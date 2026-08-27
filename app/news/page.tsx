@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   // Written for what people search, not for what we call the feature.
   title: "UK political news from the left and the right, side by side",
   description:
-    "The same story as the left and the right reported it. Every headline from 13 UK mastheads, sorted by where each paper sits on the political spectrum — by person, party or issue.",
+    "The same story as the left and the right reported it. Every headline from 13 UK mastheads, sorted by where each paper sits on the political spectrum, by person, party or issue.",
 };
 
 export const revalidate = 600;
@@ -52,7 +52,7 @@ export default async function NewsPage() {
         The same story, from both sides
       </h1>
       <p className="measure mt-3 text-[0.98rem] leading-relaxed text-ink-soft">
-        Pick a person, a party or an issue and see how the left and the right have covered it —
+        Pick a person, a party or an issue and see how the left and the right have covered it:
         the same events, in their own words, with every masthead marked for where it sits.
       </p>
 
@@ -85,7 +85,7 @@ export default async function NewsPage() {
 
       <p className="mt-2.5 text-[0.8rem] text-ink-faint">
         {usingFallback ? (
-          <>Live feeds are unavailable — showing verified recent stories.</>
+          <>Live feeds are unavailable, showing verified recent stories.</>
         ) : (
           <>
             Pulled from {live.length} politics feeds, refreshed every 10 minutes.
@@ -99,7 +99,7 @@ export default async function NewsPage() {
             Covered from both sides today
           </h2>
           <p className="measure mt-1.5 text-[0.9rem] leading-relaxed text-ink-soft">
-            Where the left and the right are both running the same event — and wording it
+            Where the left and the right are both running the same event, and wording it
             differently.
           </p>
           {featured.map(({ line, subject }) => (
@@ -152,7 +152,7 @@ export default async function NewsPage() {
           Which papers are left wing, and which are right
         </h2>
         <p className="measure mt-1.5 text-[0.9rem] leading-relaxed text-ink-soft">
-          Every masthead we read on one scale — and what each actually covers, counted from its
+          Every masthead we read on one scale, and what each actually covers, counted from its
           own output rather than asserted.
         </p>
         <p className="mt-3">

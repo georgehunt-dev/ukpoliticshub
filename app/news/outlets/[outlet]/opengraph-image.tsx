@@ -6,8 +6,8 @@ import { leanOf, LEAN_LABEL } from "@/lib/subjects";
 /**
  * The card shown when an outlet page is shared.
  *
- * Every one of these pages used to share the site-wide card — same picture,
- * same title, fifteen times — so a link to the Daily Mail page and a link to
+ * Every one of these pages used to share the site-wide card: same picture,
+ * same title, fifteen times, so a link to the Daily Mail page and a link to
  * the Guardian page looked identical in a message. This gives each its own,
  * carrying the one thing the page is about: where the masthead sits.
  *
@@ -24,7 +24,7 @@ export function generateStaticParams() {
 }
 
 /**
- * One image per outlet, so `generateImageMetadata` is not the tool — that is
+ * One image per outlet, so `generateImageMetadata` is not the tool. That is
  * for returning several images from one route, and each of those needs its own
  * id. The params flow to the default export on their own.
  */

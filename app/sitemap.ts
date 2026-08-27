@@ -78,7 +78,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   /**
    * One page per by-election. Declared daily because the candidate list moves
-   * until nominations close and the result lands after the poll — and they
+   * until nominations close and the result lands after the poll, and they
    * drop out of the sitemap entirely once the contest ages out of the data.
    */
   const byElectionRoutes: MetadataRoute.Sitemap = allBallots().map(({ ballot }) => ({

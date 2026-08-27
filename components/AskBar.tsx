@@ -9,7 +9,7 @@ import Link from "next/link";
  * Answers are assembled only from pages this site already holds, and every
  * answer carries the same citations the underlying page carries. Where we hold
  * nothing on a subject the answer says so rather than reaching for something
- * plausible — a confident wrong answer here would undo the one promise the
+ * plausible: a confident wrong answer here would undo the one promise the
  * rest of the site keeps, on the page most people see first.
  *
  * Square, like everything else on this site. The sparkle and the oxblood mark
@@ -108,7 +108,7 @@ export default function AskBar() {
             type="text"
             value={question}
             onChange={(event) => setQuestion(event.target.value)}
-            placeholder="Ask anything — ‘where do the parties stand on the ECHR?’"
+            placeholder="Ask anything: ‘where do the parties stand on the ECHR?’"
             autoComplete="off"
             className="min-w-0 flex-1 bg-transparent py-2 font-body text-[0.88rem] placeholder:text-ink-faint focus:outline-none"
           />
@@ -174,7 +174,7 @@ export default function AskBar() {
             {/* The standing note that used to sit under the bar has moved to
                 /how-we-work. The disclosure itself belongs on the answer, not
                 on every page of the site whether or not anyone has asked
-                anything — so it is stated here, once, where the answer is. */}
+                anything, so it is stated here, once, where the answer is. */}
             <p className="mt-2.5 text-[0.72rem] leading-snug text-ink-faint">
               Assembled by AI from this site&rsquo;s own sourced pages.{" "}
               <Link href="/how-we-work#ask" className="link-underline">

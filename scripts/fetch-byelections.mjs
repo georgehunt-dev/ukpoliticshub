@@ -5,7 +5,7 @@
  * Source is Democracy Club's open election database, which is the only free
  * register of UK local by-elections and their candidates. Candidates are only
  * recorded here once Democracy Club has locked the ballot against the
- * council's published statement of persons nominated — before that the list is
+ * council's published statement of persons nominated, before that the list is
  * provisional, and a provisional candidate list is exactly the kind of figure
  * this site does not print.
  *
@@ -83,7 +83,7 @@ const horizon = new Date(today.getTime() + HORIZON_DAYS * 86_400_000);
 console.log(`Looking for polls between ${isoDay(today)} and ${isoDay(horizon)}…`);
 
 /**
- * `current=1` is the only date filter this API honours — the date-range
+ * `current=1` is the only date filter this API honours: the date-range
  * parameters are silently ignored and return the entire archive, so the
  * horizon is applied here instead.
  */
@@ -153,12 +153,12 @@ for (const ballot of ballots) {
     /** Filled in by hand after the count. Null until then, never guessed. */
     result: null,
     source: {
-      label: "Democracy Club — candidates and elections database",
+      label: "Democracy Club, candidates and elections database",
       url: `https://whocanivotefor.co.uk/elections/${ballot.election_id}/`,
     },
   });
   polls.set(date, entry);
-  console.log(`  ok ${ballot.election_id} — ${candidates.length} candidates`);
+  console.log(`  ok ${ballot.election_id}: ${candidates.length} candidates`);
 }
 
 const days = [...polls.values()]

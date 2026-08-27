@@ -9,7 +9,7 @@ export type Source = {
 /**
  * The fixed set of policy areas every party is measured against, so positions
  * are comparable rather than each party being described on its own terms.
- * Where a party has no position we could source, the page says so — a thin
+ * Where a party has no position we could source, the page says so: a thin
  * platform is itself a finding, not something to paper over.
  */
 export type PolicyArea =
@@ -39,7 +39,7 @@ export type Policy = {
   /**
    * The specific source behind *this* position, so a reader can go straight to
    * it rather than to a list of everything the party page draws on. Omitted
-   * where we cannot attribute a policy precisely — the party-level sources
+   * where we cannot attribute a policy precisely: the party-level sources
    * still apply, and pointing at an approximate link would be worse than
    * pointing at none.
    */
@@ -62,7 +62,7 @@ export type Person = {
   seat?: string;
   /** Two or three sentences: who they are and where they came from. */
   background?: string;
-  /** Track record a reader can weigh — offices held, results delivered. */
+  /** Track record a reader can weigh, offices held, results delivered. */
   credibility?: string;
   /** Documented controversies. Always attributed, never asserted as verdict. */
   concerns?: string;
@@ -78,7 +78,7 @@ export type Party = {
   spectrum: number;
   spectrumNote: string;
   /**
-   * One line for the spectrum strip on the front page — what the placement
+   * One line for the spectrum strip on the front page, what the placement
    * means in practice. Shorter and plainer than spectrumNote, which is the
    * full reasoning on the party's own page.
    */
@@ -135,7 +135,7 @@ export type NewsOutlet = {
   bias: number;
   /**
    * RSS endpoint used by the live news adapter. Omitted where an outlet
-   * publishes no open feed — it still appears in the ratings table.
+   * publishes no open feed. It still appears in the ratings table.
    */
   feed?: string;
   /**
@@ -150,7 +150,7 @@ export type NewsItem = {
   /**
    * The publisher's own thumbnail, taken from the feed. Feeds carry these for
    * syndication; we show them next to a link back to the original. Eleven of
-   * the thirteen feeds provide one — Channel 4 and the FT do not, and those
+   * the thirteen feeds provide one. Channel 4 and the FT do not, and those
    * fall back to a generic press photograph.
    */
   imageUrl?: string;

@@ -14,7 +14,7 @@ const fmt = new Intl.NumberFormat("en-GB");
 /**
  * How far this party ran ahead of or behind its own national share. A party
  * that stood only here has no national figure, and gets an em dash rather than
- * a zero — those are different statements.
+ * a zero. Those are different statements.
  */
 function NationalCell({ share, national }: { share: number; national: number | undefined }) {
   if (national == null) {
@@ -44,7 +44,7 @@ export default function ConstituencyResult({
   label: string;
   /**
    * Party to national vote share at the same election. Passed only for the
-   * general election — setting a by-election against national shares from a
+   * general election, setting a by-election against national shares from a
    * different contest would compare two unlike things.
    */
   nationalShare?: Record<string, number>;

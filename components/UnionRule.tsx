@@ -1,5 +1,5 @@
 /**
- * A Union Flag rendered as a typographic rule — used as a masthead flourish
+ * A Union Flag rendered as a typographic rule: used as a masthead flourish
  * rather than a picture of a flag. Proper Union Flag geometry (2:1, with the
  * counterchanged saltire) compressed into a letterpress ornament.
  */
@@ -7,7 +7,7 @@ export default function UnionRule({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 60 30" className={className} role="img" aria-label="Union Flag">
       <rect width="60" height="30" fill="#012169" />
-      {/* Saltire — white then counterchanged red */}
+      {/* Saltire: white then counterchanged red */}
       <path d="M0 0 L60 30 M60 0 L0 30" stroke="#fff" strokeWidth="6" />
       <path
         d="M0 0 L60 30 M60 0 L0 30"

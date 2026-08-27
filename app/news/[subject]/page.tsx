@@ -38,7 +38,7 @@ export async function generateMetadata({
      * A page with almost nothing on it should not be asking to rank. Google
      * reads a cluster of near-empty templated pages as low quality and applies
      * that judgement across the site, so thin subjects stay out of the index
-     * until coverage arrives — the page still works for anyone who clicks it.
+     * until coverage arrives: the page still works for anyone who clicks it.
      */
     robots: thin ? { index: false, follow: true } : undefined,
   };
@@ -79,7 +79,7 @@ export default async function SubjectPage({ params }: PageProps<"/news/[subject]
           <div className="relative h-[118px] w-[104px] shrink-0 overflow-hidden bg-[color:var(--paper-sunk)] ring-1 ring-inset ring-[color:var(--rule)]">
             <Image
               src={portrait?.file ?? photo!.file}
-              alt={portrait ? `${subject.name} — portrait` : subject.name}
+              alt={portrait ? `${subject.name}, portrait` : subject.name}
               fill
               sizes="104px"
               className="object-cover object-top"

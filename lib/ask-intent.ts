@@ -5,12 +5,12 @@ import type { PartySlug, PolicyArea } from "@/lib/types";
  *
  * The first version of the ask bar scored questions by word overlap against a
  * bag of text. It answered "what is the Conservatives' immigration policy?"
- * with Labour on energy, because "conservatives" never matched "conservative"
- * — no stemming — while "policy" matched the area name "Defence & foreign
+ * with Labour on energy, because "conservatives" never matched "conservative",
+ * no stemming, while "policy" matched the area name "Defence & foreign
  * policy" and half the policy summaries. One generic word decided the answer.
  *
- * So the question is now read for what it names — a party, a subject, a figure
- * we track, a constituency — and the answer is looked up rather than ranked.
+ * So the question is now read for what it names: a party, a subject, a figure
+ * we track, a constituency, and the answer is looked up rather than ranked.
  * A reader asking about one party's position on one subject gets exactly that
  * passage, and nothing is stitched together across subjects.
  */
@@ -56,7 +56,7 @@ export function normalise(text: string): string {
  * Three party names are also ordinary English words, and the first version of
  * this read all three wrong: "Labour's NHS reform plan" was answered as Labour
  * versus Reform, "Labour's green energy policy" as Labour versus the Greens,
- * and "the pros and cons of net zero" as a Conservative policy question — the
+ * and "the pros and cons of net zero" as a Conservative policy question: the
  * abbreviation "cons".
  *
  * So the abbreviations are gone, and where a party's name doubles as a common

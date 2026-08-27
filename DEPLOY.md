@@ -1,4 +1,4 @@
-# Launch runbook — ukpoliticshub.com
+# Launch runbook: ukpoliticshub.com
 
 Everything in the repo is production-ready: build is clean, lint is clean, no secrets, no `.env`, 11 MB of source and images. The steps below are the ones that need your accounts, so they need you at the keyboard.
 
@@ -22,13 +22,13 @@ If the GitHub repo was created with a README or licence, the push will be reject
 git -C ~/ukpolitics-hub pull --rebase origin main && git -C ~/ukpolitics-hub push -u origin main
 ```
 
-**Public or private?** Either works with Vercel — unlike GitHub Pages, which requires public on a free account. Public invites scrutiny of the editorial rules, which for a site claiming neutrality is a feature; it also exposes the curated figures in `data/` to anyone wanting to argue with them. Your call.
+**Public or private?** Either works with Vercel, unlike GitHub Pages, which requires public on a free account. Public invites scrutiny of the editorial rules, which for a site claiming neutrality is a feature; it also exposes the curated figures in `data/` to anyone wanting to argue with them. Your call.
 
 ## 2. Import into Vercel
 
 1. Go to [vercel.com/new](https://vercel.com/new) and import the repo.
 2. Framework preset: **Next.js** (auto-detected). Build command, output directory and install command all stay at their defaults.
-3. No environment variables are needed — nothing in the app reads one yet.
+3. No environment variables are needed, nothing in the app reads one yet.
 4. Deploy. First build takes 1–2 minutes.
 
 You will get a `*.vercel.app` URL. Check it before pointing DNS.
@@ -37,16 +37,16 @@ You will get a `*.vercel.app` URL. Check it before pointing DNS.
 
 In the Vercel project: **Settings → Domains → Add**, enter `ukpoliticshub.com`. Add `www.ukpoliticshub.com` as well and let Vercel redirect it to the apex.
 
-Vercel then shows you the exact records to create. **Use the values on that screen, not the ones below** — Vercel now issues project-specific CNAME hostnames (something like `d1d4fc829fe7bc7c.vercel-dns-017.com`), so a generic value copied from a blog post will not verify.
+Vercel then shows you the exact records to create. **Use the values on that screen, not the ones below**. Vercel now issues project-specific CNAME hostnames (something like `d1d4fc829fe7bc7c.vercel-dns-017.com`), so a generic value copied from a blog post will not verify.
 
 Typical shape:
 
 | Type | Name | Value |
 | --- | --- | --- |
-| `A` | `@` | `216.198.79.1` — Vercel's current apex IP (the older `76.76.21.21` still works but is legacy) |
+| `A` | `@` | `216.198.79.1`. Vercel's current apex IP (the older `76.76.21.21` still works but is legacy) |
 | `CNAME` | `www` | the project-specific hostname Vercel shows you |
 
-`@` is not a placeholder — it is DNS shorthand for the root domain itself, and you type that literal character into GoDaddy's Name field.
+`@` is not a placeholder. It is DNS shorthand for the root domain itself, and you type that literal character into GoDaddy's Name field.
 
 In GoDaddy: **My Products → your domain → DNS → Manage Zones**.
 
@@ -55,7 +55,7 @@ In GoDaddy: **My Products → your domain → DNS → Manage Zones**.
 3. Edit or add the `CNAME` on `www` pointing to Vercel's project-specific hostname. No `https://`, no trailing dot needed in GoDaddy.
 4. Leave TTL at default (1 hour).
 
-> If you were given four `A` records pointing at `185.199.108–111.153`, those are **GitHub Pages** addresses. They will not work here — this site needs a server, which GitHub Pages does not provide.
+> If you were given four `A` records pointing at `185.199.108–111.153`, those are **GitHub Pages** addresses. They will not work here. This site needs a server, which GitHub Pages does not provide.
 
 Vercel verifies within a few minutes and issues TLS automatically. You do not need to tick anything to enforce HTTPS; Vercel redirects to it by default.
 
@@ -67,7 +67,7 @@ dig +short ukpoliticshub.com A && dig +short www.ukpoliticshub.com CNAME
 
 ## 4. Turn on the refresh schedule
 
-The news already refreshes itself: pages carry a 10-minute ISR window, so a visitor arriving after that triggers a background rebuild. The gap is that **regeneration only happens on a request** — with no traffic at 4am, nothing refreshes, and the first visitor (or crawler) of the morning can be served a stale page while the rebuild runs behind them.
+The news already refreshes itself: pages carry a 10-minute ISR window, so a visitor arriving after that triggers a background rebuild. The gap is that **regeneration only happens on a request**, with no traffic at 4am, nothing refreshes, and the first visitor (or crawler) of the morning can be served a stale page while the rebuild runs behind them.
 
 The scheduler closes that gap by invalidating *and* warming the cache on a fixed interval, whether or not anyone is visiting.
 
@@ -82,7 +82,7 @@ Add it in **two** places, with the same value:
 1. **Vercel → Settings → Environment Variables**: name `REVALIDATE_SECRET`, scope Production.
 2. **GitHub → repo Settings → Secrets and variables → Actions → New repository secret**: name `REVALIDATE_SECRET`.
 
-Redeploy after adding the Vercel variable — environment changes don't apply to existing deployments.
+Redeploy after adding the Vercel variable: environment changes don't apply to existing deployments.
 
 ### b. Confirm the endpoint
 
@@ -90,21 +90,21 @@ Redeploy after adding the Vercel variable — environment changes don't apply to
 curl -i -X POST https://ukpoliticshub.com/api/revalidate -H "Authorization: Bearer YOUR_SECRET"
 ```
 
-Expect `200` and a JSON body listing the revalidated paths and a `warmed` array of `{path, status: 200}`. Without the header it must return `401` — check that too, since an open endpoint is a free way for anyone to hammer your rebuilds.
+Expect `200` and a JSON body listing the revalidated paths and a `warmed` array of `{path, status: 200}`. Without the header it must return `401`: check that too, since an open endpoint is a free way for anyone to hammer your rebuilds.
 
 ### c. The schedule itself
 
-`.github/workflows/refresh.yml` runs **every 15 minutes** and pings the endpoint. It is already in the repo — it starts running once the repo is on GitHub and the secret is set. Trigger it by hand first from **Actions → Refresh live news → Run workflow** to confirm it's green.
+`.github/workflows/refresh.yml` runs **every 15 minutes** and pings the endpoint. It is already in the repo. It starts running once the repo is on GitHub and the secret is set. Trigger it by hand first from **Actions → Refresh live news → Run workflow** to confirm it's green.
 
 If your domain is not `ukpoliticshub.com`, set a repository **variable** (not secret) called `SITE_URL`.
 
-**Why GitHub Actions and not Vercel Cron?** Vercel's Hobby plan caps cron at **once per day**, and a more frequent expression *fails the deployment* rather than warning you. GitHub Actions is free at any interval and works on every plan. `vercel.json` therefore holds only a daily 06:00 job as a backstop — safe on Hobby. If you move to Pro, you can change that schedule to `*/15 * * * *` and drop the Actions workflow.
+**Why GitHub Actions and not Vercel Cron?** Vercel's Hobby plan caps cron at **once per day**, and a more frequent expression *fails the deployment* rather than warning you. GitHub Actions is free at any interval and works on every plan. `vercel.json` therefore holds only a daily 06:00 job as a backstop, safe on Hobby. If you move to Pro, you can change that schedule to `*/15 * * * *` and drop the Actions workflow.
 
 > GitHub's scheduled runs are best-effort and can be delayed by a few minutes under load. That's fine here: the 10-minute ISR window is the floor, and the cron is what keeps the cache warm on top of it.
 
 ### Deployment Protection
 
-New Vercel projects ship with Deployment Protection on, which sends visitors to a Vercel SSO login. It normally covers preview builds and the `*.vercel.app` URL while leaving custom production domains public — but confirm it, because if it covers production the site is invisible to both the public and Googlebot.
+New Vercel projects ship with Deployment Protection on, which sends visitors to a Vercel SSO login. It normally covers preview builds and the `*.vercel.app` URL while leaving custom production domains public, but confirm it, because if it covers production the site is invisible to both the public and Googlebot.
 
 **Settings → Deployment Protection.** Vercel Authentication should be off for production, or set so the custom domain is exempt. Verify from a logged-out browser or:
 
@@ -116,7 +116,7 @@ curl -sI https://ukpoliticshub.com/ | head -1
 
 ## 5. After it's live
 
-- [ ] Visit `/` and confirm the news table is populating — it pulls 13 live RSS feeds server-side. If it shows "Live feeds unavailable", the feeds are being blocked from Vercel's egress IPs rather than broken.
+- [ ] Visit `/` and confirm the news table is populating. It pulls 13 live RSS feeds server-side. If it shows "Live feeds unavailable", the feeds are being blocked from Vercel's egress IPs rather than broken.
 - [ ] Check `/robots.txt` and `/sitemap.xml` resolve on the real domain.
 - [ ] Paste the URL into a Slack/WhatsApp message to confirm the social card renders.
 - [ ] Submit the sitemap in [Google Search Console](https://search.google.com/search-console).
@@ -125,7 +125,7 @@ curl -sI https://ukpoliticshub.com/ | head -1
 
 ## Known gaps to close before promoting the site widely
 
-**Email capture is built and needs one key to go live.** The form validates, rate-limits, carries a honeypot and shows proper states; `/privacy` covers the newsletter under UK GDPR. Until a provider is configured the endpoint returns 503 and the form says sign-ups aren't open — it never accepts an address and drops it.
+**Email capture is built and needs one key to go live.** The form validates, rate-limits, carries a honeypot and shows proper states; `/privacy` covers the newsletter under UK GDPR. Until a provider is configured the endpoint returns 503 and the form says sign-ups aren't open. It never accepts an address and drops it.
 
 To switch it on, add to **Vercel → Environment Variables** and redeploy:
 
@@ -139,16 +139,16 @@ Buttondown is the lighter option and has a free tier. Addresses go straight to t
 
 **The briefing is now half live.** The top of `/briefing` is composed from the site's own sourced figures and regenerates with the feeds, so it cannot go stale. The editorial underneath is still hand-written, is labelled with its edition date, and shows a notice from the day after publication. Rewrite it when you have something to say; it will not mislead in the meantime.
 
-**Poll history records itself.** `.github/workflows/record-polls.yml` runs daily at 07:15 UTC, appends the day's average to `data/generated/poll-history.json` and commits it. A snapshot cannot be backfilled, so this matters more the longer it runs — it is the spine of any trend chart.
+**Poll history records itself.** `.github/workflows/record-polls.yml` runs daily at 07:15 UTC, appends the day's average to `data/generated/poll-history.json` and commits it. A snapshot cannot be backfilled, so this matters more the longer it runs. It is the spine of any trend chart.
 
 **The curated tier is a snapshot.** Polls, threat scores, crossings and party dossiers are hand-updated in `data/*.ts`. Only the news table refreshes itself. See the table in `README.md` for which file holds what.
 
 **Analytics are installed, but Vercel Analytics needs enabling.** Two layers:
 
-- **Vercel Analytics** — cookieless, runs for every visitor, no consent needed. The code is in place; switch it on at **Vercel → your project → Analytics → Enable**. Until you do, it collects nothing.
-- **Google Analytics 4** (`G-BY5YWVF0PR`) — loads *only* after a visitor accepts the banner. Verified: before a choice and after declining, zero Google scripts are fetched and zero GA cookies are set. Override the ID per-environment with `NEXT_PUBLIC_GA_ID` if you ever swap properties.
+- **Vercel Analytics**: cookieless, runs for every visitor, no consent needed. The code is in place; switch it on at **Vercel → your project → Analytics → Enable**. Until you do, it collects nothing.
+- **Google Analytics 4** (`G-BY5YWVF0PR`): loads *only* after a visitor accepts the banner. Verified: before a choice and after declining, zero Google scripts are fetched and zero GA cookies are set. Override the ID per-environment with `NEXT_PUBLIC_GA_ID` if you ever swap properties.
 
-`/privacy` explains both and is linked from the footer and the banner. Revisit it the moment the site starts collecting anything new — an email list being the obvious candidate.
+`/privacy` explains both and is linked from the footer and the banner. Revisit it the moment the site starts collecting anything new: an email list being the obvious candidate.
 
 ## Rolling back
 

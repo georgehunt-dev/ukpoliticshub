@@ -22,7 +22,7 @@ const NATION_COUNTS = NATION_ORDER.map((name) => ({
   count: CONSTITUENCIES.filter((seat) => seat.nation === name).length,
 }));
 
-/** The closest and the widest seats in the country — a way in for browsers. */
+/** The closest and the widest seats in the country: a way in for browsers. */
 const withMargin = CONSTITUENCIES.filter((c) => c.election?.majorityPct != null);
 const closest = [...withMargin]
   .sort((a, b) => a.election!.majorityPct! - b.election!.majorityPct!)
@@ -106,7 +106,7 @@ export default function ConstituenciesPage() {
 
         <p className="mt-6 text-[0.95rem] leading-relaxed text-ink-soft">
           Boundaries were redrawn for the 2024 general election, so a seat may not be called
-          what it was in 2019 — around two-thirds of constituencies changed shape, and many
+          what it was in 2019: around two-thirds of constituencies changed shape, and many
           changed name with them. A postcode is the surest way in.
         </p>
 

@@ -65,7 +65,7 @@ export default function SiteFooter() {
         <div className="measure mt-8 border-t border-rule pt-5 text-[0.75rem] leading-relaxed text-ink-faint">
           <p>
             Photographs and portraits are from Wikimedia Commons and remain under their original
-            licences — full credits at{" "}
+            licences: full credits at{" "}
             <Link href="/colophon" className="link-underline">the colophon</Link>. Party crests and
             outlet name-marks on this site are our own work, not the parties&rsquo; or
             publishers&rsquo; official logos, which are trademarks and are not reproduced here.

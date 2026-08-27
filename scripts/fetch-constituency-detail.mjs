@@ -2,21 +2,21 @@
  * Builds the per-constituency dataset behind /constituencies.
  *
  * For each of the 650 seats it collects the sitting MP and the full 2024
- * general election result — every candidate, their party and their votes,
- * plus electorate, turnout and majority — from Parliament's own API.
+ * general election result. Every candidate, their party and their votes,
+ * plus electorate, turnout and majority, from Parliament's own API.
  *
  * The 2024 general election is fetched for every seat so that all 650 pages
  * compare like with like. Where a by-election has been held since, that result
  * is fetched as well and shown alongside: the API's `latest` endpoint returns
- * the by-election, and captioning it "2024" — as an earlier version of this
- * script allowed — would have put a false date on six pages.
+ * the by-election, and captioning it "2024", as an earlier version of this
+ * script allowed: would have put a false date on six pages.
  *
  * Nation is derived rather than fetched, because the API does not expose it:
  * a seat contested by Plaid Cymru is Welsh, by the SNP is Scottish, and by the
  * DUP/Sinn Féin/UUP/SDLP/Alliance is in Northern Ireland. Those parties do not
  * stand outside their nations, so the inference is safe; anything left is
  * England. It is used only to choose a photograph, so the cost of being wrong
- * is low and the check is easy — the counts are printed at the end.
+ * is low and the check is easy: the counts are printed at the end.
  *
  * Run: node scripts/fetch-constituency-detail.mjs
  */

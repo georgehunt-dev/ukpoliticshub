@@ -8,7 +8,7 @@ import { GLOSSARY_LOOKUP, type GlossaryEntry } from "@/data/glossary";
  *
  * Terms are found automatically rather than hand-marked, so a definition added
  * to data/glossary.ts appears everywhere that phrase is used without anyone
- * editing the copy. Only the first occurrence in a block is marked — a
+ * editing the copy. Only the first occurrence in a block is marked: a
  * paragraph peppered with icons is worse than the jargon was.
  */
 

@@ -33,7 +33,7 @@ export default function Home() {
 
           On a wide screen this block claims the viewport minus the header, so
           the indicator tiles below start below the fold rather than peeking
-          through — a strip of half-visible boxes reads as an accident. It is a
+          through: a strip of half-visible boxes reads as an accident. It is a
           minimum, never a maximum, so a short window simply scrolls and
           nothing is ever clipped. Below lg the columns stack and the content
           is far taller than any minimum, which makes this inert. */}
@@ -94,7 +94,7 @@ export default function Home() {
 
 /**
  * The front page used to stack every section end to end, which came to twenty
- * screens on a phone — no way to judge how deep the page ran, and no way to
+ * screens on a phone: no way to judge how deep the page ran, and no way to
  * skip. Each of those sections now has its own page, and this is the index to
  * them: one tap to any of it, and the front page stays short enough to read.
  */
@@ -125,7 +125,7 @@ const SECTIONS: {
     href: "/threat",
     title: "Threats & alliances",
     blurb:
-      "The official terrorism level, unadjusted, plus our own weighted read on Russia, Iran and China — and on what the UK can rely on from the US, NATO and Europe.",
+      "The official terrorism level, unadjusted, plus our own weighted read on Russia, Iran and China, and on what the UK can rely on from the US, NATO and Europe.",
     photo: "royal-navy",
     alt: "HMS Kent, a Royal Navy Type 23 frigate, under way",
   },

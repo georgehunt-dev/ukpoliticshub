@@ -2,7 +2,7 @@
  * Appends today's polling average to the history file.
  *
  * The site holds one snapshot of the rolling average. A snapshot cannot be
- * backfilled — if nobody records 15 August, that day is gone for good — so
+ * backfilled (if nobody records 15 August, that day is gone for good), so
  * this runs daily and builds the time series the charts will need.
  *
  * Idempotent: running it twice in a day overwrites that day's entry rather

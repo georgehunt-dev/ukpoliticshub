@@ -13,7 +13,7 @@ import { openSignupPrompt } from "@/lib/signup-prompt";
  * asserting that it is good: four lines of contents, then the field.
  *
  * One field here, then the prompt. The address is carried into the prompt,
- * which asks for the constituency and the year of birth — the two things this
+ * which asks for the constituency and the year of birth: the two things this
  * column has no room for, and the two that decide whether the email can carry
  * local news and whether the reader is old enough to be on the list. Sending
  * straight to /api/subscribe from here skipped both, so the front page was the
@@ -68,7 +68,7 @@ export default function MorningEmail() {
       ) : null}
 
       {/* Spacing is tight through this column on purpose. It is the taller of
-          the two on the front page, so it sets the height of the whole row —
+          the two on the front page, so it sets the height of the whole row.
           every pixel saved here is a pixel the photograph above gets back. */}
       <p className="eyebrow mt-3.5">One email each morning</p>
       <h2 className="mt-1.5 font-display text-2xl leading-tight sm:text-[1.7rem]">
@@ -116,7 +116,7 @@ export default function MorningEmail() {
       </form>
 
       <p className="mt-2.5 text-[0.68rem] leading-snug text-ink-faint">
-        We&rsquo;ll ask for your constituency and year of birth next — both optional, and the year
+        We&rsquo;ll ask for your constituency and year of birth next. Both optional, and the year
         only so we know readers are 13 or over. No spam, one click to leave, and we never share
         your address.{" "}
         <Link href="/privacy" className="link-underline">

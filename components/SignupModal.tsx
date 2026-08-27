@@ -10,7 +10,7 @@ import { SIGNUP_PROMPT_EVENT, type SignupPromptDetail } from "@/lib/signup-promp
  * First-visit newsletter prompt.
  *
  * Shown once. Subscribing or dismissing records the answer in localStorage and
- * it never appears again — a popup that reappears every visit is the single
+ * it never appears again: a popup that reappears every visit is the single
  * fastest way to make a site feel cheap.
  *
  * Deliberately restrained: it waits five seconds so the reader has landed and
@@ -91,7 +91,7 @@ export default function SignupModal() {
     try {
       window.localStorage.setItem(STORAGE_KEY, answer);
     } catch {
-      // Nothing to do — it simply may ask again next time.
+      // Nothing to do. It simply may ask again next time.
     }
   }
 
@@ -197,7 +197,7 @@ export default function SignupModal() {
               Check your inbox
             </h2>
             <p className="mt-2 text-[0.9rem] leading-relaxed text-ink-soft">
-              We&rsquo;ve sent a confirmation link. Click it and you&rsquo;re on the list — one email
+              We&rsquo;ve sent a confirmation link. Click it and you&rsquo;re on the list: one email
               a day, and one click to leave whenever you want.
             </p>
             <button
@@ -286,7 +286,7 @@ export default function SignupModal() {
                   className={`mt-1.5 ${field}`}
                 />
                 <p className="mt-1 text-[0.72rem] leading-snug text-ink-faint">
-                  Optional, and the year is all we ask — enough to know readers are 13 or over,
+                  Optional, and the year is all we ask, enough to know readers are 13 or over,
                   without holding your full date of birth.
                 </p>
               </div>

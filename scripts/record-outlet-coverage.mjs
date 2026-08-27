@@ -5,7 +5,7 @@
  * write about, measured against the press as a whole. A single day cannot
  * support that: each feed carries about a dozen stories at a time, so "25% of
  * its output" is three stories, and tomorrow it might be one. Published as a
- * finding, that would be a real-looking number that cannot bear weight —
+ * finding, that would be a real-looking number that cannot bear weight:
  * exactly the failure that made us drop the 2017 survey.
  *
  * So the counts are recorded daily and the pages report a rolling window. Like
@@ -34,7 +34,7 @@ const mentions = (haystack, terms) =>
 
 const { items } = await getNews();
 if (!items.length) {
-  console.log("  no stories in the feeds — recording nothing rather than a row of zeroes");
+  console.log("  no stories in the feeds, recording nothing rather than a row of zeroes");
   process.exit(0);
 }
 
@@ -56,7 +56,7 @@ for (const item of items) {
   }
 }
 
-// Outlets whose feed failed today are omitted rather than recorded as zero —
+// Outlets whose feed failed today are omitted rather than recorded as zero:
 // a dead feed is not the same as a paper that wrote nothing.
 for (const id of Object.keys(counts)) if (!counts[id].total) delete counts[id];
 

@@ -9,7 +9,7 @@ import type { NextRequest } from "next/server";
  * live news current without waiting for a visitor to trigger regeneration.
  *
  * Two steps matter here, and the second is easy to miss: `revalidatePath` only
- * *invalidates* the cache — Next regenerates on the next request. A cron that
+ * *invalidates* the cache. Next regenerates on the next request. A cron that
  * only invalidates leaves the first real visitor to pay for the rebuild and
  * possibly see the stale copy. So we invalidate, then immediately fetch each
  * path to warm it.

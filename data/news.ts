@@ -131,7 +131,7 @@ export const outlets: NewsOutlet[] = [
 export const outletById = Object.fromEntries(outlets.map((o) => [o.id, o]));
 
 /**
- * Shown when the live feeds cannot be reached — during a network outage, or
+ * Shown when the live feeds cannot be reached, during a network outage, or
  * on a static export. These are real, verified stories, not placeholders, so
  * the page is never wrong even when it is not fresh.
  */

@@ -7,7 +7,7 @@ import { MoreLink } from "@/components/ui";
  * The one page where the site speaks about itself.
  *
  * Everywhere else the house rule is that copy should be reportable rather than
- * persuasive — state the figure, cite it, let the comparison do the arguing.
+ * persuasive: state the figure, cite it, let the comparison do the arguing.
  * A statement of values cannot work that way, and this is the deliberate
  * exception. It is kept to four values and one sentence for the same reason:
  * a page of manifesto would undercut the restraint the rest of the site is
@@ -22,7 +22,7 @@ import { MoreLink } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Our mission",
   description:
-    "Why ukpoliticshub exists: neutrality, palatability, knowledge and democracy — and a commitment never to be financially affiliated with any UK political party.",
+    "Why ukpoliticshub exists: neutrality, palatability, knowledge and democracy, and a commitment never to be financially affiliated with any UK political party.",
   alternates: { canonical: "/mission" },
 };
 
@@ -30,7 +30,7 @@ const VALUES: { name: string; note: string; body: string }[] = [
   {
     name: "Neutrality",
     note: "People first",
-    body: "We will never — ever — be financially affiliated with any UK political party.",
+    body: "We will never, ever be financially affiliated with any UK political party.",
   },
   {
     name: "Palatability",
@@ -68,7 +68,7 @@ export default function MissionPage() {
           country. */}
       <blockquote className="mt-10 border-l-[3px] border-gold pl-6 sm:pl-8">
         <p className="max-w-4xl font-display text-[1.7rem] leading-[1.28] sm:text-[2.35rem]">
-          Give British people the knowledge to vote with confidence — and through that vote,
+          Give British people the knowledge to vote with confidence, and through that vote,
           the power to change the nation they love for the better.
         </p>
       </blockquote>
@@ -112,8 +112,8 @@ export default function MissionPage() {
         <p className="measure mt-3 text-[0.95rem] leading-relaxed text-ink-soft">
           Every figure on this site carries a link to where it came from, so you can read the
           source rather than take our word for it. Where we publish a judgement of our own rather
-          than a sourced fact — a party&rsquo;s place on the spectrum, a masthead&rsquo;s lean, a
-          state threat assessment — it is flagged as ours so you can weigh it differently. Where
+          than a sourced fact (a party&rsquo;s place on the spectrum, a masthead&rsquo;s lean, a
+          state threat assessment), it is flagged as ours so you can weigh it differently. Where
           someone disputes how we have characterised them, the dispute is printed next to the
           characterisation rather than settled by us.
         </p>

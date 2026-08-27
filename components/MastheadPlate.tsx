@@ -3,7 +3,7 @@
  *
  * Deliberately not the outlet's logo. Every one of those is a registered
  * trademark, and this site already refuses to reproduce party logos for the
- * same reason — the party emblems are original drawings in a house style, and
+ * same reason: the party emblems are original drawings in a house style, and
  * these are the same idea for the press.
  *
  * The face varies by what the outlet is, not by imitating its wordmark: a

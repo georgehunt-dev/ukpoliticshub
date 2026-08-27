@@ -19,8 +19,8 @@ import type { PolicyArea } from "@/lib/types";
 /**
  * Answering from what the site already publishes.
  *
- * The question is read for what it names — a party, a subject, a figure, a
- * constituency — and the answer is then looked up. Nothing is ranked by word
+ * The question is read for what it names: a party, a subject, a figure, a
+ * constituency, and the answer is then looked up. Nothing is ranked by word
  * overlap and nothing is stitched together across subjects, because both of
  * those produced answers that were confidently about the wrong thing.
  *
@@ -44,7 +44,7 @@ const areaName = new Map(POLICY_AREAS.map((a) => [a.id, a.name]));
 const NOT_COVERED: Answer = {
   covered: false,
   answer:
-    "We don't cover that yet. This bar only answers from pages we've already researched and sourced, so rather than guess at it we'd sooner say nothing — try asking about a party's position on an issue, a figure we track, or your own constituency.",
+    "We don't cover that yet. This bar only answers from pages we've already researched and sourced, so rather than guess at it we'd sooner say nothing: try asking about a party's position on an issue, a figure we track, or your own constituency.",
   sources: [],
 };
 
@@ -62,8 +62,8 @@ const SEATS_BY_LENGTH = [...CONSTITUENCIES]
  * Only exact names answer. Nothing is guessed.
  *
  * Fuzzy matching was tried and abandoned on the evidence: real seats score up
- * to 0.894 against each other on character similarity — North East and North
- * West Cambridgeshire, Edinburgh South and Edinburgh South West — while a
+ * to 0.894 against each other on character similarity. North East and North
+ * West Cambridgeshire, Edinburgh South and Edinburgh South West, while a
  * genuine typo like "makerfeild" scores 0.667 against Makerfield. The ranges
  * overlap, so any threshold loose enough to forgive a slip is loose enough to
  * hand a reader the wrong MP for their area with complete confidence. On a
@@ -99,7 +99,7 @@ const SUGGEST_AT = 0.62;
 /**
  * Only offer a constituency when the question is actually asking for one.
  * Without this gate, "best recipe for lasagne" came back suggesting Wyre
- * Forest — near enough on characters, nowhere near on meaning.
+ * Forest: near enough on characters, nowhere near on meaning.
  */
 const ASKING_ABOUT_A_SEAT =
   /\b(mp|member of parliament|constituenc\w*|seats?|represent\w*|my area|elected)\b/;
@@ -166,7 +166,7 @@ function figureAnswer(key: FigureKey): Answer {
         .join(", ");
       return {
         covered: true,
-        answer: `As of ${POLL_AVERAGE_AS_OF}, the rolling average of British Polling Council polls puts ${top} — a lead of ${lead} points. Source: ${POLL_AVERAGE_SOURCE.label}.`,
+        answer: `As of ${POLL_AVERAGE_AS_OF}, the rolling average of British Polling Council polls puts ${top}: a lead of ${lead} points. Source: ${POLL_AVERAGE_SOURCE.label}.`,
         sources: [{ label: "The polls", href: "/polls" }],
       };
     }
@@ -179,7 +179,7 @@ function figureAnswer(key: FigureKey): Answer {
     case "russia":
       return {
         covered: true,
-        answer: `Our own six-factor read puts Russian pressure on the UK at ${russiaScore} out of 100 — ${russiaBand.label}. This is our assessment rather than an official figure, and the six factors behind it are set out in full.`,
+        answer: `Our own six-factor read puts Russian pressure on the UK at ${russiaScore} out of 100: ${russiaBand.label}. This is our assessment rather than an official figure, and the six factors behind it are set out in full.`,
         sources: [{ label: "Russia pressure", href: "/threat" }],
       };
     case "crossings": {
@@ -218,13 +218,13 @@ function partyOnArea(slug: string, area: PolicyArea): Answer {
   if (!policy) {
     return {
       covered: true,
-      answer: `We haven't been able to source a ${party.shortName} position on ${name.toLowerCase()} that we're confident enough to publish. The row is left blank on their page rather than filled with a guess — and that may be our gap as much as theirs.`,
-      sources: [{ label: `${party.shortName} — party page`, href: `/parties/${party.slug}` }],
+      answer: `We haven't been able to source a ${party.shortName} position on ${name.toLowerCase()} that we're confident enough to publish. The row is left blank on their page rather than filled with a guess, and that may be our gap as much as theirs.`,
+      sources: [{ label: `${party.shortName}: party page`, href: `/parties/${party.slug}` }],
     };
   }
 
   const sources: Source[] = [
-    { label: `${party.shortName} — ${name}`, href: `/parties/${party.slug}` },
+    { label: `${party.shortName}: ${name}`, href: `/parties/${party.slug}` },
   ];
   if (policy.source) sources.push({ label: policy.source.label, href: policy.source.url });
 
@@ -237,7 +237,7 @@ function partyOnArea(slug: string, area: PolicyArea): Answer {
   };
 }
 
-/** Every party on one subject — the comparison, in spectrum order. */
+/** Every party on one subject: the comparison, in spectrum order. */
 function allPartiesOnArea(area: PolicyArea): Answer {
   const name = areaName.get(area) ?? area;
   const ordered = [...parties].sort((a, b) => a.spectrum - b.spectrum);
@@ -250,7 +250,7 @@ function allPartiesOnArea(area: PolicyArea): Answer {
   return {
     covered: true,
     answer: `${name}, party by party. ${lines.join(" ")}`,
-    sources: [{ label: `Compare — ${name}`, href: `/compare/${area}` }],
+    sources: [{ label: `Compare: ${name}`, href: `/compare/${area}` }],
   };
 }
 
@@ -259,7 +259,7 @@ function partyOverview(slug: string): Answer {
   return {
     covered: true,
     answer: `${party.name} is led by ${party.leader.name}. ${party.spectrumNote}`,
-    sources: [{ label: `${party.shortName} — party page`, href: `/parties/${party.slug}` }],
+    sources: [{ label: `${party.shortName}: party page`, href: `/parties/${party.slug}` }],
   };
 }
 
@@ -276,7 +276,7 @@ function glossaryIn(question: string) {
 }
 
 /**
- * "What is ILR?" wants the definition, not six parties' asylum policies —
+ * "What is ILR?" wants the definition, not six parties' asylum policies:
  * even though ILR is also an immigration keyword. A question phrased as a
  * request for a meaning is answered from the glossary first.
  */
@@ -303,7 +303,7 @@ export function answer(question: string): Answer {
       return {
         covered: true,
         answer: `${term.term}: ${term.definition}`,
-        sources: [{ label: "How we work — glossary", href: "/how-we-work" }],
+        sources: [{ label: "How we work: glossary", href: "/how-we-work" }],
       };
     }
   }
@@ -324,7 +324,7 @@ export function answer(question: string): Answer {
     return {
       covered: true,
       answer: `${name}. ${lines.join(" ")}`,
-      sources: [{ label: `Compare — ${name}`, href: `/compare/${areas[0]}` }],
+      sources: [{ label: `Compare: ${name}`, href: `/compare/${areas[0]}` }],
     };
   }
 
@@ -352,7 +352,7 @@ export function answer(question: string): Answer {
     return {
       covered: true,
       answer: `${entry.term}: ${entry.definition}`,
-      sources: [{ label: "How we work — glossary", href: "/how-we-work" }],
+      sources: [{ label: "How we work: glossary", href: "/how-we-work" }],
     };
   }
 

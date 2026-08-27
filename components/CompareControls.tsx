@@ -9,7 +9,7 @@ import type { PartySlug } from "@/lib/types";
  * The entire control surface: one sentence with two dropdowns in it.
  *
  * Changing either navigates rather than mutating client state, because each
- * view is a real URL — shareable, indexable, and with its own share card.
+ * view is a real URL, shareable, indexable, and with its own share card.
  * A toolbar would have fought the page; a sentence reads like the rest of it.
  */
 export default function CompareControls({

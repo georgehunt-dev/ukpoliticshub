@@ -6,7 +6,7 @@ import { outletById } from "@/data/news";
  *
  * Two jobs: tell crawlers what the publication is, and give the news pages an
  * explicit `dateModified` so freshness is stated rather than inferred. The
- * news list is marked up as a CollectionPage of links to other publishers —
+ * news list is marked up as a CollectionPage of links to other publishers:
  * which is what it honestly is. We do not claim authorship of their headlines.
  */
 
@@ -38,7 +38,7 @@ export function SiteStructuredData() {
           url: BASE,
           logo: `${BASE}/icon`,
           description:
-            "UK politics from both sides of the spectrum — polling, Channel crossings, threat levels, elections and news, every figure sourced.",
+            "UK politics from both sides of the spectrum, polling, Channel crossings, threat levels, elections and news, every figure sourced.",
           publishingPrinciples: `${BASE}/how-we-work`,
         }}
       />
@@ -120,7 +120,7 @@ export function ConstituencyStructuredData({
  * An outlet page: what the masthead is, and the image we hold for it.
  *
  * The `image` matters beyond tidiness. The only other pictures on these pages
- * are publishers' own feed thumbnails, hotlinked from their sites — not ours to
+ * are publishers' own feed thumbnails, hotlinked from their sites, not ours to
  * offer as the page's representative image. This points at a card we generate
  * and host ourselves.
  */

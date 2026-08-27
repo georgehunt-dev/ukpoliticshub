@@ -1,6 +1,6 @@
 /**
- * Party colours are set by the parties, not by us, and one of them —
- * Restore Britain's #051D3F — is almost black. On the dark photographic
+ * Party colours are set by the parties, not by us, and one of them:
+ * Restore Britain's #051D3F: is almost black. On the dark photographic
  * panels that colour disappears entirely, so we lighten it just enough to
  * read while keeping the hue recognisably theirs.
  */

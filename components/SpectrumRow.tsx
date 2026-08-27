@@ -7,7 +7,7 @@ import Link from "next/link";
  * The spectrum, as six columns read left to right.
  *
  * The order is the spectrum, so there is no axis to draw. Party colour appears
- * only as a 2px rule at the head of each column — on this site colour is a
+ * only as a 2px rule at the head of each column, on this site colour is a
  * hairline, never a field, and a row of filled blocks read as a chart bolted
  * on rather than part of the paper.
  *

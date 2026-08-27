@@ -13,7 +13,7 @@ const DIMENSIONS: Record<Size, { px: number; className: string; text: string }> 
 /**
  * A leader or frontbencher's photograph from Wikimedia Commons, or a
  * typographic monogram where no freely licensed portrait exists. Squared off
- * with a hairline rule — passport-plate rather than avatar-bubble.
+ * with a hairline rule: passport-plate rather than avatar-bubble.
  */
 export default function Portrait({
   slug,
@@ -40,15 +40,15 @@ export default function Portrait({
       {portrait ? (
         <Image
           src={portrait.file}
-          alt={`${name} — portrait`}
+          alt={`${name}, portrait`}
           width={dim.px}
           height={dim.px}
           className="h-full w-full object-cover object-top"
           sizes={`${dim.px}px`}
         />
       ) : (
-        /* An engraved monogram plate, not a failed image. Some figures — a new
-           party's spokesperson, say — have no freely licensed photograph, and
+        /* An engraved monogram plate, not a failed image. Some figures (a new
+           party's spokesperson, say) have no freely licensed photograph, and
            we will not use an unlicensed one. This should look like a decision. */
         <div
           className="relative flex h-full w-full items-center justify-center"

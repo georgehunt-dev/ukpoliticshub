@@ -6,7 +6,7 @@ import { ImageResponse } from "next/og";
  */
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "ukpoliticshub — UK politics from both sides, sourced and dated";
+export const alt = "ukpoliticshub. UK politics from both sides, sourced and dated";
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -46,7 +46,7 @@ export default function OpengraphImage() {
         {/* Headline */}
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div style={{ fontSize: 76, lineHeight: 1.03, color: "#0f1f38", maxWidth: 980 }}>
-            UK politics from both sides — sourced, dated and checkable.
+            UK politics from both sides, sourced, dated and checkable.
           </div>
           <div style={{ fontSize: 30, color: "#3b4a63", maxWidth: 900 }}>
             Polls · Channel crossings · Threat levels · Elections · The papers, left and right

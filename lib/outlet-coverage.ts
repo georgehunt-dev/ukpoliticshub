@@ -7,7 +7,7 @@ import { subjectBySlug } from "@/data/subjects";
  * The figure is an index: the share of an outlet's stories touching a subject,
  * divided by the share across every outlet. 2.0 means twice the attention the
  * press as a whole gave it. It is arithmetic on the outlets' own published
- * output, not an opinion about them — which is the point, because our
+ * output, not an opinion about them, which is the point, because our
  * left-right placement *is* an opinion and this sits beside it.
  *
  * Everything here is windowed over recorded days rather than the live feed.
@@ -27,7 +27,7 @@ type Day = {
  * Through `unknown` on purpose. TypeScript infers a literal type from the JSON
  * with exactly the subject keys each recorded day happens to contain, so the
  * inferred shape stops matching Record<string, number> as soon as two days
- * carry different subjects — which is every day after the first.
+ * carry different subjects, which is every day after the first.
  */
 const DAYS: Day[] = (history.days ?? []) as unknown as Day[];
 
@@ -54,7 +54,7 @@ export type OutletCoverage = {
   provisional: boolean;
   /** Covered far more than the press average. */
   more: CoverageRow[];
-  /** Covered far less — a subject the paper is quiet on. */
+  /** Covered far less, a subject the paper is quiet on. */
   less: CoverageRow[];
 };
 

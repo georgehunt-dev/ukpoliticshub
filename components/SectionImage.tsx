@@ -2,7 +2,7 @@ import Image from "next/image";
 import { credit, getPhoto, type PhotoSlug } from "@/lib/photos";
 
 /**
- * A photographic band introducing a section — the picture carries the section
+ * A photographic band introducing a section: the picture carries the section
  * title, in place of a plain heading. Credit sits in the corner so no image on
  * this site is ever used without attribution.
  */
@@ -18,8 +18,8 @@ export default function SectionImage({
   titleClassName = "text-3xl sm:text-5xl",
   /**
    * Defaults to h2 because this band usually introduces a section inside a
-   * page that already has its own h1. Where the band *is* the page title —
-   * the state assessments — pass "h1" so the page is not published without
+   * page that already has its own h1. Where the band *is* the page title:
+   * the state assessments: pass "h1" so the page is not published without
    * one.
    */
   as: Heading = "h2",
@@ -56,7 +56,7 @@ export default function SectionImage({
             }}
           />
           {/* Both washes are defined in globals.css because they change shape
-              between phone and desktop — see the ".section-wash" note there. */}
+              between phone and desktop: see the ".section-wash" note there. */}
           <div className="section-wash absolute inset-0" />
           <div className="section-wash-foot absolute inset-x-0 bottom-0 h-1/2" />
         </>

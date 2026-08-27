@@ -7,7 +7,7 @@
  *
  * Rules for entries:
  *   • Two sentences at most, no jargon inside the definition.
- *   • Neutral. Define what a thing *is*, never whether it is a good idea —
+ *   • Neutral. Define what a thing *is*, never whether it is a good idea:
  *     "leaving the ECHR" is a live argument and the glossary does not join it.
  *   • `aliases` catch the other ways the term appears in our copy.
  */
@@ -29,7 +29,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "ECHR",
     aliases: ["European Convention on Human Rights"],
     definition:
-      "A post-war treaty setting out basic rights — a fair trial, freedom of speech, protection from torture — enforced by the European Court of Human Rights in Strasbourg. It is separate from the European Union, and leaving the EU did not affect it.",
+      "A post-war treaty setting out basic rights (a fair trial, freedom of speech, protection from torture) enforced by the European Court of Human Rights in Strasbourg. It is separate from the European Union, and leaving the EU did not affect it.",
   },
   {
     term: "ECAT",
@@ -49,7 +49,7 @@ export const GLOSSARY: GlossaryEntry[] = [
   {
     term: "personal allowance",
     definition:
-      "The amount you can earn each year before paying any income tax — £12,570, and frozen at that level since 2021. Freezing it while wages rise pulls more people into paying tax without the rate changing, sometimes called a stealth tax.",
+      "The amount you can earn each year before paying any income tax: £12,570, and frozen at that level since 2021. Freezing it while wages rise pulls more people into paying tax without the rate changing, sometimes called a stealth tax.",
   },
   {
     term: "stamp duty",
@@ -59,7 +59,7 @@ export const GLOSSARY: GlossaryEntry[] = [
   {
     term: "business rates",
     definition:
-      "A tax on commercial property — shops, offices, warehouses — based on its estimated rental value. It is charged whether or not the business is making money, which is why high-street retailers campaign against it.",
+      "A tax on commercial property (shops, offices, warehouses) based on its estimated rental value. It is charged whether or not the business is making money, which is why high-street retailers campaign against it.",
   },
   {
     term: "Trident",
@@ -70,7 +70,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "PCSO",
     aliases: ["PCSOs"],
     definition:
-      "Police Community Support Officer — a uniformed member of police staff who patrols and deals with anti-social behaviour, but has fewer powers than a warranted constable and cannot make most arrests.",
+      "Police Community Support Officer: a uniformed member of police staff who patrols and deals with anti-social behaviour, but has fewer powers than a warranted constable and cannot make most arrests.",
   },
   {
     term: "Prevent",
@@ -86,7 +86,7 @@ export const GLOSSARY: GlossaryEntry[] = [
   {
     term: "wealth tax",
     definition:
-      "A tax charged on what someone owns — property, shares, savings — rather than on what they earn. Supporters point to concentrated wealth; opponents question how assets would be valued and whether the wealthy would simply move.",
+      "A tax charged on what someone owns (property, shares, savings) rather than on what they earn. Supporters point to concentrated wealth; opponents question how assets would be valued and whether the wealthy would simply move.",
   },
   {
     term: "capital gains",
@@ -117,7 +117,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "Police and Crime Commissioner",
     aliases: ["Police and Crime Commissioners", "PCCs"],
     definition:
-      "An elected official responsible for overseeing a regional police force — setting its budget and priorities and holding the chief constable to account. Turnout at their elections is typically very low.",
+      "An elected official responsible for overseeing a regional police force, setting its budget and priorities and holding the chief constable to account. Turnout at their elections is typically very low.",
   },
   {
     term: "first-past-the-post",
@@ -144,13 +144,13 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "policy levies",
     aliases: ["policy levy", "levies"],
     definition:
-      "Charges added to household energy bills to fund government schemes such as renewable subsidies and insulation programmes. Moving them off bills does not make them free — it shifts the cost to general taxation.",
+      "Charges added to household energy bills to fund government schemes such as renewable subsidies and insulation programmes. Moving them off bills does not make them free. It shifts the cost to general taxation.",
   },
   {
     term: "quangos",
     aliases: ["quango"],
     definition:
-      "Bodies funded by government to carry out public functions at arm's length from ministers — regulators, agencies and advisory panels. Critics see unaccountable bureaucracy; defenders see independence from short-term politics.",
+      "Bodies funded by government to carry out public functions at arm's length from ministers: regulators, agencies and advisory panels. Critics see unaccountable bureaucracy; defenders see independence from short-term politics.",
   },
 ];
 

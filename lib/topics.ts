@@ -26,7 +26,7 @@ export const TOPICS: Topic[] = [
     id: "immigration",
     name: "Immigration & asylum",
     blurb:
-      "Channel crossings, the asylum backlog, hotels and removals — the issue polling consistently puts in the public's top three.",
+      "Channel crossings, the asylum backlog, hotels and removals: the issue polling consistently puts in the public's top three.",
     photo: "dover",
     alt: "The white cliffs and the Strait of Dover",
     match:
@@ -36,7 +36,7 @@ export const TOPICS: Topic[] = [
     id: "economy",
     name: "Economy & tax",
     blurb:
-      "The Budget, inflation, wages, borrowing and tax — what the government can afford and who pays for it.",
+      "The Budget, inflation, wages, borrowing and tax: what the government can afford and who pays for it.",
     photo: "economy",
     alt: "The Bank of England and the City of London",
     match:
@@ -46,7 +46,7 @@ export const TOPICS: Topic[] = [
     id: "health",
     name: "Health & the NHS",
     blurb:
-      "Waiting lists, staffing, social care and the funding settlement — consistently among the issues voters rank most important.",
+      "Waiting lists, staffing, social care and the funding settlement: consistently among the issues voters rank most important.",
     photo: "health",
     alt: "St Thomas' Hospital on the Thames",
     match: /\b(nhs|health|hospital|doctor|gp |nurse|waiting list|social care|patient|ambulance|dentist)/i,
@@ -55,7 +55,7 @@ export const TOPICS: Topic[] = [
     id: "security",
     name: "Defence & security",
     blurb:
-      "Defence spending, Ukraine, Russia, terrorism and the intelligence services — where the state's hard power is argued over.",
+      "Defence spending, Ukraine, Russia, terrorism and the intelligence services, where the state's hard power is argued over.",
     photo: "royal-navy",
     alt: "A Royal Navy frigate at sea",
     match:
@@ -65,7 +65,7 @@ export const TOPICS: Topic[] = [
     id: "justice",
     name: "Law & order",
     blurb:
-      "Policing, prisons, sentencing and the courts — including the prison-capacity pressure running through this Parliament.",
+      "Policing, prisons, sentencing and the courts, including the prison-capacity pressure running through this Parliament.",
     photo: "justice",
     alt: "The Royal Courts of Justice",
     match:

@@ -9,7 +9,7 @@ import { type Assessment, bandOf, scoreOf } from "@/data/states";
  * reader who disagrees with the score should be able to see exactly which
  * factor they disagree with and go to the source behind it. Where the UK
  * government has made a formal designation it is printed separately and marked
- * official — that part is not our judgement. Where the subject rejects the
+ * official. That part is not our judgement. Where the subject rejects the
  * characterisation, the rejection is printed too.
  */
 export default function AssessmentCard({ assessment }: { assessment: Assessment }) {

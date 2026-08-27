@@ -5,7 +5,7 @@ import { findPlaces } from "@/lib/places";
  * Place and constituency name lookup for the Your Area search box.
  *
  * This is a route rather than client-side matching because the place index is
- * tens of thousands of entries — shipping it to every visitor to save one
+ * tens of thousands of entries, shipping it to every visitor to save one
  * request would be the wrong trade.
  *
  * It answers with candidates, never with a destination. Where a name occurs in

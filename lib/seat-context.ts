@@ -3,7 +3,7 @@ import { CONSTITUENCIES, type Constituency, type ElectionResult } from "@/lib/co
 /**
  * What makes one seat page different from the other 649.
  *
- * Everything here is arithmetic over results we already hold — no new source,
+ * Everything here is arithmetic over results we already hold: no new source,
  * no modelling, no projection. The national baselines are summed from all 650
  * constituency results rather than quoted from anywhere, which means they are
  * checkable against the pages themselves and cannot drift out of step with
@@ -17,7 +17,7 @@ function generalElections(): { seat: Constituency; result: ElectionResult }[] {
 }
 
 export type National = {
-  /** Seats included — 650 when the data is complete. */
+  /** Seats included: 650 when the data is complete. */
   seats: number;
   electorate: number;
   votes: number;
@@ -59,7 +59,7 @@ function computeNational(): National {
 
 export const NATIONAL: National = computeNational();
 
-/** Majorities across all seats, ascending — used to rank one seat against the rest. */
+/** Majorities across all seats, ascending: used to rank one seat against the rest. */
 const MAJORITIES: number[] = generalElections()
   .map(({ result }) => result.majorityPct)
   .filter((value): value is number => value != null)

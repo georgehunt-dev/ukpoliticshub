@@ -4,7 +4,7 @@ import PrimeMinisterPanel from "@/components/PrimeMinisterPanel";
 export const metadata: Metadata = {
   title: "The Prime Minister",
   description:
-    "Approval ratings, the best-prime-minister head-to-head, and how the government is standing — each figure carrying the poll it came from.",
+    "Approval ratings, the best-prime-minister head-to-head, and how the government is standing. Each figure carrying the poll it came from.",
 };
 
 export const revalidate = 600;

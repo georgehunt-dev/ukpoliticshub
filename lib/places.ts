@@ -10,7 +10,7 @@ import placeData from "@/data/generated/places.json";
  * The one rule that shapes everything here: British place names repeat. There
  * are eight Whitchurches, nine Hooks and ten Overtons. So a lookup returns a
  * *list* of candidate seats and the caller must ask which one was meant. It
- * never guesses, for the same reason the ask bar never guesses — a confident
+ * never guesses, for the same reason the ask bar never guesses: a confident
  * wrong answer is worse than a question.
  */
 
@@ -33,7 +33,7 @@ const RANK = ["City", "Town", "Suburb", "Village", "Hamlet", "Settlement"];
 
 /**
  * The kinds of place worth naming on the page. Suburbs are in because in a
- * city seat they are the names people actually use — and because leaving them
+ * city seat they are the names people actually use, and because leaving them
  * out gave seats like Basingstoke a single entry, which tells a reader nothing.
  */
 const NOTABLE = new Set(["City", "Town", "Suburb"]);
@@ -83,7 +83,7 @@ export type PlaceMatch = {
 
 /**
  * Look a place name up. Exact matches first, then names starting with the
- * query — never a fuzzy match, because "Overton" and "Overtown" are different
+ * query, never a fuzzy match, because "Overton" and "Overtown" are different
  * villages in different seats and a near miss would be a wrong answer.
  */
 export function findPlaces(query: string, limit = 8): PlaceMatch[] {

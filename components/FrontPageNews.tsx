@@ -10,7 +10,7 @@ import { coverageFor, labelFor, leanOf, type MatchedStory } from "@/lib/subjects
  * The news block on the front page.
  *
  * It leads with one event told from both sides, because that is the whole
- * product and showing it beats describing it — a reader who sees "proposes"
+ * product and showing it beats describing it: a reader who sees "proposes"
  * against "vows to BAN" understands the site immediately.
  *
  * That needs a storyline several outlets are running across the spectrum, and
@@ -37,7 +37,7 @@ function Balance({ items }: { items: MatchedStory[] }) {
       </span>
       <p className="mt-2.5 text-[0.88rem] text-ink-soft">
         <strong className="font-display text-[1.05rem] text-ink">{items.length}</strong> stories
-        now — {spread.left} left of centre, {spread.centre} centre, {spread.right} right of centre.
+        now, {spread.left} left of centre, {spread.centre} centre, {spread.right} right of centre.
       </p>
 
       <ul className="mt-4 grid gap-x-6 sm:grid-cols-3">

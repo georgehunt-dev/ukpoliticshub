@@ -8,7 +8,7 @@ import type { Policy } from "@/lib/types";
 /**
  * Comparison rows.
  *
- * The summary line carries the page — six of those scan in seconds, where six
+ * The summary line carries the page: six of those scan in seconds, where six
  * full positions would be a wall. The detail sits behind a <details>, so it
  * works without JavaScript and stays crawlable: search engines read the full
  * text even though a reader sees the short version first.

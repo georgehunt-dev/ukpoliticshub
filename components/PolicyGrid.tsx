@@ -9,7 +9,7 @@ import type { Party } from "@/lib/types";
  *
  * The comparability is the point: a reader can hold two pages side by side and
  * the areas line up. Where a party has published nothing we could source, the
- * row still appears and says so — an empty row is information about the
+ * row still appears and says so: an empty row is information about the
  * platform, and hiding it would flatter parties with thin programmes.
  */
 export default function PolicyGrid({ party }: { party: Party }) {

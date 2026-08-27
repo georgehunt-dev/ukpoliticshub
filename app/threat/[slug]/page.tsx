@@ -35,7 +35,7 @@ export async function generateMetadata({
       : "what the UK can rely on from this partner";
 
   return {
-    title: `${assessment.name} — our assessment`,
+    title: `${assessment.name}. Our assessment`,
     description: `Our weighted assessment of ${kind}: ${assessment.name} scores ${score}/100 (${band.label}). Every factor scored on its own evidence and sourced. Not a government figure.`,
     alternates: { canonical: `/threat/${assessment.slug}` },
   };
@@ -66,7 +66,7 @@ export default async function AssessmentPage({ params }: PageProps<"/threat/[slu
 
       <div className="shell py-9">
         <p className="text-[0.75rem] leading-snug text-ink-faint">
-          Photograph shows {assessment.photoAlt.replace(/^The /, "the ")} — a landmark, chosen
+          Photograph shows {assessment.photoAlt.replace(/^The /, "the ")}: a landmark, chosen
           because it identifies the country without editorialising about it.
         </p>
 

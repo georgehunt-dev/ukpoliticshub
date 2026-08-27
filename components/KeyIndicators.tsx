@@ -12,8 +12,8 @@ import { getPhoto, type PhotoSlug } from "@/lib/photos";
  * picture so the row is scannable rather than read.
  *
  * Six, not five. The tiles fall into two columns on a phone, and five leaves a
- * hole in the bottom row; the sixth — how long until the next general election
- * — closes it and is the only one of the six that never goes stale.
+ * hole in the bottom row; the sixth: how long until the next general election:
+ * closes it and is the only one of the six that never goes stale.
  */
 export default function KeyIndicators({ today }: { today: string }) {
   const generalElection = upcomingElections.find((e) => e.certainty === "deadline");

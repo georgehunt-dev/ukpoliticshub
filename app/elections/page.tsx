@@ -110,10 +110,10 @@ export default function ElectionsPage() {
         standfirst={
           <>
             <span className="block">
-              What is scheduled, what is only a deadline, and what is merely expected
+              What is scheduled, what is only a deadline, and what is merely expected.
             </span>
             <span className="block">
-              — the difference matters, so it is stated on every entry.
+              The difference matters, so it is stated on every entry.
             </span>
           </>
         }
@@ -160,8 +160,7 @@ export default function ElectionsPage() {
                   {when.weekday}
                   {when.weekday !== "Thursday" ? (
                     <span className="font-normal normal-case tracking-normal text-ink-faint">
-                      {" "}
-                      — not a Thursday, which is the tell that this is a backstop rather than a plan
+                      , not a Thursday, which is the tell that this is a backstop rather than a plan
                     </span>
                   ) : null}
                 </p>
@@ -195,7 +194,7 @@ export default function ElectionsPage() {
                 </ul>
               </div>
 
-              {/* The countdown, which is what most people came for — boxed to
+              {/* The countdown, which is what most people came for: boxed to
                   match the date plate at the other end of the row. */}
               <div className="col-start-2 row-start-1 flex h-28 w-36 flex-col items-center justify-center self-start justify-self-end border border-ink bg-[color:var(--paper-raised)] text-center lg:col-start-3">
                 <span className="block font-display text-[2.4rem] font-bold leading-[0.85] tabular">
@@ -216,7 +215,7 @@ export default function ElectionsPage() {
       <div className="mt-14">
         <SectionHeading
           title="Contests that shaped this Parliament"
-          standfirst="By-elections and scheduled contests since 2024 — the only real-world tests of the polling picture."
+          standfirst="By-elections and scheduled contests since 2024: the only real-world tests of the polling picture."
         />
 
         <ol className="panel mt-6 divide-y divide-[color:var(--rule)]">
@@ -268,7 +267,7 @@ export default function ElectionsPage() {
           className="mt-8"
           reason="Elections and polling"
           heading="Know the moment the numbers move"
-          blurb="The rolling poll average, by-elections as they are called, and what the results mean locally and nationally — in one email each morning."
+          blurb="The rolling poll average, by-elections as they are called, and what the results mean locally and nationally, in one email each morning."
         />
       </div>
     </div>

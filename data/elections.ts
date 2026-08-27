@@ -11,7 +11,7 @@ export const upcomingElections: ElectionEvent[] = [
     detail:
       "All local authorities in Northern Ireland, Scotland and Wales, a tranche of English councils, and several directly elected English mayoralties.",
     source: {
-      label: "Wikipedia — 2027 United Kingdom local elections",
+      label: "Wikipedia, 2027 United Kingdom local elections",
       url: "https://en.wikipedia.org/wiki/2027_United_Kingdom_local_elections",
     },
   },
@@ -21,7 +21,7 @@ export const upcomingElections: ElectionEvent[] = [
     certainty: "expected",
     detail: "Expected to be held alongside the 2027 local elections.",
     source: {
-      label: "Wikipedia — 2027 United Kingdom local elections",
+      label: "Wikipedia, 2027 United Kingdom local elections",
       url: "https://en.wikipedia.org/wiki/2027_United_Kingdom_local_elections",
     },
   },
@@ -32,7 +32,7 @@ export const upcomingElections: ElectionEvent[] = [
     detail:
       "The latest possible date under the Dissolution and Calling of Parliament Act 2022. A Prime Minister may call one at any point before this.",
     source: {
-      label: "BritPolls — When is the next UK election?",
+      label: "BritPolls, When is the next UK election?",
       url: "https://britpolls.co.uk/news/uk-2029-election-date/",
     },
   },
@@ -40,7 +40,7 @@ export const upcomingElections: ElectionEvent[] = [
 
 /**
  * What to show beside a past contest. A portrait is of the person, not of the
- * night — captioned as a portrait so it is never read as press photography of
+ * night: captioned as a portrait so it is never read as press photography of
  * the count itself. Where no one figure carries the story, a photograph does.
  */
 export type ResultImage =
@@ -69,7 +69,7 @@ export const recentResults: {
       caption: "Nigel Farage, returned for Clacton",
     },
     source: {
-      label: "Wikipedia — 2026 Clacton by-election",
+      label: "Wikipedia, 2026 Clacton by-election",
       url: "https://en.wikipedia.org/wiki/2026_Clacton_by-election",
       date: "2026-08-13",
     },
@@ -87,7 +87,7 @@ export const recentResults: {
       caption: "Andy Burnham, returned for Makerfield",
     },
     source: {
-      label: "Wikipedia — 2026 Makerfield by-election",
+      label: "Wikipedia, 2026 Makerfield by-election",
       url: "https://en.wikipedia.org/wiki/2026_Makerfield_by-election",
       date: "2026-06-18",
     },
@@ -97,7 +97,7 @@ export const recentResults: {
     date: "2026-02-26",
     headline: "Greens win their first ever Westminster by-election",
     detail:
-      "Hannah Spencer took the seat on 41% with a majority above 4,000 — the party had never previously exceeded 10% in a by-election. Reform UK second, Labour third. Green membership passed 200,000 within days.",
+      "Hannah Spencer took the seat on 41% with a majority above 4,000: the party had never previously exceeded 10% in a by-election. Reform UK second, Labour third. Green membership passed 200,000 within days.",
     image: {
       kind: "portrait",
       slug: "hannah-spencer",
@@ -105,7 +105,7 @@ export const recentResults: {
       caption: "Hannah Spencer, the Greens' by-election winner",
     },
     source: {
-      label: "Wikipedia — 2026 in United Kingdom politics and government",
+      label: "Wikipedia, 2026 in United Kingdom politics and government",
       url: "https://en.wikipedia.org/wiki/2026_in_United_Kingdom_politics_and_government",
       date: "2026-02-26",
     },
@@ -115,7 +115,7 @@ export const recentResults: {
     date: "2026-05-07",
     headline: "Three sets of elections on one day",
     detail:
-      "UK local elections were held alongside the Scottish Parliament and Welsh Senedd elections — the first nationwide test of the post-2024 party landscape.",
+      "UK local elections were held alongside the Scottish Parliament and Welsh Senedd elections: the first nationwide test of the post-2024 party landscape.",
     // No single figure carries a three-nation polling day, so this one gets a
     // polling station rather than a portrait.
     image: {
@@ -125,7 +125,7 @@ export const recentResults: {
       caption: "A polling station in Swansea",
     },
     source: {
-      label: "Wikipedia — 2026 United Kingdom local elections",
+      label: "Wikipedia, 2026 United Kingdom local elections",
       url: "https://en.wikipedia.org/wiki/2026_United_Kingdom_local_elections",
       date: "2026-05-07",
     },

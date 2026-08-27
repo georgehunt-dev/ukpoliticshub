@@ -3,7 +3,7 @@ import type { PartySlug } from "@/lib/types";
 /**
  * Engraved party crests, drawn for this site.
  *
- * These are NOT the parties' official logos — those are registered trademarks
+ * These are NOT the parties' official logos. Those are registered trademarks
  * and, for five of the six parties, non-free copyrighted artwork. Each crest
  * instead uses a generic symbol long associated with the party (rose, oak,
  * bird of liberty, leaf, shield, ascending rule), rendered in one consistent

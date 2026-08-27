@@ -9,7 +9,7 @@ import { leanOf, LEAN_LABEL } from "@/lib/subjects";
 export const metadata: Metadata = {
   title: "Which UK newspapers are left wing, and which are right",
   description:
-    "Where every UK masthead we read sits on the political spectrum, from Novara Media to GB News — and what each one actually covers, counted from its own output.",
+    "Where every UK masthead we read sits on the political spectrum, from Novara Media to GB News, and what each one actually covers, counted from its own output.",
 };
 
 export const revalidate = 600;
@@ -28,14 +28,14 @@ export default function OutletsPage() {
       </h1>
       <p className="measure mt-3 text-[0.98rem] leading-relaxed text-ink-soft">
         Every masthead whose politics feed we read, on one scale. The placement applies to the
-        paper rather than to any single article — and each has a page showing what it actually
+        paper rather than to any single article, and each has a page showing what it actually
         chose to write about, measured against the rest of the press.
       </p>
 
       <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
         <OurAssessment />
         <p className="text-[0.82rem] text-ink-soft">
-          Placements are ours. Coverage figures are counted from the outlets&rsquo; own output —
+          Placements are ours. Coverage figures are counted from the outlets&rsquo; own output,
           {HISTORY_DAYS} {HISTORY_DAYS === 1 ? "day" : "days"} recorded so far.
         </p>
       </div>

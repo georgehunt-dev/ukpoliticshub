@@ -39,7 +39,7 @@ export async function generateMetadata({
 
   return {
     // Worded as the question is typed. Search Console shows every one of this
-    // site's page-one queries is "is X left or right" — the previous title
+    // site's page-one queries is "is X left or right": the previous title
     // asked "is X biased?", which is a different question and a word nobody
     // searches for.
     title: `Is ${withArticle(outlet.name)} left or right? Where it sits on the spectrum`,
@@ -85,8 +85,8 @@ export default async function OutletPage({ params }: PageProps<"/news/outlets/[o
   const note = noteFor(outlet.id, withArticle(outlet.name));
 
   /**
-   * Where it sits among the fifteen, said in words. Ties are common — three
-   * outlets share +6 — so this counts how many are further out rather than
+   * Where it sits among the fifteen, said in words. Ties are common: three
+   * outlets share +6, so this counts how many are further out rather than
    * claiming a unique rank.
    */
   const furtherOut = outlets.filter((o) =>
@@ -188,7 +188,7 @@ export default async function OutletPage({ params }: PageProps<"/news/outlets/[o
             The placement is a judgement of ours, drawn from Ofcom&rsquo;s news-consumption
             research and the Reuters Institute&rsquo;s placement of news audiences, taking the
             midpoint where they disagree. It describes the masthead, not the article in front of
-            you — a right-leaning paper runs stories that damage the right, and the reverse.
+            you: a right-leaning paper runs stories that damage the right, and the reverse.
           </p>
 
           {headline ? (
@@ -223,7 +223,7 @@ export default async function OutletPage({ params }: PageProps<"/news/outlets/[o
             {coverage.days} {coverage.days === 1 ? "day" : "days"} of recorded coverage and{" "}
             {coverage.stories} {coverage.stories === 1 ? "story" : "stories"}. Each feed carries
             about a dozen stories at a time, so on this little history a single article moves a
-            share by several points. Read it as a snapshot, not a finding — it becomes meaningful
+            share by several points. Read it as a snapshot, not a finding. It becomes meaningful
             at around {ENOUGH_DAYS} days, and we record every day from here.
           </p>
         ) : (

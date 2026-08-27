@@ -9,7 +9,7 @@ import UnionRule from "@/components/UnionRule";
  *
  * The address is posted to /api/subscribe, which forwards it to whichever
  * mailing provider is configured and stores nothing on this site. Until a
- * provider is configured the endpoint returns 503 and the form says so —
+ * provider is configured the endpoint returns 503 and the form says so:
  * accepting an address and quietly dropping it would be worse than refusing.
  */
 
@@ -68,7 +68,7 @@ export default function EmailSignup() {
             One email. Both sides. Every morning.
           </h2>
           <p className="mt-3 max-w-xl text-[0.95rem] leading-relaxed text-ink-soft">
-            The polls, the threat picture and the day&rsquo;s stories from left and right — sourced,
+            The polls, the threat picture and the day&rsquo;s stories from left and right, sourced,
             dated and short enough to read before your coffee goes cold.
           </p>
         </div>

@@ -7,7 +7,7 @@ import type { Storyline as StorylineType } from "@/lib/subjects";
  *
  * The wording where a column is empty matters more than it looks. Grouping
  * works on headline similarity, so a paper that covered the same story in
- * markedly different words falls out of the group — we have watched it happen.
+ * markedly different words falls out of the group. We have watched it happen.
  * Saying "the right did not cover this" would therefore have been false, and
  * false in a direction that reads as bias. So the page says only what it can
  * stand behind: we could not detect it.
@@ -52,8 +52,8 @@ export default function Storyline({
   storyline: StorylineType;
   /**
    * Null where no honest neutral label could be derived. Rather than promote
-   * one masthead's headline to be the name of the whole group — which hands
-   * that paper the framing — the header simply carries the date and the count,
+   * one masthead's headline to be the name of the whole group, which hands
+   * that paper the framing: the header simply carries the date and the count,
    * and the headlines below speak for themselves.
    */
   title: string | null;

@@ -8,7 +8,7 @@ import { openSignupPrompt } from "@/lib/signup-prompt";
  *
  * One field, because a three-field form dropped into the middle of a page is
  * an obstacle rather than an invitation. The address is carried into the
- * prompt, which then asks for the constituency and the year — the two things
+ * prompt, which then asks for the constituency and the year: the two things
  * that make the email worth sending and that there is no room for here.
  *
  * Nothing is sent from this component. The subscribe happens in the prompt,
@@ -24,7 +24,7 @@ export default function EmailCapture({
 }: {
   heading: string;
   blurb: string;
-  /** Shown above the prompt's heading — "Local news for Clacton". */
+  /** Shown above the prompt's heading: "Local news for Clacton". */
   reason?: string;
   /** Pre-fills the prompt where the page already knows the seat. */
   constituency?: string;
@@ -72,7 +72,7 @@ export default function EmailCapture({
       </div>
 
       <p className="mt-2.5 text-[0.68rem] leading-snug text-ink-faint">
-        We&rsquo;ll ask for your constituency and year of birth next — both optional, and the year
+        We&rsquo;ll ask for your constituency and year of birth next. Both optional, and the year
         only so we know readers are 13 or over.
       </p>
     </section>

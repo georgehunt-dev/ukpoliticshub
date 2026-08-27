@@ -10,12 +10,12 @@ import "./globals.css";
 
 /**
  * Source Sans carries all body text. Headings use Times New Roman, which is
- * a system face on every platform this site targets — so it is set in CSS
+ * a system face on every platform this site targets, so it is set in CSS
  * rather than loaded, and costs nothing.
  */
 /**
- * GA4 measurement IDs are public by design — they appear in the page source of
- * every site using them — so this is not a secret. It can still be overridden
+ * GA4 measurement IDs are public by design. They appear in the page source of
+ * every site using them, so this is not a secret. It can still be overridden
  * per-environment without a code change.
  */
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-BY5YWVF0PR";
@@ -29,7 +29,7 @@ const sourceSans = Source_Sans_3({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ukpoliticshub.com"),
   title: {
-    default: "ukpoliticshub — UK politics from both sides, sourced and dated",
+    default: "ukpoliticshub. UK politics from both sides, sourced and dated",
     template: "%s · ukpoliticshub",
   },
   description:
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ukpoliticshub",
     description:
-      "British politics in one place, from both sides. The polls, your MP, the elections ahead — sourced and dated.",
+      "British politics in one place, from both sides. The polls, your MP, the elections ahead, sourced and dated.",
     type: "website",
     locale: "en_GB",
   },

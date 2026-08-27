@@ -27,7 +27,7 @@ export async function generateMetadata({
 
   const { ballot, date } = entry;
   return {
-    title: `${ballot.ward} by-election, ${ballot.council} — ${formatDate(date)}`,
+    title: `${ballot.ward} by-election, ${ballot.council}: ${formatDate(date)}`,
     description: `Who is standing in the ${ballot.ward} by-election in ${ballot.council} on ${formatDate(date)}: all ${ballot.candidates.length} candidates and their parties, from the council's published nominations.`,
     alternates: { canonical: `/elections/${ballot.slug}` },
   };
@@ -62,7 +62,7 @@ export default async function BallotPage({ params }: PageProps<"/elections/[ball
             />
           </div>
           <figcaption className="mt-1.5 text-[0.72rem] leading-snug text-ink-faint">
-            {photo.shows} — a photograph of the {ballot.council} area, not of {ballot.ward}{" "}
+            {photo.shows}: a photograph of the {ballot.council} area, not of {ballot.ward}{" "}
             itself.{" "}
             {photo.descriptionUrl ? (
               <a
@@ -123,7 +123,7 @@ export default async function BallotPage({ params }: PageProps<"/elections/[ball
       ) : closed ? (
         <p className="mt-7 border border-dashed border-rule p-5 text-[0.92rem] leading-relaxed text-ink-soft">
           Polls have closed and the count is under way. We will publish the result here once the
-          council declares it — we would rather leave this blank than print a projection.
+          council declares it. We would rather leave this blank than print a projection.
         </p>
       ) : null}
 

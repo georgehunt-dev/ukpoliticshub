@@ -138,7 +138,7 @@ export default function PrimeMinisterPanel() {
               </span>
             </Link>
 
-            {/* Kept outside the Link — an anchor cannot legally nest inside one. */}
+            {/* Kept outside the Link: an anchor cannot legally nest inside one. */}
             <div className="border-t border-rule px-5 py-2.5 sm:px-7">
               <a
                 href={governmentStanding.source.url}
