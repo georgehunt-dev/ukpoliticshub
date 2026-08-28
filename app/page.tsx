@@ -117,7 +117,7 @@ const SECTIONS: {
     href: "/polls",
     title: "The polls themselves",
     blurb:
-      "Every poll inside the rolling average, with fieldwork dates and a link to each pollster's own write-up.",
+      "The polls inside the rolling average, with fieldwork dates and a link to each pollster's own write-up.",
     photo: "polling-station",
     alt: "A polling station sign outside a British polling place",
   },

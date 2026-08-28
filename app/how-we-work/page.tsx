@@ -46,9 +46,12 @@ export default function MethodologyPage() {
             click, and we cannot quietly put a thumb on the scale by choosing which polls to include.
           </p>
           <p>
-            Every individual poll behind the average is listed on the front page with its pollster,
-            fieldwork dates and a link to the pollster&rsquo;s own write-up. Where a pollster did not
-            publish a figure for a party, we print an em dash rather than a zero or an estimate.
+            The individual polls behind the average are listed on the front page with their
+            pollster, fieldwork dates and a link to the pollster&rsquo;s own write-up. Not every poll
+            in the average appears: some pollsters release to clients and aggregators without
+            publishing a write-up of their own, and we would rather list fewer polls than cite a
+            source that is not where the figure came from. Where a pollster did not publish a figure
+            for a party, we print an em dash rather than a zero or an estimate.
           </p>
           <p>
             <strong className="font-semibold text-ink">What this cannot tell you:</strong> vote share

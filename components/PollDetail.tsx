@@ -58,13 +58,14 @@ export default function PollDetail() {
             min-width:auto, so without it the 560px table below stretches this
             column and drags the whole page sideways on a phone. */}
         <div className="min-w-0">
-          <p className="eyebrow">Every poll in the average</p>
+          <p className="eyebrow">The polls we can link</p>
           <h2 className="mt-1 font-display text-3xl leading-tight sm:text-4xl">
             The polls themselves
           </h2>
           <p className="mt-2 text-[0.88rem] leading-relaxed text-ink-soft">
             As of {formatDate(POLL_AVERAGE_AS_OF)}. Each links to the pollster&rsquo;s own write-up,
-            so every figure here is checkable at source.
+            so every figure here is checkable at source. Polls whose pollster publishes no public
+            write-up count toward the average but are not listed.
           </p>
 
           <div className="mt-4 overflow-x-auto">
