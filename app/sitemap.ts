@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { parties, PARTIES_AS_OF } from "@/data/parties";
 import { allCompareSlugs } from "@/lib/compare";
 import { allBallots, BYELECTIONS_FETCHED_AT } from "@/lib/byelections";
-import { CONSTITUENCIES, CONSTITUENCIES_FETCHED_AT } from "@/lib/constituencies";
+import { CONSTITUENCIES, CONSTITUENCIES_FETCHED_AT, seatLetters } from "@/lib/constituencies";
 import { assessments } from "@/data/states";
 import { subjects } from "@/data/subjects";
 import { outlets } from "@/data/news";
@@ -85,6 +85,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
   ];
+
+  /**
+   * The A to Z hubs. In the sitemap deliberately: their whole job is to be
+   * crawled so the seats behind them are, and a hub Google visits rarely is a
+   * hub that is not doing it.
+   */
+  const letterRoutes: MetadataRoute.Sitemap = seatLetters().map(({ letter }) => ({
+    url: `${BASE}/constituencies/all/${letter.toLowerCase()}`,
+    lastModified: seatData,
+    changeFrequency: "monthly" as const,
+    priority: 0.4,
+  }));
 
   const partyRoutes: MetadataRoute.Sitemap = parties.map((party) => ({
     url: `${BASE}/parties/${party.slug}`,
@@ -182,6 +194,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...undated,
     ...partyRoutes,
     ...compareRoutes,
+    ...letterRoutes,
     ...constituencyRoutes,
     ...byElectionRoutes,
     ...assessmentRoutes,

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import SeatLetterNav from "@/components/SeatLetterNav";
+import SeatList from "@/components/SeatList";
 import { MoreLink, SectionHeading } from "@/components/ui";
 import { CONSTITUENCIES, CONSTITUENCY_SOURCE, type Constituency } from "@/lib/constituencies";
 
@@ -21,6 +22,11 @@ export default function AllConstituenciesPage() {
         action={<MoreLink href="/constituencies">Search instead</MoreLink>}
       />
 
+      {/* Jumping to W on this page otherwise means scrolling past five hundred
+          seats. Each letter is also its own page, which is what gives a
+          crawler a route to a seat that is not through 650 links at once. */}
+      <SeatLetterNav />
+
       {NATIONS.map((nation) => {
         const seats = CONSTITUENCIES.filter((seat) => seat.nation === nation);
         return (
@@ -35,26 +41,7 @@ export default function AllConstituenciesPage() {
                 {seats.length} seats
               </span>
             </h2>
-            <ul className="mt-3 grid gap-x-6 sm:grid-cols-2">
-              {seats.map((seat) => (
-                <li key={seat.slug} className="border-b border-rule/70">
-                  <Link
-                    href={`/constituencies/${seat.slug}`}
-                    className="flex items-baseline justify-between gap-3 py-2 transition-colors hover:bg-ink/[0.03]"
-                  >
-                    <span className="min-w-0 truncate text-[0.92rem]">{seat.name}</span>
-                    <span className="flex shrink-0 items-center gap-1.5 text-[0.72rem] text-ink-faint">
-                      <span
-                        aria-hidden="true"
-                        className="inline-block h-2 w-2 border border-ink/20"
-                        style={{ background: seat.mp?.partyColour ?? "transparent" }}
-                      />
-                      {seat.mp?.party ?? "—"}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <SeatList seats={seats} />
           </section>
         );
       })}

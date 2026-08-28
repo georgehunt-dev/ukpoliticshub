@@ -53,6 +53,36 @@ export type Constituency = {
 
 export const CONSTITUENCIES = detail.constituencies as Constituency[];
 
+/** The first letter of a seat name, which is how the A to Z pages are keyed. */
+export function letterOf(seat: Constituency): string {
+  return seat.name[0].toUpperCase();
+}
+
+/**
+ * Every letter that actually starts a constituency name, with its count.
+ *
+ * Derived rather than hard-coded: X and Z start none today, and a boundary
+ * review that changed that should not need this list edited by hand.
+ */
+export function seatLetters(): { letter: string; count: number }[] {
+  const counts = new Map<string, number>();
+  for (const seat of CONSTITUENCIES) {
+    const letter = letterOf(seat);
+    counts.set(letter, (counts.get(letter) ?? 0) + 1);
+  }
+  return [...counts.entries()]
+    .map(([letter, count]) => ({ letter, count }))
+    .sort((a, b) => a.letter.localeCompare(b.letter));
+}
+
+/** The seats under one letter, in name order. */
+export function seatsByLetter(letter: string): Constituency[] {
+  const wanted = letter.toUpperCase();
+  return CONSTITUENCIES.filter((seat) => letterOf(seat) === wanted).sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+}
+
 export const CONSTITUENCY_SOURCE = {
   label: "UK Parliament Members API",
   url: "https://members-api.parliament.uk/",
