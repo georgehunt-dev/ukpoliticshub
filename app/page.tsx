@@ -39,16 +39,24 @@ export default function Home() {
           is far taller than any minimum, which makes this inert. */}
       <section className="lg:flex lg:min-h-[calc(100dvh-9rem)] lg:flex-col">
         <div className="shell pt-4">
-          {/* Broken deliberately rather than left to wrap: the clause after
-              the comma is the half that says what makes the site different,
-              and it earns its own line. */}
-          {/* Steps down on shorter desktops. Two lines of type at the largest
-              size costs about 55px, which on a 1280x800 window is the
-              difference between the sign-up button sitting above the fold and
-              below it. */}
-          <h1 className="font-display text-[2.05rem] leading-[1.04] tracking-tight sm:text-[2.75rem] lg:text-[2.9rem] xl:text-[3.15rem] 2xl:text-[3.5rem]">
-            <span className="block">All In One Hub For British Politics,</span>
-            <span className="block">From Both Sides.</span>
+          {/* One line from lg up, which is what it is: a single claim, not two
+              halves. The size is tied to the viewport rather than stepped,
+              because the line has to fit the shell at every width between the
+              breakpoints, not just at them.
+
+              3.95vw is the widest that fits. The string measures 22.6x its own
+              font size in Times, and the shell leaves about 94.8% of the
+              viewport after its padding, so 94.8 / 22.6 = 4.19vw is the
+              ceiling; the rest is headroom for a fallback serif with wider
+              metrics. The 5rem cap only bites past about 1900px, where the line would
+              otherwise keep growing with the monitor. Deliberately no `whitespace-nowrap`: if a substituted
+              font does run wider, the line should wrap rather than push a
+              horizontal scrollbar onto the front page.
+
+              Below lg it wraps, because one line cannot be read on a phone at
+              any size that would fit it. */}
+          <h1 className="hero-title font-display text-[2.05rem] leading-[1.06] tracking-tight sm:text-[2.6rem] lg:text-[min(3.95vw,5rem)] lg:leading-[1.02]">
+            All In One Hub For British Politics, From Both Sides.
           </h1>
         </div>
 

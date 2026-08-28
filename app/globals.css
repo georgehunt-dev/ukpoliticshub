@@ -260,6 +260,113 @@ h1, h2, h3, h4, h5, h6, .font-display {
   transition-delay: 550ms;
 }
 
+/* The opening screen, composed once on load.
+
+   Unlike the scroll reveal above this runs on arrival, so it is pure CSS with
+   no observer and no JavaScript: a crawler and a reader with scripts off both
+   get the finished screen, because every rule here ends at the visible state
+   and `both` holds it there.
+
+   The order is the order the panel means. The headline settles, the rule over
+   the standings wipes across, then each party arrives and draws its own bar,
+   70ms behind the one above it. The figures land last, once the bars that
+   explain them have stopped moving. About 1.6s end to end.
+
+   Only the bars move as a chart. The percentages fade but never count up:
+   on a site whose whole claim is that every figure is checkable, a number
+   spinning to its value reads as decoration rather than as data.
+
+   Scoped to `no-preference` rather than left to the reduce override at the
+   foot of this file. That override zeroes the duration, which still leans on
+   the animation running at all to reach the visible state; declaring nothing
+   means a reader who asked for no motion, or any engine that never runs the
+   keyframes, simply gets the finished screen. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes hero-rise {
+    from { opacity: 0; transform: translateY(9px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @keyframes hero-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes hero-draw {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  .hero-title,
+  .hero-panel-title,
+  .hero-aside {
+    animation: hero-rise 0.42s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  .hero-panel-title { animation-delay: 0.2s; }
+  .hero-aside { animation-delay: 0.5s; }
+
+  /* The hairline over the standings, laid down left to right.
+
+     This replaces the list's own top border rather than sitting over it: an
+     extra line at a brighter value would still be there once the animation
+     finished, quietly restyling the panel. Same colour, same place, so the
+     settled state is exactly what it was. */
+  .hero-rule {
+    position: relative;
+  }
+
+  .hero-rule::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    transform-origin: left;
+    animation: hero-draw 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) 0.34s both;
+  }
+
+  .hero-row {
+    animation: hero-rise 0.38s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  .hero-bar {
+    transform-origin: left;
+    animation: hero-draw 0.56s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+
+  .hero-pct {
+    animation: hero-fade 0.3s linear both;
+  }
+
+  .hero-row:nth-child(1) { animation-delay: 0.44s; }
+  .hero-row:nth-child(2) { animation-delay: 0.51s; }
+  .hero-row:nth-child(3) { animation-delay: 0.58s; }
+  .hero-row:nth-child(4) { animation-delay: 0.65s; }
+  .hero-row:nth-child(5) { animation-delay: 0.72s; }
+  .hero-row:nth-child(n + 6) { animation-delay: 0.79s; }
+
+  .hero-row:nth-child(1) .hero-bar { animation-delay: 0.5s; }
+  .hero-row:nth-child(2) .hero-bar { animation-delay: 0.57s; }
+  .hero-row:nth-child(3) .hero-bar { animation-delay: 0.64s; }
+  .hero-row:nth-child(4) .hero-bar { animation-delay: 0.71s; }
+  .hero-row:nth-child(5) .hero-bar { animation-delay: 0.78s; }
+  .hero-row:nth-child(n + 6) .hero-bar { animation-delay: 0.85s; }
+
+  .hero-row:nth-child(1) .hero-pct { animation-delay: 0.92s; }
+  .hero-row:nth-child(2) .hero-pct { animation-delay: 0.99s; }
+  .hero-row:nth-child(3) .hero-pct { animation-delay: 1.06s; }
+  .hero-row:nth-child(4) .hero-pct { animation-delay: 1.13s; }
+  .hero-row:nth-child(5) .hero-pct { animation-delay: 1.2s; }
+  .hero-row:nth-child(n + 6) .hero-pct { animation-delay: 1.27s; }
+
+  .hero-foot {
+    animation: hero-fade 0.4s linear 1.32s both;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;

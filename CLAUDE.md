@@ -55,11 +55,39 @@ the no-slogan rule this file used to state: reader feedback was that the value w
 once you used the site and invisible before. It is one line, it makes a claim about
 coverage rather than a promise about quality, and it stays that way.
 
+It sets on a single typographic line from `lg` up, spanning the shell. The size is fluid
+(`min(3.95vw, 5rem)`) rather than stepped through the breakpoints, because the line has to
+fit at every width in between, not only at the breakpoints themselves. The string measures
+about 22.6x its own font size in Times and the shell leaves roughly 94.8% of the viewport
+after its padding, so 4.19vw is the ceiling and the rest is headroom. Do not add
+`whitespace-nowrap`: if a substituted serif runs wider it should wrap, not put a
+horizontal scrollbar on the front page. Below `lg` it wraps, because no size that fits one
+line on a phone is readable.
+
 That opening block is sized to end at the fold on a wide screen
 (`lg:min-h-[calc(100dvh-9rem)]`), so the indicator tiles below start below it rather than
 showing as a strip of half-visible boxes. It is a minimum, not a maximum: a short window
 scrolls normally and nothing is ever clipped. If the header's height changes, that `9rem`
 has to change with it.
+
+## Motion
+
+Two patterns, both slight, both in `app/globals.css`.
+
+The opening screen composes itself once on arrival: the headline settles, the rule over
+the standings wipes in from the left, then each party arrives and draws its own bar 70ms
+behind the one above it, figures last. Pure CSS, no observer, no JavaScript.
+
+Everything below the fold uses `components/Reveal.tsx`, which reveals a group when it
+scrolls into view and staggers its children with CSS delays.
+
+Both are declared inside `@media (prefers-reduced-motion: no-preference)`, so a reader who
+asked for no motion is served the finished page rather than an invisible one that an
+override has to rescue. Anything animated from a hidden start state must follow that rule.
+
+The poll figures never count up. On a site whose whole claim is that every figure is
+checkable, a number spinning to its value reads as decoration. The bars may move; the
+numbers appear.
 
 ## Neutrality
 

@@ -63,15 +63,15 @@ export default function HeroRace() {
             section heading, on one line: the date and the sourcing that used
             to sit here have moved into the footer below, which was already
             carrying a source link. */}
-        <h2 className="font-display text-[2.35rem] leading-[0.98] tracking-tight sm:text-[3.2rem]">
+        <h2 className="hero-panel-title font-display text-[2.35rem] leading-[0.98] tracking-tight sm:text-[3.2rem]">
           The Race for No.10
         </h2>
 
-        <ol className="mt-4 border-t border-white/20">
+        <ol className="hero-rule mt-4">
           {pollAverage.map((entry, index) => {
             const party = partyBySlug[entry.party];
             return (
-              <li key={entry.party} className="border-b border-white/20">
+              <li key={entry.party} className="hero-row border-b border-white/20">
                 <Link
                   href={`/parties/${party.slug}`}
                   /* Rows breathe on a wide screen: the panel is sized to the
@@ -98,7 +98,7 @@ export default function HeroRace() {
                     </p>
                     <div className="mt-1 h-[3px] w-full bg-white/15">
                       <div
-                        className="h-full"
+                        className="hero-bar h-full"
                         style={{
                           width: `${(entry.pct / lead) * 100}%`,
                           backgroundColor: onDark(party.colour),
@@ -106,7 +106,7 @@ export default function HeroRace() {
                       />
                     </div>
                   </div>
-                  <span className="shrink-0 font-display text-xl font-bold tabular">
+                  <span className="hero-pct shrink-0 font-display text-xl font-bold tabular">
                     {entry.pct.toFixed(1)}
                     <span className="text-xs text-[color:var(--paper)]/60">%</span>
                   </span>
@@ -120,7 +120,7 @@ export default function HeroRace() {
             their own lines above the title; a polling figure without a visible
             date is the one thing this site does not do, so it moved rather
             than went. */}
-        <p className="mt-3 text-[0.66rem] leading-relaxed text-[color:var(--paper)]/62">
+        <p className="hero-foot mt-3 text-[0.66rem] leading-relaxed text-[color:var(--paper)]/62">
           Rolling average of published British Polling Council polls ·{" "}
           {formatDate(POLL_AVERAGE_AS_OF)} ·{" "}
           <a

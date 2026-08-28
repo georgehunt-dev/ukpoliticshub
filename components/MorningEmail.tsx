@@ -44,7 +44,7 @@ export default function MorningEmail() {
   const [email, setEmail] = useState("");
 
   return (
-    <aside className="flex flex-col border-t border-rule pt-5 lg:h-full lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0">
+    <aside className="hero-aside flex flex-col border-t border-rule pt-5 lg:h-full lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0">
       {photo ? (
         /* The photograph takes whatever the text leaves. Its floor stays low
            on purpose: this column sets the height of the whole row, so a tall
