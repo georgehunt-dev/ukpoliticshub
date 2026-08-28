@@ -201,9 +201,69 @@ h1, h2, h3, h4, h5, h6, .font-display {
   font-feature-settings: "tnum";
 }
 
+/* Scroll reveal, driven by components/Reveal.tsx.
+
+   Two movements, both slight: the 2px rule over each column wipes in from the
+   left the way a printed rule is laid down, and the text under it settles up
+   into place. Nothing scales, spins or bounces. The rule leads by a beat so
+   the eye follows it across the row.
+
+   Items stagger by position rather than by a per-item observer. Six steps is
+   enough for anything on this site; past that they all share the last delay,
+   which is better than a row that keeps getting slower. */
+[data-reveal] .reveal-item {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 520ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+[data-reveal="out"] .reveal-item {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+[data-reveal] .reveal-rule::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: var(--ink);
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 640ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+[data-reveal="out"] .reveal-rule::before {
+  transform: scaleX(0);
+}
+
+[data-reveal] .reveal-item:nth-child(2),
+[data-reveal] .reveal-rule:nth-child(2)::before {
+  transition-delay: 110ms;
+}
+[data-reveal] .reveal-item:nth-child(3),
+[data-reveal] .reveal-rule:nth-child(3)::before {
+  transition-delay: 220ms;
+}
+[data-reveal] .reveal-item:nth-child(4),
+[data-reveal] .reveal-rule:nth-child(4)::before {
+  transition-delay: 330ms;
+}
+[data-reveal] .reveal-item:nth-child(5),
+[data-reveal] .reveal-rule:nth-child(5)::before {
+  transition-delay: 440ms;
+}
+[data-reveal] .reveal-item:nth-child(n + 6),
+[data-reveal] .reveal-rule:nth-child(n + 6)::before {
+  transition-delay: 550ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
   }
 }

@@ -47,6 +47,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en-GB" className={`${sourceSans.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
+        {/* Scroll-revealed items are hidden until Reveal.tsx puts them back,
+            so without JavaScript they would never appear. Nothing on this
+            site is animation-only content, and it all stays readable. */}
+        <noscript>
+          <style>{`[data-reveal="out"] .reveal-item{opacity:1;transform:none}
+[data-reveal="out"] .reveal-rule::before{transform:scaleX(1)}`}</style>
+        </noscript>
         <SiteStructuredData />
         <a
           href="#main"

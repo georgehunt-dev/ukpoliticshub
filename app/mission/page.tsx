@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import MissionValues from "@/components/MissionValues";
 import SectionImage from "@/components/SectionImage";
 import { MoreLink } from "@/components/ui";
 
@@ -26,29 +27,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/mission" },
 };
 
-const VALUES: { name: string; note: string; body: string }[] = [
-  {
-    name: "Neutrality",
-    note: "People first",
-    body: "We will never, ever be financially affiliated with any UK political party.",
-  },
-  {
-    name: "Palatability",
-    note: "Everything in one place",
-    body: "We obsess over ensuring the British public have everything they need, all in one place.",
-  },
-  {
-    name: "Knowledge",
-    note: "Naming the bias",
-    body: "Addressing the division from the left and the right, we wish to educate all on media bias.",
-  },
-  {
-    name: "Democracy",
-    note: "The power of a vote",
-    body: "We aspire to empower the British public to enact positive change via their vote.",
-  },
-];
-
 export default function MissionPage() {
   return (
     <div className="shell py-11">
@@ -73,34 +51,7 @@ export default function MissionPage() {
         </p>
       </blockquote>
 
-      <section className="mt-14">
-        <p className="eyebrow">What we hold to</p>
-        <h2 className="mt-1 font-display text-3xl leading-tight sm:text-4xl">Four values</h2>
-
-        <ol className="mt-7 border-t-2 border-ink">
-          {VALUES.map((value, index) => (
-            <li
-              key={value.name}
-              className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 border-b border-rule py-6 sm:grid-cols-[3.5rem_minmax(0,1fr)] sm:gap-x-7"
-            >
-              <span className="font-display text-2xl leading-none text-ink-faint tabular sm:text-3xl">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <div className="min-w-0">
-                <div className="flex flex-wrap items-baseline gap-x-3.5 gap-y-1">
-                  <h3 className="font-display text-2xl leading-none sm:text-3xl">{value.name}</h3>
-                  <span className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-oxblood">
-                    {value.note}
-                  </span>
-                </div>
-                <p className="measure mt-2.5 text-[1rem] leading-relaxed text-ink-soft">
-                  {value.body}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
+      <MissionValues />
 
       {/* A value is only worth printing if it is checkable. These are the two
           places a reader can go and hold us to it. */}
