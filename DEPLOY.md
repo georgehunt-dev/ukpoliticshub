@@ -123,6 +123,45 @@ curl -sI https://ukpoliticshub.com/ | head -1
 - [ ] Check the Actions tab shows the refresh job running green every 15 minutes.
 - [ ] Run the [Rich Results Test](https://search.google.com/test/rich-results) on `/` and `/news` to confirm the structured data parses.
 
+## 6. The index audit (optional, needs a service account)
+
+`.github/workflows/audit-index.yml` asks Google every Monday whether each of
+the ~750 URLs in the sitemap is actually indexed, and commits the answer to
+`data/generated/index-status.json`. Without credentials it logs that fact and
+writes nothing, so the repo is fine as it stands; this is what to do when you
+want the data.
+
+It reports rather than pushes. Google's Indexing API is documented as being
+for `JobPosting` and `BroadcastEvent` only, so anything claiming to
+"auto-index" ordinary pages is using it outside its terms, and that is not a
+trade this site should make. What moves indexing here is an honest sitemap and
+pages reachable in few clicks. This measures whether that is working.
+
+1. In [Google Cloud Console](https://console.cloud.google.com/), create a
+   project and a **service account**. Give it no roles: it needs none.
+2. On that service account, **Keys → Add key → JSON**. Download it once.
+3. Enable the **Google Search Console API** for the project.
+4. In Search Console → **Settings → Users and permissions → Add user**, add the
+   service account's email with permission **Owner**.
+
+   This is the step that catches people. "Full user" can read Search Analytics
+   but URL Inspection returns 403 for it, and the error does not say why. The
+   script names this case explicitly if it happens.
+5. Add two repository secrets under **Settings → Secrets and variables →
+   Actions**:
+
+   - `GSC_CLIENT_EMAIL`, the `client_email` from the JSON
+   - `GSC_PRIVATE_KEY`, the `private_key` from the JSON, `\n` escapes left
+     exactly as they appear in the file
+
+   Optionally `GSC_SITE_URL` if the property is not `sc-domain:ukpoliticshub.com`.
+6. Run it by hand once from **Actions → Audit index coverage → Run workflow**.
+
+Quota is 2,000 URLs per day and 600 per minute per property, on a rolling
+window shared with anything else inspecting the site. A full sweep of ~750
+uses well under half a day's allowance, which is why it is weekly rather than
+nightly: coverage state moves over weeks, not hours.
+
 ## Known gaps to close before promoting the site widely
 
 **Email capture is built and needs one key to go live.** The form validates, rate-limits, carries a honeypot and shows proper states; `/privacy` covers the newsletter under UK GDPR. Until a provider is configured the endpoint returns 503 and the form says sign-ups aren't open. It never accepts an address and drops it.
