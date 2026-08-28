@@ -14,6 +14,16 @@ import type { Party, PartySlug } from "@/lib/types";
  *   • Seat counts state the basis on which they are given.
  */
 
+/**
+ * When the party dossiers were last reviewed.
+ *
+ * Hand-maintained, like POLL_AVERAGE_AS_OF and IMMIGRATION_AS_OF, because
+ * this file is curated rather than fetched. It is what the sitemap tells
+ * crawlers about the party and comparison pages, so move it when you change
+ * a policy row or a leadership entry, and leave it alone for a typo fix.
+ */
+export const PARTIES_AS_OF = "2026-08-27";
+
 export const parties: Party[] = [
   /* ── Labour ──────────────────────────────────────────────────────────── */
   {

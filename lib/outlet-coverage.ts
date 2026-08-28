@@ -2,6 +2,15 @@ import history from "@/data/generated/outlet-history.json";
 import { subjectBySlug } from "@/data/subjects";
 
 /**
+ * When the nightly recorder last appended a day.
+ *
+ * The outlet pages report counts drawn from this file, so this is the
+ * date those pages actually changed, and it is what the sitemap tells
+ * crawlers about them.
+ */
+export const OUTLET_COVERAGE_UPDATED_AT = (history as { updatedAt: string }).updatedAt;
+
+/**
  * What each masthead chose to write about, measured against the press.
  *
  * The figure is an index: the share of an outlet's stories touching a subject,

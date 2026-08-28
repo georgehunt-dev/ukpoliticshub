@@ -1,6 +1,9 @@
 import detail from "@/data/generated/constituency-detail.json";
 import type { PhotoSlug } from "@/lib/photos";
 
+/** When the seat dataset was last pulled. Drives sitemap lastmod. */
+export const CONSTITUENCIES_FETCHED_AT = detail.fetchedAt as string;
+
 /**
  * The 650 Westminster seats, with the sitting MP and the full 2024 result.
  *
