@@ -23,7 +23,11 @@ import { onDark } from "@/lib/colour";
  */
 export default function HeroRace() {
   const photo = getPhoto("downing-street");
-  const lead = pollAverage[0].pct;
+  /* Taken from the figures rather than from position 0, so the emphasis below
+     follows whoever is actually ahead. If the order in data/polls.ts is ever
+     edited out of rank, the bars stay scaled correctly and the larger figure
+     stays on the leader rather than on whatever happens to be listed first. */
+  const lead = Math.max(...pollAverage.map((entry) => entry.pct));
 
   return (
     <section
@@ -106,7 +110,15 @@ export default function HeroRace() {
                       />
                     </div>
                   </div>
-                  <span className="hero-pct shrink-0 font-display text-xl font-bold tabular">
+                  {/* The panel is called The Race for No.10, so the figure in
+                      front carries more weight than the five behind it. The
+                      emphasis is set by the number, not by the row's position,
+                      which is what keeps it neutral: whoever leads gets it. */}
+                  <span
+                    className={`hero-pct shrink-0 font-display font-bold tabular ${
+                      entry.pct === lead ? "text-[1.65rem]" : "text-xl"
+                    }`}
+                  >
                     {entry.pct.toFixed(1)}
                     <span className="text-xs text-[color:var(--paper)]/60">%</span>
                   </span>

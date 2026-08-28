@@ -109,10 +109,14 @@ export function electionLabel(result: ElectionResult): string {
     return year ? `${year} general election` : "general election";
   }
   if (!result.date) return "by-election";
+  /* UTC for the same reason as components/ui.tsx: result.date is a calendar
+     date, and formatting it in the running zone would date the by-election a
+     day early west of Greenwich. */
   const when = new Date(result.date).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long",
     year: "numeric",
+    timeZone: "UTC",
   });
   return `by-election of ${when}`;
 }

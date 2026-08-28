@@ -119,14 +119,35 @@ export function MoreLink({ href, children }: { href: string; children: React.Rea
   );
 }
 
+/**
+ * Both of these take a calendar date, "YYYY-MM-DD", and every caller passes
+ * one: the few that hold a full timestamp slice it down first.
+ *
+ * `timeZone: "UTC"` pins the output to that calendar date.
+ * `new Date("2026-08-27")` is parsed as midnight UTC, so formatting it in
+ * whatever zone the code happens to run in renders the day before anywhere
+ * west of Greenwich: the 27 August poll average printed as "26 August 2026"
+ * on a machine in New York.
+ *
+ * Today that only bites in local development, because every caller is a
+ * server component and the deployment runs UTC. It is pinned anyway. The
+ * moment one of these callers gains "use client" the date starts changing
+ * with who is reading it, and a wrong date on a sourced figure is the kind
+ * of fault this site cannot absorb. Do not remove it as redundant.
+ */
 export function formatDate(iso: string): string {
   const date = new Date(iso);
   if (Number.isNaN(date.getTime())) return iso;
-  return date.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+  return date.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
 }
 
 export function formatShortDate(iso: string): string {
   const date = new Date(iso);
   if (Number.isNaN(date.getTime())) return iso;
-  return date.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+  return date.toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getNews } from "@/lib/news";
+import { formatDate } from "@/components/ui";
 import { coverageFor } from "@/lib/subjects";
 import { subjectBySlug } from "@/data/subjects";
 
@@ -47,7 +48,7 @@ export default async function AssessmentNews({
 
       <p className="measure mt-2.5 text-[0.9rem] leading-relaxed text-ink-soft">
         These update on their own. The assessment above does not. It was last reviewed on{" "}
-        {assessed.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })},
+        {formatDate(assessedOn)},
         and only changes when someone changes it.
         {newer > 0 ? (
           <>
