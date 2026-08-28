@@ -142,11 +142,18 @@ pages reachable in few clicks. This measures whether that is working.
 2. On that service account, **Keys → Add key → JSON**. Download it once.
 3. Enable the **Google Search Console API** for the project.
 4. In Search Console → **Settings → Users and permissions → Add user**, add the
-   service account's email with permission **Owner**.
+   service account's email as a **Full** user.
 
-   This is the step that catches people. "Full user" can read Search Analytics
-   but URL Inspection returns 403 for it, and the error does not say why. The
-   script names this case explicitly if it happens.
+   Try Full first. Google's API reference does not state a permission level for
+   URL Inspection, and the widespread "it must be an Owner" advice appears to
+   come from the Indexing API, which is a different endpoint with different
+   rules. Full is the smaller grant: an owner of a property can remove other
+   users and delete the property, which is more than a reporting script needs.
+
+   If the run returns 403, escalate: **Users and permissions**, the three dots
+   beside an existing owner, **Manage property owners**, **Add an owner**. The
+   script names this case explicitly so you are not left guessing at a bare
+   status code.
 5. Add two repository secrets under **Settings → Secrets and variables →
    Actions**:
 
