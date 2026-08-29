@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Reveal from "@/components/Reveal";
+import SupportLink from "@/components/SupportLink";
 
 /**
  * The first thing a reader meets after the opening screen.
@@ -17,8 +19,8 @@ const VALUES = ["Neutrality", "Palatability", "Knowledge", "Democracy"];
 export default function MissionBand() {
   return (
     <section aria-label="Our mission" className="border-y border-rule bg-[color:var(--paper-raised)]">
-      <div className="shell flex flex-wrap items-center justify-between gap-x-10 gap-y-4 py-5">
-        <div className="min-w-0">
+      <Reveal className="shell flex flex-wrap items-center justify-between gap-x-10 gap-y-4 py-5">
+        <div className="reveal-item min-w-0">
           <p className="eyebrow">Our mission</p>
           <p className="measure mt-1.5 font-display text-[1.15rem] leading-snug sm:text-[1.4rem]">
             Give British people the knowledge to vote with confidence, and the power to change
@@ -26,7 +28,7 @@ export default function MissionBand() {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+        <div className="reveal-item flex flex-wrap items-center gap-x-6 gap-y-2">
           <ul className="flex flex-wrap gap-x-5 gap-y-1">
             {VALUES.map((value) => (
               <li
@@ -44,8 +46,10 @@ export default function MissionBand() {
           >
             What we stand for →
           </Link>
+
+          <SupportLink variant="quiet">Buy us a coffee</SupportLink>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

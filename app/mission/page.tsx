@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import MissionValues from "@/components/MissionValues";
+import Reveal from "@/components/Reveal";
+import SupportLink from "@/components/SupportLink";
 import SectionImage from "@/components/SectionImage";
 import { MoreLink } from "@/components/ui";
 
@@ -44,12 +46,14 @@ export default function MissionPage() {
           and the power it carries through a single clause and lost both. The
           four beats are unchanged: knowledge, the vote, the power, the
           country. */}
-      <blockquote className="mt-10 border-l-[3px] border-gold pl-6 sm:pl-8">
-        <p className="max-w-4xl font-display text-[1.7rem] leading-[1.28] sm:text-[2.35rem]">
+      <Reveal>
+        <blockquote className="reveal-item mt-10 border-l-[3px] border-gold pl-6 sm:pl-8">
+          <p className="max-w-4xl font-display text-[1.7rem] leading-[1.28] sm:text-[2.35rem]">
           Give British people the knowledge to vote with confidence, and through that vote,
-          the power to change the nation they love for the better.
-        </p>
-      </blockquote>
+            the power to change the nation they love for the better.
+          </p>
+        </blockquote>
+      </Reveal>
 
       <MissionValues />
 
@@ -73,6 +77,28 @@ export default function MissionPage() {
           <MoreLink href="/colophon">Where the images come from</MoreLink>
         </p>
       </section>
+
+      {/* The ask sits here, immediately after the page has finished promising
+          independence, because it is the same statement: what pays for the
+          site is what determines who it answers to. Kept to the fact, with no
+          urgency and no counter. */}
+      <Reveal>
+        <section className="reveal-item mt-12 border-t-2 border-ink pt-6">
+          <p className="eyebrow">Who pays for this</p>
+          <h2 className="mt-1.5 font-display text-2xl leading-tight sm:text-3xl">
+            No ads, no paywall, no party money
+          </h2>
+          <p className="measure mt-3 text-[0.95rem] leading-relaxed text-ink-soft">
+            The site carries no advertising, sells nothing and has never taken a penny from a
+            party, campaign or candidate. That is what lets the first value above be a promise
+            rather than a preference: there is nobody to answer to except the people reading it.
+            It stays free either way. If it has been useful, you can put something in the tin.
+          </p>
+          <p className="mt-5">
+            <SupportLink>Buy us a coffee →</SupportLink>
+          </p>
+        </section>
+      </Reveal>
 
       <p className="mt-10 measure text-[0.86rem] leading-relaxed text-ink-faint">
         ukpoliticshub is not endorsed by, affiliated with, funded by or connected to any political
