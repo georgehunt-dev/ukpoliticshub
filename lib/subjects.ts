@@ -118,29 +118,65 @@ const SAME_STORY = 0.3;
  * belongs to none of them. Where they share too little to be readable, the
  * shortest headline is used and the reader can see it is a headline.
  */
-export function labelFor(storyline: Storyline): string | null {
+export type StorylineLabel =
+  /** Words every headline in the group shares, so the phrase belongs to none of them. */
+  | { text: string; kind: "shared" }
+  /** No usable shared phrase, so one paper's headline stands in, named as theirs. */
+  | { text: string; kind: "headline"; outletName: string };
+
+export function labelFor(storyline: Storyline): StorylineLabel | null {
   const keys = storyline.stories.map((line) => keyOf(line.title));
   let shared = [...keys[0]];
   for (const key of keys.slice(1)) shared = shared.filter((word) => key.has(word));
-  if (shared.length < 2) return null;
 
-  const shortest = storyline.stories
-    .map((line) => line.title.replace(/\s*[–: -]\s*as it happened.*$/i, ""))
-    .sort((a, b) => a.length - b.length)[0];
+  const byLength = [...storyline.stories].sort((a, b) => a.title.length - b.title.length);
+  const shortest = byLength[0];
+  const clean = shortest.title.replace(/\s*[–: -]\s*as it happened.*$/i, "");
 
-  const words = shortest.split(/\s+/);
-  const isShared = (w: string) => shared.includes(normalise(w).trim().replace(/\s+/g, ""));
-  const first = words.findIndex(isShared);
-  const last = words.map(isShared).lastIndexOf(true);
-  if (first < 0 || last <= first) return null;
+  /**
+   * Only an unbroken run of shared words is used.
+   *
+   * Picking out the shared words and closing the gaps reads well and is
+   * sometimes false: three headlines about a temporary ban on data centres
+   * share "temporary", "data" and "centres" but not "ban", and the phrase
+   * that comes back is "temporary data centres", which is a different
+   * subject. Anything dropped from the middle of a phrase can invert it, so
+   * nothing is dropped from the middle of a phrase.
+   */
+  const words = clean.split(/\s+/);
+  const isShared = (word: string) =>
+    shared.includes(normalise(word).trim().replace(/\s+/g, ""));
 
-  const span = words.slice(first, last + 1);
-  // Too short to say anything, or long enough that it is really just one
-  // paper's headline wearing a label's clothes. Either way, decline.
-  if (span.length < 3 || span.length > 8) return null;
+  let best: string[] = [];
+  let run: string[] = [];
+  for (const word of words) {
+    if (isShared(word)) {
+      run.push(word);
+      if (run.length > best.length) best = [...run];
+    } else {
+      run = [];
+    }
+  }
 
-  const phrase = span.join(" ").replace(/[,;:]$/, "");
-  return phrase.charAt(0).toUpperCase() + phrase.slice(1);
+  if (best.length >= 2 && best.length <= 8) {
+    const phrase = best
+      .join(" ")
+      .replace(/^[^\p{L}\p{N}]+/u, "")
+      .replace(/[^\p{L}\p{N}'’]+$/u, "");
+    if (phrase) {
+      return { text: phrase.charAt(0).toUpperCase() + phrase.slice(1), kind: "shared" };
+    }
+  }
+
+  /**
+   * The documented fallback, which was never actually implemented: the
+   * shortest headline, shown as a headline and attributed. Returning null
+   * instead left almost every group titled "One story, 3 mastheads", because
+   * the old span ran from the first shared word to the last and swept up
+   * everything between them, so a subject named at the start and a key noun
+   * at the end blew past the cap every time.
+   */
+  return { text: clean, kind: "headline", outletName: shortest.outletName };
 }
 
 export function coverageFor(subject: Subject, items: NewsItem[]): SubjectCoverage {

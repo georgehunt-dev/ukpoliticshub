@@ -1,6 +1,6 @@
 import StoryRow from "@/components/StoryRow";
 import { formatDate } from "@/components/ui";
-import type { Storyline as StorylineType } from "@/lib/subjects";
+import type { Storyline as StorylineType, StorylineLabel } from "@/lib/subjects";
 
 /**
  * One event, as the left and the right told it.
@@ -56,7 +56,7 @@ export default function Storyline({
    * that paper the framing: the header simply carries the date and the count,
    * and the headlines below speak for themselves.
    */
-  title: string | null;
+  title: StorylineLabel | null;
 }) {
   const leftish = storyline.stories.filter((s) => s.lean !== "right");
   const rightish = storyline.stories.filter((s) => s.lean === "right");
@@ -69,8 +69,22 @@ export default function Storyline({
           <p className="text-[0.63rem] font-bold uppercase tracking-[0.14em] text-ink-faint">
             {formatDate(storyline.latest.slice(0, 10))}
           </p>
+          {/* A shared phrase belongs to no masthead and is set as a title. A
+              borrowed headline is set in quotes and credited, so the reader
+              can see whose words they are rather than taking them as ours. */}
           {title ? (
-            <h3 className="mt-0.5 font-display text-xl leading-tight sm:text-[1.35rem]">{title}</h3>
+            <h3 className="mt-0.5 font-display text-xl leading-tight sm:text-[1.35rem]">
+              {title.kind === "shared" ? (
+                title.text
+              ) : (
+                <>
+                  &ldquo;{title.text}&rdquo;{" "}
+                  <span className="font-body text-[0.7rem] font-bold uppercase tracking-[0.12em] text-ink-faint">
+                    {title.outletName}&rsquo;s wording
+                  </span>
+                </>
+              )}
+            </h3>
           ) : (
             <p className="mt-0.5 font-display text-lg leading-tight text-ink-soft">
               One story, {storyline.stories.length} mastheads
