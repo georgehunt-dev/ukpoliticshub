@@ -26,6 +26,13 @@ export type Subject = {
   own: string[];
   /** Terms belonging to the linked party or leader. */
   linked: string[];
+  /**
+   * Phrases where a term above is ordinary English rather than the subject.
+   * These are cut out of the text before matching, so a story saying both
+   * "electoral reform" and "Reform UK" still counts, and one saying only the
+   * former does not.
+   */
+  exclude?: string[];
   /** How linked coverage is labelled: "via Reform UK". */
   linkedName?: string;
   /** Portrait slug for people, photo slug for issues. */
@@ -66,15 +73,25 @@ const PARTIES: Subject[] = [
   {
     slug: "labour", name: "Labour", role: "Party", kind: "party",
     own: ["labour"], linked: ["burnham"], linkedName: "Andy Burnham", photo: "westminster",
+    exclude: ["labour market", "labour markets", "labour force", "labour shortage",
+              "labour shortages", "labour costs", "child labour", "manual labour",
+              "cheap labour", "labour of love", "hard labour"],
   },
   {
     slug: "reform-uk", name: "Reform UK", role: "Party", kind: "party",
     own: ["reform uk", "reform"], linked: ["farage"], linkedName: "Nigel Farage", photo: "westminster",
+    exclude: ["electoral reform", "welfare reform", "planning reform", "constitutional reform",
+              "prison reform", "tax reform", "lords reform", "land reform", "nhs reform",
+              "pension reform", "reform of", "reform to", "reforms to", "reform the"],
   },
   {
     slug: "conservatives", name: "The Conservatives", role: "Party", kind: "party",
     own: ["conservative", "conservatives", "tory", "tories"], linked: ["badenoch"],
     linkedName: "Kemi Badenoch", photo: "westminster",
+    exclude: ["conservative influencer", "conservative commentator", "conservative movement",
+              "conservative estimate", "conservative estimates", "socially conservative",
+              "fiscally conservative", "small-c conservative", "american conservative",
+              "conservative activist", "conservative christian"],
   },
   {
     slug: "green-party", name: "The Greens", role: "Party", kind: "party",

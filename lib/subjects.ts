@@ -66,8 +66,19 @@ export type SubjectCoverage = {
   linked: number;
 };
 
-function mentions(haystack: string, terms: string[]): boolean {
-  return terms.some((term) => haystack.includes(` ${term} `) || haystack.includes(` ${term}s `));
+/**
+ * Does the text name this subject?
+ *
+ * `exclude` is cut out first rather than used to veto the story, so a piece
+ * that says both "electoral reform" and "Reform UK" still counts while one
+ * that only says the former does not. Several party names are ordinary
+ * English: a labour market, a conservative estimate, electoral reform. Without
+ * this, "British conservative influencer detained by ICE" filed itself under
+ * the Conservative Party.
+ */
+function mentions(haystack: string, terms: string[], exclude: string[] = []): boolean {
+  const text = exclude.reduce((acc, phrase) => acc.split(phrase).join(" "), haystack);
+  return terms.some((term) => text.includes(` ${term} `) || text.includes(` ${term}s `));
 }
 
 /* ── Grouping stories that are about the same event ─────────────────────── */
@@ -137,8 +148,22 @@ export function coverageFor(subject: Subject, items: NewsItem[]): SubjectCoverag
 
   for (const item of items) {
     const haystack = normalise(`${item.title} ${item.summary ?? ""}`);
-    const own = mentions(haystack, subject.own);
-    const linked = !own && subject.linked.length > 0 && mentions(haystack, subject.linked);
+    const own = mentions(haystack, subject.own, subject.exclude);
+    /**
+     * A person's page carries only what names them.
+     *
+     * The linked half of a leader/party pair still works the other way round:
+     * a story naming Burnham belongs on Labour's page, because he leads it.
+     * The reverse does not hold. Every Labour story is not an Andy Burnham
+     * story, and filing "Migrants invading Britain, Labour and leftie
+     * judiciary" under his name says we think it is about him. Twelve of the
+     * forty-eight stories on his page arrived that way.
+     */
+    const linked =
+      !own &&
+      subject.kind !== "person" &&
+      subject.linked.length > 0 &&
+      mentions(haystack, subject.linked, subject.exclude);
     if (!own && !linked) continue;
 
     const outlet = outletById[item.outlet];

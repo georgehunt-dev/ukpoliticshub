@@ -53,6 +53,12 @@ function Sparkle({ className = "" }: { className?: string }) {
 export default function AskBar() {
   const [question, setQuestion] = useState("");
   const [state, setState] = useState<State>({ status: "idle" });
+
+  /** Put the bar back to how it was before anyone asked anything. */
+  function dismiss() {
+    setState({ status: "idle" });
+    setQuestion("");
+  }
   const inputRef = useRef<HTMLInputElement>(null);
 
   async function ask(text: string) {
@@ -108,6 +114,9 @@ export default function AskBar() {
             type="text"
             value={question}
             onChange={(event) => setQuestion(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === "Escape" && state.status === "answered") dismiss();
+            }}
             placeholder="Ask anything: ‘where do the parties stand on the ECHR?’"
             autoComplete="off"
             className="min-w-0 flex-1 bg-transparent py-2 font-body text-[0.88rem] placeholder:text-ink-faint focus:outline-none"
@@ -150,10 +159,37 @@ export default function AskBar() {
 
         {state.status === "answered" ? (
           <div className="mt-3 border border-rule bg-[color:var(--paper-raised)] p-4">
-            <p className="eyebrow flex items-center gap-1.5">
-              <Sparkle className="h-3 w-3 text-oxblood" />
-              {state.covered ? "From our pages" : "Not covered yet"}
-            </p>
+            {/* Dismiss sits at the top because that is where the reader is when
+                they decide they are done. "Ask something else" at the foot of
+                the panel means scrolling past the whole answer to get rid of
+                it, which on a phone is the answer covering the site until you
+                have scrolled it all. Both stay: this closes, that one closes
+                and puts the cursor back in the box. */}
+            <div className="flex items-start justify-between gap-4">
+              <p className="eyebrow flex items-center gap-1.5">
+                <Sparkle className="h-3 w-3 text-oxblood" />
+                {state.covered ? "From our pages" : "Not covered yet"}
+              </p>
+              <button
+                type="button"
+                onClick={dismiss}
+                aria-label="Close this answer"
+                /* 36x36 hit area around a 14px mark. The glyph wants to be
+                   small and quiet; the thing you tap does not. */
+                className="-mr-2 -mt-2 flex h-9 w-9 shrink-0 items-center justify-center text-ink-faint transition-colors hover:text-ink"
+              >
+                <svg
+                  viewBox="0 0 14 14"
+                  aria-hidden="true"
+                  className="h-3.5 w-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.6}
+                >
+                  <path d="M1.5 1.5l11 11M12.5 1.5l-11 11" />
+                </svg>
+              </button>
+            </div>
             <p className="mt-2 text-[0.92rem] leading-relaxed">{state.answer}</p>
 
             {state.suggestions.length ? (
@@ -203,8 +239,7 @@ export default function AskBar() {
             <button
               type="button"
               onClick={() => {
-                setState({ status: "idle" });
-                setQuestion("");
+                dismiss();
                 inputRef.current?.focus();
               }}
               className="mt-3 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-oxblood"
