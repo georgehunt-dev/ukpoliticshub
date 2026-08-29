@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import CompareControls from "@/components/CompareControls";
+import ComparePicker from "@/components/ComparePicker";
+import PolicyIcon from "@/components/PolicyIcon";
 import { IssueComparison, PairComparison } from "@/components/CompareViews";
 import { MoreLink } from "@/components/ui";
-import { POLICY_AREAS } from "@/data/policy-areas";
 import { allCompareSlugs, allPairs, coverageFor, resolveCompare } from "@/lib/compare";
 
 export function generateStaticParams() {
@@ -46,21 +46,29 @@ export default async function ComparePage(props: PageProps<"/compare/[slug]">) {
 
       <div className="rule-gold mt-5 pt-5">
         <p className="eyebrow">Side by side</p>
-        <div className="mt-2">
-          {view.kind === "issue" ? (
-            <CompareControls mode="issue" issue={view.area.id} />
-          ) : (
-            <CompareControls mode="pair" left={view.left.slug} right={view.right.slug} />
-          )}
-        </div>
+        {view.kind === "issue" ? (
+          <h1 className="mt-1.5 flex items-center gap-3 font-display text-3xl leading-tight sm:text-4xl">
+            <PolicyIcon area={view.area.id} className="h-8 w-8 shrink-0 text-oxblood sm:h-9 sm:w-9" />
+            {view.area.name}
+          </h1>
+        ) : (
+          <h1 className="mt-1.5 font-display text-3xl leading-tight sm:text-4xl">
+            {view.left.shortName} vs {view.right.shortName}
+          </h1>
+        )}
       </div>
+
+      {view.kind === "issue" ? (
+        <ComparePicker issue={view.area.id} />
+      ) : (
+        <ComparePicker left={view.left.slug} right={view.right.slug} />
+      )}
 
       {view.kind === "issue" ? (
         <>
           <p className="mt-5 max-w-3xl text-[0.95rem] leading-relaxed text-ink-soft">
-            {view.area.question} Parties are ordered left to right by our placement on the spectrum.
-            Each line is the position in brief: open <em>in full</em> for the detail and where it is
-            contested.
+            {view.area.question} Parties are ordered left to right by our placement on the
+            spectrum, and each line is the position in brief.
           </p>
           <IssueComparison view={view} />
           <p className="mt-4 text-[0.82rem] text-ink-faint">
@@ -72,8 +80,7 @@ export default async function ComparePage(props: PageProps<"/compare/[slug]">) {
       ) : (
         <>
           <p className="mt-5 max-w-3xl text-[0.95rem] leading-relaxed text-ink-soft">
-            {view.left.name} and {view.right.name} across all ten areas, in their own stated terms.
-            Open <em>in full</em> for the detail beneath any line.
+            All ten areas, in each party&rsquo;s own stated terms.
           </p>
           <PairComparison view={view} />
         </>
@@ -90,23 +97,14 @@ export default async function ComparePage(props: PageProps<"/compare/[slug]">) {
         <MoreLink href="/compare">Compare something else</MoreLink>
       </div>
 
-      {/* Cross-links: real navigation, and it spreads ranking between the pages */}
+      {/* Only the pairings need this now. The ten issues used to be listed
+          here as well as being the only other way to change issue; they are
+          the picker at the top of the page instead. */}
+      {view.kind === "pair" ? (
       <nav aria-label="Other comparisons" className="mt-8">
-        <p className="eyebrow mb-3">
-          {view.kind === "issue" ? "The same six on another issue" : "Other pairings"}
-        </p>
+        <p className="eyebrow mb-3">Other pairings</p>
         <div className="flex flex-wrap gap-2">
-          {view.kind === "issue"
-            ? POLICY_AREAS.filter((a) => a.id !== view.area.id).map((area) => (
-                <Link
-                  key={area.id}
-                  href={`/compare/${area.id}`}
-                  className="border border-rule bg-[color:var(--paper-raised)] px-3 py-1.5 text-[0.78rem] font-semibold transition-colors hover:border-oxblood hover:text-oxblood"
-                >
-                  {area.name}
-                </Link>
-              ))
-            : allPairs()
+          {allPairs()
                 .filter((p) => p.slug !== slug)
                 .slice(0, 8)
                 .map((pair) => (
@@ -120,6 +118,7 @@ export default async function ComparePage(props: PageProps<"/compare/[slug]">) {
                 ))}
         </div>
       </nav>
+      ) : null}
     </div>
   );
 }
