@@ -71,7 +71,7 @@ export const russiaScore = Math.round(
 export const russiaBand =
   RUSSIA_BANDS.find((b) => russiaScore >= b.min && russiaScore <= b.max) ?? RUSSIA_BANDS[0];
 
-export const RUSSIA_ASSESSED_ON = "2026-08-14";
+export const RUSSIA_ASSESSED_ON = "2026-08-29";
 
 export const russiaSummary =
   "Sustained, documented grey-zone pressure: survey and submarine activity around UK undersea cables, a high tempo of naval transits shadowed in UK waters, and continuing sabotage and cyber activity. It is not a warning of imminent attack: the Ukraine war still absorbs most Russian conventional capacity, and no UK national threat level has been raised on account of Russia.";

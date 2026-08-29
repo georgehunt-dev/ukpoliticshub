@@ -50,10 +50,15 @@ export const russiaReadings: Reading[] = [
   },
   {
     factor: "cyber",
-    score: 50,
+    score: 58,
     evidence:
-      "Persistent Russian state and state-tolerated criminal activity against UK energy, water, health and telecoms networks. Steady-state pressure rather than a step change in the last quarter.",
+      "Persistent Russian state and state-tolerated criminal activity against UK energy, water, health and telecoms networks. Steady-state pressure rather than a step change in the last quarter. Through 2026 the activity has been repeatedly attributed on the record rather than inferred, and in July the UK sanctioned the FSB's 16th Centre and the Turla group for cyber espionage and sabotage against European networks.",
     sources: [
+      {
+        label: "Help Net Security, EU and UK blacklist Russia's cyber operators over efforts to destabilise Europe",
+        url: "https://www.helpnetsecurity.com/2026/07/13/eu-uk-russia-cyber-activity-sanctions/",
+        date: "2026-07-13",
+      },
       {
         label:
           "Computer Weekly. UK needs better defences to protect undersea internet cables from Russian sabotage",
@@ -64,10 +69,20 @@ export const russiaReadings: Reading[] = [
   },
   {
     factor: "military",
-    score: 52,
+    score: 64,
     evidence:
-      "UK defence officials say Russian submarines have been deployed alongside the survey vessel Yantar (part of Russia's GUGI deep-sea unit) to map and potentially sabotage cables and pipelines near the UK, including the Britain–Ireland gas interconnector, and the government has stood up an Undersea Infrastructure Security Oversight Board in response. Separately the Royal Navy was activated 116 times during 2025–26 to shadow 61 Russian warships and 28 merchant vessels inside the UK Exclusive Economic Zone. The naval activity is monitored routine transit; the undersea mapping is not. Russia's embassy calls the cable claims “completely groundless”.",
+      "UK defence officials say Russian submarines have been deployed alongside the survey vessel Yantar (part of Russia's GUGI deep-sea unit) to map and potentially sabotage cables and pipelines near the UK, including the Britain–Ireland gas interconnector, and the government has stood up an Undersea Infrastructure Security Oversight Board in response. Separately the Royal Navy was activated 116 times during 2025–26 to shadow 61 Russian warships and 28 merchant vessels inside the UK Exclusive Economic Zone. The naval activity is monitored routine transit; the undersea mapping is not. Russia's embassy calls the cable claims “completely groundless”. On 27 August 2026 the Russian Foreign Ministry threatened for the first time to strike UK military targets \u201cinside and outside Ukraine\u201d, after Britain declassified Storm Shadow component designs for Ukrainian production. This is declared posture rather than action, and nothing has been struck, which is why the score moves well short of the top of the band.",
     sources: [
+      {
+        label: "Al Jazeera, Russia warns it could target UK in response to Kyiv firing British missiles",
+        url: "https://www.aljazeera.com/news/2026/8/27/russia-warns-it-could-target-uk-in-response-to-kyiv-firing-british-missiles",
+        date: "2026-08-27",
+      },
+      {
+        label: "LBC, Russia threatens UK military targets as Kremlin says Britain is playing with fire",
+        url: "https://www.lbc.co.uk/article/russia-uk-ukraine-military-5HjdgZk_2/",
+        date: "2026-08-27",
+      },
       {
         label:
           "Breaking Defense. UK accuses Russia of covert submarine operation threatening undersea cables",
@@ -88,10 +103,15 @@ export const russiaReadings: Reading[] = [
   },
   {
     factor: "designation",
-    score: 68,
+    score: 74,
     evidence:
-      "Russia is a specified foreign power under the enhanced tier of the Foreign Influence Registration Scheme, one of only two states so designated. Ministers have moved to explicit public attribution: “We see you, we know what you're doing, and we will not shy away from robust action to protect this country”, and stood up new oversight machinery. No national threat level has been raised on account of Russia, which is the strongest available signal that the UK does not assess an attack as imminent.",
+      "Russia is a specified foreign power under the enhanced tier of the Foreign Influence Registration Scheme, one of only two states so designated. Ministers have moved to explicit public attribution: “We see you, we know what you're doing, and we will not shy away from robust action to protect this country”, and stood up new oversight machinery. No national threat level has been raised on account of Russia, which is the strongest available signal that the UK does not assess an attack as imminent. On 13 July 2026 the UK designated 24 individuals and entities over Russian cyber operations, alongside the EU's largest round of individual designations since 2022.",
     sources: [
+      {
+        label: "Help Net Security, EU and UK blacklist Russia's cyber operators over efforts to destabilise Europe",
+        url: "https://www.helpnetsecurity.com/2026/07/13/eu-uk-russia-cyber-activity-sanctions/",
+        date: "2026-07-13",
+      },
       FIRS_ENHANCED,
       {
         label: "Yahoo News / Reuters, UK monitors Russian spy ship, steps up undersea cable protection",
@@ -102,10 +122,20 @@ export const russiaReadings: Reading[] = [
   },
   {
     factor: "direction",
-    score: 55,
+    score: 70,
     evidence:
-      "Russian naval activity around the UK is up roughly 30% over two years, and the government has created new machinery to watch undersea infrastructure. Against that, the war in Ukraine continues to absorb the bulk of Russian conventional capacity, and two short truces in 2026 were humanitarian pauses rather than settlements. Intensifying around Britain specifically, without a step change.",
+      "Russian naval activity around the UK is up roughly 30% over two years, and the government has created new machinery to watch undersea infrastructure. Against that, the war in Ukraine continues to absorb the bulk of Russian conventional capacity, and two short truces in 2026 were humanitarian pauses rather than settlements. Intensifying around Britain specifically, without a step change. That trajectory sharpened in August 2026: an explicit threat against UK military targets, Britain told it was \u201cone step away\u201d from legal complicity and warned of \u201ccatastrophic consequences\u201d.",
     sources: [
+      {
+        label: "Al Jazeera, Russia warns it could target UK in response to Kyiv firing British missiles",
+        url: "https://www.aljazeera.com/news/2026/8/27/russia-warns-it-could-target-uk-in-response-to-kyiv-firing-british-missiles",
+        date: "2026-08-27",
+      },
+      {
+        label: "LBC, Russia threatens UK military targets as Kremlin says Britain is playing with fire",
+        url: "https://www.lbc.co.uk/article/russia-uk-ukraine-military-5HjdgZk_2/",
+        date: "2026-08-27",
+      },
       {
         label: "UK Defence Journal, Royal Navy shadowed 61 Russian warships around UK waters",
         url: "https://ukdefencejournal.org.uk/royal-navy-shadowed-61-russian-warships-around-uk-waters/",
@@ -260,7 +290,60 @@ export const iranReadings: Reading[] = [
  * changes a number, and the entry says who thought what and why.
  */
 export const scoreChanges: Record<string, ScoreChange[]> = {
-  russia: [],
+  russia: [
+    {
+      date: "2026-08-29",
+      factor: "military",
+      from: 52,
+      to: 64,
+      reason:
+        "Russia threatened for the first time to strike UK military targets inside and outside Ukraine, after Britain declassified Storm Shadow component designs for Ukrainian production. Moved well short of the top of the band because this is declared posture, not action: nothing has been struck, and scoring a threat as though it were an attack is what discredits an index.",
+      source: {
+      label: "Al Jazeera, Russia warns it could target UK in response to Kyiv firing British missiles",
+      url: "https://www.aljazeera.com/news/2026/8/27/russia-warns-it-could-target-uk-in-response-to-kyiv-firing-british-missiles",
+      date: "2026-08-27",
+    },
+    },
+    {
+      date: "2026-08-29",
+      factor: "direction",
+      from: 55,
+      to: 70,
+      reason:
+        "The August escalation is one-directional: an explicit threat against UK military targets, Britain told it is one step from legal complicity, and warnings of catastrophic consequences.",
+      source: {
+      label: "Al Jazeera, Russia warns it could target UK in response to Kyiv firing British missiles",
+      url: "https://www.aljazeera.com/news/2026/8/27/russia-warns-it-could-target-uk-in-response-to-kyiv-firing-british-missiles",
+      date: "2026-08-27",
+    },
+    },
+    {
+      date: "2026-08-29",
+      factor: "designation",
+      from: 68,
+      to: 74,
+      reason:
+        "The UK designated 24 individuals and entities over Russian cyber operations in July, alongside the EU's largest round of individual designations since 2022. Official posture hardened materially.",
+      source: {
+      label: "Help Net Security, EU and UK blacklist Russia's cyber operators",
+      url: "https://www.helpnetsecurity.com/2026/07/13/eu-uk-russia-cyber-activity-sanctions/",
+      date: "2026-07-13",
+    },
+    },
+    {
+      date: "2026-08-29",
+      factor: "cyber",
+      from: 50,
+      to: 58,
+      reason:
+        "Activity through 2026 has been attributed on the record rather than inferred, including the sanctioning of the FSB's 16th Centre and Turla for espionage and sabotage against European networks.",
+      source: {
+      label: "Help Net Security, EU and UK blacklist Russia's cyber operators",
+      url: "https://www.helpnetsecurity.com/2026/07/13/eu-uk-russia-cyber-activity-sanctions/",
+      date: "2026-07-13",
+    },
+    },
+  ],
   china: [],
   iran: [],
 };

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import AssessmentCard from "@/components/AssessmentCard";
 import AssessmentNews from "@/components/AssessmentNews";
+import ScoreChanges from "@/components/ScoreChanges";
 import EmailCapture from "@/components/EmailCapture";
 import SectionImage from "@/components/SectionImage";
 import { MoreLink } from "@/components/ui";
@@ -114,6 +115,11 @@ export default async function AssessmentPage({ params }: PageProps<"/threat/[slu
           name={assessment.name}
           assessedOn={assessment.assessedOn}
         />
+
+        {/* Directly under the live coverage on purpose: that section says the
+            score does not move with the news, and this is where a reader
+            checks whether that is true. */}
+        <ScoreChanges slug={assessment.slug} />
 
         <EmailCapture
           className="mt-10"
