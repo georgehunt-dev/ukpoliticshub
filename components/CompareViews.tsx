@@ -205,8 +205,13 @@ export function PairComparison({ view }: { view: PairView }) {
         ))}
       </div>
 
-      {/* Column headers, sticky so you never lose which side is which */}
-      <div className="sticky top-[52px] z-20 mt-8 grid grid-cols-2 gap-px border-y border-rule bg-[color:var(--rule)] sm:grid-cols-[150px_1fr_1fr]">
+      {/* Column headers, sticky so you never lose which side is which.
+          Hidden below sm, where there are no columns to keep track of: the
+          rows stack there and each cell carries its own party label. A
+          two-column header above one-column content is a header describing a
+          layout that is not on the screen, and it sat directly under the
+          pair of party cards above, saying the same thing twice. */}
+      <div className="sticky top-[52px] z-20 mt-8 hidden gap-px border-y border-rule bg-[color:var(--rule)] sm:grid sm:grid-cols-[150px_1fr_1fr]">
         <div className="hidden bg-[color:var(--paper)] px-3 py-2.5 sm:block" />
         {[left, right].map((party) => (
           <div key={party.slug} className="flex items-center gap-2.5 bg-[color:var(--paper)] px-3 py-2.5">

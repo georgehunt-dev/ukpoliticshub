@@ -54,7 +54,30 @@ export default function Reveal({
       { rootMargin: margin }
     );
     observer.observe(node);
-    return () => observer.disconnect();
+
+    /**
+     * Show it anyway after a moment, whatever the observer did.
+     *
+     * The hidden start state means one missed callback is not a missing
+     * animation, it is missing content, and there are ways to miss one. A page
+     * restored from bfcache or opened at an anchor can land already scrolled
+     * past a group, so the first callback reports "not intersecting" and no
+     * further one ever comes because nothing moves. The whole of /mission sits
+     * behind these.
+     *
+     * Two and a half seconds is long enough that anyone scrolling normally
+     * sees the reveal as intended, and short enough that anyone who would
+     * otherwise have seen nothing does not notice they were rescued.
+     */
+    const failsafe = window.setTimeout(() => {
+      show();
+      observer.disconnect();
+    }, 2500);
+
+    return () => {
+      window.clearTimeout(failsafe);
+      observer.disconnect();
+    };
   }, [margin]);
 
   return (
