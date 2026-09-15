@@ -3564,7 +3564,165 @@
      }
     }
    }
+  },
+  {
+   "date": "2026-09-15",
+   "stories": 135,
+   "outlets": {
+    "novara": {
+     "total": 10,
+     "subjects": {
+      "andy-burnham": 2,
+      "labour": 2,
+      "nigel-farage": 2,
+      "reform-uk": 2,
+      "defence": 1,
+      "zack-polanski": 1,
+      "green-party": 1,
+      "russia": 1,
+      "energy": 1
+     }
+    },
+    "guardian": {
+     "total": 12,
+     "subjects": {
+      "nigel-farage": 6,
+      "reform-uk": 6,
+      "ed-davey": 1,
+      "liberal-democrats": 1,
+      "andy-burnham": 1,
+      "labour": 1
+     }
+    },
+    "mirror": {
+     "total": 12,
+     "subjects": {
+      "andy-burnham": 5,
+      "labour": 5,
+      "defence": 2,
+      "immigration": 2,
+      "nigel-farage": 5,
+      "reform-uk": 5,
+      "economy": 1
+     }
+    },
+    "independent": {
+     "total": 12,
+     "subjects": {
+      "nigel-farage": 4,
+      "reform-uk": 4,
+      "crime": 1,
+      "andy-burnham": 2,
+      "labour": 2,
+      "immigration": 1
+     }
+    },
+    "channel4": {
+     "total": 12,
+     "subjects": {
+      "defence": 1,
+      "iran": 1,
+      "economy": 1,
+      "nigel-farage": 3,
+      "reform-uk": 3,
+      "nhs": 1
+     }
+    },
+    "bbc": {
+     "total": 12,
+     "subjects": {
+      "nigel-farage": 5,
+      "reform-uk": 5,
+      "crime": 2,
+      "immigration": 2,
+      "andy-burnham": 1,
+      "labour": 1
+     }
+    },
+    "sky": {
+     "total": 7,
+     "subjects": {
+      "andy-burnham": 2,
+      "labour": 2,
+      "defence": 1,
+      "russia": 1,
+      "nigel-farage": 3,
+      "reform-uk": 3
+     }
+    },
+    "ft": {
+     "total": 12,
+     "subjects": {
+      "andy-burnham": 2,
+      "labour": 2,
+      "economy": 2,
+      "defence": 1,
+      "iran": 1,
+      "nigel-farage": 1,
+      "reform-uk": 1,
+      "nhs": 1,
+      "crime": 1
+     }
+    },
+    "sun": {
+     "total": 12,
+     "subjects": {
+      "economy": 2,
+      "energy": 2,
+      "andy-burnham": 6,
+      "labour": 6,
+      "defence": 1,
+      "russia": 1,
+      "china": 1,
+      "immigration": 1,
+      "nigel-farage": 2,
+      "reform-uk": 2
+     }
+    },
+    "mail": {
+     "total": 12,
+     "subjects": {
+      "immigration": 2,
+      "nhs": 2,
+      "andy-burnham": 4,
+      "labour": 4,
+      "economy": 2,
+      "nigel-farage": 1,
+      "reform-uk": 1,
+      "defence": 1,
+      "kemi-badenoch": 2,
+      "conservatives": 2
+     }
+    },
+    "express": {
+     "total": 10,
+     "subjects": {
+      "andy-burnham": 5,
+      "labour": 5,
+      "nigel-farage": 3,
+      "reform-uk": 3,
+      "immigration": 2,
+      "crime": 1,
+      "economy": 3
+     }
+    },
+    "gbnews": {
+     "total": 12,
+     "subjects": {
+      "andy-burnham": 6,
+      "labour": 6,
+      "immigration": 5,
+      "economy": 1,
+      "russia": 1,
+      "nigel-farage": 2,
+      "reform-uk": 2,
+      "crime": 2,
+      "kemi-badenoch": 1,
+      "conservatives": 1
+     }
+    }
+   }
   }
  ],
- "updatedAt": "2026-09-14T23:59:09.025Z"
+ "updatedAt": "2026-09-15T23:42:49.940Z"
 }
