@@ -9,27 +9,27 @@ import type { Poll, PollEntry, Source } from "@/lib/types";
  * reader can independently check.
  */
 
-export const POLL_AVERAGE_AS_OF = "2026-08-27";
+export const POLL_AVERAGE_AS_OF = "2026-09-26";
 
 export const POLL_AVERAGE_SOURCE: Source = {
   label: "PollCheck, 7-poll moving average",
   url: "https://www.pollcheck.co.uk/gb-polls",
-  date: "2026-08-27",
+  date: "2026-09-26",
 };
 
 export const pollAverage: PollEntry[] = [
-  { party: "labour", pct: 25.6, change: 0 },
-  { party: "reform", pct: 24.9, change: 0 },
-  { party: "conservative", pct: 19.9, change: 0 },
-  { party: "green", pct: 10.7, change: 0 },
-  { party: "liberal-democrats", pct: 10.1, change: 0 },
+  { party: "labour", pct: 26.1, change: 0 },
+  { party: "reform", pct: 22.9, change: 0 },
+  { party: "conservative", pct: 20.3, change: 0 },
+  { party: "green", pct: 10.6, change: 0 },
+  { party: "liberal-democrats", pct: 10.3, change: 0 },
   /* Not on the same basis as the five above, and the source says so: it is a
      7-poll average of only those pollsters that offer Restore Britain as a
      named option, currently a minority of them. It is listed here because
      leaving the party off the front page entirely would be the larger
      distortion, but it is not a like-for-like comparison and any note written
      about the gap between it and the others has to say that. */
-  { party: "restore-britain", pct: 3.0, change: 0 },
+  { party: "restore-britain", pct: 4.4, change: 0 },
 ];
 
 /** Everything not accounted for by the six parties above. */
@@ -44,20 +44,20 @@ export const pollOther = Number(
 export const trendNotes: { text: string; source: Source }[] = [
   {
     text:
-      "Survation's 18 August poll had Labour and Reform UK tied on 26% each, at the end of Andy Burnham's first month as Prime Minister.",
+      "YouGov's 20-21 September poll put Reform UK on 21%, which YouGov says is the lowest share it has recorded for the party since it restarted its voting intention tracker in January 2025.",
     source: {
-      label: "Survation, 30 days of Burnham: has the bounce continued?",
-      url: "https://www.survation.com/30-days-of-burnham-has-the-bounce-continued/",
-      date: "2026-08-20",
+      label: "YouGov, Voting intention, 20-21 September 2026",
+      url: "https://yougov.com/en-gb/articles/55596-voting-intention-20-21-september-2026-lab-23-con-21-ref-21-grn-14-ld-12",
+      date: "2026-09-22",
     },
   },
   {
     text:
-      "YouGov's 23-24 August poll for The Times and Sky News had the three largest parties within three points of each other: Reform UK 23%, Labour 22% and the Conservatives 20%.",
+      "Opinium's poll of 23-25 September had Labour up one to 28%, Reform UK unchanged on 24% and the Conservatives down one to 17%.",
     source: {
-      label: "YouGov, Voting intention, 23-24 August 2026",
-      url: "https://yougov.com/en-gb/articles/55427-voting-intention-23-24-august-2026-ref-23-lab-22-con-20-grn-13-ld-13",
-      date: "2026-08-25",
+      label: "Opinium, Voting intention, 23rd September 2026",
+      url: "https://www.opinium.com/resource-center/voting-intention-23rd-september-2026/",
+      date: "2026-09-26",
     },
   },
 ];
@@ -74,44 +74,48 @@ export const trendNotes: { text: string; source: Source }[] = [
  * says as much rather than implying the list is the whole average.
  *
  * Where a pollster published a headline but no figure for a party, the cell is
- * left empty and renders as an em dash. Survation's 18 August release gave
- * Labour and Reform only in the write-up itself.
+ * left empty and renders as an em dash. Opinium's write-up does not name a
+ * Restore Britain figure, so that cell is empty rather than borrowed from an
+ * aggregator.
  */
 export const recentPolls: Poll[] = [
   {
-    pollster: "YouGov",
-    fieldwork: "23-24 August 2026",
-    url: "https://yougov.com/en-gb/articles/55427-voting-intention-23-24-august-2026-ref-23-lab-22-con-20-grn-13-ld-13",
+    pollster: "Opinium",
+    fieldwork: "23-25 September 2026",
+    sampleSize: 2050,
+    url: "https://www.opinium.com/resource-center/voting-intention-23rd-september-2026/",
     results: {
-      reform: 23,
-      labour: 22,
-      conservative: 20,
-      green: 13,
-      "liberal-democrats": 13,
-      "restore-britain": 3,
-    },
-  },
-  {
-    pollster: "Survation",
-    fieldwork: "18 August 2026",
-    sampleSize: 2013,
-    url: "https://www.survation.com/30-days-of-burnham-has-the-bounce-continued/",
-    results: {
-      labour: 26,
-      reform: 26,
-    },
-  },
-  {
-    pollster: "YouGov",
-    fieldwork: "16-17 August 2026",
-    url: "https://yougov.com/en-gb/articles/55381-voting-intention-16-17-august-2026-ref-24-lab-22-con-19-grn-13-ld-12",
-    results: {
+      labour: 28,
       reform: 24,
-      labour: 22,
-      conservative: 19,
-      green: 13,
+      conservative: 17,
+      "liberal-democrats": 10,
+      green: 10,
+    },
+  },
+  {
+    pollster: "YouGov",
+    fieldwork: "20-21 September 2026",
+    url: "https://yougov.com/en-gb/articles/55596-voting-intention-20-21-september-2026-lab-23-con-21-ref-21-grn-14-ld-12",
+    results: {
+      labour: 23,
+      conservative: 21,
+      reform: 21,
+      green: 14,
       "liberal-democrats": 12,
       "restore-britain": 4,
+    },
+  },
+  {
+    pollster: "YouGov",
+    fieldwork: "13-14 September 2026",
+    url: "https://yougov.com/en-gb/articles/55556-voting-intention-13-14-september-2026-lab-23-ref-23-con-20-ld-13-grn-11",
+    results: {
+      labour: 23,
+      reform: 23,
+      conservative: 20,
+      "liberal-democrats": 13,
+      green: 11,
+      "restore-britain": 3,
     },
   },
 ];
