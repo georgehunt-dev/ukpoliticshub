@@ -9824,7 +9824,7 @@
   },
   {
    "date": "2026-10-24",
-   "stories": 127,
+   "stories": 132,
    "outlets": {
     "novara": {
      "total": 10,
@@ -9841,85 +9841,67 @@
     "guardian": {
      "total": 12,
      "subjects": {
-      "nigel-farage": 1,
-      "reform-uk": 1,
-      "andy-burnham": 4,
-      "labour": 4,
-      "kemi-badenoch": 1,
-      "conservatives": 1,
-      "immigration": 2,
-      "defence": 1,
-      "europe": 1,
-      "energy": 1,
-      "economy": 1,
-      "nhs": 1
+      "andy-burnham": 3,
+      "labour": 3,
+      "economy": 2,
+      "nigel-farage": 2,
+      "kemi-badenoch": 3,
+      "reform-uk": 2,
+      "conservatives": 3
      }
     },
     "mirror": {
      "total": 12,
      "subjects": {
-      "andy-burnham": 4,
-      "labour": 4,
-      "defence": 3,
-      "nigel-farage": 1,
-      "reform-uk": 1,
-      "crime": 3,
-      "kemi-badenoch": 2,
-      "conservatives": 2,
-      "nhs": 1
+      "economy": 7,
+      "nigel-farage": 2,
+      "reform-uk": 2,
+      "housing": 2,
+      "andy-burnham": 3,
+      "kemi-badenoch": 1,
+      "labour": 3,
+      "conservatives": 1,
+      "nhs": 1,
+      "defence": 1
      }
     },
     "independent": {
-     "total": 12,
+     "total": 5,
      "subjects": {
-      "andy-burnham": 7,
-      "labour": 7,
-      "energy": 1,
-      "nigel-farage": 2,
-      "zack-polanski": 1,
-      "rupert-lowe": 1,
-      "reform-uk": 2,
-      "green-party": 1,
       "kemi-badenoch": 1,
       "conservatives": 1,
-      "immigration": 1,
-      "economy": 1
+      "economy": 2
      }
     },
     "channel4": {
      "total": 12,
      "subjects": {
+      "crime": 1,
       "energy": 1,
-      "immigration": 1,
-      "nhs": 1,
-      "andy-burnham": 1,
-      "labour": 1,
-      "housing": 1,
-      "defence": 1,
-      "russia": 1
+      "immigration": 1
      }
     },
     "bbc": {
      "total": 12,
      "subjects": {
+      "kemi-badenoch": 3,
+      "conservatives": 3,
+      "economy": 2,
+      "defence": 2,
       "andy-burnham": 5,
       "labour": 5,
       "energy": 1,
-      "kemi-badenoch": 2,
-      "conservatives": 2,
-      "crime": 1,
-      "defence": 1,
-      "economy": 1
+      "crime": 1
      }
     },
     "sky": {
-     "total": 7,
+     "total": 9,
      "subjects": {
+      "andy-burnham": 2,
+      "labour": 2,
       "kemi-badenoch": 1,
       "conservatives": 1,
       "nhs": 1,
-      "andy-burnham": 1,
-      "labour": 1,
       "energy": 1,
       "crime": 1
      }
@@ -9927,15 +9909,13 @@
     "ft": {
      "total": 12,
      "subjects": {
+      "crime": 2,
+      "housing": 1,
       "economy": 4,
+      "andy-burnham": 1,
+      "labour": 1,
       "kemi-badenoch": 1,
-      "conservatives": 1,
-      "nigel-farage": 2,
-      "reform-uk": 2,
-      "andy-burnham": 2,
-      "labour": 2,
-      "energy": 1,
-      "crime": 1
+      "conservatives": 1
      }
     },
     "telegraph": {
@@ -9951,47 +9931,58 @@
     "sun": {
      "total": 12,
      "subjects": {
-      "andy-burnham": 7,
-      "labour": 7,
-      "economy": 4,
-      "energy": 3,
-      "immigration": 1
+      "andy-burnham": 8,
+      "nigel-farage": 2,
+      "labour": 8,
+      "reform-uk": 2,
+      "immigration": 2,
+      "economy": 5,
+      "energy": 1
      }
     },
     "mail": {
      "total": 12,
      "subjects": {
-      "andy-burnham": 4,
-      "nigel-farage": 1,
-      "labour": 4,
-      "reform-uk": 1,
-      "immigration": 1,
-      "economy": 6,
-      "nhs": 2,
-      "rupert-lowe": 1,
-      "kemi-badenoch": 1,
-      "conservatives": 1,
+      "andy-burnham": 7,
+      "kemi-badenoch": 2,
+      "labour": 7,
+      "conservatives": 2,
+      "economy": 3,
       "defence": 1,
-      "energy": 1
+      "russia": 1,
+      "immigration": 2,
+      "nigel-farage": 1,
+      "reform-uk": 1
+     }
+    },
+    "express": {
+     "total": 10,
+     "subjects": {
+      "andy-burnham": 8,
+      "labour": 8,
+      "economy": 5,
+      "nigel-farage": 1,
+      "reform-uk": 1,
+      "crime": 1
      }
     },
     "gbnews": {
      "total": 12,
      "subjects": {
-      "andy-burnham": 6,
-      "labour": 6,
-      "nigel-farage": 1,
-      "reform-uk": 1,
-      "kemi-badenoch": 2,
-      "conservatives": 2,
-      "energy": 1,
-      "crime": 1,
-      "housing": 1,
-      "economy": 1
+      "andy-burnham": 8,
+      "nigel-farage": 3,
+      "labour": 8,
+      "reform-uk": 3,
+      "europe": 1,
+      "economy": 4,
+      "defence": 1,
+      "iran": 1,
+      "zack-polanski": 1,
+      "green-party": 1
      }
     }
    }
   }
  ],
- "updatedAt": "2026-10-24T00:01:27.745Z"
+ "updatedAt": "2026-10-24T23:43:09.795Z"
 }
