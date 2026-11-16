@@ -13489,7 +13489,159 @@
      }
     }
    }
+  },
+  {
+   "date": "2026-11-16",
+   "stories": 121,
+   "outlets": {
+    "novara": {
+     "total": 10,
+     "subjects": {
+      "china": 1,
+      "iran": 2,
+      "nigel-farage": 1,
+      "reform-uk": 1,
+      "housing": 1,
+      "crime": 1,
+      "andy-burnham": 1,
+      "labour": 1,
+      "nhs": 1,
+      "immigration": 1
+     }
+    },
+    "guardian": {
+     "total": 12,
+     "subjects": {
+      "andy-burnham": 6,
+      "labour": 6,
+      "energy": 1,
+      "nigel-farage": 2,
+      "reform-uk": 2,
+      "immigration": 1,
+      "housing": 1,
+      "defence": 1
+     }
+    },
+    "mirror": {
+     "total": 12,
+     "subjects": {
+      "andy-burnham": 6,
+      "labour": 6,
+      "nigel-farage": 1,
+      "reform-uk": 1,
+      "europe": 2,
+      "kemi-badenoch": 1,
+      "conservatives": 1
+     }
+    },
+    "independent": {
+     "total": 12,
+     "subjects": {
+      "andy-burnham": 8,
+      "labour": 8,
+      "energy": 1,
+      "economy": 1,
+      "europe": 3,
+      "nigel-farage": 2,
+      "kemi-badenoch": 1,
+      "reform-uk": 2,
+      "conservatives": 1,
+      "russia": 1
+     }
+    },
+    "channel4": {
+     "total": 12,
+     "subjects": {
+      "andy-burnham": 1,
+      "labour": 1,
+      "energy": 1,
+      "china": 2,
+      "russia": 3,
+      "nigel-farage": 1,
+      "kemi-badenoch": 1,
+      "reform-uk": 1,
+      "conservatives": 1,
+      "immigration": 1,
+      "defence": 2,
+      "nhs": 1
+     }
+    },
+    "bbc": {
+     "total": 12,
+     "subjects": {
+      "economy": 1,
+      "kemi-badenoch": 2,
+      "conservatives": 2,
+      "europe": 1,
+      "andy-burnham": 2,
+      "labour": 2,
+      "nigel-farage": 1,
+      "reform-uk": 1,
+      "immigration": 2,
+      "defence": 1
+     }
+    },
+    "sky": {
+     "total": 3,
+     "subjects": {
+      "europe": 1
+     }
+    },
+    "ft": {
+     "total": 12,
+     "subjects": {
+      "andy-burnham": 1,
+      "labour": 1,
+      "europe": 1,
+      "housing": 2,
+      "china": 1,
+      "crime": 1,
+      "energy": 1,
+      "economy": 1
+     }
+    },
+    "sun": {
+     "total": 12,
+     "subjects": {
+      "andy-burnham": 7,
+      "labour": 7,
+      "kemi-badenoch": 2,
+      "conservatives": 2,
+      "europe": 1,
+      "crime": 1
+     }
+    },
+    "mail": {
+     "total": 12,
+     "subjects": {
+      "andy-burnham": 8,
+      "labour": 8,
+      "nhs": 1,
+      "europe": 1,
+      "nigel-farage": 3,
+      "reform-uk": 3,
+      "kemi-badenoch": 2,
+      "conservatives": 2,
+      "economy": 3
+     }
+    },
+    "gbnews": {
+     "total": 12,
+     "subjects": {
+      "andy-burnham": 9,
+      "labour": 9,
+      "nhs": 1,
+      "kemi-badenoch": 2,
+      "conservatives": 2,
+      "economy": 1,
+      "nigel-farage": 1,
+      "reform-uk": 1,
+      "crime": 1,
+      "energy": 1
+     }
+    }
+   }
   }
  ],
- "updatedAt": "2026-11-15T01:19:04.284Z"
+ "updatedAt": "2026-11-16T01:23:31.344Z"
 }
